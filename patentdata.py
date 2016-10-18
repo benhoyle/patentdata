@@ -8,6 +8,7 @@ import configparser
 import logging
 import epo_ops
 from epo_ops.models import Epodoc
+from epo_ops.utils import keysearch
 
 chars_to_delete = [".", "&", ",", "/"]
 chars_to_space = ["+","-"]
@@ -26,16 +27,28 @@ consumer_key = parser.get('Login Parameters', 'C_KEY')
 consumer_secret = parser.get('Login Parameters', 'C_SECRET')
 
 # Intialise EPO OPS client
+middlewares = [
+    epo_ops.middlewares.Dogpile(),
+    epo_ops.middlewares.Throttler(),
+]
+
 registered_client = epo_ops.RegisteredClient(
     key=consumer_key, 
     secret=consumer_secret, 
-    accept_type='json')
+    accept_type='json',
+    middlewares=middlewares)
 
 # Load country stopwords
 countries = [line.strip().split("|")[1].upper() for line in open("data/countries.txt", 'r')]
 
 # Upgrade name processing function
 stopwords = company_stopwords + countries
+
+def check_list(listvar):
+    """Turns single items into a list of 1."""
+    if not isinstance(listvar, list):
+        listvar = [listvar]
+    return listvar
 
 def safeget(dct, *keys):
     """ Recursive function to safely access nested dicts or return None. 
@@ -115,12 +128,14 @@ def get_search(raw_companies_list):
         try:
             results = registered_client.published_data_search(search_string, range_begin=1, range_end=100)
             results_json = results.json()['ops:world-patent-data']['ops:biblio-search']
-            # Need to use get here as if no results we get a key error
+           
             total_results = safeget(results_json, '@total-result-count')
             logging.info("Total results: {0}".format(total_results))
-            # and here
-            numbers = [safeget(result,'document-id','country','$') + safeget(result, 'document-id', 'doc-number','$') for result in safeget(results_json,'ops:search-result','ops:publication-reference')]
-            
+            number_objects = check_list(safeget(results_json,'ops:search-result','ops:publication-reference'))
+            if number_objects:
+                numbers = [safeget(result,'document-id','country','$') + safeget(result, 'document-id', 'doc-number','$') for result in number_objects]
+            else:
+                numbers = []
             data.append({
                     "applicant": company_name, 
                     "raw_applicant":company, 
@@ -152,3 +167,25 @@ def save_data(filename, data):
     save_filename = "".join(["savedata/", time_string, filename, ".json"])
     with open(save_filename, 'w', encoding="utf8") as outfile:
         json.dump(data, outfile)
+        
+def get_register(number):
+    """ Get EP Register data for a particular EP publication no. 
+    (e.g. EP3065066) """
+    # Add here to first check cached data?
+    
+    register_search = registered_client.register("publication", Epodoc(number))
+    result = register_search.json()
+    # These can sometimes have multi entries so we'll use checklist to 
+    # turn them all into a list (some with only one entry)
+    raw_agents = check_list(keysearch(result,'reg:agents'))
+    raw_classifications = check_list(keysearch(result,'reg:classifications-ipcr'))
+    
+    # Get first agent / classification
+    result_dict = {
+        "agent" : keysearch(raw_agents[0],'reg:name').get('$', None),
+        "agent_first_address" : keysearch(raw_agents[0],'reg:address-1').get('$', None),
+        "agent_country" : keysearch(raw_agents[0],'reg:country').get('$', None),
+        "classification" : keysearch(raw_classifications[0],'reg:text').get('$', None)
+        }
+    return result_dict
+    

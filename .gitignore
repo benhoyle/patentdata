@@ -7,6 +7,7 @@ __pycache__/
 *.ini
 *.data
 *.json
+*.csv
 
 # Log files
 *.log
