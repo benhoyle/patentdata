@@ -8,6 +8,7 @@ __pycache__/
 *.data
 *.json
 *.csv
+*.db
 
 # Log files
 *.log

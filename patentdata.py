@@ -44,6 +44,9 @@ countries = [line.strip().split("|")[1].upper() for line in open("data/countries
 # Upgrade name processing function
 stopwords = company_stopwords + countries
 
+# Import database objects to store data
+from datamodels import PatentSearch, PatentPublication, Session
+
 def check_list(listvar):
     """Turns single items into a list of 1."""
     if not isinstance(listvar, list):
@@ -188,4 +191,22 @@ def get_register(number):
         "classification" : keysearch(raw_classifications[0],'reg:text').get('$', None)
         }
     return result_dict
+
+#def save_data_to_db(data):
+    #""" Save data to database."""
+    #session = Session()
+    #new_search = PatentSearch()
+    #new_search.
     
+#def run_my_program():
+    #session = Session()
+    #try:
+        #ThingOne().go(session)
+        #ThingTwo().go(session)
+
+        #session.commit()
+    #except:
+        #session.rollback()
+        #raise
+    #finally:
+        #session.close()
