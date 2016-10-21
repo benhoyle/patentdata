@@ -8,7 +8,6 @@ import configparser
 import logging
 import epo_ops
 from epo_ops.models import Epodoc
-from epo_ops.utils import keysearch
 
 chars_to_delete = [".", "&", ",", "/"]
 chars_to_space = ["+","-"]
@@ -63,6 +62,27 @@ def safeget(dct, *keys):
         except KeyError:
             return None
     return dct
+
+def keysearch(d, key):
+    """Recursive function to look for first occurence of key in multi-level dict. 
+    param dict d: dictionary to process
+    param string key: key to locate"""
+ 
+    if isinstance(d, dict):
+        if key in d:
+            return d[key]
+        else:
+            if isinstance(d, dict):
+                for k in d:
+                    found = keysearch(d[k], key)
+                    if found:
+                        return found
+            else:
+                if isinstance(d, list):
+                    for i in d:
+                        found = keysearch(d[k], key)
+                        if found:
+                            return found
 
 # Define helper function to remove text in parenthesis
 # From http://stackoverflow.com/questions/14596884/remove-text-between-and-in-python
@@ -174,23 +194,37 @@ def save_data(filename, data):
 def get_register(number):
     """ Get EP Register data for a particular EP publication no. 
     (e.g. EP3065066) """
-    # Add here to first check cached data?
+    # Add here to first check cached data? - do this externally to function?
+    try:
+        register_search = registered_client.register("publication", Epodoc(number))
+        return register_search.json()
+    except:
+        return None
     
-    register_search = registered_client.register("publication", Epodoc(number))
-    result = register_search.json()
+def get_agent_class(results_json):
+    """ Get agent and classification data from Register JSON. """
     # These can sometimes have multi entries so we'll use checklist to 
     # turn them all into a list (some with only one entry)
-    raw_agents = check_list(keysearch(result,'reg:agents'))
-    raw_classifications = check_list(keysearch(result,'reg:classifications-ipcr'))
-    
-    # Get first agent / classification
-    result_dict = {
-        "agent" : keysearch(raw_agents[0],'reg:name').get('$', None),
-        "agent_first_address" : keysearch(raw_agents[0],'reg:address-1').get('$', None),
-        "agent_country" : keysearch(raw_agents[0],'reg:country').get('$', None),
-        "classification" : keysearch(raw_classifications[0],'reg:text').get('$', None)
-        }
+    try:
+        raw_agents = check_list(keysearch(results_json,'reg:agents'))
+        raw_classifications = check_list(keysearch(results_json,'reg:classifications-ipcr'))
+        
+        if raw_agents:
+            agent_details = raw_agents[0]
+        else:
+            agent_details = check_list(keysearch(results_json,'reg:applicants'))[0]
+        
+        # Get first agent / classification
+        result_dict = {
+            "agent" : keysearch(agent_details,'reg:name').get('$', None),
+            "agent_first_address" : keysearch(agent_details,'reg:address-1').get('$', None),
+            "agent_country" : keysearch(agent_details,'reg:country').get('$', None),
+            "classification" : keysearch(raw_classifications[0],'reg:text').get('$', None)
+            }
+    except:
+        result_dict = None
     return result_dict
+
 
 #def save_data_to_db(data):
     #""" Save data to database."""

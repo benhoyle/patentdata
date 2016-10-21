@@ -19,6 +19,7 @@ from sqlalchemy import Column, Integer, String, Date, Boolean, Text, \
                         ForeignKey
 
 class Base(object):
+    """ Extensions to Base class. """
     @declared_attr
     def __tablename__(cls):
         return cls.__name__.lower()
@@ -58,6 +59,8 @@ class PatentSearch(Base):
     searched_name = Column(String(256))
     
     total_results = Column(Integer)
+    
+    # Should we also be storing the search string and the range?
     
     # Relationship defining search results
     publications = relationship("PatentPublication", backref="patentsearch")
