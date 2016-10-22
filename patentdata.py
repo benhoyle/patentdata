@@ -226,28 +226,28 @@ def get_agent_class(results_json):
     return result_dict
 
 def get_agent_list(session):
-	""" Get list of agent details. """
-	name_list = session.query(PatentPublication.raw_agent).filter(PatentPublication.raw_agent != None).all()
-	address_list = session.query(PatentPublication.raw_agent).filter(PatentPublication.raw_agent != None).all()
-	return name_list + address_list
-	
+    """ Get list of agent details. """
+    name_list = session.query(PatentPublication.raw_agent).filter(PatentPublication.raw_agent != None).all()
+    address_list = session.query(PatentPublication.raw_agent).filter(PatentPublication.raw_agent != None).all()
+    return name_list + address_list
+    
 def list_frequencies(list_of_items):
-	""" Determine frequency of items in list_of_items. """
-	itemfreq = [list_of_items.count(p) for p in list_of_items] 
-	return dict(zip(list_of_items,itemfreq))
+    """ Determine frequency of items in list_of_items. """
+    itemfreq = [list_of_items.count(p) for p in list_of_items] 
+    return dict(zip(list_of_items,itemfreq))
 
 def sort_freq_dist(freqdict): 
-	""" Sort frequency distribution. """
-	aux = [(freqdict[key], key) for key in freqdict] 	aux.sort() 
-	aux.reverse() 
-	return aux
+    """ Sort frequency distribution. """
+    aux = [(freqdict[key], key) for key in freqdict]    aux.sort() 
+    aux.reverse() 
+    return aux
 
 import re
 
 # Test this in Notebook first
 def process_classification(class_string):
-	""" Extract IPC classfication elements from a class_string."""
-	ipc = r'[A-H][0-9][0-9][A-Z][0-9]' #last bit can occur 1-3 times then we have \d+\\?\d+ - need to finish this
+    """ Extract IPC classfication elements from a class_string."""
+    ipc = r'[A-H][0-9][0-9][A-Z][0-9]{1,4}\/?[0-9]{1,6}' #last bit can occur 1-3 times then we have \d+\\?\d+ - need to finish this
     p = re.compile(ipc)
     classifications = [
         {
@@ -258,8 +258,8 @@ def process_classification(class_string):
             "subgroup" : match[4:].split('/')[0]
         }
         for match in p.finditer(class_string)]
-	return classifications
+    return classifications
 
 # Need datarecord for classification - done
 # Then we pass an entity, retrieve publications with non-zero raw classification, for each publication - retrieve classifications and add to list as dict
-	# Then process list of classification 
+    # Then process list of classification 

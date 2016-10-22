@@ -82,9 +82,9 @@ class PatentPublication(Base):
     classifications = relationship("Classification", backref="publication")
 
 class Classification(Base):
-	""" Model for patent classification. """
-	section = Column(String(1))
-    class = Column(Integer)
+    """ Model for patent classification. """
+    section = Column(String(1))
+    first_class = Column(Integer) # "class" is a reserved term
     subclass = Column(String(1))
     maingroup = Column(Integer)
     subgroup = Column(Integer)
