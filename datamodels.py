@@ -79,6 +79,19 @@ class PatentPublication(Base):
     raw_agent_country = Column(String(256))
     raw_classification = Column(String(256))
     
+    classifications = relationship("Classification", backref="publication")
+
+class Classification(Base):
+	""" Model for patent classification. """
+	section = Column(String(1))
+    class = Column(Integer)
+    subclass = Column(String(1))
+    maingroup = Column(Integer)
+    subgroup = Column(Integer)
+    
+     # Foreign key for associated publication
+    pub_id = Column(Integer, ForeignKey('patentpublication.id'))
+    
 # Create new DB    
 Base.metadata.create_all(engine)
 
