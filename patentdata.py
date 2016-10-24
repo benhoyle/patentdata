@@ -225,11 +225,95 @@ def get_agent_class(results_json):
         result_dict = None
     return result_dict
 
+from datacache import RegisterCache
+from datacache import Session as CacheSession
+cachesession = CacheSession()
+
+def save_register(number):
+    """Save agent / class data for PatentPublication object number."""
+    
+    session = Session()
+    
+    publication_number = number.pub_no
+    print("Getting register data for {0}".format(publication_number))
+
+    # Check for number in cache
+    in_cache = cachesession.query(RegisterCache).filter(RegisterCache.pub_no == publication_number).first()
+
+    if not in_cache:
+        # Perform an OPS query
+        print("Querying EPO OPS")
+    
+        json_result = get_register(publication_number)
+    
+        if json_result:
+            # Store result in cache
+            try:
+                cache_to_store = RegisterCache(publication_number, json_result)
+                cachesession.add(cache_to_store)
+                cachesession.commit()
+            except:
+                print("Error saving cache")
+                cachesession.rollback()
+        time.sleep(1)
+    else:
+        # Load json from cache
+        print("Loading from cache")
+        json_result = in_cache.loadresponse()
+
+    if json_result:
+        # Extract agent and classification data
+        result_dict = get_agent_class(json_result)
+    else:
+        result_dict = None
+    
+    if result_dict:
+        # Store agent / classification details
+        try:
+            number.raw_agent = result_dict["agent"]
+            number.raw_agent_first_address = result_dict["agent_first_address"]
+            number.raw_agent_country = result_dict["agent_country"]
+            number.raw_classification = result_dict["classification"]
+            session.commit()
+            print("Agent - {0}, {1}".format(number.raw_agent, number.raw_agent_first_address))
+            print("Agent Country - {0}".format(number.raw_agent_country))
+            print("Classification - {0}".format(number.raw_classification))
+          
+        except:
+            session.rollback()
+            print("Error updating Publication")
+            raise
+            
+    session.close()
+
+def getall_registers():
+    """ Get register details for samples of each applicant in PatentSearch. """
+    # Define number of samples for each applicant
+    no_of_samples = 10
+    
+    import math
+    import random
+    
+    session = Session()
+    
+    # Cycle through companies and record agent / classification
+    for entity in session.query(PatentSearch).all():
+        # Sample publication objects if greater than defined number
+        if len(entity.publications) > no_of_samples:
+            samples = random.sample(entity.publications,no_of_samples)
+        else:
+            samples = entity.publications
+        
+        for sample in samples:
+            save_register(sample)
+    
+    session.close()
+
 def get_agent_list(session):
     """ Get list of agent details. """
-    name_list = session.query(PatentPublication.raw_agent).filter(PatentPublication.raw_agent != None).all()
-    address_list = session.query(PatentPublication.raw_agent).filter(PatentPublication.raw_agent != None).all()
-    return name_list + address_list
+    name_list = session.query(PatentPublication.raw_agent, PatentPublication.raw_agent_first_address) \
+        .filter(PatentPublication.raw_agent != None).all()
+    return [l[0] for l in name_list] + [l[1] for l in name_list]
     
 def list_frequencies(list_of_items):
     """ Determine frequency of items in list_of_items. """
@@ -238,11 +322,18 @@ def list_frequencies(list_of_items):
 
 def sort_freq_dist(freqdict): 
     """ Sort frequency distribution. """
-    aux = [(freqdict[key], key) for key in freqdict]    aux.sort() 
+    aux = [(freqdict[key], key) for key in freqdict]
+    aux.sort() 
     aux.reverse() 
     return aux
 
+def hasNumbers(inputString):
+    return any(char.isdigit() for char in inputString)
+
 import re
+
+def hasReNumbers(inputString):
+    return bool(re.search(r'\d', inputString))
 
 # Test this in Notebook first
 def process_classification(class_string):
