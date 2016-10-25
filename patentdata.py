@@ -342,11 +342,11 @@ def process_classification(class_string):
     p = re.compile(ipc)
     classifications = [
         {
-            "section" : match[0], 
-            "class" : match[1:2],
-            "subclass" : match[3],
-            "maingroup": match[4:].split('/')[0],
-            "subgroup" : match[4:].split('/')[0]
+            "section" : match.group(0)[0], 
+            "class" : match.group(0)[1:3],
+            "subclass" : match.group(0)[3],
+            "maingroup": match.group(0)[4:].split('/')[0],
+            "subgroup" : match.group(0)[4:].split('/')[1]
         }
         for match in p.finditer(class_string)]
     return classifications
