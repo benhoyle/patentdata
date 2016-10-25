@@ -313,7 +313,10 @@ def get_agent_list(session):
     """ Get list of agent details. """
     name_list = session.query(PatentPublication.raw_agent, PatentPublication.raw_agent_first_address) \
         .filter(PatentPublication.raw_agent != None).all()
-    return [l[0] for l in name_list] + [l[1] for l in name_list]
+    name_list_processed = [nl[1] if is_attorney_name(nl[0]) else nl[0] for nl in name_list]
+    fd = list_frequencies(name_list_processed)
+    return sort_freq_dist(fd)
+    
     
 def list_frequencies(list_of_items):
     """ Determine frequency of items in list_of_items. """
@@ -335,7 +338,6 @@ import re
 def hasReNumbers(inputString):
     return bool(re.search(r'\d', inputString))
 
-# Test this in Notebook first
 def process_classification(class_string):
     """ Extract IPC classfication elements from a class_string."""
     ipc = r'[A-H][0-9][0-9][A-Z][0-9]{1,4}\/?[0-9]{1,6}' #last bit can occur 1-3 times then we have \d+\\?\d+ - need to finish this
@@ -351,6 +353,15 @@ def process_classification(class_string):
         for match in p.finditer(class_string)]
     return classifications
 
+def is_attorney_name(text):
+    """Regex match for name, returns true if attorney name format."""
+    person_name = r'\A([^\d\W]|-)+,(?:\s([^\d\W]|-)+)+(?:\s[A-Z]\.)?(?:, et al)?$'
+    p = re.compile(person_name, re.UNICODE)
+    located = p.search(text)
+    if located:
+        return True
+    else:
+        return False
 # Need datarecord for classification - done
 # Then we pass an entity, retrieve publications with non-zero raw classification, for each publication - retrieve classifications and add to list as dict
     # Then process list of classification 
