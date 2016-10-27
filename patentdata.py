@@ -9,8 +9,17 @@ import logging
 import epo_ops
 from epo_ops.models import Epodoc
 
+import math
+import random
+
 # Import helper utilities
 import utils
+
+# Import database objects to store data
+import datamodels
+
+# Import datacache models
+import datacache
 
 chars_to_delete = [".", "&", ",", "/"]
 chars_to_space = ["+","-"]
@@ -18,6 +27,12 @@ chars_to_space = ["+","-"]
 company_stopwords = ["AB", "AS", "AG", "CORPORATION", "CORP", "GMBH", "CO", "COMPANY", "SA", 
                      "KG", "NV", "LIMITED", "LTD", "BV", "INC", "SAS", "OY", "SARL", "PTE", 
                      "SPA", "KK", "LP", "LLC", "EV", "PLC", "VZW", "DD", "DOO", "SNC", "OYJ", "UK"]
+
+# Load country stopwords
+countries = [line.strip().split("|")[1].upper() for line in open("data/countries.txt", 'r')]
+
+# Upgrade name processing function
+stopwords = company_stopwords + countries
 
 # Configure logging
 logging.basicConfig(filename='patentdata.log', level=logging.INFO, format='%(asctime)s %(message)s')
@@ -46,17 +61,6 @@ registered_client = epo_ops.RegisteredClient(
     accept_type='json',
     middlewares=middlewares)
 
-# Load country stopwords
-countries = [line.strip().split("|")[1].upper() for line in open("data/countries.txt", 'r')]
-
-# Upgrade name processing function
-stopwords = company_stopwords + countries
-
-# Import database objects to store data
-import datamodels
-
-# Import datacache models
-import datacache
 
 def process_name(name):
     """ Clean applicant name for better search."""
@@ -73,16 +77,20 @@ def process_name(name):
     # Remove bracketed words
     processed_name = utils.remove_bracketed(processed_name)   
     # Delete stopwords 
-    import re
     pattern = re.compile(r'\b(' + r'|'.join(stopwords) + r')\b\s*')
     processed_name = pattern.sub('', processed_name)
     # Get rid of double spaces
     processed_name = processed_name.replace("  ", " ")
     return processed_name.strip()
 
-def generate_search_string(company_name, year):
-    """ Return cql search string given a company_name string and year. """
-    return """pa="{0}" and pn=EP and pd within {1}""".format(company_name, year)
+def generate_search_string(applicant_name, year=None, country="EP"):
+    """ Return cql search string given a name string and year. """
+    search_string = 'pa="{0}"'.format(applicant_name)
+    if country:
+        search_string = " and ".join([search_string, "pn={0}".format(country)])
+    if year:
+        search_string = " and ".join([search_string, "pd within {0}""".format(year)])
+    return search_string
 
 def get_search(raw_companies_list):
     """ Get search results for companies in raw_companies_list. """
@@ -130,7 +138,14 @@ def get_search(raw_companies_list):
         time.sleep(1)
     
     save_data("BiblioSearch", data)
-        
+
+def search_applicant_ops(applicant_name, country="EP", year=None):
+    pass
+    
+def save_search_results(data, session):
+    """ Save OPS search in database. """
+    pass
+
 def save_data(filename, data):
     """ Save data as a JSON file with name including 
     the current time and filename."""
@@ -219,6 +234,11 @@ def save_register(number):
             number.raw_agent_first_address = result_dict["agent_first_address"]
             number.raw_agent_country = result_dict["agent_country"]
             number.raw_classification = result_dict["classification"]
+            # Add classification records
+            number.classifications = [
+                datamodels.Classification(**c) 
+                for c in patentdata.process_classification(number.raw_classification)
+            ]
             session.commit()
             print("Agent - {0}, {1}".format(number.raw_agent, number.raw_agent_first_address))
             print("Agent Country - {0}".format(number.raw_agent_country))
@@ -235,9 +255,6 @@ def getall_registers():
     """ Get register details for samples of each applicant in PatentSearch. """
     # Define number of samples for each applicant
     no_of_samples = 10
-    
-    import math
-    import random
     
     session = datamodels.Session()
     
@@ -269,7 +286,7 @@ def process_classification(class_string):
     classifications = [
         {
             "section" : match.group(0)[0], 
-            "class" : match.group(0)[1:3],
+            "first_class" : match.group(0)[1:3],
             "subclass" : match.group(0)[3],
             "maingroup": match.group(0)[4:].split('/')[0],
             "subgroup" : match.group(0)[4:].split('/')[1]
@@ -286,6 +303,102 @@ def is_attorney_name(text):
         return True
     else:
         return False
-# Need datarecord for classification - done
-# Then we pass an entity, retrieve publications with non-zero raw classification, for each publication - retrieve classifications and add to list as dict
-    # Then process list of classification 
+
+def get_classifications(patent_search, session):
+    """ Get classifications for a given patent_search object. """
+    pubs = patent_search.publications
+    big_list = []
+    for pub in pubs:
+        # Some numbers are blank - only select those with data
+        if pub.raw_classification:
+            big_list = big_list + process_classification(pub.raw_classification)
+    return big_list
+
+def class_statistics(list_in):
+    """ For a list of classifications determine counts at first three levels. """
+    section_list = [item['section'] for item in list_in]
+    section_class_list = ["".join([item['section'], item['first_class']]) for item in list_in]
+    section_subclass_list = ["".join([item['section'], item['first_class'], item['subclass']]) for item in list_in]
+    from collections import Counter
+
+    section_counter = Counter(section_list)
+    section_class_counter = Counter(section_class_list)
+    section_subclass_counter = Counter(section_subclass_list)
+    return {
+        "section": section_counter, 
+        "first_class": section_class_counter, 
+        "subclass":section_subclass_counter
+        }
+
+def generate_treemap(section_subclass_counter):
+    """ Generate a data structure useable to create a treemap. 
+    param: section_subclass_counter counter object at level of subclass."""
+    # This is simplier than I am making it! - only nodes have a size
+    # REFACTOR THIS TO USE RECURSION
+    class_d = {}
+    d3 = dict(section_subclass_counter)
+    for k in d3.keys():
+        if k[0:3] not in class_d.keys():
+            class_d[k[0:3]] = {}
+            class_d[k[0:3]]['name'] = k[0:3]
+            class_d[k[0:3]]['children'] = [{"name":k, "size":d3[k]}]
+        else:
+            class_d[k[0:3]]['children'].append({"name":k, "size":d3[k]})
+    print(class_d)
+    section_d = {}
+    for k in class_d.keys():
+        if k[0] not in section_d.keys():
+            section_d[k[0]] = {}
+            section_d[k[0]]['name'] = k[0]
+            section_d[k[0]]['children'] = [class_d[k]]
+        else:
+            section_d[k[0]]['children'].append(class_d[k])
+    print(section_d)
+    treemap = {"name":entity.name, "children":[]}
+    for k in section_d.keys():
+        treemap['children'].append(section_d[k])
+    print("-----")
+    print(treemap)
+    return treemap
+    
+def generate_csv_treemap(section_subclass_counter):
+    """ Generate a treemap and save as a csv file. """
+    l_sorted = sorted(list(dict(section_subclass_counter).keys()))
+    print(l_sorted)
+    
+    id_list = []
+    for k in l_sorted:
+        if k[0] not in dict(id_list).keys():
+            id_list.append((k[0],""))
+        joined = ".".join([k[0], k[0:3]])
+        if joined not in dict(id_list).keys():
+            id_list.append((joined,""))
+        id_list.append((".".join([k[0], k[0:3], k]), str(section_subclass_counter[k])))
+    
+    print(id_list)
+    
+    with open("treemap.csv", 'w', encoding="utf8") as outfile:
+        outfile.write(",".join(['id','value'])+"\n")
+        outfile.write("classifications,\n")
+        for item in id_list:
+            outfile.write(",".join(["classifications." + item[0], item[1]])+"\n")
+            
+def class_in_counter(supplied_class, counter_dict):
+    """Determine if a supplied class is present in counter_dict."""
+    if len(supplied_class) == 1:
+        # Look at section
+        c = counter_dict['section']
+        
+    if len(supplied_class) == 3:
+        # Look at class
+        c = counter_dict['first_class']
+        
+    if len(supplied_class) == 4:
+        # Look at subclass
+        c = counter_dict['sub_class']
+        
+    if supplied_class in dict(c).keys():
+        # Return count, percentage present
+        return (c[supplied_class], math.ceil((c[supplied_class] / sum(c.values()) )*100))
+    else:
+        return None
