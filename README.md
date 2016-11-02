@@ -42,10 +42,14 @@ c.get_archive_list()
 Individual publications can then be retrieved using an index. 
 
 The files can be viewed using the attribute:
-```c.archive_file_list()```
+```
+c.archive_file_list()
+```
 
 And filedata for a particular file in the list may be retrieved by:
-```filedata = c.read_xml([index])```
+```
+filedata = c.read_xml([index])
+```
 where "[index]" is replaced by an integer representing the index in archive_file_list.
 
 Text may be extracted by processing the filedata as XML.
