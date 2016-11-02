@@ -9,6 +9,10 @@ __pycache__/
 *.json
 *.csv
 *.db
+*.p
+
+# Home directory HTML
+/*.html
 
 # Log files
 *.log
@@ -78,6 +82,7 @@ target/
 
 # IPython Notebook
 .ipynb_checkpoints
+*.ipynb
 
 # pyenv
 .python-version
@@ -87,6 +92,9 @@ celerybeat-schedule
 
 # dotenv
 .env
+
+# alembic
+alembic/
 
 # virtualenv
 venv/
