@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+# == IMPORTS =============================================================#
 import os
 import logging
 import re
@@ -6,19 +9,15 @@ import math
 import pickle
 
 #Libraries for Zip file processing
-import zipfile # Can we use czipfile for faster processing?
+# Can we use czipfile for faster processing?
+import zipfile 
 import tarfile
 #from zip_open import zopen
 from io import BytesIO #Python 3.5
 
-#Library for XML Parsing
-from xml.dom.minidom import parseString
-
-##Library for text analysis - I would separate this out into a different module
-#from nltk.tokenize import word_tokenize, sent_tokenize
-#from nltk.probability import FreqDist
-#from nltk import stem
-#from nltk.corpus import stopwords
+# Import Beautiful Soup for XML parsing
+from bs4 import BeautifulSoup
+# == IMPORTS END =========================================================#
 
 #test_path= "/media/SAMSUNG/Patent_Downloads/2001"
 
@@ -83,7 +82,9 @@ class MyCorpus():
                     #if second_level_a_file.endswith(".zip"): - add here second check for second level tar files
                     with zipfile.ZipFile(z2_filedata,'r') as nested_zip:
                         with nested_zip.open(XML_path, 'r') as xml_file:
-                            xml_tree = parseString(xml_file.read())
+                            #xml_tree = parseString(xml_file.read()) 
+                            # Return filedata so that we can use other XML libraries
+                            filedata = xml_file.read()
                     #elif second_level_a_file.endswith(".tar"): -to add
         elif first_level_a_file.lower().endswith(".tar"):
             with tarfile.TarFile(first_level_a_file, 'r') as z:
@@ -92,8 +93,9 @@ class MyCorpus():
                 #z2_filedata = cStringIO.StringIO(z2.read())
                 with zipfile.ZipFile(z2) as nested_zip:
                     with nested_zip.open(XML_path) as xml_file:
-                        xml_tree = parseString(xml_file.read())
-        return xml_tree
+                        #xml_tree = parseString(xml_file.read())
+                        filedata = xml_file.read()
+        return filedata
 
     def save(self):
         """ Save corpus object as pickle. """
@@ -104,125 +106,38 @@ class MyCorpus():
     def load(cls, filename):
         """ Load a corpus by filename. """
         return pickle.load(open(filename, "rb"))
-    
-    def __get_text(self, elem, string=""):
-        """Recursive function used to get text from XML DOM """
-        #Check if element has a text node
-        if elem.hasChildNodes():
-            for child in elem.childNodes:
-                if child.nodeName == '#text':
-                    string = string + child.nodeValue
-                else:
-                    string = self.__get_text(child, string)     
-        return string
 
-    def extract_text(self, xml_tree):
-        """ Function to extract text from an XML DOM object. """
-        # Doesn't work for some publications - paragraph may just need to be <p>
-        text_string = ""
-        for elem in xml_tree.getElementsByTagName("title-of-invention"):
-            out_str = self.__get_text(elem)
-            text_string = text_string + out_str + "\n"
-        for elem in xml_tree.getElementsByTagName("paragraph"):
-            out_str = self.__get_text(elem)
-            text_string = text_string + out_str + "\n"
-        for elem in xml_tree.getElementsByTagName("claim"):
-            out_str = self.__get_text(elem)
-            text_string = text_string + out_str + "\n"
-        return text_string
+class XMLDoc():
+    """ Object to wrap the XML for a US Patent Document. """
+    
+    def __init__(self, filedata):
+        """ Initialise object using read file data from read_xml above. """
+        try:
+            self.soup = BeautifulSoup(filedata, "xml")
+        except:
+            print("Error could not read file")
 
-##Should the word processing functions below go in a separate module?
-    #def __get_words(self, text_string):
-        #""" Tokenize text into words / punctuation and
-        #clean words to remove punctuation and english stopwords / place in lower case """
-        #clean_words = [w.lower() for w in word_tokenize(text_string) if w.isalpha() and w.lower() not in self.stopwords]
-        #return clean_words
+    def description_text(self):
+        """ Return extracted description text."""
+        paras = self.soup.find_all(["p", "paragraph"])
+        return "\n".join([p.text for p in paras])
+        
+    def claim_text(self):
+        """ Return extracted claim text."""
+        paras = self.soup.find_all(["claim"])
+        return "\n".join([p.text for p in paras])
+        
+    def title(self):
+        """ Return title. """
+        return self.soup.find("invention-title").text
+    
+    def all_text(self):
+        """ Return description and claim text. """
+        desc = self.description_text()
+        claims = self.claim_text()
+        return "\n".join([desc, claims])
 
-    #def __freq(self, word, doc):
-        #return doc.count(word)
-    
-    #def __word_count(self, doc):
-        #return len(doc)
-    
-    #def __tf(self, word, doc):
-        #return (self.__freq(word, doc) / float(self.__word_count(doc)))
-    
-    #def __num_docs_containing(self, word, list_of_docs):
-        #count = 0
-        #for document in list_of_docs:
-            #if self.__freq(word, document) > 0:
-                #count += 1
-        #return 1 + count
-    
-    #def __idf(self, word, list_of_docs):
-        #return math.log(len(list_of_docs) /
-                #float(self.__num_docs_containing(word, list_of_docs)))
-    
-    #def __tf_idf(self, word, doc, list_of_docs):
-        #return (self.__tf(word, doc) * self.__idf(word, list_of_docs))
 
-    #def get_tf_idf(self, documents):
-        #""" Function to calculate TF-IDF given a set of documents 
-        #param: 'documents' is an array of indexes """
-        #doc_results = {}
-        #vocabulary = []
-        ##Iterate through documents
-        #for doc_index in documents:
-            #tokens = self.__get_words(self.extract_text(self.read_xml(doc_index)))
-            #final_tokens = tokens #final_tokens may change if adding bi/tri-grams
-            
-            ##Initialise dictionary to store results
-            #doc_results[doc_index] = {'freq': {}, 'tf': {}, 'idf': {},
-             #'tf-idf': {}, 'tokens': []}
-                        
-            #for token in final_tokens:
-                ##The frequency computed for each document
-                #doc_results[doc_index]['freq'][token] = self.__freq(token, final_tokens)
-                ##The term-frequency (Normalized Frequency)
-                #doc_results[doc_index]['tf'][token] = self.__tf(token, final_tokens)
-                #doc_results[doc_index]['tokens'] = final_tokens
-        
-            #vocabulary.append(final_tokens)
-        
-        #for doc_index in documents:
-            #for token in doc_results[doc_index]['tf']:
-                ##The Inverse-Document-Frequency
-                #doc_results[doc_index]['idf'][token] = self.__idf(token, vocabulary)
-                ##The tf-idf
-                #doc_results[doc_index]['tf-idf'][token] = self.__tf_idf(token, doc_results[doc_index]['tokens'], vocabulary)
-        
-        ##Now let's find out the most relevant words by tf-idf.
-        #words = {}
-        #for doc_index in documents:
-            #for token in doc_results[doc_index]['tf-idf']:
-                #if token not in words:
-                    #words[token] = doc_results[doc_index]['tf-idf'][token]
-                #else:
-                    #if doc_results[doc_index]['tf-idf'][token] > words[token]:
-                        #words[token] = doc_results[doc_index]['tf-idf'][token]
-        
-            #print (doc_index)
-            #for token in doc_results[doc_index]['tf-idf']:
-                #print (token, doc_results[doc_index]['tf-idf'][token])
-        
-        #for item in sorted(words.items(), key=lambda x: x[1], reverse=True):
-            #print ("{0} <= {1}".format(item[1], item[0]))
-        
-        #porter = stem.porter.PorterStemmer()
-        ##stem here? - stemming using porter
-        #vocab = [porter.stem(w.lower()) for w in words if w.isalpha()]
-        
-        ##add to FreqDist here?
-        #for stem_word in vocab:
-            #f_dist.inc(stem_word)
-            
-        ##Save state in picke file
-        #with open("freqdist.pkl", "wb") as f:
-            #pickle.dump(f_dist, f)
-
-    #def save_string(self, text_string, text_filename):
-        #with open(text_filename, 'w') as f:
-            #f.write(text_string)
 
  
 

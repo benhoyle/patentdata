@@ -296,7 +296,7 @@ def process_classification(class_string):
 
 def is_attorney_name(text):
     """Regex match for name, returns true if attorney name format."""
-    person_name = r'\A([^\d\W]|-)+,(?:\s([^\d\W]|-)+)+(?:\s[A-Z]\.)?(?:, et al)?$'
+    person_name = r"""\A(\s?[^\d\W]|-|')+,(?:\s([^\d\W]|-)+)+(?:\s[A-Z]\.)?(?:, et al)?$"""
     p = re.compile(person_name, re.UNICODE)
     located = p.search(text)
     if located:
