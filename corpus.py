@@ -97,6 +97,10 @@ class MyCorpus():
                         filedata = xml_file.read()
         return filedata
 
+    def get_doc(self, a_file_index):
+        """ Read XML and return an XMLDoc object. """
+        return XMLDoc(self.read_xml(a_file_index))
+
     def save(self):
         """ Save corpus object as pickle. """
         filename = self.path.replace("/","_") + ".p"
@@ -106,6 +110,17 @@ class MyCorpus():
     def load(cls, filename):
         """ Load a corpus by filename. """
         return pickle.load(open(filename, "rb"))
+        
+    def indexes_by_classification(self, class_list):
+        """ Get a list of indexes of publications that match the supplied 
+        class list.
+        param: list of Classification objects - class_list"""
+        if not self.archive_file_list:
+            self.get_archive_list()
+        for i in range(0, len(self.archive_file_list)):
+            classifications = self.get_doc(i).classifications()
+            # Look for matches with class_list entries bearing in mind None = ignore
+            # To complete
 
 class XMLDoc():
     """ Object to wrap the XML for a US Patent Document. """
@@ -136,7 +151,37 @@ class XMLDoc():
         desc = self.description_text()
         claims = self.claim_text()
         return "\n".join([desc, claims])
+        
+    def classifications(self):
+        """ Return IPC classification(s). """
+        # Or do we want to define a class to represent?
+        return [
+            Classification(
+                each_class.find("section").text, 
+                each_class.find("class").text,
+                each_class.find("subclass").text,
+                each_class.find("main-group").text,
+                each_class.find("subgroup").text)
+        for each_class in self.soup.find_all("classifications-ipcr")]
 
+class Classification():
+    """ Object to model IPC classification. """
+    def __init__(self, section, first_class, subclass, maingroup, subgroup):
+        """ Initialise object and save classification portions. """
+        self.section = section
+        self.first_class = first_class
+        self.subclass = subclass
+        self.maingroup = maingroup
+        self.subgroup = subgroup
+        
+    def __repr__(self):
+        """ Print string representation of object. """
+        return "<Classification {0}{1}{2} {3}/{4}>".format(
+            self.section, 
+            self.first_class, 
+            self.subclass, 
+            self.maingroup,
+            self.subgroup)
 
 
  
