@@ -17,6 +17,8 @@ from io import BytesIO #Python 3.5
 
 # Import Beautiful Soup for XML parsing
 from bs4 import BeautifulSoup
+
+import utils
 # == IMPORTS END =========================================================#
 
 #test_path= "/media/SAMSUNG/Patent_Downloads/2001"
@@ -42,7 +44,7 @@ class MyCorpus():
         """ Generate a list of lower level archive files. """
         print("Getting archive file list\n")
         for filename in self.first_level_files:
-            print(".", end=" ")
+            print(".", end=".")
             if filename.lower().endswith(".zip"):
                 try:
                     #Look to see if we have already processed
@@ -104,7 +106,7 @@ class MyCorpus():
     def save(self):
         """ Save corpus object as pickle. """
         filename = self.path.replace("/","_") + ".p"
-        pickle.dump( self, open( filename, "wb" ) )
+        pickle.dump( self, open( "savedata/" + filename, "wb" ) )
         
     @classmethod
     def load(cls, filename):
@@ -117,10 +119,20 @@ class MyCorpus():
         param: list of Classification objects - class_list"""
         if not self.archive_file_list:
             self.get_archive_list()
+        # Iterate through publications
+        matching_indexes = []
+        
         for i in range(0, len(self.archive_file_list)):
             classifications = self.get_doc(i).classifications()
             # Look for matches with class_list entries bearing in mind None = ignore
-            # To complete
+            match = False
+            for c in classifications:
+                if c.match(class_list):
+                    match = True
+            if match:
+                matching_indexes.append(i)
+        pickle.dump( matching_indexes, open( "savedata/match_temp.p", "wb" ) )
+        return matching_indexes
 
 class XMLDoc():
     """ Object to wrap the XML for a US Patent Document. """
@@ -166,7 +178,7 @@ class XMLDoc():
 
 class Classification():
     """ Object to model IPC classification. """
-    def __init__(self, section, first_class, subclass, maingroup, subgroup):
+    def __init__(self, section, first_class=None, subclass=None, maingroup=None, subgroup=None):
         """ Initialise object and save classification portions. """
         self.section = section
         self.first_class = first_class
@@ -183,6 +195,20 @@ class Classification():
             self.maingroup,
             self.subgroup)
 
+    def match(self, list_of_classes):
+        """ Determines if current classification matches passed list of 
+        classifications. None = ignore for match. """
+        # Convert to list if single classification is passed
+        list_of_classes = utils.check_list(list_of_classes)
+        match = False
+        for classification in list_of_classes:
+            if self.section == classification.section:
+                if self.first_class == classification.first_class or not classification.first_class or not self.first_class:
+                    if self.subclass == classification.subclass or not classification.subclass or not self.subclass:
+                        if self.maingroup == classification.maingroup or not classification.maingroup or not self.maingroup:
+                            if self.subgroup == classification.subgroup or not classification.subgroup or not self.subgroup:
+                                match = True
+        return match
 
  
 

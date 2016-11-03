@@ -19,6 +19,15 @@ class BasicTestSuite(unittest.TestCase):
         assert classifications[0].section == "G"
         assert classifications[0].subgroup == "16"
         
+    def test_class_match(self):
+        """ Test matching of classifications. """
+        class1 = corpus.Classification("G", "06", "F", "10", "22")
+        class2 = corpus.Classification("G", "06")
+        class3 = corpus.Classification("H", "06")
+        class4 = corpus.Classification("G", "07", "F", "10", "22")
+        assert class1.match(class2) == True
+        assert class1.match([class3,class4]) == False
+        
     def test_claim_text(self):
         """ Test retrieving claim text. """
         claim_text = self.xmldoc.claim_text()
