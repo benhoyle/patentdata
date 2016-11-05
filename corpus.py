@@ -69,7 +69,70 @@ class MyCorpus():
                 except Exception:
                     #Log error
                     logging.exception("Exception opening file:" + str(filename))
-
+    
+    def get_archive_names(self, filename):
+        """ Return names of files within archive having filename. """
+        try:
+            if filename.lower().endswith(".zip"):
+                with zipfile.ZipFile(filename, "r") as z:
+                    names = z.namelist()
+            elif filename.lower().endswith(".tar"):
+                with tarfile.TarFile(filename, "r") as t:
+                    names = t.getnames()           
+        except Exception:
+            logging.exception("Exception opening file:" + str(filename))
+            names = []
+        return names
+    
+    def read_archive_file(self, filename, name):
+        """ Read file data for XML_path nested within name archive within filename archive. """
+        # Get xml file path from name
+        file_name_section = name.rsplit('/',1)[1].split('.')[0]
+        XML_path = file_name_section + '/' + file_name_section + ".XML"
+       
+        try:
+            # For zip files
+            if filename.lower().endswith(".zip"):
+                with zipfile.ZipFile(filename, 'r') as z:
+                    with z.open(name, 'r') as z2:
+                        z2_filedata = BytesIO(z2.read())
+                        with zipfile.ZipFile(z2_filedata,'r') as nested_zip:
+                            with nested_zip.open(XML_path, 'r') as xml_file:
+                                filedata = xml_file.read()
+            
+            # For tar files
+            elif filename.lower().endswith(".tar"):
+                with tarfile.TarFile(filename, 'r') as z:
+                    z2 = z.extractfile(name)
+                    with zipfile.ZipFile(z2) as nested_zip:
+                        with nested_zip.open(XML_path) as xml_file:
+                            filedata = xml_file.read()
+        except:
+            logging.exception("Exception opening file:" + str(XML_path))
+            filedata = None
+        
+        return filedata
+    
+    def correct_file(self, name):
+        """ Checks whether nested file 'name' is of correct type."""
+        if name.lower().endswith(self.exten) and self.FILE_FORMAT_RE.match(name):
+            return True
+        else:
+            return False
+    
+    def iter_xml(self):
+        """ Generator for xml file in corpus. """
+        for filename in self.first_level_files:
+            names = self.get_archive_names(filenames)
+            for name in names:
+                if self.correct_file(name):
+                    filedata = self.read_archive_file(filename, name)     
+                    if filedata:
+                        soup_object = XMLDoc(filedata)
+                    else:
+                        soup_object = None 
+                yield soup_object
+    
     def read_xml(self, a_file_index):
         """ Read XML from a particular zip file (second_level_zip_file)
         that is nested within a first zip file (first_level_zip_file) 
