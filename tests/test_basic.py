@@ -41,6 +41,28 @@ class BasicTestSuite(unittest.TestCase):
     def test_description(self):
         """ Test retrieving description. """
         assert "mounting apparatus" in self.xmldoc.description_text()
+        
+    # Test Corpus Loading Functions
+    def test_get_archive_names(self):
+        """ Test getting archive filenames. """
+        assert len(self.load_corpus.get_archive_names(self.load_corpus.first_level_files[0])) > 0
+        
+    def test_read_archive_file(self):
+        """ Test reading data from archive file. """
+        filename = self.load_corpus.first_level_files[1]
+        name = self.load_corpus.get_archive_names(filename)[6]
+        
+        data = self.load_corpus.read_archive_file(filename, name)
+        assert len(data) > 0 
+
+    def test_iter(self):
+        """ Test iter object. """
+        xml_files = self.load_corpus.iter_xml()
+        file1 = next(xml_files)
+        file2 = next(xml_files)
+        assert len(file1.title()) > 0
+        assert len(file2.title()) > 0
+        assert file1 != file2
 
 if __name__ == '__main__':
     unittest.main()

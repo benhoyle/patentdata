@@ -29,6 +29,7 @@ class MyCorpus():
         logging.basicConfig(filename="processing_class.log", format='%(asctime)s %(message)s')
         self.exten = (".zip",".tar")
         self.path = path
+        # Check here that path exists?
         #Set regular expression for valid patent publication files
         self.FILE_FORMAT_RE = re.compile(r".+US\d+[A,B].+-\d+\.\w+")
         #Set a list of upper level zip files in the path
@@ -123,7 +124,7 @@ class MyCorpus():
     def iter_xml(self):
         """ Generator for xml file in corpus. """
         for filename in self.first_level_files:
-            names = self.get_archive_names(filenames)
+            names = self.get_archive_names(filename)
             for name in names:
                 if self.correct_file(name):
                     filedata = self.read_archive_file(filename, name)     
@@ -131,7 +132,7 @@ class MyCorpus():
                         soup_object = XMLDoc(filedata)
                     else:
                         soup_object = None 
-                yield soup_object
+                    yield soup_object
     
     def read_xml(self, a_file_index):
         """ Read XML from a particular zip file (second_level_zip_file)
