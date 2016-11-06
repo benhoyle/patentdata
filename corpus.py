@@ -19,7 +19,6 @@ from io import BytesIO #Python 3.5
 from bs4 import BeautifulSoup
 
 import utils
-from patentdata import process_classification
 # == IMPORTS END =========================================================#
 
 #test_path= "/media/SAMSUNG/Patent_Downloads/2001"
@@ -165,26 +164,26 @@ class MyCorpus():
         first_level_a_file, second_level_a_file = self.archive_file_list[a_file_index]
         file_name_section = second_level_a_file.rsplit('/',1)[1].split('.')[0]
         XML_path = file_name_section + '/' + file_name_section + ".XML"
-        if first_level_a_file.lower().endswith(".zip"):
-            with zipfile.ZipFile(first_level_a_file, 'r') as z:
-                with z.open(second_level_a_file, 'r') as z2:
-                    z2_filedata = BytesIO(z2.read())
-                    #if second_level_a_file.endswith(".zip"): - add here second check for second level tar files
-                    with zipfile.ZipFile(z2_filedata,'r') as nested_zip:
+        try:
+            if first_level_a_file.lower().endswith(".zip"):
+                with zipfile.ZipFile(first_level_a_file, 'r') as z:
+                    with z.open(second_level_a_file, 'r') as z2:
+                        z2_filedata = BytesIO(z2.read())
+                        #if second_level_a_file.endswith(".zip"): - add here second check for second level tar files
+                        with zipfile.ZipFile(z2_filedata,'r') as nested_zip:
+                            with nested_zip.open(XML_path, 'r') as xml_file:
+                                filedata = xml_file.read()
+                        #elif second_level_a_file.endswith(".tar"): -to add
+            elif first_level_a_file.lower().endswith(".tar"):
+                with tarfile.TarFile(first_level_a_file, 'r') as z:
+                    z2 = z.extractfile(second_level_a_file)
+                    #with z2 as z.extractfile(second_level_a_file):
+                    #z2_filedata = cStringIO.StringIO(z2.read())
+                    with zipfile.ZipFile(z2) as nested_zip:
                         with nested_zip.open(XML_path, 'r') as xml_file:
-                            #xml_tree = parseString(xml_file.read()) 
-                            # Return filedata so that we can use other XML libraries
                             filedata = xml_file.read()
-                    #elif second_level_a_file.endswith(".tar"): -to add
-        elif first_level_a_file.lower().endswith(".tar"):
-            with tarfile.TarFile(first_level_a_file, 'r') as z:
-                z2 = z.extractfile(second_level_a_file)
-                #with z2 as z.extractfile(second_level_a_file):
-                #z2_filedata = cStringIO.StringIO(z2.read())
-                with zipfile.ZipFile(z2) as nested_zip:
-                    with nested_zip.open(XML_path) as xml_file:
-                        #xml_tree = parseString(xml_file.read())
-                        filedata = xml_file.read()
+        except:
+            filedata = None
         return filedata
 
     def get_doc(self, a_file_index):
@@ -207,8 +206,8 @@ class MyCorpus():
         param: list of Classification objects - class_list"""
         #If there is a pre-existing search save file, start from last recorded index
         try:
-            with open("savedata/" + " ".join([c.as_string() for c in class_list]) + ".data", "r") as f:
-                last_index = int(f.readlines()[-1].split(',')[0])
+            with open(os.path.join(self.path, "-".join([c.as_string() for c in class_list]) + ".data"), "r") as f:
+                last_index = int(f.readlines()[-1].split(',')[0])+1
         except:
             last_index = 0
             
@@ -219,22 +218,27 @@ class MyCorpus():
         
         for i in range(last_index, len(self.archive_file_list)):
             
-            classifications = self.get_doc(i).classifications()
-            if classifications:
-                print(classifications[0])
-            # Look for matches with class_list entries bearing in mind None = ignore
-            match = False
-            for c in classifications:
-                if c.match(class_list):
-                    match = True
-            if match:
-                print("Match: ",str(i))
-                matching_indexes.append(i)
-                with open("savedata/" + " ".join([c.as_string() for c in class_list]) + ".data", "a") as f:
-                    print(i, end=",\n", file=f)
+            try:
+                classifications = self.get_doc(i).classifications()
+                # Look for matches with class_list entries bearing in mind None = ignore
+                match = False
+                for c in classifications:
+                    if c.match(class_list):
+                        match = True
+                if match:
+                    print("Match: ",str(i))
+                    matching_indexes.append(i)
+                    with open(os.path.join(self.path, "-".join([c.as_string() for c in class_list]) + ".data"), "a") as f:
+                        print(i, end=",\n", file=f)
+            except:
+                print("Error with: ", self.archive_file_list[i][1])
         
-        pickle.dump( matching_indexes, open( "savedata/match_temp.p", "wb" ) )
+        pickle.dump( matching_indexes, open( os.path.join(self.path, "-".join([c.as_string() for c in class_list]) + ".p"), "wb" ) )
         return matching_indexes
+
+    def get_filtered_docs(self):
+        """ Generator to return XMLDocs for matching indexes. """
+        pass
 
 class XMLDoc():
     """ Object to wrap the XML for a US Patent Document. """
@@ -253,8 +257,19 @@ class XMLDoc():
         
     def claim_text(self):
         """ Return extracted claim text."""
-        paras = self.soup.find_all(["claim"])
-        return "\n".join([p.text for p in paras])
+        claims = self.soup.find_all(["claim"])
+        return "\n".join([c.text for c in claims])
+        
+    def claim_list(self):
+        """ Return list of claims. """
+        claims = self.soup.find_all(["claim"])
+        # Can use claim-ref idref="CLM-00001" tag to check dependency
+        # or dependent-claim-reference depends_on="CLM-00011"
+        # Can use claim id="CLM-00001" to check number 
+        parsed_claims = []
+        for claim in claims:
+            claim_text = claim.text
+            claim_number = claim.id
         
     def title(self):
         """ Return title. """
@@ -281,9 +296,7 @@ class XMLDoc():
         # Pre 2009
         if not class_list:
             # Use function from patentdata on text of ipc tag
-            class_list = [
-                Classification(**c) 
-                for c in process_classification(self.soup.find("ipc").text)]
+            class_list = Classification.process_classification(self.soup.find("ipc").text)
         return class_list
             
 
@@ -330,6 +343,21 @@ class Classification():
             self.maingroup,
             self.subgroup)
  
+    @classmethod
+    def process_classification(cls, class_string):
+        """ Extract IPC classfication elements from a class_string."""
+        ipc = r'[A-H][0-9][0-9][A-Z][0-9]{1,4}\/?[0-9]{1,6}' #last bit can occur 1-3 times then we have \d+\\?\d+ - need to finish this
+        p = re.compile(ipc)
+        classifications = [
+            cls(
+                match.group(0)[0], 
+                match.group(0)[1:3],
+                match.group(0)[3],
+                match.group(0)[4:].split('/')[0],
+                match.group(0)[4:].split('/')[1]
+            )
+            for match in p.finditer(class_string)]
+        return classifications
 
 
 

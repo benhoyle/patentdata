@@ -4,14 +4,28 @@ from .context import corpus
 # Import other stuff here
 
 import unittest
+import os
+
+# Path of 'Patent Downloads' folder
+path = "/mnt/sdb1"
+
+# Year range of available data
+years = ["2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008",
+            "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016"]
 
 class BasicTestSuite(unittest.TestCase):
     """Basic test cases."""
 
     def setUp(self):
         """Pre-test activities."""
-        self.load_corpus = corpus.MyCorpus.load("tests/test2010.p")
-        self.xmldoc = self.load_corpus.get_doc(2377)
+        # Set path for 'Patent Downloads' directory
+        try:
+            self.corpus = corpus.MyCorpus("/mnt/sdc1/Patent_Downloads/2010")
+        except:
+            self.corpus = corpus.MyCorpus("/mnt/sdb1/Patent_Downloads/2010")
+        #self.load_corpus = corpus.MyCorpus.load("tests/test2010.p")
+        #self.xmldoc = self.load_corpus.get_doc(2377)
+        self.xmldoc = self.corpus.get_doc(2377)
     
     def test_classifications(self):
         """ Test retrieving classifications. """
