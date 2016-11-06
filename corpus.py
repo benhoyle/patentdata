@@ -19,6 +19,7 @@ from io import BytesIO #Python 3.5
 from bs4 import BeautifulSoup
 
 import utils
+from patentdata import process_classification
 # == IMPORTS END =========================================================#
 
 #test_path= "/media/SAMSUNG/Patent_Downloads/2001"
@@ -43,33 +44,41 @@ class MyCorpus():
 
     def get_archive_list(self):
         """ Generate a list of lower level archive files. """
-        print("Getting archive file list\n")
-        for filename in self.first_level_files:
-            print(".", end=".")
-            if filename.lower().endswith(".zip"):
-                try:
-                    #Look to see if we have already processed
-                    if filename not in self.processed_fl_files:
-                        afl = [(filename, name) for name in zipfile.ZipFile(filename, "r").namelist() if name.lower().endswith(self.exten) and self.FILE_FORMAT_RE.match(name)]
-                        self.archive_file_list += afl
-                        self.processed_fl_files.append(filename)
-                except Exception:
-                    #Log error
-                    logging.exception("Exception opening file:" + str(filename))
-            elif filename.lower().endswith(".tar"):
-                try:
-                    #Look to see if we have already processed
-                    if filename not in self.processed_fl_files:
-                        #There is no namelist() function in TarFile
-                        current_file = tarfile.TarFile(filename, "r")
-                        names = current_file.getnames()
-                        current_file.close()
-                        afl = [(filename, name) for name in names if name.lower().endswith(self.exten) and self.FILE_FORMAT_RE.match(name)]
-                        self.archive_file_list += afl
-                        self.processed_fl_files.append(filename)
-                except Exception:
-                    #Log error
-                    logging.exception("Exception opening file:" + str(filename))
+        try:
+            # Look for pre-existing list in file directory
+            self.archive_file_list = pickle.load(open(os.path.join(self.path, "archive_list.p"), "rb"))
+            print("Loading pre-existing file list\n")
+        except:
+            # If not file exists generate list
+            print("Getting archive file list\n")
+            for filename in self.first_level_files:
+                print(".", end=".")
+                if filename.lower().endswith(".zip"):
+                    try:
+                        #Look to see if we have already processed
+                        if filename not in self.processed_fl_files:
+                            afl = [(filename, name) for name in zipfile.ZipFile(filename, "r").namelist() if name.lower().endswith(self.exten) and self.FILE_FORMAT_RE.match(name)]
+                            self.archive_file_list += afl
+                            self.processed_fl_files.append(filename)
+                    except Exception:
+                        #Log error
+                        logging.exception("Exception opening file:" + str(filename))
+                elif filename.lower().endswith(".tar"):
+                    try:
+                        #Look to see if we have already processed
+                        if filename not in self.processed_fl_files:
+                            #There is no namelist() function in TarFile
+                            current_file = tarfile.TarFile(filename, "r")
+                            names = current_file.getnames()
+                            current_file.close()
+                            afl = [(filename, name) for name in names if name.lower().endswith(self.exten) and self.FILE_FORMAT_RE.match(name)]
+                            self.archive_file_list += afl
+                            self.processed_fl_files.append(filename)
+                    except Exception:
+                        #Log error
+                        logging.exception("Exception opening file:" + str(filename))
+            #Save archive list in path as pickle
+            pickle.dump( self.archive_file_list, open( os.path.join(self.path, "archive_list.p"), "wb" ) )
     
     def get_archive_names(self, filename):
         """ Return names of files within archive having filename. """
@@ -120,7 +129,8 @@ class MyCorpus():
             return True
         else:
             return False
-    
+    # Function below takes about 1.5s to return each patent document 
+    # > 5 days to parse one year's collection
     def iter_xml(self):
         """ Generator for xml file in corpus. """
         for filename in self.first_level_files:
@@ -129,10 +139,24 @@ class MyCorpus():
                 if self.correct_file(name):
                     filedata = self.read_archive_file(filename, name)     
                     if filedata:
+                        yield XMLDoc(filedata)
+    
+    def iter_filter_xml(self, class_list):
+        """ Generator to return xml that matches the classifications in 
+        class_list. """
+        for filename in self.first_level_files:
+            names = self.get_archive_names(filename)
+            for name in names:
+                if self.correct_file(name):
+                    filedata = self.read_archive_file(filename, name)     
+                    if filedata:
                         soup_object = XMLDoc(filedata)
-                    else:
-                        soup_object = None 
-                    yield soup_object
+                        match = False
+                        for c in soup_object.classifications():
+                            if c.match(class_list):
+                                match = True
+                        if match:
+                            yield soup_object
     
     def read_xml(self, a_file_index):
         """ Read XML from a particular zip file (second_level_zip_file)
@@ -181,20 +205,34 @@ class MyCorpus():
         """ Get a list of indexes of publications that match the supplied 
         class list.
         param: list of Classification objects - class_list"""
+        #If there is a pre-existing search save file, start from last recorded index
+        try:
+            with open("savedata/" + " ".join([c.as_string() for c in class_list]) + ".data", "r") as f:
+                last_index = int(f.readlines()[-1].split(',')[0])
+        except:
+            last_index = 0
+            
         if not self.archive_file_list:
             self.get_archive_list()
         # Iterate through publications
         matching_indexes = []
         
-        for i in range(0, len(self.archive_file_list)):
+        for i in range(last_index, len(self.archive_file_list)):
+            
             classifications = self.get_doc(i).classifications()
+            if classifications:
+                print(classifications[0])
             # Look for matches with class_list entries bearing in mind None = ignore
             match = False
             for c in classifications:
                 if c.match(class_list):
                     match = True
             if match:
+                print("Match: ",str(i))
                 matching_indexes.append(i)
+                with open("savedata/" + " ".join([c.as_string() for c in class_list]) + ".data", "a") as f:
+                    print(i, end=",\n", file=f)
+        
         pickle.dump( matching_indexes, open( "savedata/match_temp.p", "wb" ) )
         return matching_indexes
 
@@ -230,8 +268,9 @@ class XMLDoc():
         
     def classifications(self):
         """ Return IPC classification(s). """
-        # Or do we want to define a class to represent?
-        return [
+        # Need to adapt - up to 2001 uses string under tag 'ipc'
+        #Post 2009
+        class_list = [
             Classification(
                 each_class.find("section").text, 
                 each_class.find("class").text,
@@ -239,6 +278,14 @@ class XMLDoc():
                 each_class.find("main-group").text,
                 each_class.find("subgroup").text)
         for each_class in self.soup.find_all("classifications-ipcr")]
+        # Pre 2009
+        if not class_list:
+            # Use function from patentdata on text of ipc tag
+            class_list = [
+                Classification(**c) 
+                for c in process_classification(self.soup.find("ipc").text)]
+        return class_list
+            
 
 class Classification():
     """ Object to model IPC classification. """
@@ -274,6 +321,14 @@ class Classification():
                                 match = True
         return match
 
+    def as_string(self):
+        """ Return a string representation. """
+        return "C_{0}{1}{2}_{3}_{4}".format(
+            self.section, 
+            self.first_class, 
+            self.subclass, 
+            self.maingroup,
+            self.subgroup)
  
 
 
