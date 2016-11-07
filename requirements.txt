@@ -1,21 +1,18 @@
-# packages in environment at /root/anaconda3/envs/patentdata:
-#
-beautifulsoup4            4.5.1                    py35_0  
-libxml2                   2.9.2                         0  
-libxslt                   1.1.28                        0  
-lxml                      3.6.4                    py35_0  
-openssl                   1.0.2j                        0  
-pip                       8.1.2                    py35_0  
-python                    3.5.2                         0  
-python-dateutil           2.5.3                     <pip>
-python-epo-ops-client     2.1.0                     <pip>
-readline                  6.2                           2  
-requests                  2.11.1                    <pip>
-setuptools                27.2.0                   py35_0  
-six                       1.10.0                    <pip>
-sqlalchemy                1.1.3                    py35_0  
-sqlite                    3.13.0                        0  
-tk                        8.5.18                        0  
-wheel                     0.29.0                   py35_0  
-xz                        5.2.2                         0  
-zlib                      1.2.8                         3  
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: linux-32
+beautifulsoup4=4.5.1=py35_0
+libxml2=2.9.2=0
+libxslt=1.1.28=0
+lxml=3.6.4=py35_0
+openssl=1.0.2j=0
+pip=8.1.2=py35_0
+python=3.5.2=0
+readline=6.2=2
+setuptools=27.2.0=py35_0
+sqlalchemy=1.1.3=py35_0
+sqlite=3.13.0=0
+tk=8.5.18=0
+wheel=0.29.0=py35_0
+xz=5.2.2=0
+zlib=1.2.8=3
