@@ -34,7 +34,8 @@ class MyCorpus():
         # Check here that path exists?
         #Set regular expression for valid patent publication files
         self.FILE_FORMAT_RE = re.compile(r".+US\d+[A,B].+-\d+\.\w+")
-        #Set a list of upper level zip files in the path
+        #Set a list of upper level zip files in the path - we ought to save the filename independently of path and join
+        # later so that we can have the data at different paths
         self.first_level_files = [os.path.join(subdir,f) for (subdir, dirs, files) in os.walk(self.path) for f in files if f.lower().endswith(self.exten)]
         #Initialise arrays for lower level files
         self.processed_fl_files = []
@@ -163,30 +164,8 @@ class MyCorpus():
         """ Read XML from a particular zip file (second_level_zip_file)
         that is nested within a first zip file (first_level_zip_file) 
         param: int a_file_index - an index to a file within archive_file_list"""
-        first_level_a_file, second_level_a_file = self.archive_file_list[a_file_index]
-        file_name_section = second_level_a_file.rsplit('/',1)[1].split('.')[0]
-        XML_path = file_name_section + '/' + file_name_section + ".XML"
-        try:
-            if first_level_a_file.lower().endswith(".zip"):
-                with zipfile.ZipFile(first_level_a_file, 'r') as z:
-                    with z.open(second_level_a_file, 'r') as z2:
-                        z2_filedata = BytesIO(z2.read())
-                        #if second_level_a_file.endswith(".zip"): - add here second check for second level tar files
-                        with zipfile.ZipFile(z2_filedata,'r') as nested_zip:
-                            with nested_zip.open(XML_path, 'r') as xml_file:
-                                filedata = xml_file.read()
-                        #elif second_level_a_file.endswith(".tar"): -to add
-            elif first_level_a_file.lower().endswith(".tar"):
-                with tarfile.TarFile(first_level_a_file, 'r') as z:
-                    z2 = z.extractfile(second_level_a_file)
-                    #with z2 as z.extractfile(second_level_a_file):
-                    #z2_filedata = cStringIO.StringIO(z2.read())
-                    with zipfile.ZipFile(z2) as nested_zip:
-                        with nested_zip.open(XML_path, 'r') as xml_file:
-                            filedata = xml_file.read()
-        except:
-            filedata = None
-        return filedata
+        filename, name = self.archive_file_list[a_file_index]
+        return self.read_archive_file(filename, name)
 
     def get_doc(self, a_file_index):
         """ Read XML and return an XMLDoc object. """
@@ -261,7 +240,12 @@ class XMLDoc():
         
     def paragraph_list(self):
         """ Get list of paragraphs and numbers. """
-        pass
+        paras = self.soup.find_all(["p", "paragraph"])
+        para_list = [{
+            "text":p.text, 
+            "number": int(p.attrs['id'].split('-')[1])
+            } 
+            for p in paras if p.attrs['id'].split('-')[0] != "A"]
     
     def claim_text(self):
         """ Return extracted claim text."""
@@ -307,7 +291,7 @@ class XMLDoc():
     
     def title(self):
         """ Return title. """
-        return self.soup.find("invention-title").text
+        return self.soup.find(["invention-title", "title-of-invention"]).text
     
     def all_text(self):
         """ Return description and claim text. """
