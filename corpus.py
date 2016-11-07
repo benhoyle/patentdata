@@ -19,6 +19,8 @@ from io import BytesIO #Python 3.5
 from bs4 import BeautifulSoup
 
 import utils
+
+from datetime import datetime
 # == IMPORTS END =========================================================#
 
 #test_path= "/media/SAMSUNG/Patent_Downloads/2001"
@@ -188,6 +190,8 @@ class MyCorpus():
 
     def get_doc(self, a_file_index):
         """ Read XML and return an XMLDoc object. """
+        if not self.archive_file_list:
+            self.get_archive_list()
         return XMLDoc(self.read_xml(a_file_index))
 
     def save(self):
@@ -255,6 +259,10 @@ class XMLDoc():
         paras = self.soup.find_all(["p", "paragraph"])
         return "\n".join([p.text for p in paras])
         
+    def paragraph_list(self):
+        """ Get list of paragraphs and numbers. """
+        pass
+    
     def claim_text(self):
         """ Return extracted claim text."""
         claims = self.soup.find_all(["claim"])
@@ -262,15 +270,41 @@ class XMLDoc():
         
     def claim_list(self):
         """ Return list of claims. """
+        
+        def get_dependency(claim):
+            """ Sub function to get a dependency of a claim. """
+            try:
+                dependency = int(claim.find("dependent-claim-reference").attrs['depends_on'].split('-')[1])
+            except AttributeError:
+                try:
+                    dependency = int(claim.find("claim-ref").attrs['idref'].split('-')[1])
+                except AttributeError:
+                    dependency = 0
+            return dependency
+        
         claims = self.soup.find_all(["claim"])
         # Can use claim-ref idref="CLM-00001" tag to check dependency
         # or dependent-claim-reference depends_on="CLM-00011"
         # Can use claim id="CLM-00001" to check number 
-        parsed_claims = []
-        for claim in claims:
-            claim_text = claim.text
-            claim_number = claim.id
-        
+        return [{
+                'text':claim.text, 
+                'number':int(claim.attrs['id'].split('-')[1]),
+                'dependency': get_dependency(claim)
+                } for claim in claims]
+    
+    def publication_details(self):
+        """ Return US publication details. """
+        try:
+            pub_section = self.soup.find("document-id")
+            pub_number = pub_section.find("doc-number").text
+            pub_kind = pub_section.find("kind-code").text
+            pub_date = datetime.strptime(
+                pub_section.find("document-date").text,
+                "%Y%m%d")
+            return (pub_number, pub_kind, pub_date)
+        except AttributeError:
+            return None
+    
     def title(self):
         """ Return title. """
         return self.soup.find("invention-title").text
