@@ -8,6 +8,8 @@ import re
 import nltk
 import itertools
 
+import utils
+
 class PatentCorpus:
     """ Object to model a collection of patent documents. """
     def __init__(self):
@@ -96,13 +98,13 @@ class Figures:
 class Claim:
     """ Object to model a patent claim."""
 
-    def __init__(self, claimstring, number=None, dependency=None):
+    def __init__(self, text, number=None, dependency=None):
         """ Initiate claim object with string containing claim text."""
         # Load text
-        self.text = claimstring
+        self.text = text
         
         # Check for and extract claim number
-        parsed_number, self.text = patentparser.nlpfunctions.get_number(claimstring)
+        parsed_number, self.text = self.get_number()
         if number:
             self.number = number
             if number != parsed_number:
@@ -111,10 +113,10 @@ class Claim:
             self.number = parsed_number
         
         # Get category
-        self.category = patentparser.nlpfunctions.detect_category(self.text)
+        self.category = self.detect_category()
         
         # Get dependency
-        parsed_dependency = patentparser.nlpfunctions.detect_dependency(self.text)
+        parsed_dependency = self.detect_dependency()
         if dependency:
             self.dependency = dependency
             if dependency != parsed_dependency:
@@ -123,39 +125,49 @@ class Claim:
             self.dependency = parsed_dependency
         
         # Tokenise text into words
-        self.words = patentparser.nlpfunctions.get_words(self.text)
+        self.words = self.get_words()
         # Label parts of speech - uses averaged_perceptron_tagger as downloaded above
-        self.pos = patentparser.nlpfunctions.get_pos(self.words)
+        self.pos = self.get_pos()
         # Apply chunking into noun phrases
-        (self.word_data, self.mapping_dict) = patentparser.nlpfunctions.label_nounphrases(self.pos)
+        (self.word_data, self.mapping_dict) = self.label_nounphrases()
         
         #Split claim into features
-        self.features = patentparser.nlpfunctions.split_into_features(self.text)
+        self.features = self.split_into_features()
 
-    def get_number(text):
+    def get_words(self):
+        """ Tokenise text into words. """
+        return nltk.word_tokenize(self.text)
+    
+    def get_pos(self):
+        """ Label parts of speech - uses averaged_perceptron_tagger """
+        if not self.words:
+            self.get_words()
+        return nltk.pos_tag(self.words)
+    
+    def get_number(self):
         """Extracts the claim number from the text."""
         p = re.compile('\d+\.')
-        located = p.search(text)
+        located = p.search(self.text)
         if located:
             # Set claim number as digit before fullstop
             number = int(located.group()[:-1])
-            text = text[located.end():].strip()
+            text = self.text[located.end():].strip()
         else:
             number = None
-            text = text
+            text = self.text
         return number, text
     
-    def detect_category(text):
+    def detect_category(self):
         """Attempts to determine and return a string containing the claim category."""
         p = re.compile('(A|An|The)\s([\w-]+\s)*(method|process)\s(of|for)?')
-        located = p.search(text)
+        located = p.search(self.text)
         # Or store as part of claim object property?
         if located:
             return "method"
         else:
             return "system"
 
-    def determine_entities(pos):
+    def determine_entities(self):
         """ Determines noun entities within a patent claim.
         param: pos - list of tuples from nltk pos tagger"""
         # Define grammar for chunking
@@ -168,23 +180,27 @@ class Claim:
         # Or store as part of claim object property?
         
         # Option: split into features / clauses, run over clauses and then re-correlate
+        if not self.pos:
+            self.get_pos()
         return cp.parse(pos)
         
-    def print_nps(pos):
-        ent_tree = determine_entities(pos)
+    def print_nps(self):
+        if not self.pos:
+            self.get_pos()
+        ent_tree = determine_entities(self.pos)
         traverse(ent_tree)
     
-    def detect_dependency(text):
+    def detect_dependency(self):
         """Attempts to determine if the claim set out in text is dependent - if it is dependency is returned - if claim is deemed independent 0 is returned as dependency """
         p = re.compile('(of|to|with|in)?\s(C|c)laims?\s\d+((\sto\s\d+)|(\sor\s(C|c)laim\s\d+))?(,\swherein)?')
-        located = p.search(text)
+        located = p.search(self.text)
         if located:
             num = re.compile('\d+')
             dependency = int(num.search(located.group()).group())
         else:
             # Also check for "preceding claims" or "previous claims" = claim 1
             pre = re.compile('\s(preceding|previous)\s(C|c)laims?(,\swherein)?')
-            located = pre.search(text)
+            located = pre.search(self.text)
             if located:
                 dependency = 1
             else:
@@ -192,7 +208,7 @@ class Claim:
         # Or store as part of claim object property?
         return dependency
     
-    def split_into_features(text):
+    def split_into_features(self):
         """ Attempts to split a claim into features.
         param string text: the claim text as a string
         """
@@ -201,12 +217,12 @@ class Claim:
         #split_re = r'(.+;\s*(and)?)|(.+,.?(and)?\n)|(.+:\s*)|(.+\.\s*$)'
         split_expression = r'(;\s*(and)?)|(,.?(and)?\n)|(:\s*)|(\.\s*$)'
         p = re.compile(split_expression)
-        for match in p.finditer(text):
+        for match in p.finditer(self.text):
             feature = {}
             feature['startindex'] = startindex
             endindex = match.end()
             feature['endindex'] = endindex
-            feature['text'] = text[startindex:endindex]
+            feature['text'] = self.text[startindex:endindex]
             featurelist.append(feature)
             startindex = endindex
         # Try spliting on ';' or ',' followed by '\n' or ':'
@@ -215,7 +231,7 @@ class Claim:
         # Or store as part of claim object property?
         return featurelist
         
-    def label_nounphrases(pos):
+    def label_nounphrases(self):
         """ Label noun phrases in the output from pos chunking. """
         grammar = '''
             NP: {<DT|PRP\$> <VBG> <NN.*>+} 
@@ -224,7 +240,9 @@ class Claim:
             '''
     
         cp = nltk.RegexpParser(grammar)
-        result = cp.parse(pos)
+        if not self.pos:
+            self.get_pos()
+        result = cp.parse(self.pos)
         ptree = nltk.tree.ParentedTree.convert(result)
         subtrees = ptree.subtrees(filter=lambda x: x.label()=='NP')
         
@@ -237,7 +255,7 @@ class Claim:
             if not np_id:
                 # put ends_with here
                 nps = [i[0] for i in mapping_dict.items()]
-                ends_with_list = [np for np in nps if ends_with(np_string, np)]
+                ends_with_list = [np for np in nps if utils.ends_with(np_string, np)]
                 if ends_with_list:
                     np_id = mapping_dict[ends_with_list[0]]
                 else:

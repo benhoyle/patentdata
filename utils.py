@@ -87,3 +87,12 @@ def hasNumbers(inputString):
 def hasReNumbers(inputString):
     """ Return true if inputString contains numbers. Using regex."""
     return bool(re.search(r'\d', inputString))
+    
+def ends_with(s1, s2):
+    """See if s1 ends with s2."""
+    pattern = re.compile(r'(' + re.escape(s2) + ')$')
+    located = pattern.search(s1)
+    if located:
+        return True
+    else:
+        return False
