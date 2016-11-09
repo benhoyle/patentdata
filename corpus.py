@@ -25,6 +25,10 @@ from datetime import datetime
 
 # Import models for a patent document
 from models import corpus_models as m
+
+# EPOOPSCorpus imports
+import configparser
+import epo_ops
 # == IMPORTS END =========================================================#
 
 class MyCorpus():
@@ -211,13 +215,71 @@ class MyCorpus():
             indexes = random.sample(indexes, number_of_docs)
         return m.PatentCorpus([self.get_doc(i).to_patentdoc() for i in indexes])
 
+# Have corpus to represent EPO OPS? and US API?
+class EPOOPSCorpus:
+    def __init__(self, path_to_config=None):
+        # Load Key and Secret from config file called "config.ini" 
+        # If path is none look in data dir of current directory
+        if path_to_config=None:
+            os.path.abspath(os.getcwd() + '/data/config.ini')
+        parser = configparser.ConfigParser()
+        parser.read()
+        consumer_key = parser.get('Login Parameters', 'C_KEY')
+        consumer_secret = parser.get('Login Parameters', 'C_SECRET')
+        # Intialise EPO OPS client
+        # Load Dogpile if it exists - if not just use Throttler
+        try:
+            middlewares = [
+                epo_ops.middlewares.Dogpile(),
+                epo_ops.middlewares.Throttler(),
+            ]
+        except:
+            middlewares = [
+                epo_ops.middlewares.Throttler()
+            ]
+        
+        self.registered_client = epo_ops.RegisteredClient(
+            key=consumer_key, 
+            secret=consumer_secret, 
+            accept_type='json',
+            middlewares=middlewares)
+    
+    def get_doc(self, publication_number):
+        """ Get XML for publication number. """
+        try:
+            description = self.registered_client.published_data(
+                reference_type='publication',
+                input = epo_ops.models.Epodoc(publication_number),
+                endpoint = 'description')
+            claims = description = self.registered_client.published_data(
+                reference_type='publication',
+                input = epo_ops.models.Epodoc(publication_number),
+                endpoint = 'claims')
+        except HTTPError:
+            print("Full text document not available")
+
+# Have Doc class to wrap XML / JSON returned from epo ops?
+
 class XMLDoc():
     """ Object to wrap the XML for a US Patent Document. """
     
-    def __init__(self, filedata):
+    # Or do away with the init - create then have an add_from_us and an 
+    # add_from_epo method? - former = init below, later combines claims and 
+    # desc portions
+    
+    def __init__(self, filedata, claimdata=None):
         """ Initialise object using read file data from read_xml above. """
         try:
             self.soup = BeautifulSoup(filedata, "xml")
+            if claimdata:
+                claimsoup = BeautifulSoup(claimdata, "xml")
+                # Try to convert <claim-text>....into <claim>
+                # Maybe check if one large <claim> containing all claims
+                # or several <claim> per claim
+                claimsoup.claim.name = "claimset"
+                for claimtag in claimsoup.find_all("claim-text"):
+                    claimtag.name = "claim"
+                self.soup.append(claimsoup.claimset)
         except:
             print("Error could not read file")
 
@@ -248,10 +310,11 @@ class XMLDoc():
             "number": safe_extract_number(p)
             } 
             for p in paras if safe_abstract_check(p)]
-
     
     def claim_text(self):
         """ Return extracted claim text."""
+        # EPO uses claim to cover the whole set of claims whereas US
+        # uses it to cover just a single claim
         claims = self.soup.find_all(["claim"])
         return "\n".join([c.text for c in claims])
         
@@ -294,7 +357,10 @@ class XMLDoc():
     
     def title(self):
         """ Return title. """
-        return self.soup.find(["invention-title", "title-of-invention"]).text
+        try:
+            return self.soup.find(["invention-title", "title-of-invention"]).text
+        except:
+            return None
     
     def all_text(self):
         """ Return description and claim text. """
@@ -327,6 +393,7 @@ class XMLDoc():
         claims = [m.Claim(**c) for c in self.claim_list()]
         claimset = m.Claimset(claims)
         return m.PatentDoc(description, claimset, title=self.title())
+    
 
 class Classification():
     """ Object to model IPC classification. """
