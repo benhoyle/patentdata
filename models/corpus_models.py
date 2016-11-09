@@ -7,6 +7,9 @@
 import re
 import nltk
 import itertools
+import math
+# Used for frequency counts
+from collections import Counter
 
 import utils
 
@@ -22,11 +25,15 @@ class ApplnState:
 
 class PatentDoc:
     """ Object to model a patent document. """
-    def __init__(self):
-        self.description = Description()
-        self.claimset = Claimset()
-        self.figures = Figures()
-        
+    def __init__(self, description, claimset, figures=None, title=None):
+        """ description, claimset and figures are objects as below. """
+        self.description = description
+        self.claimset = claimset
+        self.figures = figures
+        self.title = title
+    
+    #def add_description(self, descriptio
+    
     def text(self):
         """  Get text of patent document as string. """
         return "\n\n".join([self.description.text(), self.claimset.text()])
@@ -38,9 +45,9 @@ class PatentDoc:
 
 class Description:
     """ Object to model a patent description. """
-    def __init__(self):
-        # Set paragraphs as list of paragraph objects
-        paragraphs = []
+    def __init__(self, paragraphs):
+        """ paragraphs is a list of Paragraph objects. """
+        self.paragraphs = paragraphs
     
     def text(self):
         """ Return description as text string. """
@@ -48,19 +55,52 @@ class Description:
     
 class Paragraph:
     """ Object to model a paragraph of a patent description. """
-    def __init__(self, para_number, para_text):
-        self.number = para_number
-        self.text = para_text
+    def __init__(self, number, text):
+        self.number = number
+        self.text = text
 
 class Claimset:
     """ Object to model a claim set. """ 
-    def __init__(self): 
-        # Set claims as list of Claim objects
-        self.claims = []
+    def __init__(self, claims): 
+        """ claims is a list of Claim objects. """
+        self.claims = claims
+        self.number_of_claims = len(self.claims)
     
     def text(self):
         """ Return claim set as text string. """
         return "\n".join([c.text for c in self.claims])
+    
+    def get_claim(self, number):
+        """ Return claim having the passed number. """
+        return self.claims[number + 1]
+        
+    def claim_tf_idf(self, number):
+        """ Calculate term frequency - inverse document frequency statistic
+        for claim 'number' when compared to whole claimset. """
+        claim = self.get_claim(number)
+        
+        # Calculate term frequencies and normalise
+        word_freqs = claim.get_word_freq()
+        sum_freqs = sum(word_freqs.values())
+        # Normalise word_freqs
+        for key in word_freqs:
+            word_freqs[key] /= sum_freqs
+        
+        # Calculate IDF > log(total no. of claims / no. of claims term appears in)
+        tf_idf = [{
+            'term': key, 
+            'tf': word_freqs[key],
+            'tf_idf': word_freqs[key]*len(self.appears_in(key))
+            }
+            for key in word_freqs]
+        # Sort list by tf_idf
+        tf_idf = sorted(tf_idf, key=lambda k: k['tf_idf'], reverse=True)
+        
+        return tf_idf
+    
+    def appears_in(self, term):
+        """ Returns claims string 'term' appears in. """
+        return [c for c in self.claims if c.appears_in(term)]
     
     def clean_data(claim_data):
         """ Cleans and checks claim data returned from EPO OPS. """
@@ -121,29 +161,31 @@ class Claim:
             self.dependency = dependency
             if dependency != parsed_dependency:
                 print("Warning: detected dependency does not equal passed dependency.")
+                # Quick check - parsed dependency likely to be correct if passed dependency >= claim number
+                if dependency >= self.number:
+                    self.dependency = parsed_dependency
         else:
             self.dependency = parsed_dependency
         
         # Tokenise text into words
-        self.words = self.get_words()
+        self.words = nltk.word_tokenize(self.text)
         # Label parts of speech - uses averaged_perceptron_tagger as downloaded above
-        self.pos = self.get_pos()
+        self.pos = nltk.pos_tag(self.words)
         # Apply chunking into noun phrases
         (self.word_data, self.mapping_dict) = self.label_nounphrases()
         
         #Split claim into features
         self.features = self.split_into_features()
+        
+    def get_word_freq(self):
+        """ Calculate term frequencies for words in claim. """
+        return Counter([w.lower() for w in self.words])  
+    
+    def appears_in(self, term):
+        """ Determine if term appears in claim. """
+        return term.lower() in [w.lower() for w in self.words]
+            
 
-    def get_words(self):
-        """ Tokenise text into words. """
-        return nltk.word_tokenize(self.text)
-    
-    def get_pos(self):
-        """ Label parts of speech - uses averaged_perceptron_tagger """
-        if not self.words:
-            self.get_words()
-        return nltk.pos_tag(self.words)
-    
     def get_number(self):
         """Extracts the claim number from the text."""
         p = re.compile('\d+\.')
@@ -180,13 +222,9 @@ class Claim:
         # Or store as part of claim object property?
         
         # Option: split into features / clauses, run over clauses and then re-correlate
-        if not self.pos:
-            self.get_pos()
         return cp.parse(pos)
         
     def print_nps(self):
-        if not self.pos:
-            self.get_pos()
         ent_tree = determine_entities(self.pos)
         traverse(ent_tree)
     
@@ -240,8 +278,6 @@ class Claim:
             '''
     
         cp = nltk.RegexpParser(grammar)
-        if not self.pos:
-            self.get_pos()
         result = cp.parse(self.pos)
         ptree = nltk.tree.ParentedTree.convert(result)
         subtrees = ptree.subtrees(filter=lambda x: x.label()=='NP')

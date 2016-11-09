@@ -21,6 +21,9 @@ from bs4 import BeautifulSoup
 import utils
 
 from datetime import datetime
+
+# Import models for a patent document
+from models import corpus_models as m
 # == IMPORTS END =========================================================#
 
 #test_path= "/media/SAMSUNG/Patent_Downloads/2001"
@@ -241,7 +244,7 @@ class XMLDoc():
     def paragraph_list(self):
         """ Get list of paragraphs and numbers. """
         paras = self.soup.find_all(["p", "paragraph"])
-        para_list = [{
+        return [{
             "text":p.text, 
             "number": int(p.attrs['id'].split('-')[1])
             } 
@@ -316,7 +319,14 @@ class XMLDoc():
             # Use function from patentdata on text of ipc tag
             class_list = Classification.process_classification(self.soup.find("ipc").text)
         return class_list
-            
+        
+    def to_patentdoc(self):
+        """ Return a patent doc object. """
+        paragraphs = [m.Paragraph(**p) for p in self.paragraph_list()]
+        description = m.Description(paragraphs)
+        claims = [m.Claim(**c) for c in self.claim_list()]
+        claimset = m.Claimset(claims)
+        return m.PatentDoc(description, claimset, title=self.title())
 
 class Classification():
     """ Object to model IPC classification. """
