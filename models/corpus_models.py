@@ -13,6 +13,9 @@ from collections import Counter
 
 import utils
 
+# Import nltk stopwords - (we may want to create our own list with patent stopwords)
+eng_stopwords = nltk.corpus.stopwords.words('english')
+
 class PatentCorpus:
     """ Object to model a collection of patent documents. """
     def __init__(self):
@@ -32,8 +35,6 @@ class PatentDoc:
         self.figures = figures
         self.title = title
     
-    #def add_description(self, descriptio
-    
     def text(self):
         """  Get text of patent document as string. """
         return "\n\n".join([self.description.text(), self.claimset.text()])
@@ -52,6 +53,10 @@ class Description:
     def text(self):
         """ Return description as text string. """
         return "\n".join([p.text for p in self.paragraphs])
+        
+    def get_paragraph(self, number):
+        """ Return paragraph having the passed number. """
+        return self.paragraphs[number - 1]
     
 class Paragraph:
     """ Object to model a paragraph of a patent description. """
@@ -72,12 +77,19 @@ class Claimset:
     
     def get_claim(self, number):
         """ Return claim having the passed number. """
-        return self.claims[number + 1]
+        return self.claims[number - 1]
         
+    def term_counts(self, stopwords=True):
+        """ Calculate word frequencies in claims. 
+        Stopwords flag sets removal of stopwords."""
+        return sum([c.get_word_freq(stopwords) for c in self.claims], Counter())
+    
     def claim_tf_idf(self, number):
         """ Calculate term frequency - inverse document frequency statistic
         for claim 'number' when compared to whole claimset. """
         claim = self.get_claim(number)
+        
+        # Need to remove punctuation, numbers and normal english stopwords?
         
         # Calculate term frequencies and normalise
         word_freqs = claim.get_word_freq()
@@ -170,16 +182,28 @@ class Claim:
         # Tokenise text into words
         self.words = nltk.word_tokenize(self.text)
         # Label parts of speech - uses averaged_perceptron_tagger as downloaded above
-        self.pos = nltk.pos_tag(self.words)
+        self.pos = self.get_pos()
         # Apply chunking into noun phrases
         (self.word_data, self.mapping_dict) = self.label_nounphrases()
         
         #Split claim into features
         self.features = self.split_into_features()
         
-    def get_word_freq(self):
+    def get_word_freq(self, stopwords=True):
         """ Calculate term frequencies for words in claim. """
-        return Counter([w.lower() for w in self.words])  
+        # Take out punctuation
+        if stopwords:
+            # If stopwords = true then remove stopwords
+            return Counter([w.lower() for w in self.words if w.isalpha() and w.lower() not in eng_stopwords])
+        else:
+            return Counter([w.lower() for w in self.words if w.isalpha()])
+    
+    def get_pos(self):
+        """ Get the parts of speech."""
+        pos_list = nltk.pos_tag(self.words)
+        # Hard set 'comprising' as VBG
+        pos_list = [(word, pos) if word != 'comprising' else ('comprising', 'VBG') for (word, pos) in pos_list]
+        return pos_list
     
     def appears_in(self, term):
         """ Determine if term appears in claim. """
@@ -225,7 +249,7 @@ class Claim:
         return cp.parse(pos)
         
     def print_nps(self):
-        ent_tree = determine_entities(self.pos)
+        ent_tree = self.determine_entities(self.pos)
         traverse(ent_tree)
     
     def detect_dependency(self):

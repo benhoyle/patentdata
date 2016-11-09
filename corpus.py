@@ -26,8 +26,6 @@ from datetime import datetime
 from models import corpus_models as m
 # == IMPORTS END =========================================================#
 
-#test_path= "/media/SAMSUNG/Patent_Downloads/2001"
-
 class MyCorpus():
     """Creates a new corpus object that simplifies processing of patent archive"""
     def __init__(self, path="/media/SAMSUNG/Patent_Downloads"):
@@ -37,51 +35,24 @@ class MyCorpus():
         # Check here that path exists?
         #Set regular expression for valid patent publication files
         self.FILE_FORMAT_RE = re.compile(r".+US\d+[A,B].+-\d+\.\w+")
-        #Set a list of upper level zip files in the path - we ought to save the filename independently of path and join
-        # later so that we can have the data at different paths
-        self.first_level_files = [os.path.join(subdir,f) for (subdir, dirs, files) in os.walk(self.path) for f in files if f.lower().endswith(self.exten)]
+        #Set a list of paths relative to self.path for upper level zip files 
+        self.first_level_files = [os.path.relpath(os.path.join(subdir,f), self.path) for (subdir, dirs, files) in os.walk(self.path) for f in files if f.lower().endswith(self.exten)]
         #Initialise arrays for lower level files
-        self.processed_fl_files = []
         self.archive_file_list = []
-        
-        #Set English stopwords - in other class?
-        #self.stopwords = stopwords.words('english')
 
     def get_archive_list(self):
         """ Generate a list of lower level archive files. """
         try:
-            # Look for pre-existing list in file directory
+            # Look for pre-existing list in file directory - won't work for Patent_Downloads directory
             self.archive_file_list = pickle.load(open(os.path.join(self.path, "archive_list.p"), "rb"))
             print("Loading pre-existing file list\n")
         except:
             # If not file exists generate list
             print("Getting archive file list\n")
-            for filename in self.first_level_files:
-                print(".", end=".")
-                if filename.lower().endswith(".zip"):
-                    try:
-                        #Look to see if we have already processed
-                        if filename not in self.processed_fl_files:
-                            afl = [(filename, name) for name in zipfile.ZipFile(filename, "r").namelist() if name.lower().endswith(self.exten) and self.FILE_FORMAT_RE.match(name)]
-                            self.archive_file_list += afl
-                            self.processed_fl_files.append(filename)
-                    except Exception:
-                        #Log error
-                        logging.exception("Exception opening file:" + str(filename))
-                elif filename.lower().endswith(".tar"):
-                    try:
-                        #Look to see if we have already processed
-                        if filename not in self.processed_fl_files:
-                            #There is no namelist() function in TarFile
-                            current_file = tarfile.TarFile(filename, "r")
-                            names = current_file.getnames()
-                            current_file.close()
-                            afl = [(filename, name) for name in names if name.lower().endswith(self.exten) and self.FILE_FORMAT_RE.match(name)]
-                            self.archive_file_list += afl
-                            self.processed_fl_files.append(filename)
-                    except Exception:
-                        #Log error
-                        logging.exception("Exception opening file:" + str(filename))
+            self.archive_file_list = [
+                (filename, name) 
+                for filename in self.first_level_files 
+                for name in self.get_archive_names(filename) if self.correct_file(name) ]
             #Save archive list in path as pickle
             pickle.dump( self.archive_file_list, open( os.path.join(self.path, "archive_list.p"), "wb" ) )
     
@@ -89,13 +60,13 @@ class MyCorpus():
         """ Return names of files within archive having filename. """
         try:
             if filename.lower().endswith(".zip"):
-                with zipfile.ZipFile(filename, "r") as z:
+                with zipfile.ZipFile(os.path.join(self.path, filename), "r") as z:
                     names = z.namelist()
             elif filename.lower().endswith(".tar"):
-                with tarfile.TarFile(filename, "r") as t:
+                with tarfile.TarFile(os.path.join(self.path, filename), "r") as t:
                     names = t.getnames()           
         except Exception:
-            logging.exception("Exception opening file:" + str(filename))
+            logging.exception("Exception opening file:" + str(os.path.join(self.path, filename)))
             names = []
         return names
     
@@ -108,7 +79,7 @@ class MyCorpus():
         try:
             # For zip files
             if filename.lower().endswith(".zip"):
-                with zipfile.ZipFile(filename, 'r') as z:
+                with zipfile.ZipFile(os.path.join(self.path, filename), 'r') as z:
                     with z.open(name, 'r') as z2:
                         z2_filedata = BytesIO(z2.read())
                         with zipfile.ZipFile(z2_filedata,'r') as nested_zip:
@@ -117,7 +88,7 @@ class MyCorpus():
             
             # For tar files
             elif filename.lower().endswith(".tar"):
-                with tarfile.TarFile(filename, 'r') as z:
+                with tarfile.TarFile(os.path.join(self.path, filename), 'r') as z:
                     z2 = z.extractfile(name)
                     with zipfile.ZipFile(z2) as nested_zip:
                         with nested_zip.open(XML_path) as xml_file:
@@ -225,6 +196,7 @@ class MyCorpus():
     def get_filtered_docs(self):
         """ Generator to return XMLDocs for matching indexes. """
         pass
+    
 
 class XMLDoc():
     """ Object to wrap the XML for a US Patent Document. """
