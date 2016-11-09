@@ -5,6 +5,7 @@ import os
 import logging
 import re
 import math
+import random
 # Use pickle for saving
 import pickle
 
@@ -197,6 +198,18 @@ class MyCorpus():
         """ Generator to return XMLDocs for matching indexes. """
         pass
     
+    def get_indexes(self, filename):
+        """ Load an index set from a passed filename in the corpus path. """
+        with open(os.path.join(self.path,filename), 'r') as f:
+            lines = f.readlines()
+        return [int(line.split(',')[0]) for line in lines]
+
+    def get_patentcorpus(self, indexes, number_of_docs):
+        """ Get a random sample of documents having a total number_of_docs."""
+        """ Indexes is a list of relevant patent indexes. """
+        if len(indexes) > number_of_docs:
+            indexes = random.sample(indexes, number_of_docs)
+        return m.PatentCorpus([self.get_doc(i).to_patentdoc() for i in indexes])
 
 class XMLDoc():
     """ Object to wrap the XML for a US Patent Document. """
@@ -215,12 +228,27 @@ class XMLDoc():
         
     def paragraph_list(self):
         """ Get list of paragraphs and numbers. """
+        def safe_extract_number(p):
+            try:
+                return int(p.attrs.get('id', "").split('-')[1])
+            except:
+                print(p)
+                return 0
+        
+        def safe_abstract_check(p):
+            try:
+                return p.attrs.get('id', ' - ').split('-')[0] != "A"
+            except:
+                print(p)
+                return True
+        
         paras = self.soup.find_all(["p", "paragraph"])
         return [{
             "text":p.text, 
-            "number": int(p.attrs['id'].split('-')[1])
+            "number": safe_extract_number(p)
             } 
-            for p in paras if p.attrs['id'].split('-')[0] != "A"]
+            for p in paras if safe_abstract_check(p)]
+
     
     def claim_text(self):
         """ Return extracted claim text."""

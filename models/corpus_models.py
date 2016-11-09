@@ -18,9 +18,9 @@ eng_stopwords = nltk.corpus.stopwords.words('english')
 
 class PatentCorpus:
     """ Object to model a collection of patent documents. """
-    def __init__(self):
+    def __init__(self, documents):
         # Set documents as list of PatentDoc objects
-        documents = []
+        self.documents = documents
 
 class ApplnState:
     """ Object to model a state of a patent document. """
