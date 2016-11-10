@@ -55,20 +55,6 @@ class PatentDoc:
         """ Return estimate for time to read. """
         # Words per minute = between 100 and 200
         return len(nltk.word_tokenize(self.text())) / reading_rate
-
-class Description:
-    """ Object to model a patent description. """
-    def __init__(self, paragraphs):
-        """ paragraphs is a list of Paragraph objects. """
-        self.paragraphs = paragraphs
-    
-    def text(self):
-        """ Return description as text string. """
-        return "\n".join([p.text for p in self.paragraphs])
-        
-    def get_paragraph(self, number):
-        """ Return paragraph having the passed number. """
-        return self.paragraphs[number - 1]
         
 class BaseTextBlock:
     """ Abstract class for a block of text. """
@@ -116,30 +102,58 @@ class BaseTextBlock:
             self.set_words()
         self.word_order = list(enumerate(self.words))
         return self.word_order
+
+class BaseTextSet:
+    """ Abstract object to model a collection of text blocks. """
+    def __init__(self, units):
+        """ Units need to be derived from BaseTextBlock. """
+        self.units = units
+        self.count = len(self.units)
+        
+    def text(self):
+        """ Return unit set as text string. """
+        return "\n".join([u.text for u in self.units])
     
+    def get_unit(self, number):
+        """ Return unit having the passed number. """
+        return self.units[number - 1]
+        
+    def term_counts(self, stopwords=True):
+        """ Calculate word frequencies in units. 
+        Stopwords flag sets removal of stopwords."""
+        return sum([u.get_word_freq(stopwords) for u in self.units], Counter())
+        
+    def appears_in(self, term):
+        """ Returns unit string 'term' appears in. """
+        return [u for u in self.units if u.appears_in(term)]
+
 class Paragraph(BaseTextBlock):
     """ Object to model a paragraph of a patent description. """
     pass
 
-class Claimset:
+class Description(BaseTextSet):
+    """ Object to model a patent description. """
+        
+    def __getattr__(self, name):
+        if name == "paragraphs":
+            return self.units
+            
+    def get_paragraph(self, number):
+        """ Return paragraph having the passed number. """
+        return super(Description, self).get_unit(number)
+
+class Claimset(BaseTextSet):
     """ Object to model a claim set. """ 
-    def __init__(self, claims): 
-        """ claims is a list of Claim objects. """
-        self.claims = claims
-        self.number_of_claims = len(self.claims)
     
-    def text(self):
-        """ Return claim set as text string. """
-        return "\n".join([c.text for c in self.claims])
+    #def __getattribute__ - bypasses even if name exists
+    # Map claims onto units
+    def __getattr__(self, name):
+        if name == "claims":
+            return self.units
     
     def get_claim(self, number):
         """ Return claim having the passed number. """
-        return self.claims[number - 1]
-        
-    def term_counts(self, stopwords=True):
-        """ Calculate word frequencies in claims. 
-        Stopwords flag sets removal of stopwords."""
-        return sum([c.get_word_freq(stopwords) for c in self.claims], Counter())
+        return super(Claimset, self).get_unit(number)
     
     def claim_tf_idf(self, number):
         """ Calculate term frequency - inverse document frequency statistic
@@ -167,9 +181,53 @@ class Claimset:
         
         return tf_idf
     
-    def appears_in(self, term):
-        """ Returns claims string 'term' appears in. """
-        return [c for c in self.claims if c.appears_in(term)]
+    def independent_claims(self):
+        """ Return independent claims. """
+        return [c for c in self.claims if c.dependency == 0]
+        
+    def get_dependent_claims(self, claim):
+        """ Return all claims that ultimately depend on 'claim'."""
+        claim_number = claim.number
+    
+    def get_root_claim_parent(self, claim_number):
+        """ If claim is dependent, get independent claim it depends on. """
+        claim = self.get_claim(claim_number)
+        if claim.dependency == 0:
+            return claim.number
+        else:
+            return self.get_root_claim_parent(claim.dependency)
+    
+    def print_dependencies(self):
+        """ Output dependencies."""
+        for c in self.claims:
+            print(c.number, c.dependency)
+    
+    def get_dependency_groups(self):
+        """ Return a list of sublists, where each sublist is a group of claims
+        with common dependency, the independent claim being first in the set. """
+        # Or a tree structure? - this will be recursive for chains of dependencies
+        # First level will be all claims with dependency = 0 then recursively
+        # navigate dependencies 
+        root_list = [(claim.number, self.get_root_claim_parent(claim.number)) for claim in self.claims]
+        claim_groups = {}
+        for n, d in root_list:
+            if d not in claim_groups.keys():
+                claim_groups[d] = []
+            else:
+                claim_groups[d].append(n)
+        return claim_groups
+                
+    # to print
+    # for k in sorted(claim_groups.keys()):
+    #   print(k, claim_groups[k])
+    
+    def get_entities(self):
+        """ Determine a set of unique noun phrases over the claimset."""
+        # Do we actually want to do this for sets of claims with common
+        # dependencies?
+        for claim in self.claims:
+            # Build an initial dictionary
+            pass
     
     def clean_data(claim_data):
         """ Cleans and checks claim data returned from EPO OPS. """
@@ -308,6 +366,9 @@ class Claim(BaseTextBlock):
                 dependency = 0
         # Or store as part of claim object property?
         return dependency
+    
+    
+            
     
     def split_into_features(self):
         """ Attempts to split a claim into features.
