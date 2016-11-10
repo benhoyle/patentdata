@@ -220,10 +220,10 @@ class EPOOPSCorpus:
     def __init__(self, path_to_config=None):
         # Load Key and Secret from config file called "config.ini" 
         # If path is none look in data dir of current directory
-        if path_to_config=None:
-            os.path.abspath(os.getcwd() + '/data/config.ini')
+        if path_to_config == None:
+            path_to_config = os.path.abspath(os.getcwd() + '/data/config.ini')
         parser = configparser.ConfigParser()
-        parser.read()
+        parser.read(path_to_config)
         consumer_key = parser.get('Login Parameters', 'C_KEY')
         consumer_secret = parser.get('Login Parameters', 'C_SECRET')
         # Intialise EPO OPS client
@@ -241,7 +241,7 @@ class EPOOPSCorpus:
         self.registered_client = epo_ops.RegisteredClient(
             key=consumer_key, 
             secret=consumer_secret, 
-            accept_type='json',
+            accept_type='xml',
             middlewares=middlewares)
     
     def get_doc(self, publication_number):
@@ -250,13 +250,15 @@ class EPOOPSCorpus:
             description = self.registered_client.published_data(
                 reference_type='publication',
                 input = epo_ops.models.Epodoc(publication_number),
-                endpoint = 'description')
-            claims = description = self.registered_client.published_data(
+                endpoint = 'description').text
+            claims = self.registered_client.published_data(
                 reference_type='publication',
                 input = epo_ops.models.Epodoc(publication_number),
-                endpoint = 'claims')
-        except HTTPError:
+                endpoint = 'claims').text
+            return XMLDoc(description, claims)
+        except:
             print("Full text document not available")
+            raise
 
 # Have Doc class to wrap XML / JSON returned from epo ops?
 
@@ -282,6 +284,7 @@ class XMLDoc():
                 self.soup.append(claimsoup.claimset)
         except:
             print("Error could not read file")
+            raise
 
     def description_text(self):
         """ Return extracted description text."""
@@ -322,7 +325,7 @@ class XMLDoc():
         """ Return list of claims. """
         
         def get_dependency(claim):
-            """ Sub function to get a dependency of a claim. """
+            """ Sub function to get a dependency of a claim from xml if exists. """
             try:
                 dependency = int(claim.find("dependent-claim-reference").attrs['depends_on'].split('-')[1])
             except AttributeError:
@@ -332,13 +335,20 @@ class XMLDoc():
                     dependency = 0
             return dependency
         
+        def get_number(claim):
+            """ Sub function to get number of a claim from XML if exists. """
+            try:
+                return int(claim.attrs['id'].split('-')[1])
+            except:
+                return 0
+        
         claims = self.soup.find_all(["claim"])
         # Can use claim-ref idref="CLM-00001" tag to check dependency
         # or dependent-claim-reference depends_on="CLM-00011"
         # Can use claim id="CLM-00001" to check number 
         return [{
                 'text':claim.text, 
-                'number':int(claim.attrs['id'].split('-')[1]),
+                'number': get_number(claim),
                 'dependency': get_dependency(claim)
                 } for claim in claims]
     

@@ -19,13 +19,14 @@ class BasicTestSuite(unittest.TestCase):
     def setUp(self):
         """Pre-test activities."""
         # Set path for 'Patent Downloads' directory
-        try:
+        if os.path.exists("/mnt/sdc1/Patent_Downloads/2010"):
             self.corpus = corpus.MyCorpus("/mnt/sdc1/Patent_Downloads/2010")
-        except:
+        if os.path.exists("/mnt/sdb1/Patent_Downloads/2010"):
             self.corpus = corpus.MyCorpus("/mnt/sdb1/Patent_Downloads/2010")
         #self.load_corpus = corpus.MyCorpus.load("tests/test2010.p")
         #self.xmldoc = self.load_corpus.get_doc(2377)
         self.xmldoc = self.corpus.get_doc(2377)
+        self.epo = corpus.EPOOPSCorpus()
     
     def test_classifications(self):
         """ Test retrieving classifications. """
@@ -59,24 +60,32 @@ class BasicTestSuite(unittest.TestCase):
     # Test Corpus Loading Functions
     def test_get_archive_names(self):
         """ Test getting archive filenames. """
-        assert len(self.load_corpus.get_archive_names(self.load_corpus.first_level_files[0])) > 0
+        assert len(self.corpus.get_archive_names(self.corpus.first_level_files[0])) > 0
         
     def test_read_archive_file(self):
         """ Test reading data from archive file. """
-        filename = self.load_corpus.first_level_files[1]
-        name = self.load_corpus.get_archive_names(filename)[6]
+        filename = self.corpus.first_level_files[1]
+        name = self.corpus.get_archive_names(filename)[6]
         
-        data = self.load_corpus.read_archive_file(filename, name)
+        data = self.corpus.read_archive_file(filename, name)
         assert len(data) > 0 
 
     def test_iter(self):
         """ Test iter object. """
-        xml_files = self.load_corpus.iter_xml()
+        xml_files = self.corpus.iter_xml()
         file1 = next(xml_files)
         file2 = next(xml_files)
         assert len(file1.title()) > 0
         assert len(file2.title()) > 0
         assert file1 != file2
+        
+    def test_epoops(self):
+        """ Test EPOOPS corpus. """
+        xmldoc = self.epo.get_doc("EP1000000")
+        assert len(xmldoc.description_text()) > 0
+        assert len(xmldoc.claim_text()) > 0
+        assert len(xmldoc.all_text()) > len(xmldoc.description_text())
+        assert len(xmldoc.all_text()) > len(xmldoc.claim_text())
 
 if __name__ == '__main__':
     unittest.main()
