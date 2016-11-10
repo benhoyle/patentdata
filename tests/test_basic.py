@@ -23,8 +23,6 @@ class BasicTestSuite(unittest.TestCase):
             self.corpus = corpus.MyCorpus("/mnt/sdc1/Patent_Downloads/2010")
         if os.path.exists("/mnt/sdb1/Patent_Downloads/2010"):
             self.corpus = corpus.MyCorpus("/mnt/sdb1/Patent_Downloads/2010")
-        #self.load_corpus = corpus.MyCorpus.load("tests/test2010.p")
-        #self.xmldoc = self.load_corpus.get_doc(2377)
         self.xmldoc = self.corpus.get_doc(2377)
         self.epo = corpus.EPOOPSCorpus()
     

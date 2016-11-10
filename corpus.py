@@ -50,7 +50,7 @@ class MyCorpus():
         try:
             # Look for pre-existing list in file directory - won't work for Patent_Downloads directory
             self.archive_file_list = pickle.load(open(os.path.join(self.path, "archive_list.p"), "rb"))
-            print("Loading pre-existing file list\n")
+            #print("Loading pre-existing file list\n")
         except:
             # If not file exists generate list
             print("Getting archive file list\n")
@@ -151,6 +151,22 @@ class MyCorpus():
         if not self.archive_file_list:
             self.get_archive_list()
         return XMLDoc(self.read_xml(a_file_index))
+
+    def search_archive_list(self, publication_number):
+        """ Get filename and name for a given publication number."""
+        if not self.archive_file_list:
+            self.get_archive_list()
+        filename, name = None, None
+        for f, n in self.archive_file_list:
+            if publication_number in n:
+                filename, name = f, n
+        return filename, name
+    
+    def get_pdoc(self, publication_number):
+        """ Return a PatentDoc object for a given publication number."""
+        filename, name = self.search_archive_list(publication_number)
+        if filename and name:
+            return XMLDoc(self.read_archive_file(filename, name)).to_patentdoc()
 
     def save(self):
         """ Save corpus object as pickle. """
@@ -255,22 +271,21 @@ class EPOOPSCorpus:
                 reference_type='publication',
                 input = epo_ops.models.Epodoc(publication_number),
                 endpoint = 'claims').text
-            return XMLDoc(description, claims)
         except:
             print("Full text document not available")
-            raise
-
-# Have Doc class to wrap XML / JSON returned from epo ops?
+            description = claims = None
+        if description and claims:
+            return XMLDoc(description, claims)
+            
+    def get_pdoc(self, publication_number):
+        """ Get PatentDoc object for publication number. """
+        return self.get_doc(publication_number).to_patentdoc()
 
 class XMLDoc():
     """ Object to wrap the XML for a US Patent Document. """
     
-    # Or do away with the init - create then have an add_from_us and an 
-    # add_from_epo method? - former = init below, later combines claims and 
-    # desc portions
-    
     def __init__(self, filedata, claimdata=None):
-        """ Initialise object using read file data from read_xml above. """
+        """ Initialise object using either disk file data or HTML response data. """
         try:
             self.soup = BeautifulSoup(filedata, "xml")
             if claimdata:
@@ -284,7 +299,6 @@ class XMLDoc():
                 self.soup.append(claimsoup.claimset)
         except:
             print("Error could not read file")
-            raise
 
     def description_text(self):
         """ Return extracted description text."""
@@ -297,14 +311,13 @@ class XMLDoc():
             try:
                 return int(p.attrs.get('id', "").split('-')[1])
             except:
-                print(p)
                 return 0
         
         def safe_abstract_check(p):
+            """ Returns true if not abstract or no "A" prefix ids."""
             try:
                 return p.attrs.get('id', ' - ').split('-')[0] != "A"
             except:
-                print(p)
                 return True
         
         paras = self.soup.find_all(["p", "paragraph"])
