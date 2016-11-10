@@ -21,6 +21,18 @@ class PatentCorpus:
     def __init__(self, documents):
         # Set documents as list of PatentDoc objects
         self.documents = documents
+        
+    # Need to make this memory efficient - i.e. lazy evaluation via generators
+    
+    # Method to take the word order for independent claims and return
+    # frequency distributions
+    
+    # Method to take the word order for dependent claims and return
+    # frequency distributions
+    
+    # Method to determine word frequencies across the corpus for all text
+    
+    
 
 class ApplnState:
     """ Object to model a state of a patent document. """
@@ -57,12 +69,57 @@ class Description:
     def get_paragraph(self, number):
         """ Return paragraph having the passed number. """
         return self.paragraphs[number - 1]
+        
+class BaseTextBlock:
+    """ Abstract class for a block of text. """
     
-class Paragraph:
-    """ Object to model a paragraph of a patent description. """
-    def __init__(self, number, text):
-        self.number = number
+    def __init__(self, text, number=None):
         self.text = text
+        self.number = number
+        self.words = []
+    
+    def set_words(self):
+        """ Tokenise text and store as variable. """
+        self.words = nltk.word_tokenize(self.text)
+        return self.words
+    
+    def get_word_freq(self, stopwords=True):
+        """ Calculate term frequencies for words in claim. """
+        if not self.words:
+            self.set_words()
+        # Take out punctuation
+        if stopwords:
+            # If stopwords = true then remove stopwords
+            return Counter([w.lower() for w in self.words if w.isalpha() and w.lower() not in eng_stopwords])
+        else:
+            return Counter([w.lower() for w in self.words if w.isalpha()])
+    
+    def set_pos(self):
+        """ Get the parts of speech."""
+        if not self.words:
+            self.set_words()
+        pos_list = nltk.pos_tag(self.words)
+        # Hard set 'comprising' as VBG
+        pos_list = [(word, pos) if word != 'comprising' else ('comprising', 'VBG') for (word, pos) in pos_list]
+        self.pos = pos_list
+        return self.pos
+    
+    def appears_in(self, term):
+        """ Determine if term appears in claim. """
+        if not self.words:
+            self.set_words()
+        return term.lower() in [w.lower() for w in self.words]
+    
+    def set_word_order(self):
+        """ Generate a list of tuples of word, order in claim. """
+        if not self.words:
+            self.set_words()
+        self.word_order = list(enumerate(self.words))
+        return self.word_order
+    
+class Paragraph(BaseTextBlock):
+    """ Object to model a paragraph of a patent description. """
+    pass
 
 class Claimset:
     """ Object to model a claim set. """ 
@@ -147,22 +204,23 @@ class Figures:
     
 # ========================== Claim Model =============================#
 
-class Claim:
+class Claim(BaseTextBlock):
     """ Object to model a patent claim."""
 
     def __init__(self, text, number=None, dependency=None):
         """ Initiate claim object with string containing claim text."""
-        # Load text
-        self.text = text
+        # Have a 'lazy' flag on this to load some of information when needed?
         
         # Check for and extract claim number
-        parsed_number, self.text = self.get_number()
+        parsed_number, text = self.get_number(text)
         if number:
-            self.number = number
+            number = number
             if number != parsed_number:
                 print("Warning: detected claim number does not equal passed claim number.")
         else:
-            self.number = parsed_number
+            number = parsed_number
+        
+        super(Claim, self).__init__(text, number)
         
         # Get category
         self.category = self.detect_category()
@@ -178,49 +236,30 @@ class Claim:
                     self.dependency = parsed_dependency
         else:
             self.dependency = parsed_dependency
-        
-        # Tokenise text into words
-        self.words = nltk.word_tokenize(self.text)
+
+        # Determine word order
+        super(Claim, self).set_word_order()
+
         # Label parts of speech - uses averaged_perceptron_tagger as downloaded above
-        self.pos = self.get_pos()
+        super(Claim, self).set_pos()
         # Apply chunking into noun phrases
         (self.word_data, self.mapping_dict) = self.label_nounphrases()
         
         #Split claim into features
         self.features = self.split_into_features()
         
-    def get_word_freq(self, stopwords=True):
-        """ Calculate term frequencies for words in claim. """
-        # Take out punctuation
-        if stopwords:
-            # If stopwords = true then remove stopwords
-            return Counter([w.lower() for w in self.words if w.isalpha() and w.lower() not in eng_stopwords])
-        else:
-            return Counter([w.lower() for w in self.words if w.isalpha()])
-    
-    def get_pos(self):
-        """ Get the parts of speech."""
-        pos_list = nltk.pos_tag(self.words)
-        # Hard set 'comprising' as VBG
-        pos_list = [(word, pos) if word != 'comprising' else ('comprising', 'VBG') for (word, pos) in pos_list]
-        return pos_list
-    
-    def appears_in(self, term):
-        """ Determine if term appears in claim. """
-        return term.lower() in [w.lower() for w in self.words]
-            
 
-    def get_number(self):
+    def get_number(self, text):
         """Extracts the claim number from the text."""
         p = re.compile('\d+\.')
-        located = p.search(self.text)
+        located = p.search(text)
         if located:
             # Set claim number as digit before fullstop
             number = int(located.group()[:-1])
-            text = self.text[located.end():].strip()
+            text = text[located.end():].strip()
         else:
             number = None
-            text = self.text
+            text = text
         return number, text
     
     def detect_category(self):

@@ -139,6 +139,8 @@ class MyCorpus():
                         if match:
                             yield soup_object
     
+    # Use publication numbers rather than file indices in the methods below?
+    
     def read_xml(self, a_file_index):
         """ Read XML from a particular zip file (second_level_zip_file)
         that is nested within a first zip file (first_level_zip_file) 
