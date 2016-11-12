@@ -316,7 +316,7 @@ class Claim(BaseTextBlock):
             number = int(located.group()[:-1])
             text = text[located.end():].strip()
         else:
-            number = None
+            number = 0
             text = text
         return number, text
     
@@ -443,3 +443,4 @@ class Claim(BaseTextBlock):
         words = [{"id": i, "word":word, "pos":part, "np":np} for i, (word, part, np) in list(enumerate(self.word_data))]
         return {"claim":{ "words":words }}
 
+# Have a Word class for each word? Where the word has the attributes above?
