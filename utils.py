@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import datetime
 import re
+import os
 
 # Common useful utilities
 
@@ -96,3 +97,13 @@ def ends_with(s1, s2):
         return True
     else:
         return False
+        
+def get_immediate_subdirectories(a_dir):
+    """ Get immediate subdirectories. """
+    return [name for name in os.listdir(a_dir)
+            if os.path.isdir(os.path.join(a_dir, name))]
+            
+      
+def get_files(path, extensions=None):
+    """ Get a list of files within a 'path' filtering by string or tuple of extensions. """
+    return [os.path.relpath(os.path.join(subdir,f), path) for (subdir, dirs, files) in os.walk(path) for f in files if f.lower().endswith(extensions)]
