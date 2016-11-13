@@ -38,21 +38,21 @@ import epo_ops
 logging.basicConfig(filename="processing_class.log", format='%(asctime)s %(message)s')
 
 class BasePatentDataSource(metaclass=ABCMeta):
-	""" Abstract class for patent data sources. """
-	@abstractmethod
-	def get_patentdoc(self, publication_number):
-		""" Return a Patent Doc object corresponding to a publication number. """
-		pass
-		
-	@abstractmethod
-	def patentdoc_generator(self, publication_numbers=None, sample_size=None):
-		""" Return a generator that provides Patent Doc objects. 
-		publication_numbers is a list or iterator that provides a 
-		limiting group of publication numbers.
-		sample_size limits results to a random sample of size sample_size"""
-		pass
-	
-	
+    """ Abstract class for patent data sources. """
+    @abstractmethod
+    def get_patentdoc(self, publication_number):
+        """ Return a Patent Doc object corresponding to a publication number. """
+        pass
+        
+    @abstractmethod
+    def patentdoc_generator(self, publication_numbers=None, sample_size=None):
+        """ Return a generator that provides Patent Doc objects. 
+        publication_numbers is a list or iterator that provides a 
+        limiting group of publication numbers.
+        sample_size limits results to a random sample of size sample_size"""
+        pass
+    
+    
 class USPublications(BasePatentDataSource):
     """Creates a new corpus object that simplifies processing of patent archive"""
     def __init__(self, path="/media/SAMSUNG/Patent_Downloads"):
@@ -65,7 +65,7 @@ class USPublications(BasePatentDataSource):
             return
         # Set regular expression for valid patent publication files
         self.FILE_FORMAT_RE = re.compile(r".+US\d+[A,B].+-\d+\.\w+")
-        self.PUB_FORMAT = re.compile(r"(\w\w)(\d{4})(\d{7})([A,B]\d)")
+        self.PUB_FORMAT = re.compile(r"(\w\w)(\d{4})(\d{7})")
         # Get upper level zip/tar files in path
         self.first_level_files = utils.get_files(self.path, self.exten)
         
@@ -108,7 +108,7 @@ class USPublications(BasePatentDataSource):
     
     def process_archive_names(self, names):
         """ Return a dictionary of 'pub_no':'filename' entries. """
-        return {self.PUB_FORMAT.match(name).group(0):name for name in names if self.PUB_FORMAT.match(name)}
+        return {self.PUB_FORMAT.search(name).group(0):name for name in names if self.PUB_FORMAT.search(name)}
     
     def read_archive_file(self, filename, name):
         """ Read file data for XML_path nested within name archive within filename archive. """
@@ -215,31 +215,33 @@ class USPublications(BasePatentDataSource):
         return filename, name
     
     def search_files(self, publication_number):
-        """ Return upper and lower level paths for publication. """
+        """ Return upper and lower level paths for publication. 
+            Returns None if no match."""
         # This does not require the archive_file_list
         
-        # Note set matching is much quicker than list 
-        
-        # Note we match file format twice - once in correct_name
-        # Use correct_name match to extract pub no - build dict 
-        # with pub number as key - then just need to check if in keys
-        
         parsed_number = self.PUB_FORMAT.match(publication_number)
-        year = parsed_number.group(1)
-        extracted_number = parsed_number.group(2)
+        year = parsed_number.group(2)
+        extracted_number = parsed_number.group(3)
         
-        # Filter first_level_files by year
-        filtered_files = [f for f in self.first_level_files if year in f]
+        # Filter first_level_files by year and exclude "SUPP" files
+        filtered_files = [f for f in self.first_level_files if year in f and "SUPP" not in f]
         
         for f in filtered_files:
             names = self.get_archive_names(f)
-            # Look at last file - check 
-            last_number = self.PUB_FORMAT.match(names[-1]).group(2)
-            if last_number > extracted_number:
-                name_dict = process_archive_names(names)
-                matching_name = name_dict.get(publication_number, None)
-                if matching_name:
-                    return f, matching_name
+            i = -1
+            last_number = False
+            # Work back through names looking for a match
+            while not last_number and abs(i) <= len(names):
+                last_number = self.PUB_FORMAT.search(names[i])
+                i -= 1
+            if last_number:
+                last_number = last_number.group(3)
+                if last_number > extracted_number:
+                    #print(f)
+                    name_dict = self.process_archive_names(names)
+                    matching_name = name_dict.get(publication_number, None)
+                    if matching_name:
+                        return f, matching_name
     
     
     def get_patentdoc(self, publication_number):
@@ -305,7 +307,7 @@ class USPublications(BasePatentDataSource):
         # Get generator for file scan
         gen_xml = self.iter_filter_xml()
         for doc in gen_xml:
-            with open(os.path.join(self.path, filename) + ".data"), "a") as f:
+            with open(os.path.join(self.path, filename + ".data"), "a") as f:
                 print(doc.publication_details(), end=",\n", file=f)
     
     

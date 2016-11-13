@@ -81,6 +81,13 @@ class BasicTestSuite(unittest.TestCase):
         assert len(xmldoc.claim_text()) > 0
         assert len(xmldoc.all_text()) > len(xmldoc.description_text())
         assert len(xmldoc.all_text()) > len(xmldoc.claim_text())
+        
+    def test_search(self):
+        """ Test publication search functions. """
+        match = self.corpus.search_files("US20100123456")
+        assert match[0] == "I20100520.ZIP"
+        assert "US20100123456" in match[1]
+        assert self.corpus.search_files("US20050123456") is None
 
 if __name__ == '__main__':
     unittest.main()
