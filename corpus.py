@@ -45,10 +45,11 @@ class BasePatentDataSource(metaclass=ABCMeta):
 		pass
 		
 	@abstractmethod
-	def patentdoc_generator(self, publication_numbers=None):
+	def patentdoc_generator(self, publication_numbers=None, sample_size=None):
 		""" Return a generator that provides Patent Doc objects. 
 		publication_numbers is a list or iterator that provides a 
-		limiting group of publication numbers."""
+		limiting group of publication numbers.
+		sample_size limits results to a random sample of size sample_size"""
 		pass
 	
 	
@@ -150,6 +151,20 @@ class USPublications(BasePatentDataSource):
                     if filedata:
                         yield XMLDoc(filedata)
     
+    def patentdoc_generator(self, publication_numbers=None, sample_size=None):
+        """ Generator to return Patent Doc objects. """
+        # If no list of publication is passed iterate through whole datasource
+        if not publication_numbers:
+            gen_xml = self.iter_xml()
+            for xmldoc in gen_xml:
+                yield xmldoc.to_patentdoc()
+        else:
+            if sample_size and len(publication_numbers) > sample_size:
+                # Randomly sample down to sample_size
+                publication_numbers = random.sample(publication_numbers, sample_size)
+            for publication_number in publication_numbers:
+                yield self.get_patentdoc(publication_number)
+    
     def iter_filter_xml(self, class_list):
         """ Generator to return xml that matches the classifications in 
         class_list. """
@@ -197,10 +212,6 @@ class USPublications(BasePatentDataSource):
         filename, name = self.search_archive_list(publication_number)
         if filename and name:
             return XMLDoc(self.read_archive_file(filename, name)).to_patentdoc()
-    
-    def patentdoc_generator(self, publication_numbers=None):
-        pass
-    
     
     def save(self):
         """ Save corpus object as pickle. """
@@ -315,8 +326,18 @@ class EPOOPS(BasePatentDataSource):
         """ Get PatentDoc object for publication number. """
         return self.get_doc(publication_number).to_patentdoc()
         
-    def patentdoc_generator(self, publication_numbers=None):
-        pass
+    def patentdoc_generator(self, publication_numbers=None, sample_size=None):
+        """ Get generator for PatentDoc objects. """
+        if not publication_numbers:
+            pass
+            # Need to determine set of valid publication numbers and to iterate
+        else:
+            if sample_size and len(publication_numbers) > sample_size:
+                # Randomly sample down to sample_size
+                publication_numbers = random.sample(publication_numbers, sample_size)
+            
+            for publication_number in publication_numbers:
+                yield self.get_patentdoc(publication_number)
 
 class XMLDoc():
     """ Object to wrap the XML for a US Patent Document. """
