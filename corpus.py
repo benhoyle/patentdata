@@ -9,6 +9,9 @@ import random
 # Use pickle for saving
 import pickle
 
+# Import abstract class functions
+from abc import ABCMeta, abstractmethod
+
 #Libraries for Zip file processing
 # Can we use czipfile for faster processing?
 import zipfile 
@@ -31,35 +34,60 @@ import configparser
 import epo_ops
 # == IMPORTS END =========================================================#
 
-class MyCorpus():
+# Configure logging
+logging.basicConfig(filename="processing_class.log", format='%(asctime)s %(message)s')
+
+class BasePatentDataSource(metaclass=ABCMeta):
+	""" Abstract class for patent data sources. """
+	@abstractmethod
+	def get_patentdoc(self, publication_number):
+		""" Return a Patent Doc object corresponding to a publication number. """
+		pass
+		
+	@abstractmethod
+	def patentdoc_generator(self, publication_numbers=None):
+		""" Return a generator that provides Patent Doc objects. 
+		publication_numbers is a list or iterator that provides a 
+		limiting group of publication numbers."""
+		pass
+	
+	
+class USPublications(BasePatentDataSource):
     """Creates a new corpus object that simplifies processing of patent archive"""
     def __init__(self, path="/media/SAMSUNG/Patent_Downloads"):
-        logging.basicConfig(filename="processing_class.log", format='%(asctime)s %(message)s')
+        
         self.exten = (".zip",".tar")
         self.path = path
-        # Check here that path exists?
-        #Set regular expression for valid patent publication files
+        if not os.path.isdir(path):
+            print("Invalid path")
+            # Raise custom exception here
+            return
+        # Set regular expression for valid patent publication files
         self.FILE_FORMAT_RE = re.compile(r".+US\d+[A,B].+-\d+\.\w+")
-        #Set a list of paths relative to self.path for upper level zip files 
-        self.first_level_files = [os.path.relpath(os.path.join(subdir,f), self.path) for (subdir, dirs, files) in os.walk(self.path) for f in files if f.lower().endswith(self.exten)]
-        #Initialise arrays for lower level files
+        
+        # Get upper level zip/tar files in path
+        self.first_level_files = utils.get_files(self.path, self.exten)
+        
+        # Initialise arrays for lower level files
         self.archive_file_list = []
 
     def get_archive_list(self):
         """ Generate a list of lower level archive files. """
+            
         try:
             # Look for pre-existing list in file directory - won't work for Patent_Downloads directory
             self.archive_file_list = pickle.load(open(os.path.join(self.path, "archive_list.p"), "rb"))
             #print("Loading pre-existing file list\n")
         except:
             # If not file exists generate list
-            print("Getting archive file list\n")
+            print("Getting archive file list - may take a few minutes\n")
             self.archive_file_list = [
                 (filename, name) 
                 for filename in self.first_level_files 
                 for name in self.get_archive_names(filename) if self.correct_file(name) ]
             #Save archive list in path as pickle
             pickle.dump( self.archive_file_list, open( os.path.join(self.path, "archive_list.p"), "wb" ) )
+                
     
     def get_archive_names(self, filename):
         """ Return names of files within archive having filename. """
@@ -164,7 +192,7 @@ class MyCorpus():
                 filename, name = f, n
         return filename, name
     
-    def get_pdoc(self, publication_number):
+    def get_patentdoc(self, publication_number):
         """ Return a PatentDoc object for a given publication number."""
         filename, name = self.search_archive_list(publication_number)
         if filename and name:
