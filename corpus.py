@@ -162,6 +162,7 @@ class USPublications(BasePatentDataSource):
         # If no list of publication is passed iterate through whole datasource
         if not publication_numbers:
             gen_xml = self.iter_xml()
+            # Add sample size restrictions here
             for xmldoc in gen_xml:
                 yield xmldoc.to_patentdoc()
         else:
@@ -169,7 +170,9 @@ class USPublications(BasePatentDataSource):
                 # Randomly sample down to sample_size
                 publication_numbers = random.sample(publication_numbers, sample_size)
             for publication_number in publication_numbers:
-                yield self.get_patentdoc(publication_number)
+                result = self.get_patentdoc(publication_number)
+                if result:
+                    yield result
     
     def iter_filter_xml(self, class_list):
         """ Generator to return xml that matches the classifications in 
@@ -250,9 +253,15 @@ class USPublications(BasePatentDataSource):
         
         # Use year to get suitable first_level_files
         
-        filename, name = self.search_archive_list(publication_number)
-        if filename and name:
-            return XMLDoc(self.read_archive_file(filename, name)).to_patentdoc()
+        # Below uses archive_list
+        #filename, name = self.search_archive_list(publication_number)
+        # Below does not use archive list
+        try:
+            filename, name = self.search_files(publication_number)
+            if filename and name:
+                return XMLDoc(self.read_archive_file(filename, name)).to_patentdoc()
+        except:
+            return None
     
     def save(self):
         """ Save corpus object as pickle. """
@@ -525,7 +534,16 @@ class XMLDoc():
         description = m.Description(paragraphs)
         claims = [m.Claim(**c) for c in self.claim_list()]
         claimset = m.Claimset(claims)
-        return m.PatentDoc(description, claimset, title=self.title())
+        number = self.publication_details()
+        if number:
+            number = number[0]
+        return m.PatentDoc(
+            description, 
+            claimset, 
+            title=self.title(), 
+            classifications=self.classifications(),
+            number = number
+            )
     
 
 

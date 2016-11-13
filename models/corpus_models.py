@@ -40,12 +40,22 @@ class ApplnState:
 
 class PatentDoc:
     """ Object to model a patent document. """
-    def __init__(self, description, claimset, figures=None, title=None):
+    def __init__(
+        self, 
+        description, 
+        claimset, 
+        figures=None, 
+        title=None,
+        classifications=None,
+        number=None
+        ):
         """ description, claimset and figures are objects as below. """
         self.description = description
         self.claimset = claimset
         self.figures = figures
         self.title = title
+        self.classifications = classifications
+        self.number = number
     
     def text(self):
         """  Get text of patent document as string. """
@@ -288,7 +298,7 @@ class Claim(BaseTextBlock):
         if dependency:
             self.dependency = dependency
             if dependency != parsed_dependency:
-                print("Warning: detected dependency does not equal passed dependency.")
+                #print("Warning: detected dependency does not equal passed dependency.")
                 # Quick check - parsed dependency likely to be correct if passed dependency >= claim number
                 if dependency >= self.number:
                     self.dependency = parsed_dependency
