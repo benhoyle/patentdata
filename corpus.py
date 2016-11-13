@@ -197,7 +197,11 @@ class USPublications(BasePatentDataSource):
         filename, name = self.search_archive_list(publication_number)
         if filename and name:
             return XMLDoc(self.read_archive_file(filename, name)).to_patentdoc()
-
+    
+    def patentdoc_generator(self, publication_numbers=None):
+        pass
+    
+    
     def save(self):
         """ Save corpus object as pickle. """
         filename = self.path.replace("/","_") + ".p"
@@ -262,7 +266,7 @@ class USPublications(BasePatentDataSource):
         return m.PatentCorpus([self.get_doc(i).to_patentdoc() for i in indexes])
 
 # Have corpus to represent EPO OPS? and US API?
-class EPOOPSCorpus:
+class EPOOPS(BasePatentDataSource):
     def __init__(self, path_to_config=None):
         # Load Key and Secret from config file called "config.ini" 
         # If path is none look in data dir of current directory
@@ -307,9 +311,12 @@ class EPOOPSCorpus:
         if description and claims:
             return XMLDoc(description, claims)
             
-    def get_pdoc(self, publication_number):
+    def get_patentdoc(self, publication_number):
         """ Get PatentDoc object for publication number. """
         return self.get_doc(publication_number).to_patentdoc()
+        
+    def patentdoc_generator(self, publication_numbers=None):
+        pass
 
 class XMLDoc():
     """ Object to wrap the XML for a US Patent Document. """
