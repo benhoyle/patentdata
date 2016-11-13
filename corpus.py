@@ -104,6 +104,10 @@ class USPublications(BasePatentDataSource):
             names = []
         return names
     
+    def process_archive_names(self, names):
+        """ Return a dictionary of 'pub_no':'filename' entries. """
+        return {self.PUB_FORMAT.match(name).group(0):name for name in names if self.PUB_FORMAT.match(name)}
+    
     def read_archive_file(self, filename, name):
         """ Read file data for XML_path nested within name archive within filename archive. """
         # Get xml file path from name
@@ -181,6 +185,7 @@ class USPublications(BasePatentDataSource):
                                 match = True
                         if match:
                             yield soup_object
+                            
     
     # Use publication numbers rather than file indices in the methods below?
     
@@ -209,11 +214,30 @@ class USPublications(BasePatentDataSource):
     
     def search_files(self, publication_number):
         """ Return upper and lower level paths for publication. """
-        for f in self.first_level_files:
+        # This does not require the archive_file_list
+        
+        # Note set matching is much quicker than list 
+        
+        # Note we match file format twice - once in correct_name
+        # Use correct_name match to extract pub no - build dict 
+        # with pub number as key - then just need to check if in keys
+        
+        parsed_number = self.PUB_FORMAT.match(publication_number)
+        year = parsed_number.group(1)
+        extracted_number = parsed_number.group(2)
+        
+        # Filter first_level_files by year
+        filtered_files = [f for f in self.first_level_files if year in f]
+        
+        for f in filtered_files:
             names = self.get_archive_names(f)
-            # Look at last file 
-            
-            # Set is much quicker than list 
+            # Look at last file - check 
+            last_number = self.PUB_FORMAT.match(names[-1]).group(2)
+            if last_number > extracted_number:
+                name_dict = process_archive_names(names)
+                matching_name = name_dict.get(publication_number, None)
+                if matching_name:
+                    return f, matching_name
     
     
     def get_patentdoc(self, publication_number):
@@ -241,6 +265,8 @@ class USPublications(BasePatentDataSource):
         class list.
         param: list of Classification objects - class_list"""
         #If there is a pre-existing search save file, start from last recorded index
+        class_list = utils.check_list(class_list)
+        
         try:
             with open(os.path.join(self.path, "-".join([c.as_string() for c in class_list]) + ".data"), "r") as f:
                 last_index = int(f.readlines()[-1].split(',')[0])+1
@@ -272,6 +298,15 @@ class USPublications(BasePatentDataSource):
         pickle.dump( matching_indexes, open( os.path.join(self.path, "-".join([c.as_string() for c in class_list]) + ".p"), "wb" ) )
         return matching_indexes
 
+    def store_matching_number(self, class_list, filename):
+        """ Function that stores the publication numbers of documents that have a classification matching the classifications in class_list"""
+        # Get generator for file scan
+        gen_xml = self.iter_filter_xml()
+        for doc in gen_xml:
+            with open(os.path.join(self.path, filename) + ".data"), "a") as f:
+                print(doc.publication_details(), end=",\n", file=f)
+    
+    
     def get_filtered_docs(self):
         """ Generator to return XMLDocs for matching indexes. """
         pass
@@ -445,7 +480,7 @@ class XMLDoc():
             pub_date = datetime.strptime(
                 pub_section.find("document-date").text,
                 "%Y%m%d")
-            return (pub_number, pub_kind, pub_date)
+            return ("US" + pub_number + pub_kind, pub_date)
         except AttributeError:
             return None
     
