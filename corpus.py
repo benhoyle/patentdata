@@ -65,11 +65,11 @@ class USPublications(BasePatentDataSource):
             return
         # Set regular expression for valid patent publication files
         self.FILE_FORMAT_RE = re.compile(r".+US\d+[A,B].+-\d+\.\w+")
-        
+        self.PUB_FORMAT = re.compile(r"(\w\w)(\d{4})(\d{7})([A,B]\d)")
         # Get upper level zip/tar files in path
         self.first_level_files = utils.get_files(self.path, self.exten)
         
-        # Initialise arrays for lower level files
+        # Initialise arrays for lower level files - could this be a generator?
         self.archive_file_list = []
 
     def get_archive_list(self):
@@ -207,8 +207,21 @@ class USPublications(BasePatentDataSource):
                 filename, name = f, n
         return filename, name
     
+    def search_files(self, publication_number):
+        """ Return upper and lower level paths for publication. """
+        for f in self.first_level_files:
+            names = self.get_archive_names(f)
+            # Look at last file 
+            
+            # Set is much quicker than list 
+    
+    
     def get_patentdoc(self, publication_number):
         """ Return a PatentDoc object for a given publication number."""
+        # Parse publication number - get year
+        
+        # Use year to get suitable first_level_files
+        
         filename, name = self.search_archive_list(publication_number)
         if filename and name:
             return XMLDoc(self.read_archive_file(filename, name)).to_patentdoc()

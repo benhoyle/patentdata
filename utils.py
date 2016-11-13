@@ -2,6 +2,8 @@
 import datetime
 import re
 import os
+from bisect import bisect_left
+
 
 # Common useful utilities
 
@@ -107,3 +109,12 @@ def get_immediate_subdirectories(a_dir):
 def get_files(path, extensions=None):
     """ Get a list of files within a 'path' filtering by string or tuple of extensions. """
     return [os.path.relpath(os.path.join(subdir,f), path) for (subdir, dirs, files) in os.walk(path) for f in files if f.lower().endswith(extensions)]
+    
+def substring_search(stringlist, substring):
+    """ Fast binary search for substring in ordered list of strings. """
+    try:
+        index = bisect_left(stringlist, substring)
+        if substring in substring_search[index]:
+            return substring_search[index]
+    except IndexError:
+        return None # substring is not in stringlist
