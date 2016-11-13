@@ -82,11 +82,13 @@ class USPublications(BasePatentDataSource):
         except:
             # If not file exists generate list
             print("Getting archive file list - may take a few minutes\n")
+            # Iterate through subdirs as so?
+            #for subdirectory in utils.get_immediate_subdirectories(self.path):
             self.archive_file_list = [
                 (filename, name) 
                 for filename in self.first_level_files 
                 for name in self.get_archive_names(filename) if self.correct_file(name) ]
-            #Save archive list in path as pickle
+            #Save archive list in path as pickle - this didn't work for the whole directory - gave memory error
             pickle.dump( self.archive_file_list, open( os.path.join(self.path, "archive_list.p"), "wb" ) )
                 
     

@@ -114,7 +114,7 @@ def substring_search(stringlist, substring):
     """ Fast binary search for substring in ordered list of strings. """
     try:
         index = bisect_left(stringlist, substring)
-        if substring in substring_search[index]:
-            return substring_search[index]
+        if substring in stringlist[index]:
+            return stringlist[index]
     except IndexError:
         return None # substring is not in stringlist
