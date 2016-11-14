@@ -79,16 +79,21 @@ class BaseTextBlock:
         self.words = nltk.word_tokenize(self.text)
         return self.words
     
-    def get_word_freq(self, stopwords=True):
+    def get_word_freq(self, stopwords=True, normalize=True):
         """ Calculate term frequencies for words in claim. """
         if not self.words:
             self.set_words()
         # Take out punctuation
         if stopwords:
             # If stopwords = true then remove stopwords
-            return Counter([w.lower() for w in self.words if w.isalpha() and w.lower() not in eng_stopwords])
+            counter = Counter([w.lower() for w in self.words if w.isalpha() and w.lower() not in eng_stopwords])
         else:
-            return Counter([w.lower() for w in self.words if w.isalpha()])
+            counter = Counter([w.lower() for w in self.words if w.isalpha()])
+        if normalize:
+            sum_freqs = sum(counter.values())
+            # Normalise word_freqs
+            for key in word_freqs:
+                counter[key] /= sum_freqs
     
     def set_pos(self):
         """ Get the parts of speech."""
@@ -173,11 +178,7 @@ class Claimset(BaseTextSet):
         # Need to remove punctuation, numbers and normal english stopwords?
         
         # Calculate term frequencies and normalise
-        word_freqs = claim.get_word_freq()
-        sum_freqs = sum(word_freqs.values())
-        # Normalise word_freqs
-        for key in word_freqs:
-            word_freqs[key] /= sum_freqs
+        word_freqs = claim.get_word_freq(normalize=True)
         
         # Calculate IDF > log(total no. of claims / no. of claims term appears in)
         tf_idf = [{
@@ -304,17 +305,19 @@ class Claim(BaseTextBlock):
                     self.dependency = parsed_dependency
         else:
             self.dependency = parsed_dependency
-
+        
+        # Lazily compute the functions below when required
+        
         # Determine word order
-        super(Claim, self).set_word_order()
+        #super(Claim, self).set_word_order()
 
         # Label parts of speech - uses averaged_perceptron_tagger as downloaded above
-        super(Claim, self).set_pos()
+        #super(Claim, self).set_pos()
         # Apply chunking into noun phrases
-        (self.word_data, self.mapping_dict) = self.label_nounphrases()
+        #(self.word_data, self.mapping_dict) = self.label_nounphrases()
         
         #Split claim into features
-        self.features = self.split_into_features()
+        #self.features = self.split_into_features()
         
 
     def get_number(self, text):
