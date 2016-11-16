@@ -9,6 +9,9 @@ import random
 # Use pickle for saving
 import pickle
 
+# Import SQLite for storing file paths
+import sqlite3
+
 # Import abstract class functions
 from abc import ABCMeta, abstractmethod
 
@@ -70,26 +73,71 @@ class USPublications(BasePatentDataSource):
         self.first_level_files = utils.get_files(self.path, self.exten)
         
         # Initialise arrays for lower level files - could this be a generator?
-        self.archive_file_list = []
+        #self.archive_file_list = []
+        self.archive_file_list = {}
+        
+        self.conn = sqlite3.connect(os.path.join(self.path, 'fileindexes.db'))
+        self.c = self.conn.cursor()
+        # Create indexes table if it doesn't exist
+        self.c.execute('''
+            CREATE TABLE IF NOT EXISTS files
+                (
+                    pub_no TEXT, 
+                    year TEXT, 
+                    filename TEXT, 
+                    name TEXT,
+                    UNIQUE (pub_no)
+                )
+                ''')
+        self.conn.commit()
+
+    def __del__(self):
+        self.conn.close()
 
     def get_archive_list(self):
         """ Generate a list of lower level archive files. """
-            
-        try:
-            # Look for pre-existing list in file directory - won't work for Patent_Downloads directory
-            self.archive_file_list = pickle.load(open(os.path.join(self.path, "archive_list.p"), "rb"))
-            #print("Loading pre-existing file list\n")
-        except:
-            # If not file exists generate list
-            print("Getting archive file list - may take a few minutes\n")
-            # Iterate through subdirs as so?
+        
+        print("Getting archive file list - may take a few minutes\n")
+        # Iterate through subdirs as so? > 
+        for subdirectory in utils.get_immediate_subdirectories(self.path):
+            print("Generating list for :", subdirectory)
+            filtered_files = [f for f in self.first_level_files if subdirectory in os.path.split(f) and "SUPP" not in f]
+            for filename in filtered_files:
+                names = self.get_archive_names(filename)
+                for name in names:
+                    match = self.PUB_FORMAT.search(name)
+                    if match and name.lower().endswith(self.exten):
+                        data = (match.group(0), subdirectory, filename, name)
+                        self.c.execute('INSERT OR IGNORE INTO files VALUES (?,?,?,?)', data)
+                self.conn.commit()
+                        
+        #try:
             #for subdirectory in utils.get_immediate_subdirectories(self.path):
-            self.archive_file_list = [
-                (filename, name) 
-                for filename in self.first_level_files 
-                for name in self.get_archive_names(filename) if self.correct_file(name) ]
-            #Save archive list in path as pickle - this didn't work for the whole directory - gave memory error
-            pickle.dump( self.archive_file_list, open( os.path.join(self.path, "archive_list.p"), "wb" ) )
+                ## Look for pre-existing list in file directory
+                #subdir_path = os.path.join(self.path, subdirectory)
+                #self.archive_file_list[subdirectory] = pickle.load(open(os.path.join(self.path, "archive_list.p"), "rb"))
+            ##print("Loading pre-existing file list\n")
+        #except:
+            ## If not file exists generate list
+            #print("Getting archive file list - may take a few minutes\n")
+            ## Iterate through subdirs as so? > 
+            #for subdirectory in utils.get_immediate_subdirectories(self.path):
+                #print("Generating list for :", subdirectory)
+                #self.archive_file_list[subdirectory] = []
+                #filtered_files = [f for f in self.first_level_files if subdirectory in os.path.split(f) and "SUPP" not in f]
+                #for filename in filtered_files:
+                    #names = self.get_archive_names(filename)
+                    #for name in names:
+                        #match = self.PUB_FORMAT.search(name)
+                        #if match and name.lower().endswith(self.exten):
+                            #self.archive_file_list[subdirectory].append(
+                                #{
+                                    #match.group(0) : (filename, name)
+                                #}
+                            #)
+                ##Save archive list in path as pickle - this didn't work for the whole directory - gave memory error
+                #subdir_path = os.path.join(self.path, subdirectory)
+                #pickle.dump( self.archive_file_list[subdirectory], open( os.path.join(subdir_path, "archive_list.p"), "wb" ) )
                 
     
     def get_archive_names(self, filename):
@@ -217,35 +265,40 @@ class USPublications(BasePatentDataSource):
                 filename, name = f, n
         return filename, name
     
+    #def search_files(self, publication_number):
+        #""" Return upper and lower level paths for publication. 
+            #Returns None if no match."""
+        ## This does not require the archive_file_list
+        
+        #parsed_number = self.PUB_FORMAT.match(publication_number)
+        #year = parsed_number.group(2)
+        #extracted_number = parsed_number.group(3)
+        
+        ## Filter first_level_files by year and exclude "SUPP" files
+        #filtered_files = [f for f in self.first_level_files if year in f and "SUPP" not in f]
+        
+        #for f in filtered_files:
+            #names = self.get_archive_names(f)
+            #i = -1
+            #last_number = False
+            ## Work back through names looking for a match
+            #while not last_number and abs(i) <= len(names):
+                #last_number = self.PUB_FORMAT.search(names[i])
+                #i -= 1
+            #if last_number:
+                #last_number = last_number.group(3)
+                #if last_number > extracted_number:
+                    ##print(f)
+                    #name_dict = self.process_archive_names(names)
+                    #matching_name = name_dict.get(publication_number, None)
+                    #if matching_name:
+                        #return f, matching_name
+    
     def search_files(self, publication_number):
         """ Return upper and lower level paths for publication. 
             Returns None if no match."""
-        # This does not require the archive_file_list
-        
-        parsed_number = self.PUB_FORMAT.match(publication_number)
-        year = parsed_number.group(2)
-        extracted_number = parsed_number.group(3)
-        
-        # Filter first_level_files by year and exclude "SUPP" files
-        filtered_files = [f for f in self.first_level_files if year in f and "SUPP" not in f]
-        
-        for f in filtered_files:
-            names = self.get_archive_names(f)
-            i = -1
-            last_number = False
-            # Work back through names looking for a match
-            while not last_number and abs(i) <= len(names):
-                last_number = self.PUB_FORMAT.search(names[i])
-                i -= 1
-            if last_number:
-                last_number = last_number.group(3)
-                if last_number > extracted_number:
-                    #print(f)
-                    name_dict = self.process_archive_names(names)
-                    matching_name = name_dict.get(publication_number, None)
-                    if matching_name:
-                        return f, matching_name
-    
+        self.c.execute('SELECT filename, name FROM files WHERE pub_no=?', publication_number)
+        return self.c.fetchone()
     
     def get_patentdoc(self, publication_number):
         """ Return a PatentDoc object for a given publication number."""

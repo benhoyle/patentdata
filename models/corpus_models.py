@@ -32,7 +32,8 @@ class PatentCorpus:
     
     # Method to determine word frequencies across the corpus for all text
     
-    
+    # This can have the gensim functions - i.e. the dictionary will need to
+    # be built over this object
 
 class ApplnState:
     """ Object to model a state of a patent document. """
@@ -60,6 +61,12 @@ class PatentDoc:
     def text(self):
         """  Get text of patent document as string. """
         return "\n\n".join([self.description.text(), self.claimset.text()])
+    
+    def bag_of_words(self):
+        """ Get an array of all the words in the patent doc text. """
+        text = self.text()
+        # Remove reference numerals?
+        return nltk.word_tokenize(text)
     
     def reading_time(self, reading_rate=100):
         """ Return estimate for time to read. """
