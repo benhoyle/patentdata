@@ -22,6 +22,7 @@ class XMLDoc():
                 self.soup.append(claimsoup.claimset)
         except:
             print("Error could not read file")
+            raise
 
     def description_text(self):
         """ Return extracted description text."""
@@ -161,3 +162,31 @@ class XMLDoc():
             classifications=self.classifications(),
             number = number
             )"""
+
+class XMLRegisterData():
+    """ Wrapper for Register XML Data. """
+    def __init__(self, data):
+        """ Initialise object using either disk file data or HTML
+        response data. """
+        try:
+            self.soup = BeautifulSoup(data, "xml")
+        except:
+            print("Error could not read file")
+            raise
+
+    def get_publication_no(self, countrycode="EP"):
+        """
+        Search for the publication number.
+
+        :param countrycode: two-letter code identifying country.
+        :type countrycode: str
+        :return: publication number as string with countrycode
+        """
+        pub_no = None
+        for tag in self.soup.find_all("publication-reference"):
+            if tag.find("country").text == countrycode:
+                pub_no = tag.find("doc-number").text
+        if pub_no:
+            return "".join([countrycode, pub_no])
+        else:
+            return None
