@@ -10,6 +10,7 @@ __pycache__/
 *.csv
 *.db
 *.p
+epo_settings.py
 
 # Home directory HTML
 /*.html
