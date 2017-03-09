@@ -7,7 +7,9 @@ from patentdata.corpus.baseclasses import BasePatentDataSource
 from patentdata.corpus.epo_settings import (
     EPOOPS_C_KEY, EPOOPS_SECRET_KEY
 )
-from patentdata.xmlparser import XMLDoc, XMLRegisterData
+from patentdata.xmlparser import (
+    XMLDoc, XMLRegisterData, get_epodoc, extract_pub_no
+)
 
 import random
 import warnings
@@ -40,13 +42,14 @@ class EPOOPS(BasePatentDataSource):
         Abstract method to get text for both description and claims.
 
         :param texttype: either "description" or "claims".
-        :type txttype: str
+        :type texttype: str
         :param publication_number: publication number including countrycode
         :type publication_number: str
         :return: response data as string
         """
         if texttype not in ['description', 'claims']:
             raise TypeError("testtype needs to be 'description' or 'claims'")
+
         try:
             text = self.registered_client.published_data(
                 reference_type='publication',
@@ -99,6 +102,75 @@ class EPOOPS(BasePatentDataSource):
             description = claims = None
         if description and claims:
             return XMLDoc(description, claims)
+
+    def convert_number(self, application_number, countrycode):
+        """ Get a Epodoc number for the application. """
+        # Use the convert number with original number
+        # reference_type='application'
+        appln_no = epo_ops.models.Original(
+            application_number,
+            countrycode
+        )
+        output_format = 'epodoc'
+        doc_no = self.registered_client.number(
+                'application',
+                appln_no,
+                output_format
+            ).text
+        parsed_doc_no = get_epodoc(doc_no)
+        return parsed_doc_no
+
+    def get_publication_no(self, application_number, countrycode):
+        """ Get publication numbers for an application.
+
+        :param application_no: appln. number in original or Epodoc format
+        :type application_no: str
+        :param countrycode: two letter string with countrycode
+        :type countrycode: str
+        :return: dict with {'number': x, 'date':x}
+        """
+        # Convert number to a publication number
+        try:
+            # Assume number is passed as Epodoc
+            biblio_data = self.registered_client.published_data(
+                reference_type='application',
+                input=epo_ops.models.Epodoc(application_number),
+                endpoint='biblio'
+                ).text
+
+            pub_details = extract_pub_no(biblio_data)
+            print(pub_details)
+            return epo_ops.models.Epodoc(
+                pub_details['number'],
+                date=pub_details['date']
+                )
+        except Exception as e:
+            print(e)
+            if "404" in e.args[0]:
+                # Try to convert number to Epodoc first
+                try:
+                    epo_doc_no = self.convert_number(
+                        application_number,
+                        countrycode
+                        )
+                    print(epo_doc_no)
+                    biblio_data = self.registered_client.published_data(
+                        reference_type='application',
+                        input=epo_ops.models.Epodoc(epo_doc_no),
+                        endpoint='biblio'
+                        ).text
+
+                    pub_details = extract_pub_no(biblio_data)
+                    print(pub_details)
+                    return epo_ops.models.Epodoc(
+                        pub_details['number'],
+                        date=pub_details['date']
+                    )
+                except Exception as e:
+                    print(e)
+                    return None
+            else:
+                return None
 
     def get_patentdoc(self, publication_number):
         """ Get PatentDoc object for publication number. """

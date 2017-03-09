@@ -163,6 +163,7 @@ class XMLDoc():
             number = number
             )"""
 
+
 class XMLRegisterData():
     """ Wrapper for Register XML Data. """
     def __init__(self, data):
@@ -190,3 +191,29 @@ class XMLRegisterData():
             return "".join([countrycode, pub_no])
         else:
             return None
+
+
+def extract_pub_no(response):
+    """ Extract publication numbers from a response."""
+    soup = BeautifulSoup(response, "xml")
+    try:
+        pub_no_entry = soup.find("publication-reference").find(
+            attrs={'document-id-type': "epodoc"}
+            )
+        pub_no = pub_no_entry.find("doc-number").text
+        # Below is returning  ('20160203',) - finding multiple dates?
+        pub_date = pub_no_entry.find("date").text[0],
+        return {
+            'number': pub_no,
+            'date': pub_date
+            }
+    except Exception as e:
+        return None
+
+
+def get_epodoc(response):
+    """ Get the epodoc number from response data. """
+    soup = BeautifulSoup(response, "xml")
+    return soup.find(
+        attrs={'document-id-type': "epodoc"}
+        ).find("doc-number").text

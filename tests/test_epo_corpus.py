@@ -1,18 +1,35 @@
 from patentdata.corpus.epo_corpus import EPOOPS
+import pytest
 
 class TestGeneral(object):
     """ General set of tests."""
 
+    @pytest.fixture(autouse=True)
+    def set_common_fixtures(self):
+        self.epo_client = EPOOPS()
+
     def test_get_claims(self):
         """ Test retrieving claims. """
-        epo_client = EPOOPS()
-        claims = epo_client.get_claims("EP2979166")
-
+        claims = self.epo_client.get_claims("EP2979166")
         assert "child nodes" in claims
+
+        claims = self.epo_client.get_claims("rubbishhere")
+        assert claims in None
 
     def test_get_description(self):
         """ Test retrieving description. """
-        epo_client = EPOOPS()
-        description = epo_client.get_description("EP2979166")
-
+        description = self.epo_client.get_description("EP2979166")
         assert "request module 226" in description
+
+        description = self.epo_client.get_description("rubbishhere")
+        assert description in None
+
+    def test_convert_number(self):
+        """ Test converting an application number."""
+        epo_no = epo_client.convert_number("13880507.2", "EP")
+        assert epo_no == "EP20130880507"
+
+    def test_get_publication_no(self):
+        """ Test getting publication numbers. """
+        pub_no = self.epo_client.get_publication_no("13880507.2", "EP")
+        assert
