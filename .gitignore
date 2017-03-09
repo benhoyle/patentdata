@@ -21,6 +21,9 @@ epo_settings.py
 # C extensions
 *.so
 
+# Virtual environments
+.venv/
+
 # Distribution / packaging
 .Python
 env/
