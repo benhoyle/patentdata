@@ -1,6 +1,7 @@
 from patentdata.corpus.epo_corpus import EPOOPS
 import pytest
 
+
 class TestGeneral(object):
     """ General set of tests."""
 
@@ -16,6 +17,13 @@ class TestGeneral(object):
         claims = self.epo_client.get_claims("rubbishhere")
         assert claims is None
 
+        claims = self.epo_client.get_claims(
+            "13880507.2",
+            numbertype='application',
+            countrycode='EP'
+        )
+        assert "child nodes" in claims
+
     def test_get_description(self):
         """ Test retrieving description. """
         description = self.epo_client.get_description("EP2979166")
@@ -23,6 +31,13 @@ class TestGeneral(object):
 
         description = self.epo_client.get_description("rubbishhere")
         assert description is None
+
+        description = self.epo_client.get_description(
+            "13880507.2",
+            numbertype='application',
+            countrycode='EP'
+        )
+        assert "request module 226" in description
 
     def test_convert_number(self):
         """ Test converting an application number."""

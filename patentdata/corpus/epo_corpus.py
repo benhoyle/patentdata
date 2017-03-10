@@ -78,13 +78,57 @@ class EPOOPS(BasePatentDataSource):
             warnings.warn("Error: Not able to retrieve data")
         return text
 
-    def get_description(self, publication_number):
-        """ Get XML for description. """
-        return self._get_text('description', publication_number)
+    def get_description(
+        self, number, numbertype='publication', countrycode=None
+    ):
+        """ Get XML for description.
 
-    def get_claims(self, publication_number):
-        """ Get XML for description. """
-        return self._get_text('claims', publication_number)
+        :param number: publication or application number
+        :type number: str
+        :param numbertype: either "publication" or "application".
+        :type texttype: str
+        :param countrycode: two letter string with countrycode
+        :type countrycode: str
+        :return: response data as string
+        """
+        if numbertype == 'publication':
+            return self._get_text('description', number)
+        else:
+            if not countrycode:
+                raise ValueError("""Please enter a country code with
+                    an application number""")
+            epodoc_pub_no = self.get_publication_no(number, countrycode)
+            if not epodoc_pub_no:
+                warnings.warn("No publication number found.")
+                return None
+            else:
+                return self._get_text('description', epodoc_pub_no.number)
+
+    def get_claims(
+        self, number, numbertype='publication', countrycode=None
+    ):
+        """ Get XML for claims.
+
+        :param number: publication or application number
+        :type number: str
+        :param numbertype: either "publication" or "application".
+        :type texttype: str
+        :param countrycode: two letter string with countrycode
+        :type countrycode: str
+        :return: response data as string
+        """
+        if numbertype == 'publication':
+            return self._get_text('claims', number)
+        else:
+            if not countrycode:
+                raise ValueError("""Please enter a country code with
+                    an application number""")
+            epodoc_pub_no = self.get_publication_no(number, countrycode)
+            if not epodoc_pub_no:
+                warnings.warn("No publication number found.")
+                return None
+            else:
+                return self._get_text('claims', epodoc_pub_no.number)
 
     def get_doc(self, publication_number):
         """ Get XML for publication number. """
@@ -127,7 +171,7 @@ class EPOOPS(BasePatentDataSource):
         :type application_no: str
         :param countrycode: two letter string with countrycode
         :type countrycode: str
-        :return: dict with {'number': x, 'date':x}
+        :return: Epodoc object
         """
         # Convert number to a publication number
         try:
@@ -139,13 +183,11 @@ class EPOOPS(BasePatentDataSource):
                 ).text
 
             pub_details = extract_pub_no(biblio_data)
-            print(pub_details)
             return epo_ops.models.Epodoc(
                 pub_details['number'],
                 date=pub_details['date']
                 )
         except Exception as e:
-            print(e)
             if "404" in e.args[0]:
                 # Try to convert number to Epodoc first
                 try:
@@ -153,7 +195,6 @@ class EPOOPS(BasePatentDataSource):
                         application_number,
                         countrycode
                         )
-                    print(epo_doc_no)
                     biblio_data = self.registered_client.published_data(
                         reference_type='application',
                         input=epo_ops.models.Epodoc(epo_doc_no),
@@ -161,13 +202,11 @@ class EPOOPS(BasePatentDataSource):
                         ).text
 
                     pub_details = extract_pub_no(biblio_data)
-                    print(pub_details)
                     return epo_ops.models.Epodoc(
                         pub_details['number'],
                         date=pub_details['date']
                     )
                 except Exception as e:
-                    print(e)
                     return None
             else:
                 return None
