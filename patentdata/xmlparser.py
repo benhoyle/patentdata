@@ -201,8 +201,7 @@ def extract_pub_no(response):
             attrs={'document-id-type': "epodoc"}
             )
         pub_no = pub_no_entry.find("doc-number").text
-        # Below is returning  ('20160203',) - finding multiple dates?
-        pub_date = pub_no_entry.find("date").text[0],
+        pub_date = pub_no_entry.find("date").text
         return {
             'number': pub_no,
             'date': pub_date
