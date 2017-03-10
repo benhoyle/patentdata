@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+# Define this as a Flask Extension?
+# See - http://flask.pocoo.org/docs/0.12/extensiondev/
 # Library to access EPO OPS
 import epo_ops
 
 # EPOOPSCorpus imports
 from patentdata.corpus.baseclasses import BasePatentDataSource
+# Pass these in from app settings?
 from patentdata.corpus.epo_settings import (
     EPOOPS_C_KEY, EPOOPS_SECRET_KEY
 )
@@ -91,9 +94,7 @@ class EPOOPS(BasePatentDataSource):
         :type countrycode: str
         :return: response data as string
         """
-        if numbertype == 'publication':
-            return self._get_text('description', number)
-        else:
+        if numbertype == 'application':
             if not countrycode:
                 raise ValueError("""Please enter a country code with
                     an application number""")
@@ -102,7 +103,8 @@ class EPOOPS(BasePatentDataSource):
                 warnings.warn("No publication number found.")
                 return None
             else:
-                return self._get_text('description', epodoc_pub_no.number)
+                number = epodoc_pub_no.number
+        return self._get_text('description', number)
 
     def get_claims(
         self, number, numbertype='publication', countrycode=None
@@ -117,9 +119,7 @@ class EPOOPS(BasePatentDataSource):
         :type countrycode: str
         :return: response data as string
         """
-        if numbertype == 'publication':
-            return self._get_text('claims', number)
-        else:
+        if numbertype == 'application':
             if not countrycode:
                 raise ValueError("""Please enter a country code with
                     an application number""")
@@ -128,7 +128,41 @@ class EPOOPS(BasePatentDataSource):
                 warnings.warn("No publication number found.")
                 return None
             else:
-                return self._get_text('claims', epodoc_pub_no.number)
+                number = epodoc_pub_no.number
+        return self._get_text('claims', number)
+
+    def get_citations(
+        self, number, numbertype='publication', countrycode=None
+    ):
+        """ Get citations for a patent application from EPO.
+
+        :param number: publication or application number
+        :type number: str
+        :param numbertype: either "publication" or "application".
+        :type texttype: str
+        :param countrycode: two letter string with countrycode
+        :type countrycode: str
+        :return: response data as string
+        """
+        if numbertype == 'application':
+            if not countrycode:
+                raise ValueError("""Please enter a country code with
+                    an application number""")
+            epodoc_pub_no = self.get_publication_no(number, countrycode)
+            if not epodoc_pub_no:
+                warnings.warn("No publication number found.")
+                return None
+            else:
+                epodoc_number = epodoc_pub_no
+        else:
+            epodoc_number = epo_ops.models.Epodoc(number)
+
+        biblio_data = self.registered_client.published_data(
+                reference_type='publication',
+                input=epodoc_number,
+                endpoint='biblio'
+                ).text
+        return XMLRegisterData(biblio_data).get_citations()
 
     def get_doc(self, publication_number):
         """ Get XML for publication number. """
@@ -210,6 +244,8 @@ class EPOOPS(BasePatentDataSource):
                     return None
             else:
                 return None
+
+
 
     def get_patentdoc(self, publication_number):
         """ Get PatentDoc object for publication number. """

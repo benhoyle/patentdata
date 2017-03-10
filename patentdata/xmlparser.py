@@ -192,27 +192,54 @@ class XMLRegisterData():
         else:
             return None
 
+    def get_citations(self):
+        """
+        Search for citations and return in a friendly format.
+        """
+        citations = []
+        try:
+            xml_citations = self.soup.find(
+                "references-cited"
+                ).find_all("citation")
+            for xml_citation in xml_citations:
+                try:
+                    result = get_epodoc_from_soup(xml_citation)
+                    result['category'] = xml_citation.find("category").text
+                    citations.append(result)
+                except:
+                    pass
+        except:
+            pass
+        return citations
+
+
+def get_epodoc_from_soup(soup):
+    """ Get epodoc details from passed soup object. """
+
+    epodoc_entry = soup.find(
+                    attrs={'document-id-type': "epodoc"}
+                )
+    epodoc_number = epodoc_entry.find("doc-number").text
+    epodoc_date = epodoc_entry.find("date").text
+    return {
+        'number': epodoc_number,
+        'date': epodoc_date
+        }
+
 
 def extract_pub_no(response):
     """ Extract publication numbers from a response."""
     soup = BeautifulSoup(response, "xml")
     try:
-        pub_no_entry = soup.find("publication-reference").find(
-            attrs={'document-id-type': "epodoc"}
-            )
-        pub_no = pub_no_entry.find("doc-number").text
-        pub_date = pub_no_entry.find("date").text
-        return {
-            'number': pub_no,
-            'date': pub_date
-            }
-    except Exception as e:
+        return get_epodoc_from_soup(soup.find("publication-reference"))
+    except:
         return None
 
 
 def get_epodoc(response):
     """ Get the epodoc number from response data. """
     soup = BeautifulSoup(response, "xml")
-    return soup.find(
-        attrs={'document-id-type': "epodoc"}
-        ).find("doc-number").text
+    try:
+        return get_epodoc_from_soup(soup)['number']
+    except:
+        return None

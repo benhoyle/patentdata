@@ -48,3 +48,22 @@ class TestGeneral(object):
         """ Test getting publication numbers. """
         pub_no = self.epo_client.get_publication_no("13880507.2", "EP")
         assert "EP2979166" in pub_no.number
+
+    def test_get_citations(self):
+        """ Test getting citations. """
+        citations = self.epo_client.get_citations("EP1000000")
+        assert len(citations) == 3
+        assert citations[1]['number'] == 'NL9400663'
+
+        citations = self.epo_client.get_citations("rubbishhere")
+        assert len(citations) == 0
+
+        citations = self.epo_client.get_citations(
+            "13880507.2",
+            numbertype='application',
+            countrycode='EP'
+        )
+        assert len(citations) == 1
+        assert citations[0]['category'] == 'I'
+
+
