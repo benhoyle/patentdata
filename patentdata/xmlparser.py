@@ -2,6 +2,8 @@
 from bs4 import BeautifulSoup
 from datetime import datetime
 
+from patentdata.utils import process_classification
+
 
 class XMLDoc():
     """ Object to wrap the XML for a US Patent Document. """
@@ -128,22 +130,23 @@ class XMLDoc():
         """ Return IPC classification(s). """
         # Need to adapt - up to 2001 uses string under tag 'ipc'
         # Post 2009
-        pass
-        """class_list = [
-            m.Classification(
-                each_class.find("section").text,
-                each_class.find("class").text,
-                each_class.find("subclass").text,
-                each_class.find("main-group").text,
-                each_class.find("subgroup").text)
-        for each_class in self.soup.find_all("classifications-ipcr")]
+        class_list = [
+                [
+                    each_class.find("section").text,
+                    each_class.find("class").text,
+                    each_class.find("subclass").text,
+                    each_class.find("main-group").text,
+                    each_class.find("subgroup").text
+                ]
+                for each_class in self.soup.find_all("classifications-ipcr")
+        ]
         # Pre 2009
         if not class_list:
             # Use function from patentdata on text of ipc tag
-            class_list = m.Classification.process_classification(
+            class_list = process_classification(
                 self.soup.find("ipc").text
             )
-        return class_list"""
+        return class_list
 
     def to_patentdoc(self):
         """ Return a patent doc object. """

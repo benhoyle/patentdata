@@ -14,7 +14,7 @@ def check_list(listvar):
     return listvar
 
 def safeget(dct, *keys):
-    """ Recursive function to safely access nested dicts or return None. 
+    """ Recursive function to safely access nested dicts or return None.
     param dict dct: dictionary to process
     param string keys: one or more keys"""
     for key in keys:
@@ -25,10 +25,10 @@ def safeget(dct, *keys):
     return dct
 
 def keysearch(d, key):
-    """Recursive function to look for first occurence of key in multi-level dict. 
+    """Recursive function to look for first occurence of key in multi-level dict.
     param dict d: dictionary to process
     param string key: key to locate"""
- 
+
     if isinstance(d, dict):
         if key in d:
             return d[key]
@@ -64,23 +64,23 @@ def remove_bracketed(test_str):
         elif skip1c == 0 and skip2c == 0:
             ret += i
     return ret
-    
+
 # Get current year and look for publications in that year
 def get_current_year():
     """ Get current year. """
     now = datetime.datetime.now()
     return now.year
-    
+
 def list_frequencies(list_of_items):
     """ Determine frequency of items in list_of_items. """
-    itemfreq = [list_of_items.count(p) for p in list_of_items] 
+    itemfreq = [list_of_items.count(p) for p in list_of_items]
     return dict(zip(list_of_items,itemfreq))
 
-def sort_freq_dist(freqdict): 
+def sort_freq_dist(freqdict):
     """ Sort frequency distribution. """
     aux = [(freqdict[key], key) for key in freqdict]
-    aux.sort() 
-    aux.reverse() 
+    aux.sort()
+    aux.reverse()
     return aux
 
 def hasNumbers(inputString):
@@ -90,7 +90,7 @@ def hasNumbers(inputString):
 def hasReNumbers(inputString):
     """ Return true if inputString contains numbers. Using regex."""
     return bool(re.search(r'\d', inputString))
-    
+
 def ends_with(s1, s2):
     """See if s1 ends with s2."""
     pattern = re.compile(r'(' + re.escape(s2) + ')$')
@@ -99,17 +99,16 @@ def ends_with(s1, s2):
         return True
     else:
         return False
-        
+
 def get_immediate_subdirectories(a_dir):
     """ Get immediate subdirectories. """
     return [name for name in os.listdir(a_dir)
             if os.path.isdir(os.path.join(a_dir, name))]
-            
-      
+
 def get_files(path, extensions=None):
     """ Get a list of files within a 'path' filtering by string or tuple of extensions. """
     return [os.path.relpath(os.path.join(subdir,f), path) for (subdir, dirs, files) in os.walk(path) for f in files if f.lower().endswith(extensions)]
-    
+
 def substring_search(stringlist, substring):
     """ Fast binary search for substring in ordered list of strings. """
     try:
@@ -118,3 +117,19 @@ def substring_search(stringlist, substring):
             return stringlist[index]
     except IndexError:
         return None # substring is not in stringlist
+
+def process_classification(class_string):
+    """ Extract IPC classfication elements from a class_string."""
+    ipc = r'[A-H][0-9][0-9][A-Z][0-9]{1,4}\/?[0-9]{1,6}'
+    # Last bit can occur 1-3 times then we have \d+\\?\d+ -
+    p = re.compile(ipc)
+    classifications = [
+            [
+                match.group(0)[0],
+                match.group(0)[1:3],
+                match.group(0)[3],
+                match.group(0)[4:].split('/')[0],
+                match.group(0)[4:].split('/')[1]
+            ]
+            for match in p.finditer(class_string)]
+    return classifications

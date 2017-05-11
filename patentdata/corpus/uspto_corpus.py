@@ -6,8 +6,6 @@ import logging
 import re
 import math
 import random
-# Use pickle for saving
-import pickle
 
 from patentdata.corpus.baseclasses import BasePatentDataSource
 
@@ -55,9 +53,6 @@ class USPublications(BasePatentDataSource):
         # Get upper level zip/tar files in path
         self.first_level_files = utils.get_files(self.path, self.exten)
 
-        # Initialise arrays for lower level files - could this be a generator?
-        self.archive_file_list = {}
-
         self.conn = sqlite3.connect(os.path.join(self.path, 'fileindexes.db'))
         self.c = self.conn.cursor()
         # Create indexes table if it doesn't exist
@@ -83,14 +78,20 @@ class USPublications(BasePatentDataSource):
         # Iterate through subdirs as so? >
         for subdirectory in utils.get_immediate_subdirectories(self.path):
             print("Generating list for :", subdirectory)
-            filtered_files = [f for f in self.first_level_files if subdirectory in os.path.split(f) and "SUPP" not in f]
+            filtered_files = [
+                f for f in self.first_level_files
+                if subdirectory in os.path.split(f) and "SUPP" not in f
+            ]
             for filename in filtered_files:
                 names = self.get_archive_names(filename)
                 for name in names:
                     match = self.PUB_FORMAT.search(name)
                     if match and name.lower().endswith(self.exten):
                         data = (match.group(0), subdirectory, filename, name)
-                        self.c.execute('INSERT OR IGNORE INTO files VALUES (?,?,?,?)', data)
+                        self.c.execute(
+                            'INSERT OR IGNORE INTO files VALUES (?,?,?,?)',
+                            data
+                        )
                 self.conn.commit()
 
     def get_archive_names(self, filename):
@@ -196,63 +197,63 @@ class USPublications(BasePatentDataSource):
                 if result:
                     yield result
 
-    def iter_filter_xml(self, class_list):
-        """ Generator to return xml that matches the classifications in
-        class_list. """
-        for filename in self.first_level_files:
-            names = self.get_archive_names(filename)
-            for name in names:
-                if self.correct_file(name):
-                    filedata = self.read_archive_file(filename, name)
-                    if filedata:
-                        soup_object = XMLDoc(filedata)
-                        match = False
-                        for c in soup_object.classifications():
-                            if c.match(class_list):
-                                match = True
-                        if match:
-                            yield soup_object
+    def iter_filter_xml(self, classification, sample_size=None):
+        """ Generator to return xml that matches has classification.
 
-    # Use publication numbers rather than file indices in the methods below?
+        :param classification: list in form
+        ["G", "61", "K", "039", "00"]. If an entry has None or
+        no entry, it and its remaining entries are not filtered.
+        """
+        # First - build the SQL query
+        class_fields = [
+            'section', 'class', 'subclass', 'maingroup', 'subgroup'
+            ]
+        query_portion = "WHERE ("
 
-    def read_xml(self, a_file_index):
-        """ Read XML from a particular zip file (second_level_zip_file)
-        that is nested within a first zip file (first_level_zip_file)
-        param: int a_file_index, index to a file within archive_file_list"""
-        filename, name = self.archive_file_list[a_file_index]
-        return self.read_archive_file(filename, name)
-
-    def get_doc(self, a_file_index):
-        """ Read XML and return an XMLDoc object. """
-        if not self.archive_file_list:
-            self.get_archive_list()
-        return XMLDoc(self.read_xml(a_file_index))
-
-    def search_archive_list(self, publication_number):
-        """ Get filename and name for a given publication number."""
-        if not self.archive_file_list:
-            self.get_archive_list()
-        filename, name = None, None
-        for f, n in self.archive_file_list:
-            if publication_number in n:
-                filename, name = f, n
-        return filename, name
+        for i in len(class_fields):
+            if i > len(classication):
+                break
+            if not classification[i]:
+                break
+            if i > 0:
+                query_portion += " AND"
+            query_portion += " {0} = '{1}' ".format(
+                class_fields[i],
+                classification[i]
+            )
+        query_portion += ")"
+        # Then build final query string
+        query_string = """
+                        SELECT ROWID, filename, name
+                        FROM files
+                        {0}
+                        """
+        records = self.c.execute(query_string).fetchall()
+        no_of_records = len(records)
+        print("{0} records located.".format(no_of_records)
+        # Select a random subset if a sample size is provided
+        if sample_size and no_of_records > sample_size:
+            records = random.sample(
+                    records, sample_size
+                )
+        # Iterate through records and return XMLDocs
+        for record in records:
+            rowid, filename, name = record
+            filedata = self.read_archive_file(filename, name)
+            if filedata:
+                yield XMLDoc(filedata)
 
     def search_files(self, publication_number):
         """ Return upper and lower level paths for publication.
             Returns None if no match."""
-        self.c.execute('SELECT filename, name FROM files WHERE pub_no=?', publication_number)
+        self.c.execute(
+            'SELECT filename, name FROM files WHERE pub_no=?',
+            (publication_number,)
+        )
         return self.c.fetchone()
 
     def get_patentdoc(self, publication_number):
         """ Return a PatentDoc object for a given publication number."""
-        # Parse publication number - get year
-
-        # Use year to get suitable first_level_files
-
-        # Below uses archive_list
-        # filename, name = self.search_archive_list(publication_number)
-        # Below does not use archive list
         try:
             filename, name = self.search_files(publication_number)
             if filename and name:
@@ -262,84 +263,17 @@ class USPublications(BasePatentDataSource):
         except:
             return None
 
-    def indexes_by_classification(self, class_list):
-        """ Get a list of indexes of publications that match the supplied
-        class list.
-        param: list of Classification objects - class_list"""
-        # If there is a pre-existing search save file,
-        # start from last recorded index
-        class_list = utils.check_list(class_list)
-
-        try:
-            with open(
-                os.path.join(self.path, "-".join(
-                    [c.as_string() for c in class_list]
-                    ) + ".data"), "r"
-            ) as f:
-                last_index = int(f.readlines()[-1].split(',')[0])+1
-        except:
-            last_index = 0
-
-        if not self.archive_file_list:
-            self.get_archive_list()
-        # Iterate through publications
-        matching_indexes = []
-
-        for i in range(last_index, len(self.archive_file_list)):
-
-            try:
-                classifications = self.get_doc(i).classifications()
-                # Look for matches with class_list entries, note None = ignore
-                match = False
-                for c in classifications:
-                    if c.match(class_list):
-                        match = True
-                if match:
-                    print("Match: ", str(i))
-                    matching_indexes.append(i)
-                    with open(
-                        os.path.join(
-                            self.path,
-                            "-".join(
-                                [c.as_string() for c in class_list]
-                            ) + ".data"
-                        ), "a"
-                    ) as f:
-                        print(i, end=",\n", file=f)
-            except:
-                print("Error with: ", self.archive_file_list[i][1])
-
-        pickle.dump(
-            matching_indexes,
-            open(
-                os.path.join(
-                    self.path,
-                    "-".join(
-                        [c.as_string() for c in class_list]
-                    ) + ".p"
-                ), "wb")
-        )
-        return matching_indexes
-
     def store_matching_number(self, class_list, filename):
         """ Function that stores the publication numbers of documents
         that have a classification matching the classifications in
         class_list """
         # Get generator for file scan
-        gen_xml = self.iter_filter_xml()
+        gen_xml = self.iter_filter_xml(class_list)
         for doc in gen_xml:
+            pub_details = doc.publication_details()
+            print(pub_details)
             with open(os.path.join(self.path, filename + ".data"), "a") as f:
-                print(doc.publication_details(), end=",\n", file=f)
-
-    def get_filtered_docs(self):
-        """ Generator to return XMLDocs for matching indexes. """
-        pass
-
-    def get_indexes(self, filename):
-        """ Load an index set from a passed filename in the corpus path. """
-        with open(os.path.join(self.path, filename), 'r') as f:
-            lines = f.readlines()
-        return [int(line.split(',')[0]) for line in lines]
+                print(pub_details, end=",\n", file=f)
 
     def get_patentcorpus(self, indexes, number_of_docs):
         """ Get a random sample of documents having a total number_of_docs."""
@@ -351,9 +285,65 @@ class USPublications(BasePatentDataSource):
             [self.get_doc(i).to_patentdoc() for i in indexes]
             )"""
 
+    def get_classification(self, filename, name):
+        """ Return patent classifications as a list of 5 items."""
+        return XMLDoc(self.read_archive_file(filename, name)).classifications()
 
+    def store_classifications(self, yearlist=None):
+        """ Iterate through publications and store classifications in DB.
 
+        :param yearlist: list of years as strings,
+        e.g. ["2001", "2010", "2013"] - if supplied will only process
+        these years
+        """
+        # Select distinct years in DB
+        years = self.c.execute('SELECT DISTINCT year FROM files').fetchall()
+        # If a yearlist is supplied use to filter years
+        if yearlist:
+            years = [y for y in years if y in yearlist]
 
+        for year in years:
+            print("Processing year: ", year[0])
+            # Get rows without classifications
+            query_string = """
+                SELECT ROWID, filename, name FROM files
+                WHERE
+                    year = ? AND
+                    section IS NULL
+                """
+            records = self.c.execute(query_string, (year[0],)).fetchall()
+            for record in records:
+                rowid, filename, name = record
+                print(name)
+                try:
+                    classification = self.get_classification(filename, name)
+                    query_string = """
+                        UPDATE files
+                        SET
+                            section = ?,
+                            class = ?,
+                            subclass = ?,
+                            maingroup = ?,
+                            subgroup = ?
+                        WHERE
+                            ROWID = ?
+                        """
 
+                    if classification:
+                        data = (
+                            classification[0][0],
+                            classification[0][1],
+                            classification[0][2],
+                            classification[0][3],
+                            classification[0][4],
+                            rowid
+                            )
+                        self.c.execute(query_string, data)
+                        self.conn.commit()
+                        print(classification)
 
-
+                except Exception:
+                    logging.exception(
+                        "Exception storing classification for file:"
+                        + str(filename) + " " + str(name)
+                        )
