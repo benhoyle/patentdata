@@ -9,7 +9,7 @@ import random
 # Use pickle for saving
 import pickle
 
-from patentdata.baseclasses import BasePatentDataSource
+from patentdata.corpus.baseclasses import BasePatentDataSource
 
 # Libraries for Zip file processing
 # Can we use czipfile for faster processing?
@@ -19,15 +19,13 @@ import tarfile
 # Python 3.5
 from io import BytesIO
 
-import utils
+import patentdata.utils as utils
 
 import sqlite3
 
 from datetime import datetime
 
 from patentdata.xmlparser import XMLDoc
-# Import models for a patent document
-from models import corpus_models as m
 
 # == IMPORTS END ======================================================#
 
