@@ -262,16 +262,6 @@ class USPublications(BasePatentDataSource):
         except:
             return None
 
-    def save(self):
-        """ Save corpus object as pickle. """
-        filename = self.path.replace("/", "_") + ".p"
-        pickle.dump(self, open("savedata/{0}".format(filename), "wb"))
-
-    @classmethod
-    def load(cls, filename):
-        """ Load a corpus by filename. """
-        return pickle.load(open(filename, "rb"))
-
     def indexes_by_classification(self, class_list):
         """ Get a list of indexes of publications that match the supplied
         class list.
