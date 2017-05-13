@@ -13,6 +13,8 @@ class XMLDoc():
         response data. """
         try:
             self.soup = BeautifulSoup(filedata, "xml")
+            if not self.soup:
+                print("No soup object")
             if claimdata:
                 claimsoup = BeautifulSoup(claimdata, "xml")
                 # Try to convert <claim-text>....into <claim>

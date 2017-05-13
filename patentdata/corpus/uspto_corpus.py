@@ -230,7 +230,7 @@ class USPublications(BasePatentDataSource):
                         """
         records = self.c.execute(query_string).fetchall()
         no_of_records = len(records)
-        print("{0} records located.".format(no_of_records)
+        print("{0} records located.".format(no_of_records))
         # Select a random subset if a sample size is provided
         if sample_size and no_of_records > sample_size:
             records = random.sample(
@@ -292,18 +292,18 @@ class USPublications(BasePatentDataSource):
     def store_classifications(self, yearlist=None):
         """ Iterate through publications and store classifications in DB.
 
-        :param yearlist: list of years as strings,
-        e.g. ["2001", "2010", "2013"] - if supplied will only process
+        :param yearlist: list of years as integers,
+        e.g. [2001, 2010, 2013] - if supplied will only process
         these years
         """
         # Select distinct years in DB
         years = self.c.execute('SELECT DISTINCT year FROM files').fetchall()
         # If a yearlist is supplied use to filter years
         if yearlist:
-            years = [y for y in years if y in yearlist]
+            years = [y[0] for y in years if y[0] in yearlist]
 
         for year in years:
-            print("Processing year: ", year[0])
+            print("Processing year: ", year)
             # Get rows without classifications
             query_string = """
                 SELECT ROWID, filename, name FROM files
@@ -311,10 +311,12 @@ class USPublications(BasePatentDataSource):
                     year = ? AND
                     section IS NULL
                 """
-            records = self.c.execute(query_string, (year[0],)).fetchall()
+            records = self.c.execute(query_string, (year,)).fetchall()
+            i = 0
             for record in records:
                 rowid, filename, name = record
-                print(name)
+                i += 1
+                #print(name)
                 try:
                     classification = self.get_classification(filename, name)
                     query_string = """
@@ -340,7 +342,9 @@ class USPublications(BasePatentDataSource):
                             )
                         self.c.execute(query_string, data)
                         self.conn.commit()
-                        print(classification)
+                        #print(classification)
+                        if (i % 100) == 0:
+                            print(i, classification)
 
                 except Exception:
                     logging.exception(
