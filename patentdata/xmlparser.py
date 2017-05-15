@@ -1,9 +1,14 @@
 # Import Beautiful Soup for XML parsing
 from bs4 import BeautifulSoup
 from datetime import datetime
+import logging
 
 from patentdata.utils import process_classification
 
+logging.basicConfig(
+    filename="processing_class.log",
+    format='%(asctime)s %(message)s'
+)
 
 class XMLDoc():
     """ Object to wrap the XML for a US Patent Document. """
@@ -145,10 +150,28 @@ class XMLDoc():
         # Pre 2009
         if not class_list:
             # Use function from patentdata on text of ipc tag
-            class_list = process_classification(
-                self.soup.find("ipc").text
-            )
-        return class_list
+            try:
+                class_list = process_classification(
+                    self.soup.find("ipc").text
+                )
+                return class_list
+            except:
+                # 2005 has 'classification-ipc' - 'main-classification'
+                try:
+                    class_list = process_classification(
+                        self.soup.find("classification-ipc").find(
+                            "main-classification"
+                        ).text
+                    )
+                    return class_list
+                except:
+                    logging.exception(
+                        "Exception opening file: {0}".format(
+                        self.publication_details()
+                        )
+                    )
+                    return []
+
 
     def to_patentdoc(self):
         """ Return a patent doc object. """

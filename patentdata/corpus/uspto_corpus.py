@@ -34,6 +34,64 @@ logging.basicConfig(
 )
 
 
+def get_xml_path(name):
+    """ Get the XML path of a file from the name. """
+    file_name_section = name.rsplit('/', 1)[1].split('.')[0]
+    return file_name_section + '/' + file_name_section + ".XML"
+
+
+def read_nested_zip(open_zip_file, nested_name):
+    """ Opens a nested_name file from passed file data of
+    open_zip_file. """
+    XML_path = get_xml_path(nested_name)
+    try:
+        with zipfile.ZipFile(open_zip_file, 'r') as nested_zip:
+            with nested_zip.open(XML_path, 'r') as xml_file:
+                return xml_file.read()
+    except Exception:
+        logging.exception(
+                "Exception opening file:" +
+                str(nested_name)
+            )
+        return None
+
+
+def filedata_generator(path, filename, entries):
+    """ Generator to return file data for each name in entries
+    for a given filename. Entries is a list of form (id, name).
+
+    Returns: id, filedata as tuple."""
+    # For zip files
+    if filename.lower().endswith(".zip"):
+        with zipfile.ZipFile(
+            os.path.join(path, filename), 'r'
+        ) as z:
+            for pub_id, name in entries:
+                with z.open(name, 'r') as nested_zip:
+                    z2 = BytesIO(nested_zip.read())
+                    yield pub_id, read_nested_zip(z2, name)
+
+    # For tar files
+    elif filename.lower().endswith(".tar"):
+        with tarfile.TarFile(
+            os.path.join(path, filename), 'r'
+        ) as z:
+            for pub_id, name in entries:
+                z2 = z.extractfile(name)
+                yield pub_id, read_nested_zip(z2, name)
+
+
+def group_filenames(filelist):
+    """ Group entries in the form (id, filename, name) by filename. """
+    filename_groups = dict()
+    # Get groups of filenames
+    for pub_id, filename, name in filelist:
+        if filename not in filename_groups.keys():
+            filename_groups[filename] = list()
+        filename_groups[filename].append((pub_id, name))
+    return filename_groups
+
+
 class USPublications(BasePatentDataSource):
     """
     Creates a new corpus object that simplifies processing of
@@ -166,6 +224,27 @@ class USPublications(BasePatentDataSource):
         else:
             return False
 
+    def iter_read(self, filelist):
+        """ Read file data for a set of files
+        in filelist with (id, filename, name) entries. """
+
+        filename_groups = group_filenames(filelist)
+
+        # For each filename group
+        for filename in filename_groups.keys():
+            # Get set of second level files
+            entries = filename_groups[filename]
+            try:
+                for pub_id, filedata in filedata_generator(
+                                                    self.path,
+                                                    filename,
+                                                    entries
+                ):
+                    yield pub_id, filedata
+            except Exception:
+                logging.exception("Exception opening file:" + str(filename))
+                yield None
+
     # Function below takes about 1.5s to return each patent document
     # > 5 days to parse one year's collection
     def iter_xml(self):
@@ -285,11 +364,40 @@ class USPublications(BasePatentDataSource):
             [self.get_doc(i).to_patentdoc() for i in indexes]
             )"""
 
-    def get_classification(self, filename, name):
+    def get_classification(self, filedata):
         """ Return patent classifications as a list of 5 items."""
-        return XMLDoc(self.read_archive_file(filename, name)).classifications()
+        return XMLDoc(filedata).classifications()
 
-    def store_classifications(self, yearlist=None):
+    def store_classification(self, rowid, classification):
+        """ Store classification (['G', '06', 'K', '87', '00]) at
+        rowid in database. """
+        query_string = """
+                        UPDATE files
+                        SET
+                            section = ?,
+                            class = ?,
+                            subclass = ?,
+                            maingroup = ?,
+                            subgroup = ?
+                        WHERE
+                            ROWID = ?
+                        """
+        data = (
+                classification[0],
+                classification[1],
+                classification[2],
+                classification[3],
+                classification[4],
+                rowid
+                )
+        try:
+            self.c.execute(query_string, data)
+            self.conn.commit()
+            return True
+        except Exception:
+            return False
+
+    def process_classifications(self, yearlist=None):
         """ Iterate through publications and store classifications in DB.
 
         :param yearlist: list of years as integers,
@@ -313,41 +421,20 @@ class USPublications(BasePatentDataSource):
                 """
             records = self.c.execute(query_string, (year,)).fetchall()
             i = 0
-            for record in records:
-                rowid, filename, name = record
-                i += 1
-                #print(name)
-                try:
-                    classification = self.get_classification(filename, name)
-                    query_string = """
-                        UPDATE files
-                        SET
-                            section = ?,
-                            class = ?,
-                            subclass = ?,
-                            maingroup = ?,
-                            subgroup = ?
-                        WHERE
-                            ROWID = ?
-                        """
+            # filelist = [(f, n) for r, f, n in records]
+            filereader = self.iter_read(records)
 
-                    if classification:
-                        data = (
-                            classification[0][0],
-                            classification[0][1],
-                            classification[0][2],
-                            classification[0][3],
-                            classification[0][4],
-                            rowid
-                            )
-                        self.c.execute(query_string, data)
-                        self.conn.commit()
-                        #print(classification)
-                        if (i % 100) == 0:
-                            print(i, classification)
+            for rowid, filedata in filereader:
+                # print("RID:{0}; Len FD:{1}".format(rowid, len(filedata)))
+                # print(XMLDoc(filedata).title())
+                classifications = self.get_classification(filedata)
+                # print(rowid, classifications)
+                if len(classifications) > 0:
+                    # For speed up batch updates to DB in transactions
 
-                except Exception:
-                    logging.exception(
-                        "Exception storing classification for file:"
-                        + str(filename) + " " + str(name)
-                        )
+                    self.store_classification(rowid, classifications[0])
+
+                    i += 1
+
+                    if (i % 100) == 0:
+                        print(i, classifications[0])
