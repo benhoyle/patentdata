@@ -287,26 +287,26 @@ class USPublications(BasePatentDataSource):
         class_fields = [
             'section', 'class', 'subclass', 'maingroup', 'subgroup'
             ]
-        query_portion = "WHERE ("
+        query_portion = "WHERE"
 
-        for i in len(class_fields):
-            if i > len(classication):
+        for i in range(0, len(class_fields)):
+            if i >= len(classication):
                 break
             if not classification[i]:
                 break
             if i > 0:
-                query_portion += " AND"
+                query_portion += "AND"
             query_portion += " {0} = '{1}' ".format(
                 class_fields[i],
                 classification[i]
             )
-        query_portion += ")"
+        #query_portion += ")"
         # Then build final query string
         query_string = """
                         SELECT ROWID, filename, name
                         FROM files
                         {0}
-                        """
+                        """.format(query_portion)
         records = self.c.execute(query_string).fetchall()
         no_of_records = len(records)
         print("{0} records located.".format(no_of_records))
@@ -316,9 +316,7 @@ class USPublications(BasePatentDataSource):
                     records, sample_size
                 )
         # Iterate through records and return XMLDocs
-        for record in records:
-            rowid, filename, name = record
-            filedata = self.read_archive_file(filename, name)
+        for pub_id, filedata in iter_read(records):
             if filedata:
                 yield XMLDoc(filedata)
 
@@ -341,18 +339,6 @@ class USPublications(BasePatentDataSource):
                     ).to_patentdoc()
         except:
             return None
-
-    def store_matching_number(self, class_list, filename):
-        """ Function that stores the publication numbers of documents
-        that have a classification matching the classifications in
-        class_list """
-        # Get generator for file scan
-        gen_xml = self.iter_filter_xml(class_list)
-        for doc in gen_xml:
-            pub_details = doc.publication_details()
-            print(pub_details)
-            with open(os.path.join(self.path, filename + ".data"), "a") as f:
-                print(pub_details, end=",\n", file=f)
 
     def get_patentcorpus(self, indexes, number_of_docs):
         """ Get a random sample of documents having a total number_of_docs."""
