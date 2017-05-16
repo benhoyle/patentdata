@@ -397,6 +397,24 @@ class USPublications(BasePatentDataSource):
         except Exception:
             return False
 
+    def store_many(self, params):
+        """ Store classification (['G', '06', 'K', '87', '00]) at
+        rowid in database. """
+        query_string = """
+                        UPDATE files
+                        SET
+                            section = ?,
+                            class = ?,
+                            subclass = ?,
+                            maingroup = ?,
+                            subgroup = ?
+                        WHERE
+                            ROWID = ?
+                        """
+        self.c.executemany(query_string, params)
+        self.conn.commit()
+
+
     def process_classifications(self, yearlist=None):
         """ Iterate through publications and store classifications in DB.
 
@@ -423,7 +441,7 @@ class USPublications(BasePatentDataSource):
             i = 0
             # filelist = [(f, n) for r, f, n in records]
             filereader = self.iter_read(records)
-
+            params = []
             for rowid, filedata in filereader:
                 # print("RID:{0}; Len FD:{1}".format(rowid, len(filedata)))
                 # print(XMLDoc(filedata).title())
@@ -432,9 +450,13 @@ class USPublications(BasePatentDataSource):
                 if len(classifications) > 0:
                     # For speed up batch updates to DB in transactions
 
-                    self.store_classification(rowid, classifications[0])
-
+                    #self.store_classification(rowid, classifications[0])
+                    params.append(classifications[0] + [rowid])
                     i += 1
 
                     if (i % 100) == 0:
                         print(i, classifications[0])
+                        self.store_many(params)
+                        params = []
+            if params:
+                self.store_many(params)
