@@ -26,7 +26,7 @@ class PatentCorpus:
 
         """
         if not isinstance(document, PatentDoc):
-                raise ValueError("Input must be a list of PatentDoc objects")
+            raise ValueError("Input must be a list of PatentDoc objects")
         self.documents.append(document)
         return self
 

@@ -107,7 +107,7 @@ class USPublications(BasePatentDataSource):
             return
         # Set regular expression for valid patent publication files
         self.FILE_FORMAT_RE = re.compile(r".+US\d+[A,B].+-\d+\.\w+")
-        self.PUB_FORMAT = re.compile(r"(\w\w)(\d{4})(\d{7})")
+        self.PUB_FORMAT = re.compile(r"(\w\w)(\d{4})(\d{7})(\w\d)")
         # Get upper level zip/tar files in path
         self.first_level_files = utils.get_files(self.path, self.exten)
 
@@ -118,13 +118,22 @@ class USPublications(BasePatentDataSource):
             CREATE TABLE IF NOT EXISTS files
                 (
                     pub_no TEXT,
-                    year TEXT,
+                    countrycode TEXT,
+                    year NUMBER,
+                    number NUMBER,
+                    kindcode TEXT,
                     filename TEXT,
                     name TEXT,
+                    section TEXT,
+                    class TEXT,
+                    subclass TEXT,
+                    maingroup TEXT,
+                    subgroup TEXT,
                     UNIQUE (pub_no)
                 )
                 ''')
         self.conn.commit()
+
 
     def __del__(self):
         self.conn.close()
@@ -145,12 +154,24 @@ class USPublications(BasePatentDataSource):
                 for name in names:
                     match = self.PUB_FORMAT.search(name)
                     if match and name.lower().endswith(self.exten):
-                        data = (match.group(0), subdirectory, filename, name)
-                        self.c.execute(
-                            'INSERT OR IGNORE INTO files VALUES (?,?,?,?)',
+                        data = (
+                            match.group(0),
+                            match.group(1),
+                            int(match.group(2)),
+                            int(match.group(3)),
+                            match.group(4),
+                            filename,
+                            name
+                        )
+                        self.c.execute((
+                            'INSERT OR IGNORE INTO files'
+                            ' (pub_no, countrycode, year, number, '
+                            'kindcode, filename, name) '
+                            'VALUES (?,?,?,?,?,?,?)'),
                             data
                         )
                 self.conn.commit()
+
 
     def get_archive_names(self, filename):
         """ Return names of files within archive having filename. """
@@ -384,8 +405,11 @@ class USPublications(BasePatentDataSource):
             return False
 
     def store_many(self, params):
-        """ Store classification (['G', '06', 'K', '87', '00]) at
-        rowid in database. """
+        """ Store classification (['G', '06', 'K', '87', '00']) at
+        rowid in database.
+
+        params = ['G', '06', 'K', '87', '00', rowid]
+        """
         query_string = """
                         UPDATE files
                         SET
@@ -397,8 +421,13 @@ class USPublications(BasePatentDataSource):
                         WHERE
                             ROWID = ?
                         """
-        self.c.executemany(query_string, params)
-        self.conn.commit()
+        try:
+            self.c.executemany(query_string, params)
+            self.conn.commit()
+            return True
+        except:
+            print("Error saving classifications")
+            return False
 
 
     def process_classifications(self, yearlist=None):
@@ -410,9 +439,16 @@ class USPublications(BasePatentDataSource):
         """
         # Select distinct years in DB
         years = self.c.execute('SELECT DISTINCT year FROM files').fetchall()
+        if not years:
+            # If no years are returned run the archive list method
+            self.get_archive_list()
+            years = self.c.execute('SELECT DISTINCT year FROM files').fetchall()
+
         # If a yearlist is supplied use to filter years
         if yearlist:
             years = [y[0] for y in years if y[0] in yearlist]
+        else:
+            years = [y[0] for y in years]
 
         for year in years:
             print("Processing year: ", year)
