@@ -11,7 +11,7 @@ with open('LICENSE') as f:
 
 setup(
     name='patentdata',
-    version='0.0.1',
+    version='0.0.2',
     description='A bag of functions and datamodels for playing around with patent data.',
     long_description=readme,
     author='Ben Hoyle',

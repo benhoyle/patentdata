@@ -40,9 +40,9 @@ class PatentDoc:
         self, clean_non_words=True, clean_stopwords=True, stem_words=True
         ):
         """ Return tokens from description and claims. """
-        joined_bow = description.bag_of_words(
+        joined_bow = self.description.bag_of_words(
             clean_non_words, clean_stopwords, stem_words
-            ) + claimset.bag_of_words(
+            ) + self.claimset.bag_of_words(
             clean_non_words, clean_stopwords, stem_words
             )
         remove_duplicates = list(set(joined_bow))

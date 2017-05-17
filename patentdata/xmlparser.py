@@ -5,6 +5,11 @@ import logging
 
 from patentdata.utils import process_classification
 
+from patentdata.models import (
+                                Paragraph, Description, Claim,
+                                Claimset, PatentDoc
+                            )
+
 logging.basicConfig(
     filename="processing_class.log",
     format='%(asctime)s %(message)s'
@@ -137,7 +142,10 @@ class XMLDoc():
         """ Return IPC classification(s). """
         # Need to adapt - up to 2001 uses string under tag 'ipc'
         # Post 2009
-        class_list = [
+        class_list = list()
+        class_tags = self.soup.find_all("classifications-ipcr")
+        if class_tags:
+            class_list = [
                 [
                     each_class.find("section").text,
                     each_class.find("class").text,
@@ -145,8 +153,8 @@ class XMLDoc():
                     each_class.find("main-group").text,
                     each_class.find("subgroup").text
                 ]
-                for each_class in self.soup.find_all("classifications-ipcr")
-        ]
+                for each_class in class_tags
+            ]
 
         if class_list:
             return class_list
@@ -178,21 +186,21 @@ class XMLDoc():
 
     def to_patentdoc(self):
         """ Return a patent doc object. """
-        pass
-        """paragraphs = [m.Paragraph(**p) for p in self.paragraph_list()]
-        description = m.Description(paragraphs)
-        claims = [m.Claim(**c) for c in self.claim_list()]
-        claimset = m.Claimset(claims)
+
+        paragraphs = [Paragraph(**p) for p in self.paragraph_list()]
+        description = Description(paragraphs)
+        claims = [Claim(**c) for c in self.claim_list()]
+        claimset = Claimset(claims)
         number = self.publication_details()
         if number:
             number = number[0]
-        return m.PatentDoc(
+        return PatentDoc(
             description,
             claimset,
             title=self.title(),
             classifications=self.classifications(),
             number = number
-            )"""
+            )
 
 
 class XMLRegisterData():

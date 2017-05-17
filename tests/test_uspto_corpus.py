@@ -54,6 +54,15 @@ class TestGeneral(object):
         xmldoc = next(corpus.iter_xml())
         assert "support" in xmldoc.title()
 
+    def test_iter_filter(self):
+        """ Test generating iterators based on classifications. """
+        corpus = USPublications(self.testfilepath)
+        corpus.process_classifications()
+        filegenerator = corpus.iter_filter_xml(["A", None, "K"])
+        xmldoc = next(filegenerator)
+        assert "support" in xmldoc.title()
+
+
     #def test_class_match(self):
         #""" Test matching of classifications. """
         #class1 = corpus.m.Classification("G", "06", "F", "10", "22")

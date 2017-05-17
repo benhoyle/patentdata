@@ -4,7 +4,6 @@
 import os
 import logging
 import re
-import math
 import random
 
 from patentdata.corpus.baseclasses import BasePatentDataSource
@@ -20,8 +19,6 @@ from io import BytesIO
 import patentdata.utils as utils
 
 import sqlite3
-
-from datetime import datetime
 
 from patentdata.xmlparser import XMLDoc
 
@@ -43,10 +40,10 @@ def get_xml_path(name):
 def read_nested_zip(open_zip_file, nested_name):
     """ Opens a nested_name file from passed file data of
     open_zip_file. """
-    XML_path = get_xml_path(nested_name)
+    xml_path = get_xml_path(nested_name)
     try:
         with zipfile.ZipFile(open_zip_file, 'r') as nested_zip:
-            with nested_zip.open(XML_path, 'r') as xml_file:
+            with nested_zip.open(xml_path, 'r') as xml_file:
                 return xml_file.read()
     except Exception:
         logging.exception(
@@ -68,8 +65,15 @@ def filedata_generator(path, filename, entries):
         ) as z:
             for pub_id, name in entries:
                 with z.open(name, 'r') as nested_zip:
-                    z2 = BytesIO(nested_zip.read())
-                    yield pub_id, read_nested_zip(z2, name)
+                    try:
+                        z2 = BytesIO(nested_zip.read())
+                        yield pub_id, read_nested_zip(z2, name)
+                    except:
+                        logging.exception(
+                            "Exception opening file:" +
+                            str(name)
+                        )
+                        yield pub_id, None
 
     # For tar files
     elif filename.lower().endswith(".tar"):
@@ -77,8 +81,15 @@ def filedata_generator(path, filename, entries):
             os.path.join(path, filename), 'r'
         ) as z:
             for pub_id, name in entries:
-                z2 = z.extractfile(name)
-                yield pub_id, read_nested_zip(z2, name)
+                try:
+                    z2 = z.extractfile(name)
+                    yield pub_id, read_nested_zip(z2, name)
+                except:
+                        logging.exception(
+                            "Exception opening file:" +
+                            str(name)
+                        )
+                        yield pub_id, None
 
 
 def group_filenames(filelist):
@@ -97,7 +108,7 @@ class USPublications(BasePatentDataSource):
     Creates a new corpus object that simplifies processing of
     patent archive
     """
-    def __init__(self, path="/media/SAMSUNG/Patent_Downloads"):
+    def __init__(self, path):
 
         self.exten = (".zip", ".tar")
         self.path = path
@@ -110,7 +121,7 @@ class USPublications(BasePatentDataSource):
         self.PUB_FORMAT = re.compile(r"(\w\w)(\d{4})(\d{7})(\w\d)")
         # Get upper level zip/tar files in path
         self.first_level_files = utils.get_files(self.path, self.exten)
-
+        # Connect to DB to store file data
         self.conn = sqlite3.connect(os.path.join(self.path, 'fileindexes.db'))
         self.c = self.conn.cursor()
         # Create indexes table if it doesn't exist
@@ -133,7 +144,6 @@ class USPublications(BasePatentDataSource):
                 )
                 ''')
         self.conn.commit()
-
 
     def __del__(self):
         self.conn.close()
@@ -172,7 +182,6 @@ class USPublications(BasePatentDataSource):
                         )
                 self.conn.commit()
 
-
     def get_archive_names(self, filename):
         """ Return names of files within archive having filename. """
         try:
@@ -206,7 +215,7 @@ class USPublications(BasePatentDataSource):
         within name archive within filename archive. """
         # Get xml file path from name
         file_name_section = name.rsplit('/', 1)[1].split('.')[0]
-        XML_path = file_name_section + '/' + file_name_section + ".XML"
+        xml_path = file_name_section + '/' + file_name_section + ".XML"
 
         try:
             # For zip files
@@ -217,7 +226,7 @@ class USPublications(BasePatentDataSource):
                     with z.open(name, 'r') as z2:
                         z2_filedata = BytesIO(z2.read())
                         with zipfile.ZipFile(z2_filedata, 'r') as nested_zip:
-                            with nested_zip.open(XML_path, 'r') as xml_file:
+                            with nested_zip.open(xml_path, 'r') as xml_file:
                                 filedata = xml_file.read()
 
             # For tar files
@@ -227,10 +236,10 @@ class USPublications(BasePatentDataSource):
                 ) as z:
                     z2 = z.extractfile(name)
                     with zipfile.ZipFile(z2) as nested_zip:
-                        with nested_zip.open(XML_path) as xml_file:
+                        with nested_zip.open(xml_path) as xml_file:
                             filedata = xml_file.read()
         except:
-            logging.exception("Exception opening file:" + str(XML_path))
+            logging.exception("Exception opening file:" + str(xml_path))
             filedata = None
 
         return filedata
@@ -249,6 +258,9 @@ class USPublications(BasePatentDataSource):
         """ Read file data for a set of files
         in filelist with (id, filename, name) entries. """
 
+        if not filelist:
+            yield None, None
+
         filename_groups = group_filenames(filelist)
 
         # For each filename group
@@ -260,11 +272,10 @@ class USPublications(BasePatentDataSource):
                                                     self.path,
                                                     filename,
                                                     entries
-                ):
+                                                    ):
                     yield pub_id, filedata
-            except Exception:
+            except:
                 logging.exception("Exception opening file:" + str(filename))
-                yield None
 
     # Function below takes about 1.5s to return each patent document
     # > 5 days to parse one year's collection
@@ -277,25 +288,6 @@ class USPublications(BasePatentDataSource):
                     filedata = self.read_archive_file(filename, name)
                     if filedata:
                         yield XMLDoc(filedata)
-
-    def patentdoc_generator(self, publication_numbers=None, sample_size=None):
-        """ Generator to return Patent Doc objects. """
-        # If no list of publication is passed iterate through whole datasource
-        if not publication_numbers:
-            gen_xml = self.iter_xml()
-            # Add sample size restrictions here
-            for xmldoc in gen_xml:
-                yield xmldoc.to_patentdoc()
-        else:
-            if sample_size and len(publication_numbers) > sample_size:
-                # Randomly sample down to sample_size
-                publication_numbers = random.sample(
-                    publication_numbers, sample_size
-                )
-            for publication_number in publication_numbers:
-                result = self.get_patentdoc(publication_number)
-                if result:
-                    yield result
 
     def iter_filter_xml(self, classification, sample_size=None):
         """ Generator to return xml that matches has classification.
@@ -311,7 +303,7 @@ class USPublications(BasePatentDataSource):
         query_portion = "WHERE"
 
         for i in range(0, len(class_fields)):
-            if i >= len(classication):
+            if i >= len(classification):
                 break
             if not classification[i]:
                 break
@@ -321,7 +313,7 @@ class USPublications(BasePatentDataSource):
                 class_fields[i],
                 classification[i]
             )
-        #query_portion += ")"
+        # query_portion += ")"
         # Then build final query string
         query_string = """
                         SELECT ROWID, filename, name
@@ -336,8 +328,10 @@ class USPublications(BasePatentDataSource):
             records = random.sample(
                     records, sample_size
                 )
+            print("{0} records sampled.".format(len(records)))
+        filegenerator = self.iter_read(records)
         # Iterate through records and return XMLDocs
-        for pub_id, filedata in iter_read(records):
+        for _, filedata in filegenerator:
             if filedata:
                 yield XMLDoc(filedata)
 
@@ -349,17 +343,6 @@ class USPublications(BasePatentDataSource):
             (publication_number,)
         )
         return self.c.fetchone()
-
-    def get_patentdoc(self, publication_number):
-        """ Return a PatentDoc object for a given publication number."""
-        try:
-            filename, name = self.search_files(publication_number)
-            if filename and name:
-                return XMLDoc(
-                    self.read_archive_file(filename, name)
-                    ).to_patentdoc()
-        except:
-            return None
 
     def get_patentcorpus(self, indexes, number_of_docs):
         """ Get a random sample of documents having a total number_of_docs."""
@@ -374,35 +357,6 @@ class USPublications(BasePatentDataSource):
     def get_classification(self, filedata):
         """ Return patent classifications as a list of 5 items."""
         return XMLDoc(filedata).classifications()
-
-    def store_classification(self, rowid, classification):
-        """ Store classification (['G', '06', 'K', '87', '00]) at
-        rowid in database. """
-        query_string = """
-                        UPDATE files
-                        SET
-                            section = ?,
-                            class = ?,
-                            subclass = ?,
-                            maingroup = ?,
-                            subgroup = ?
-                        WHERE
-                            ROWID = ?
-                        """
-        data = (
-                classification[0],
-                classification[1],
-                classification[2],
-                classification[3],
-                classification[4],
-                rowid
-                )
-        try:
-            self.c.execute(query_string, data)
-            self.conn.commit()
-            return True
-        except Exception:
-            return False
 
     def store_many(self, params):
         """ Store classification (['G', '06', 'K', '87', '00']) at
@@ -429,7 +383,6 @@ class USPublications(BasePatentDataSource):
             print("Error saving classifications")
             return False
 
-
     def process_classifications(self, yearlist=None):
         """ Iterate through publications and store classifications in DB.
 
@@ -442,7 +395,9 @@ class USPublications(BasePatentDataSource):
         if not years:
             # If no years are returned run the archive list method
             self.get_archive_list()
-            years = self.c.execute('SELECT DISTINCT year FROM files').fetchall()
+            years = self.c.execute(
+                'SELECT DISTINCT year FROM files'
+                ).fetchall()
 
         # If a yearlist is supplied use to filter years
         if yearlist:
@@ -460,26 +415,93 @@ class USPublications(BasePatentDataSource):
                     section IS NULL
                 """
             records = self.c.execute(query_string, (year,)).fetchall()
-            i = 0
             # filelist = [(f, n) for r, f, n in records]
             filereader = self.iter_read(records)
             params = []
+            i = 0
             for rowid, filedata in filereader:
                 # print("RID:{0}; Len FD:{1}".format(rowid, len(filedata)))
                 # print(XMLDoc(filedata).title())
                 # print(XMLDoc(filedata).soup)
-                classifications = self.get_classification(filedata)
-                # print(rowid, classifications)
-                if len(classifications) > 0:
-                    # For speed up batch updates to DB in transactions
+                if filedata:
+                    classifications = self.get_classification(filedata)
 
-                    #self.store_classification(rowid, classifications[0])
-                    params.append(classifications[0] + [rowid])
-                    i += 1
+                    # print(rowid, classifications)
+                    if len(classifications) > 0:
+                        # For speed up batch updates to DB in transactions
+                        params.append(classifications[0] + [rowid])
 
-                    if (i % 100) == 0:
-                        print(i, classifications[0])
-                        self.store_many(params)
-                        params = []
+                        if (len(params) % 100) == 0:
+                            i += 100
+                            print(i, classifications[0])
+                            self.store_many(params)
+                            params = []
             if params:
                 self.store_many(params)
+
+    def get_patentdoc(self, publication_number):
+        """ Return a PatentDoc object for a given publication number."""
+        try:
+            filename, name = self.search_files(publication_number)
+            if filename and name:
+                return XMLDoc(
+                    self.read_archive_file(filename, name)
+                    ).to_patentdoc()
+        except:
+            return None
+
+    def patentdoc_generator(
+                            self, classification=None,
+                            publication_numbers=None, sample_size=None
+                            ):
+        """ Generator to return Patent Doc objects.
+
+        If classification is supplied results are limited to that
+        classification (of form ["G", "06"], length 1 to 5).
+
+        If publication_numbers is supplied as list, results are limited
+        to those publication numbers.
+
+        (classification and publication filtering is XOR)
+
+        If sample_size is provided returned documents are limited to
+        this integer.
+        """
+        # If parameters are passed iterate through whole datasource
+        if not classification and not publication_numbers:
+            if sample_size:
+                query_string = (
+                    "SELECT ROWID, filename, name FROM files"
+                    " WHERE ROWID IN"
+                    "(SELECT ROWID FROM files ORDER BY RANDOM() LIMIT ?)"
+                    )
+                records = self.c.execute(
+                    query_string, (sample_size,)).fetchall()
+                filereader = self.iter_read(records)
+                for _, filedata in filereader:
+                    if filedata:
+                        yield XMLDoc(filedata).to_patentdoc()
+
+        # If a list of publication numbers are supplied
+        if publication_numbers:
+            if sample_size and len(publication_numbers) > sample_size:
+                # Randomly sample down to sample_size
+                publication_numbers = random.sample(
+                    publication_numbers, sample_size
+                )
+            # Below is alternate method
+            """ query_string = ("SELECT ROWID, filename, name FROM files"
+                    " WHERE pub_no IN ({0})").format(
+                        ', '.join(['?'] * len(publication_numbers)
+                    )
+            records = self.c.execute(
+                    query_string, publication_numbers).fetchall()"""
+            for publication_number in publication_numbers:
+                result = self.get_patentdoc(publication_number)
+                if result:
+                    yield result
+        # If a classification is supplied
+        if classification:
+            filegenerator = self.iter_filter_xml(classification, sample_size)
+            for xmldoc in filegenerator:
+                yield xmldoc.to_patentdoc()
