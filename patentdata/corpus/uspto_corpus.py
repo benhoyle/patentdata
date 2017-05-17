@@ -431,6 +431,7 @@ class USPublications(BasePatentDataSource):
             for rowid, filedata in filereader:
                 # print("RID:{0}; Len FD:{1}".format(rowid, len(filedata)))
                 # print(XMLDoc(filedata).title())
+                # print(XMLDoc(filedata).soup)
                 classifications = self.get_classification(filedata)
                 # print(rowid, classifications)
                 if len(classifications) > 0:

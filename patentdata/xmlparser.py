@@ -147,8 +147,11 @@ class XMLDoc():
                 ]
                 for each_class in self.soup.find_all("classifications-ipcr")
         ]
+
+        if class_list:
+            return class_list
         # Pre 2009
-        if not class_list:
+        else:
             # Use function from patentdata on text of ipc tag
             try:
                 class_list = process_classification(

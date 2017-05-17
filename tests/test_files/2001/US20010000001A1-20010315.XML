@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE patent-application-publication SYSTEM "pap-v15-2001-01-31.dtd" []>
+<patent-application-publication>
+<subdoc-bibliographic-information>
+<document-id>
+<doc-number>20010000001</doc-number>
+<kind-code>A1</kind-code>
+<document-date>20010315</document-date></document-id>
+<publication-filing-type>new-utility</publication-filing-type>
+<domestic-filing-data>
+<application-number>
+<doc-number>09725796</doc-number>
+</application-number>
+<application-number-series-code>09</application-number-series-code>
+<filing-date>20001129</filing-date>
+</domestic-filing-data>
+<technical-information>
+<classification-ipc>
+<classification-ipc-primary>
+<ipc>B08B003/00</ipc>
+</classification-ipc-primary>
+<classification-ipc-edition>07</classification-ipc-edition>
+</classification-ipc>
+<classification-us>
+<classification-us-primary>
+<uspc>
+<class>134</class>
+<subclass>031000</subclass>
+</uspc>
+</classification-us-primary>
+</classification-us>
+<title-of-invention>Solvent mixture for use in a vapor degreaser and method of cleaning an article in a vapor degreaser utilizing said solvent</title-of-invention>
+</technical-information>
+<continuity-data>
+<continuations>
+<continuation-of>
+<parent-child>
+<child>
+<document-id>
+<doc-number>09725796</doc-number>
+<kind-code>A1</kind-code>
+<document-date>20001129</document-date>
+</document-id>
+</child>
+<parent>
+<document-id>
+<doc-number>09375495</doc-number>
+<document-date>19990817</document-date>
+<country-code>US</country-code>
+</document-id>
+</parent>
+<parent-status>PENDING</parent-status>
+</parent-child>
+</continuation-of>
+</continuations>
+<continuations>
+<continuation-of>
+<parent-child>
+<child>
+<document-id>
+<doc-number>09375495</doc-number>
+<document-date>19990817</document-date>
+<country-code>US</country-code>
+</document-id>
+</child>
+<parent>
+<document-id>
+<doc-number>08894495</doc-number>
+<document-date>19971110</document-date>
+<country-code>US</country-code>
+</document-id>
+</parent>
+<parent-status>GRANTED</parent-status>
+<parent-patent>
+<document-id>
+<doc-number>5938859</doc-number>
+<country-code>US</country-code>
+</document-id>
+</parent-patent>
+</parent-child>
+</continuation-of>
+</continuations>
+<a-371-of-international>
+<parent-child>
+<child>
+<document-id>
+<doc-number>08894495</doc-number>
+<document-date>19971110</document-date>
+<country-code>US</country-code>
+</document-id>
+</child>
+<parent>
+<document-id>
+<doc-number>PCT/US97/05183</doc-number>
+<document-date>19970328</document-date>
+<country-code>US</country-code>
+</document-id>
+</parent>
+<parent-status>UNKNOWN</parent-status>
+</parent-child>
+</a-371-of-international>
+<continuations>
+<continuation-in-part-of>
+<parent-child>
+<child>
+<document-id>
+<doc-number>PCT/US97/05183</doc-number>
+<document-date>19970328</document-date>
+<country-code>US</country-code>
+</document-id>
+</child>
+<parent>
+<document-id>
+<doc-number>08580840</doc-number>
+<document-date>19951229</document-date>
+<country-code>US</country-code>
+</document-id>
+</parent>
+<parent-status>GRANTED</parent-status>
+<parent-patent>
+<document-id>
+<doc-number>5616549</doc-number>
+<country-code>US</country-code>
+</document-id>
+</parent-patent>
+</parent-child>
+</continuation-in-part-of>
+</continuations>
+</continuity-data>
+<inventors>
+<first-named-inventor>
+<name>
+<given-name>Lawrence</given-name>
+<middle-name>A.</middle-name>
+<family-name>Clark</family-name>
+</name>
+<residence>
+<residence-us>
+<city>Alameda</city>
+<state>CA</state>
+<country-code>US</country-code>
+</residence-us>
+</residence>
+<authority-applicant>INV</authority-applicant>
+</first-named-inventor>
+<inventor>
+<name>
+<given-name>James</given-name>
+<middle-name>L.</middle-name>
+<family-name>Priest</family-name>
+</name>
+<residence>
+<residence-us>
+<city>Chicago</city>
+<state>IL</state>
+<country-code>US</country-code>
+</residence-us>
+</residence>
+<authority-applicant>INV</authority-applicant>
+</inventor>
+</inventors>
+<correspondence-address>
+<name-1>MARSHALL, O&apos;TOOLE, GERSTEIN, MURRAY &amp; BORUN</name-1>
+<name-2></name-2>
+<address>
+<address-1>6300 SEARS TOWER</address-1>
+<address-2>233 SOUTH WACKER DRIVE</address-2>
+<city>CHICAGO</city>
+<state>IL</state>
+<postalcode>60606-6402</postalcode>
+<country>
+<country-code>US</country-code>
+</country>
+</address>
+</correspondence-address>
+</subdoc-bibliographic-information>
+<subdoc-abstract>
+<paragraph id="A-00001" lvl="0">The invention provides a solvent mixture comprising n-propyl bromide, a mixture of low boiling solvents and, preferably, a defluxing and/or ionics removing additive and/or at least one saturated terpene. The invention also provides a method of cleaning an article (e.g., an electrical, plastic, or metal part) in a vapor degreaser using the solvent mixture. The solvent mixture of the invention is non-flammable, non-corrosive, and non-hazardous. In addition, it has a high solvency and a very low ozone depletion potential. Thus, using the solvent mixture of the invention, oil, grease, rosin flux, and other organic material can be readily removed from the article of interest in an environmentally safe manner. </paragraph>
+</subdoc-abstract>
+<subdoc-description>
+<cross-reference-to-related-applications>
+<heading lvl="1">CROSS-REFERENCE TO RELATED APPLICATION </heading>
+<paragraph id="P-00001" lvl="0"><number>1.</number> This is a continuation-in-part of U.S. patent application Ser. No. 08/580,840 filed Dec. 29, 1995, now U.S. Pat. No. 5,616,549 issued Apr. 1, 1997. </paragraph>
+</cross-reference-to-related-applications>
+<summary-of-invention>
+<section>
+<heading lvl="1">FIELD OF THE INVENTION </heading>
+<paragraph id="P-00002" lvl="0"><number>2.</number> The invention relates generally to molecular level cleaning of parts by vapor degreasing. More particularly, the invention relates to a solvent mixture comprising n-propyl bromide, a mixture of low boiling solvents and, preferably, a defluxing and/or ionics removing agent and/or at least one saturated terpene, as well as to a method of cleaning an article in a vapor degreaser using the solvent mixture. The solvent mixture of the invention is non-flammable, non-corrosive, non-hazardous, and has a low ozone depletion potential. </paragraph>
+</section>
+<section>
+<heading lvl="1">BACKGROUND OF THE INVENTION </heading>
+<paragraph id="P-00003" lvl="0"><number>3.</number> Molecular level cleaning by vapor degreasing has found wide acceptance in industry. In fact, molecular level cleaning by vapor degreasing is a preferred method of cleaning precision parts, such as electronics, machined metallic parts, etc., since vapor cleaning leaves virtually no residue on the parts. Generally, vapor degreasing involves the heating of a solvent to its boiling point to generate a vapor layer into which the object to be cleaned is placed. The vapor condenses on the object and subjects the surface to a solvent-flushing action as it flows downward. The solvent-flushing action dissolves the hydrocarbon contaminants and removes them from the object, thereby cleaning it. The liquid drops are then collected in a reservoir and are revaporized, typically through the use of steam-heating coils. Thus, the surface of the object is continually rinsed with fresh solvent. </paragraph>
+<paragraph id="P-00004" lvl="0"><number>4.</number> There are four general types of vapor phase degreasers. The simplest form of a vapor phase degreaser is the straight vapor cycle degreaser which utilizes only the vapor for cleaning. As the parts are lowered into the hot vapor, the vapor condenses on the cold parts and dissolves the surface oils and greases. The oily condensate drops back into the liquid solvent at the base of the tank. The solvent is evaporated continuously to form a vapor blanket. Since the oils are not vaporized, they remain in the bottom of the tank in the form of a sludge. The scrubbing action of the condensing vapor continues until the temperature of the part reaches the temperature of the vapor whereupon condensation ceases, the part appears dry, and it is removed from the degreaser. The time required to reach this point depends on the particular solvent employed, the temperature of the vapor, the weight of the part, its specific heat and the type of contamination material to be removed. This particular vapor phase degreaser does an excellent job of drying parts after aqueous cleaning and before plating and, thus, it is frequently used for this purpose in the jewelry industry. Unfortunately, however, it is not as effective on small, light weight parts because such parts frequently reach the temperature of the vapor before the condensing action has fully cleaned the parts. </paragraph>
+<paragraph id="P-00005" lvl="0"><number>5.</number> A second type of vapor phase degreaser, i.e., the vapor-spray cycle degreaser, is frequently used to solve the problems associated with the straight vapor cycle degreaser. In this vapor-spray cycle degreaser, the part to be cleansed is first placed in the vapor zone as is done in the straight vapor cycle degreaser. A portion of the vapor is condensed by cooling coils and fills a liquid solvent reservoir. This warm liquid solvent is pumped to a spray nozzle that can be used to direct the solvent on the part, washing off surface oils and cooling the part, thereby cleaning by vapor condensation. </paragraph>
+<paragraph id="P-00006" lvl="0"><number>6.</number> The third type of vapor phase degreaser is a liquid-vapor cycle degreaser which has one compartment with warm solvent and another compartment with a vapor zone. This degreaser is particularly useful for heavily soiled parts or for cleaning a basket of small parts that nest together. The fourth type of vapor phase degreaser is the ultrasonic degreaser. Such degreasers are useful for cleaning critical parts. An ultrasonic degreaser has a transducer mounted at the base of the tank which operates in the range of 20 kHz to 40 kHz. The transducer alternately compresses and expands the solvent forming small bubbles which, in turn, cavitate or collapse on the surface of the part. This cavitation phenomenon disrupts the adhering soils, thereby cleaning the part. </paragraph>
+<paragraph id="P-00007" lvl="0"><number>7.</number> Conventional solvents used with the foregoing vapor phase degreasers include trichloroethylene, perchloroethylene, methyl chloroform, methylene chloride, CFC 113, dibromomethane, bromochloromethane, trichlorotrifluoroethane and various hydrochlorofluorocarbons, such as &ldquo;Genesolve&rdquo; (manufactured by Allied Chemical). Vapor degreasing techniques employing the foregoing solvents or equivalents thereof are taught in U.S. Pat. No. 3,881,949 which issued on May 6, 1975 to Carl Martin Brock. Unfortunately, however, such solvents are typically on the Clean Air Act list of high ozone depleting chemicals and, thus, they are being phased out of production and/or banned from use in the United States. Thus, there exists a need for a solvent which can be used in place of these banned ozone depleting chemicals in vapor phase degreasers. </paragraph>
+<paragraph id="P-00008" lvl="0"><number>8.</number> U.S. Pat. No. 4,056,403, which issued to Robert J. Cramer, et al. on Nov. 1, 1977, describes a method in which a number of non-regulated ozone depleting chemicals, including n-propyl bromide, are used in cleaning polyurethane foam generating equipment. Cramer, et al. teach a method wherein a solvent composition described therein is used for cleaning a polyurethane foam generating apparatus or a segment thereof. The solvents taught may be periodically injected under pressure through the mixer portion of the foaming apparatus in order to purge it of residual unreacted or partially foam forming materials. Unfortunately, the method described in this patent would be totally ineffective because its composition does not include the appropriate stabilizers necessary to prevent the n-propyl bromide from becoming acid and thereby attacking the metal surfaces which might be placed into the vapor layer. </paragraph>
+<paragraph id="P-00009" lvl="0"><number>9.</number> The use of hot saturated vapors of a liquid halogenated hydrocarbon, including bromochloromethane, is taught in U.S. Pat. No. 4,193,838 which issued to Robert J. Kelly, et al. on Mar. 18, 1990. More particularly, this patent teaches the generation of a pool of hot saturated vapors of a halogenated acyclic hydrocarbon. Pieces of paper stock which have been coated with &ldquo;hot melt&rdquo; coatings, such as are used on consumer items and milk cartons, etc., are then placed in the vapor pool and, thereafter, they are agitated. Again, it is noted that this method would be ineffective at cleaning flux and other articles because of the acidic nature of the non-stabilized compound utilized therein which would tend to destroy the object rather than just clean it. </paragraph>
+<paragraph id="P-00010" lvl="0"><number>10.</number> U.S. Pat. No. 5,403,507, which issued to Richard G. Henry on Apr. 4, 1995, discloses a solvent mixture for use in vapor cleaning degreasing. Dibromomethane is used as the principal component. The dibromomethane is mixed with other solvents which are intended to stabilize the dibromomethane and to prevent the solvent mixture from becoming acidic on the release of bromine into the atmosphere. Although the solvent mixture disclosed therein is more stable than either of the solvent mixtures taught in U.S. Pat. Nos. 4,056,403 and 4,193,838, there are still a number of disadvantages associated with the use of dibromomethane which make it unsuitable for use as a solvent in vapor phase degreasers. In fact, the Clean Air Act now lists dibromomethane as an ozone depleting chemical which is banned from use in vapor degreasers or any other cleaning process which results in atmospheric release. </paragraph>
+<paragraph id="P-00011" lvl="0"><number>11.</number> In view of the foregoing, it is readily apparent that there remains a need in the art for a solvent mixture which is suitable for molecular level cleaning of parts without the use of any of the high ozone depleting chemicals that are identified as Class I or Class II materials in the U.S. Federal Register, Vol. 58, No. 236, Friday, Dec. 10, 1993, Rules and bromochloromethane as a potential ozone depleter and possible banning in the U.S. Federal Register 40 CFR Part 82, Vol. 60, No. 145, Pages 38729-38734, Jul. 28, 1995. </paragraph>
+</section>
+<section>
+<heading lvl="1">SUMMARY OF THE INVENTION </heading>
+<paragraph id="P-00012" lvl="0"><number>12.</number> It is an object of the invention to overcome at least one of the problems described above. </paragraph>
+<paragraph id="P-00013" lvl="0"><number>13.</number> Accordingly, the invention provides a solvent mixture which can be used in vapor phase degreasers in place of traditional solvents. </paragraph>
+<paragraph id="P-00014" lvl="0"><number>14.</number> More particularly, the invention provides a solvent mixture for use in a vapor degreasing system, the solvent mixture comprising effective amounts of n-propyl bromide and at least one low boiling solvent or mixture thereof and, preferably, a defluxing and/or ionics removing additive and/or at least one saturated terpene. </paragraph>
+<paragraph id="P-00015" lvl="0"><number>15.</number> In another aspect, the invention provides a method for cleaning an article in a vapor degreaser, the method comprising: (a) providing a vapor degreaser system; (b) adding to the solvent reservoir of the vapor degreaser system the inventive solvent mixture; (c) boiling the solvent mixture to form a vapor layer; (d) introducing into the vapor layer an article to be cleaned; and, (e) removing the article from the vapor layer. </paragraph>
+<paragraph id="P-00016" lvl="0"><number>16.</number> In this method, the vapor layer condenses on the article, thereby subjecting the surface of the article to a solvent-flushing action as it flows downward. The solvent-flushing action dissolves the hydrocarbon contaminants and removes them from the object, thereby cleaning it. As such, using the method of the present invention, oil, grease, rosin flux and other organic material can be readily removed from the article of interest. </paragraph>
+<paragraph id="P-00017" lvl="0"><number>17.</number> Other features, objects, and advantages of the invention and its preferred embodiments will become apparent from a review of the detailed description which follows. </paragraph>
+</section>
+<section>
+<heading lvl="1">DETAILED DESCRIPTION OF THE INVENTION AND PREFERRED EMBODIMENTS </heading>
+<paragraph id="P-00018" lvl="0"><number>18.</number> The solvent mixture of the invention is non-flammable, non-corrosive, and non-hazardous. Moreover, it has a high solvency and a low ozone depletion potential typically between 0.001 and 0.04 and a global warming potential typically between 0.0001 and 0.0003. As such, the solvent mixture of the present invention can effectively be used to remove oil, grease, rosin, flux, and other organic contaminants from the surfaces of numerous articles, e.g., electrical, plastic and metallic parts. </paragraph>
+<paragraph id="P-00019" lvl="0"><number>19.</number> Preferably, the invention provides a solvent mixture for use in a vapor degreasing system, the solvent mixture comprising: (a) about 85 wt. % to less than about 96.5 wt. % n-propyl bromide; (b) 0 wt. % to about 6.5 wt. % of one or a mixture of saturated terpenes, the terpene mixture preferably comprising about 35 wt. % to about 50 wt. % cis-pinane and about 35 wt. % to about 50 wt. % trans-pinane; (c) an effective amount, preferably about 3.5 wt. % to about 5 wt. % of a mixture of low boiling solvents, the low boiling solvent mixture preferably comprising about 0.5 wt. % to about 1 wt. % nitromethane, about 0.5 wt. % to about 1 wt. % 1,2-butylene oxide, and about 2.5 wt. % to about 3 wt. % 1,3-dioxolane; and, (d) 0 wt. % up to about 5 wt. % of at least one defluxing and/or ionics removing additive selected from the group consisting of sec-butanol, ethanol, and methanol. </paragraph>
+<paragraph id="P-00020" lvl="0"><number>20.</number> In a presently preferred embodiment, the terpene mixture of cis-pinane and trans-pinane includes terpenes. Suitable terpenes include, but are not limited to, one or more of the following: endo-isocamphene, &agr;-pinene, cis-para-menthane and trans-para-menthane. In another preferred embodiment, the terpene mixture further includes endo-isocamphene, &agr;-pinene, cis-para-menthane and trans-para-menthane. If present, these terpenes can, individually, make up to 100% of the terpene content of the solvent mixture and, preferably, about 0.01 wt. % to about 6.5 wt. % of the solvent mixture, and highly preferably about 0.05 wt. % to about 5 wt. % of the solvent mixture. </paragraph>
+<paragraph id="P-00021" lvl="0"><number>21.</number> One of functions of the low boiling solvent or low boiling solvent mixture is to neutralize any free acid that might result from oxidation of the mixture in the presence of air, from hydrolysis of the mixture in the presence of water, and from pyrolysis of the mixture under the influence of high temperatures. Moreover, the low boiling solvent or solvent mixture serves to prevent pitting or corrosion of metal articles which are placed in the vapor layer. </paragraph>
+<paragraph id="P-00022" lvl="0"><number>22.</number> It has been discovered that the solvent mixture of the invention meets the desired characteristics for the proper cleaning of electrical parts, metals, plastics, elastomers, circuit boards, etc. More particularly, the solvent mixture of the invention has the following characteristics: (1) it is properly stabilized against any free acid that might result from oxidation of the mixture in the presence of air, from hydrolysis of the mixture in the presence of water, and from pyrolysis of the mixture under the influence of high temperatures; (2) it is non-flammable and non-corrosive; (3) the various components of the solvent mixture are not regulated by the U.S. Clean Air Act; and (4) none of the various components of the solvent mixture are known cancer causing agents (i.e., the various components are not listed by N.T.I., I.A.R.C. and California Proposition 65, nor are they regulated by OSHA). Moreover, the solvent mixture of the invention has a high solvency with a kauri-butanol value above 120 and, more preferably, above 125. In addition, the solvent mixture of the invention has an evaporation rate of at less 0.96 where that of 1,1,1-trichloroethane&equals;1. Upon evaporation, the solvent mixture of the invention leaves a non-volatile residue (NVR) of less than 2.5 mg (or less than about 500 ppm) and, more preferably, no residue. Further, the solvent mixture of the invention has a latent heat of vaporization of about 58.8 cal/g which, in turn, facilitates condensation of the solvent mixture on the chiller side of a standard vapor degreasing system. </paragraph>
+<paragraph id="P-00023" lvl="0"><number>23.</number> In addition, the use of n-propyl bromide in the solvent mixture of the invention has significant advantages over the use of dibromomethane and bromochloromethane. In contrast to n-propyl bromide, dibromomethane is listed by the Clean Air Act as an ozone depleting chemical which is banned from use in vapor degreasing or other cleaning processes involving atmospheric release and bromochloromethane which is suspect of having a ODP of greater&gt;0.1 where the ODP of the banned 1,1,1-trichloroethane&equals;0.1 and bromochloromethane will not obtain SNAP approval and may be banned. Moreover, in contrast to n-propyl bromide which has an atmospheric life of about 7 to 14 days and an ODP of 0.001-0.04, dibromomethane has an atmospheric life of about three years and bromochloromethane of three to four months and a ODP of 0.08-1.2. Dibromomethane is more toxic than n-propyl bromide and, in contrast to n-propyl bromide, dibromomethane undergoes bioaccumulation (e.g., in fish and aquatic life). In addition, while both dibromomethane and n-propyl bromide react with strong bases, strong oxidizing agents, aluminum, calcium, zinc, magnesium, alloys, etc., the compounds formed with dibromomethane are typically shock sensitive and, thus, potentially explosive, whereas those formed with n-propyl bromide are not. Further, the chemical and physical properties of the n-propyl bromide-based solvent mixtures of the invention make them more energy efficient than the bromochloromethane or dibromomethane solvent mixture of the prior art or the banned solvents 1,1,1- trichloroethylene, trichloroethylene, or methylene chloride. As a result of its boiling point, specific heat and latent heat of vaporization, the n-propyl bromide-based solvent mixtures of the invention require about the same or less energy to cause the mixture to boil and create a denser vapor zone for cleaning. </paragraph>
+<paragraph id="P-00024" lvl="0"><number>24.</number> The sec-butanol, ethanol, and/or methanol present in the solvent mixture function(s) as an aid in defluxing and/or in removing ionic species in vapor degreasing and cold batch cleaning operations. </paragraph>
+<paragraph id="P-00025" lvl="0"><number>25.</number> The presence of sec-butanol enhances flux removal for type R, type RMA, type RA, and synthetic fluxes. Sec-butanol also enhances cleaning of polar and non-polar soils including hand oils, solder oils, greases, silicones, and similar soils. </paragraph>
+<paragraph id="P-00026" lvl="0"><number>26.</number> Methanol is effective in enhancing removal of type A and type RMA fluxes. Ethanol, when present, forms an azeotropic mixture with n-propyl bromide, and is especially useful in defluxing soldered metal parts. </paragraph>
+<paragraph id="P-00027" lvl="0"><number>27.</number> The defluxing and/or ionics removing agent or mixture of agents is typically used in an effective amount of up to about 5 wt. %, preferably 3 wt. % or less, and highly preferably about 1 wt. %, based on the total solvent composition. </paragraph>
+<paragraph id="P-00028" lvl="0"><number>28.</number> As a result of the foregoing properties, the solvent mixture of the invention can be advantageously used in vapor phase degreasers in place of traditional solvents including, for example, trichloroethylene, perchloroethylene, methyl chloroform, methylene chloride, trichlorotrifluoroethane, dibromomethane, CFC-113, etc. Moreover, the solvent mixture of the invention can be effectively used in the four major types of vapor phase degreasers, i.e., the straight vapor cycle degreaser, the vapor-spray cycle degreaser, and the liquid-vapor degreaser and the ultrasonic degreaser. In addition, emissions from a vapor phase degreaser operated with the solvent mixture of the invention are so low that local exhaust ventilation is not required, although in some instances, such a system may still be desirable. </paragraph>
+<paragraph id="P-00029" lvl="0"><number>29.</number> The solvent composition of the invention is simply prepared by combining and mixing together the n-propyl bromide, the terpene mixture (if present), the low boiling solvent mixture, and the defluxing and/or ionics removing agent (if present) in the desired or specified proportions. The solvent mixture is then ready to use as the solvent in a vapor phase degreaser system. n-propyl bromide (C<highlight><subscript>3</subscript></highlight>H<highlight><subscript>7</subscript></highlight>Br, i.e., CH<highlight><subscript>3</subscript></highlight>CH<highlight><subscript>2</subscript></highlight>CH<highlight><subscript>2</subscript></highlight>Br) is commercially available from Dead Sea Bromine LTD Israel. The terpenes used to make up the terpene mixture are commercially available from SCM Glidco Jacksonville Fla. Nitromethane (CH<highlight><subscript>3</subscript></highlight>NO<highlight><subscript>2</subscript></highlight>), 1,3-dioxolane, and 1,2-butylene oxide (also known as 1,2-epoxybutane) are commercially available from Aldrich Chemical Co. (Milwaukee, Wis.). Sec-butanol is also available from Aldrich Chemical Co. In addition to purchasing the foregoing compounds from commercial sources, it will be apparent to those of skill in the art that such compounds can be readily synthesized using known synthetic procedures. For instance, n-propyl bromide can be prepared, for example, when alcohols react with either inorganic acid halides or with hydrogen halides. (see, e.g., Carl R. Noller, <highlight><italic>Textbook of Organic Chemistry. </italic></highlight>Ch 6:81 (1956), the teachings of which are incorporated herein by reference for all purposes). </paragraph>
+<paragraph id="P-00030" lvl="0"><number>30.</number> In another aspect, the invention provides a method of cleaning articles in a vapor degreaser using the solvent mixture of the invention. In this method, the solvent mixture of the invention is added to a vapor degreaser, such as Baron-Blakeslee or Branson models. The thermostat on the vapor degreaser is typically set to a temperature of about 156&deg; F. to about 160&deg; F. (Ultrasonic degreasers can operate effectively at temperatures as low as 70&deg; F.) In this temperature range, the n-propyl bromide present in the solvent mixture will boil. When the solvent mixture reaches a temperature of about 156&deg; F. to about 160&deg; F., a vapor layer will appear above the solvent as a mist. This vapor mist constitutes the principal feature of cleaning by the vapor method. When the vapor mist appears, the object to be cleaned is placed into the vapor layer. The vapor condenses on the object and subjects the surface of the object to a solvent-flushing action as it flows downward. The solvent-flushing action dissolves the hydrocarbon contaminants and removes them from the object, thereby cleaning it. The liquid drops are then collected in a reservoir and are revaporized, typically through the use of steam-heating coils. Thus, the surface of the object is continually rinsed with fresh solvent. As such, using the method of the invention, oil, grease, rosin flux and other organic material can be readily removed from the object of interest. Moreover, the vapors from the solvent will not contain any of the removed contaminants and, thus, the vapors can be used to clean additional objects. </paragraph>
+</section>
+</summary-of-invention>
+<detailed-description>
+<paragraph id="P-00031" lvl="0"><number>31.</number> The invention will be described in greater detail by way of specific examples. The following examples are offered for illustrative purposes, and are intended neither to limit or define the invention in any manner. </paragraph>
+<section>
+<heading lvl="1">EXAMPLE I </heading>
+<paragraph id="P-00032" lvl="0"><number>32.</number> A solvent mixture in accordance with the invention was blended and added together to a standard vapor degreaser, the solvent mixture comprising: (I) about 90.0 wt. % n-propyl bromide; (ii) about 6 wt. % of a mixture of saturated terpenes, the terpene mixture comprising about 45 wt. % cis-pinane, about 45 wt. % trans-pinane, about 2 wt. % endo-isocamphene, about 2 wt. % &agr;-pinene, about 2 wt. % cis-para-menthane and about 2 wt. % trans-para-menthane; and (iii) about 4 wt. % of a mixture of low boiling solvents, the low boiling solvent mixture comprising about 0.5 wt. % nitromethane, about 0.5 wt. % 1,2-butylene oxide and about 3 wt. % 1,3-dioxolane. The thermostat on the vapor degreaser was adjusted to a temperature of about 160&deg; F., and the system was allowed to equilibrate. After the mixture inside the solvent reservoir reached a temperature of about 160&deg; F., the mixture began to boil. Upon inspection, a vapor layer several inches thick was observed inside the vapor degreaser unit. Enough vapor was being evolved to condense and be circulated from the chilled side of the vapor degreaser to the boiling side of the vapor degreaser. </paragraph>
+</section>
+<section>
+<heading lvl="1">EXAMPLE II </heading>
+<paragraph id="P-00033" lvl="0"><number>33.</number> Fifteen gallons of the solvent mixture described in Example I were added to a vapor phase degreaser. The thermostat on the vapor degreaser was adjusted to a temperature of about 160&deg; F., and the system was allowed to equilibrate. After the mixture inside the solvent reservoir reached a temperature of about 160&deg; F., the mixture began to boil. A basket of steel parts covered with lithium-based grease was placed in the vapor layer. After a period of about 30 seconds, the basket of steel parts was removed from the vapor layer. All of the lithium-based grease had been removed and the steel parts were completely clean. Using a similar procedure as that just described, pieces of sheet metal containing light mineral oils, silicone oils, lithium greases, and other types of industrial release fluids were placed in the vapor layer to be cleaned. After a period of about a minute, the pieces of sheet metal were removed from the vapor layer. All of the contaminants, i.e., the light mineral oils, silicone oils, lithium greases, and other types of industrial release fluids, had been removed. </paragraph>
+</section>
+<section>
+<heading lvl="1">EXAMPLE III </heading>
+<paragraph id="P-00034" lvl="0"><number>34.</number> Fifteen gallons of the solvent mixture described in Example I were added to a ultrasonic degreaser, which will operate effectively with the inventive solvent mixture at temperatures in the range of 70&deg; F. to about 160&deg; F. The ultrasonic degreaser had a transducer mounted at the base of the tank which operates in the range of 20 kHZ to 40 kHz. The thermostat on the ultrasonic degreaser was adjusted to a temperature of about 160&deg; F., and the system was allowed to equilibrate. The ultrasonic degreaser also employed water chilled coils to control the solvent vapors and to eliminate the need for a local exhaust ventilation system. Several steel parts coated with lithium grease were immersed in the solvent for about one minute. The transducer alternately compressed and expanded the solvent thereby forming small bubbles which, in turn, cavitated at the surface of the lithium grease coated steel parts. The cavitation phenomenon disrupted the adhering soils and cleaned the parts. Using a similar procedure as that just described, pieces of sheet metal containing light mineral oils, silicone oils, lithium greases, and other types of industrial release fluids were immersed in the ultrasonic degreaser. After a period of about a minute, the pieces of sheet metal were removed from the vapor layer. All of the contaminants, i.e., the light mineral oils, silicone oils, lithium greases, and other types of industrial release fluids, had been removed. </paragraph>
+</section>
+<section>
+<heading lvl="1">EXAMPLE IV </heading>
+<paragraph id="P-00035" lvl="0"><number>35.</number> Five gallons of the solvent mixture described in Example I were added to an emulsion soak tank. A steel part coated with lithium grease was immersed for one minute into an emulsion soak tank containing the solvent mixture at room temperature. While some cleaning occurred, the resulting cleaning was not at the molecular level. Similarly, five gallons of the solvent mixture described in Example I were added to a heated power washer emulsion degreaser. The thermostat on this degreaser was adjusted to 156&deg; F., just below the boiling point of n-propyl bromide, and the system was allowed to equilibrate. Thereafter, the solvent mixture was sprayed on steel parts which were coated with lithium grease. Upon inspection, it was observed that the resulting cleaning was at the molecular level. </paragraph>
+</section>
+<section>
+<heading lvl="1">EXAMPLE V </heading>
+<paragraph id="P-00036" lvl="0"><number>36.</number> Standard corrosion tests, similar to those performed by Dow Chemical Company, were performed using the solvent mixture of the invention, as oxidation is a potential problem with all solvent cleaners. In addition, methodology similar to that used by Dow Chemical Company was used to show equilivences to existing Clean Air Act banned solvents. In performing these test, strips of copper and steel measuring 1&Prime; wide by 6&Prime; long and of 20 mil thickness were buffed on a belt sander to remove any oxide films. Fifty milliliters of the solvent mixture described in Example I were placed in a cylindrical Pyrex glass container and strips were placed in so that 75% of the surface was immersed in the solvent. A sample container filled with tap water was used as a control for the test to insure that there were no alloys present in the metal strips which would have been prevented oxidation. The openings of the sample containers were all sealed with cork stoppers to reduce evaporation. After an eight hour incubation period and a 24 hour incubations period, the strips were removed and it was determined that the solvent mixture of the present invention was non-corrosive. </paragraph>
+<paragraph id="P-00037" lvl="0"><number>37.</number> It is to be understood that the above description is intended to be illustrative and not restrictive. Many embodiments may be apparent to those of skill in the art upon reading the above description. The scope of the invention should, therefore, be determined not with reference to the foregoing description, but should instead be determined with reference to the appended claims, along with the full scope of equivalents to which such claims are entitled. The disclosures of all articles and references, including patent applications and publications, are incorporated herein by reference for all purposes. </paragraph>
+</section>
+</detailed-description>
+</subdoc-description>
+<subdoc-claims>
+<heading lvl="1">What is claimed is: </heading>
+<claim id="CLM-00001">
+<claim-text><highlight><bold>1</bold></highlight>. A solvent mixture for use in a vapor degreasing system, said solvent mixture comprising: 
+<claim-text>(a) about 85 wt. % to less than about 96.5 wt. % n-propyl bromide; </claim-text>
+<claim-text>(b) about 3.5 wt. % to less than about 15 wt. % of a mixture of low boiling solvents, said solvent mixture comprising about 0.5 wt. % to about 1 wt. % nitromethane, about 0.5 wt. % to about 1 wt. % 1,2-butylene oxide, and about 2.5 wt. % to about 3 wt. % 1,3-dioxolane; and </claim-text>
+<claim-text>(c) an effective amount of up to about 5 wt. % of at least one additive selected from the group consisting of sec-butanol, ethanol, and methanol. </claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00002">
+<claim-text><highlight><bold>2</bold></highlight>. The solvent mixture of <dependent-claim-reference depends_on="CLM-00001"><claim-text>claim 1</claim-text></dependent-claim-reference> further comprising an effective amount of at least one saturated terpene. </claim-text>
+</claim>
+<claim id="CLM-00003">
+<claim-text><highlight><bold>3</bold></highlight>. The solvent mixture of <dependent-claim-reference depends_on="CLM-00002"><claim-text>claim 2</claim-text></dependent-claim-reference> comprising up to about 6.5 wt. % of a terpene mixture of cis-pinane and trans-pinane. </claim-text>
+</claim>
+<claim id="CLM-00004">
+<claim-text><highlight><bold>4</bold></highlight>. The solvent mixture of <dependent-claim-reference depends_on="CLM-00003"><claim-text>claim 3</claim-text></dependent-claim-reference> wherein said terpene mixture comprises about 35 wt. % to about 50 wt. % cis-pinane and about 35 wt. % to about 50 wt. % trans-pinane. </claim-text>
+</claim>
+<claim id="CLM-00005">
+<claim-text><highlight><bold>5</bold></highlight>. The solvent mixture of <dependent-claim-reference depends_on="CLM-00002"><claim-text>claim 2</claim-text></dependent-claim-reference> wherein said terpene mixture further comprises at least one terpene selected from the group consisting of endo-isocamphene, &agr;-pinene, cis-para-menthane, and trans-para-menthane. </claim-text>
+</claim>
+<claim id="CLM-00006">
+<claim-text><highlight><bold>6</bold></highlight>. The solvent mixture of <dependent-claim-reference depends_on="CLM-00002"><claim-text>claim 2</claim-text></dependent-claim-reference> wherein said terpene mixture further comprises endo-isocamphene, &agr;-pinene, cis-para-menthane, and trans-para-menthane. </claim-text>
+</claim>
+<claim id="CLM-00007">
+<claim-text><highlight><bold>7</bold></highlight>. The solvent mixture of <dependent-claim-reference depends_on="CLM-00001"><claim-text>claim 1</claim-text></dependent-claim-reference> wherein said additive consists essentially of up to about 3 wt. % of sec-butanol. </claim-text>
+</claim>
+<claim id="CLM-00008">
+<claim-text><highlight><bold>8</bold></highlight>. The solvent mixture of <dependent-claim-reference depends_on="CLM-00007"><claim-text>claim 7</claim-text></dependent-claim-reference> wherein said sec-butanol comprises about 1 wt. % of said solvent mixture. </claim-text>
+</claim>
+<claim id="CLM-00009">
+<claim-text><highlight><bold>9</bold></highlight>. A method for cleaning an article in a vapor degreaser, said method comprising: 
+<claim-text>(a) providing a vapor degreaser system; </claim-text>
+<claim-text>(b) adding to the solvent reservoir of said vapor degreaser system a solvent mixture, said solvent mixture comprising: 
+<claim-text>i) about 85 wt. % to less than about 96.5 wt. % n-propyl bromide; </claim-text>
+<claim-text>ii) about 3.5 wt. % to less than about 15 wt. % of a mixture of low boiling solvents, said solvent mixture comprising about 0.5 wt. % to about 1 wt. % nitromethane, about 0.5 wt. % to about 1 wt. % 1,2-butylene oxide and about 2.5 wt. % to about 3 wt. % 1,3-dioxolane; and </claim-text>
+<claim-text>iii) an effective amount of up to about 5 wt. % of at least one additive selected from the group consisting of sec-butanol, ethanol, and methanol; </claim-text>
+</claim-text>
+<claim-text>(c) boiling said solvent mixture to form a vapor layer; </claim-text>
+<claim-text>(d) introducing into said vapor layer said article to be cleaned, said vapor layer condensing on said article, thereby subjecting the surface of said article to a solvent-flushing action; and </claim-text>
+<claim-text>(e) removing said article from said vapor layer. </claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00010">
+<claim-text><highlight><bold>10</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00009"><claim-text>claim 9</claim-text></dependent-claim-reference> further comprising an effective amount of at least one saturated terpene. </claim-text>
+</claim>
+<claim id="CLM-00011">
+<claim-text><highlight><bold>11</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00010"><claim-text>claim 10</claim-text></dependent-claim-reference> comprising up to about 6.5 wt. % of a terpene mixture of cis-pinane and trans-pinane. </claim-text>
+</claim>
+<claim id="CLM-00012">
+<claim-text><highlight><bold>12</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00011"><claim-text>claim 11</claim-text></dependent-claim-reference> wherein said terpene mixture comprises about 35 wt. % to about 50 wt. % cis-pinane and about 35 wt. % to about 50 wt. % trans-pinane. </claim-text>
+</claim>
+<claim id="CLM-00013">
+<claim-text><highlight><bold>13</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00010"><claim-text>claim 10</claim-text></dependent-claim-reference> wherein said terpene mixture further comprises a terpene selected from the group consisting of endo-isocamphene, &agr;-pinene, cis-para-menthane and trans-para-menthane. </claim-text>
+</claim>
+<claim id="CLM-00014">
+<claim-text><highlight><bold>14</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00010"><claim-text>claim 10</claim-text></dependent-claim-reference> wherein said terpene mixture further comprises endo-isocamphene, &agr;-pinene, cis-para-menthane and trans-para-menthane. </claim-text>
+</claim>
+<claim id="CLM-00015">
+<claim-text><highlight><bold>15</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00009"><claim-text>claim 9</claim-text></dependent-claim-reference> wherein said defluxing additive consists essentially of up to about 3 wt. % of sec-butanol. </claim-text>
+</claim>
+<claim id="CLM-00016">
+<claim-text><highlight><bold>16</bold></highlight>. The method of <dependent-claim-reference depends_on="CLM-00015"><claim-text>claim 15</claim-text></dependent-claim-reference> wherein said sec-butanol comprises about 1 wt. % of said solvent mixture. </claim-text>
+</claim>
+</subdoc-claims>
+</patent-application-publication>
+

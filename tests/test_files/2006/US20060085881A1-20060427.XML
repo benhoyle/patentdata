@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE us-patent-application SYSTEM "us-patent-application-v41-2005-08-25.dtd" [ ]>
+<us-patent-application lang="EN" dtd-version="v4.1 2005-08-25" file="US20060085881A1-20060427.XML" status="PRODUCTION" id="us-patent-application" country="US" date-produced="20060412" date-publ="20060427">
+<us-bibliographic-data-application lang="EN" country="US">
+<publication-reference>
+<document-id>
+<country>US</country>
+<doc-number>20060085881</doc-number>
+<kind>A1</kind>
+<date>20060427</date>
+</document-id>
+</publication-reference>
+<application-reference appl-type="utility">
+<document-id>
+<country>US</country>
+<doc-number>10948102</doc-number>
+<date>20040923</date>
+</document-id>
+</application-reference>
+<us-application-series-code>10</us-application-series-code>
+<classifications-ipcr>
+<classification-ipcr>
+<ipc-version-indicator><date>20060101</date></ipc-version-indicator>
+<classification-level>A</classification-level>
+<section>A</section>
+<class>41</class>
+<subclass>D</subclass>
+<main-group>13</main-group>
+<subgroup>00</subgroup>
+<symbol-position>F</symbol-position>
+<classification-value>I</classification-value>
+<action-date><date>20060427</date></action-date>
+<generating-office><country>US</country></generating-office>
+<classification-status>B</classification-status>
+<classification-data-source>H</classification-data-source>
+</classification-ipcr>
+</classifications-ipcr>
+<classification-national>
+<country>US</country>
+<main-classification>002009000</main-classification>
+<further-classification>002206000</further-classification>
+</classification-national>
+<invention-title id="d0e114">Convertible face and head covering</invention-title>
+<us-related-documents>
+<us-provisional-application>
+<document-id>
+<country>US</country>
+<doc-number>60505086</doc-number>
+<date>20030923</date>
+</document-id>
+</us-provisional-application>
+<us-provisional-application>
+<document-id>
+<country>US</country>
+<doc-number>60579907</doc-number>
+<date>20040615</date>
+</document-id>
+</us-provisional-application>
+</us-related-documents>
+<parties>
+<applicants>
+<applicant sequence="00" app-type="applicant-inventor" designation="us-only">
+<addressbook>
+<last-name>Gellis</last-name>
+<first-name>David</first-name>
+<address>
+<city>Stowe</city>
+<state>VT</state>
+<country>US</country>
+</address>
+</addressbook>
+<nationality>
+<country>US</country>
+</nationality>
+<residence>
+<country>US</country>
+</residence>
+</applicant>
+<applicant sequence="01" app-type="applicant-inventor" designation="us-only">
+<addressbook>
+<last-name>Shaanan</last-name>
+<first-name>Gad</first-name>
+<address>
+<city>La Jolla</city>
+<state>CA</state>
+<country>US</country>
+</address>
+</addressbook>
+<nationality>
+<country>US</country>
+</nationality>
+<residence>
+<country>US</country>
+</residence>
+</applicant>
+<applicant sequence="02" app-type="applicant-inventor" designation="us-only">
+<addressbook>
+<last-name>Duval</last-name>
+<first-name>Francois</first-name>
+<address>
+<city>Terrebonne</city>
+<country>CA</country>
+</address>
+</addressbook>
+<nationality>
+<country>CA</country>
+</nationality>
+<residence>
+<country>CA</country>
+</residence>
+</applicant>
+<applicant sequence="03" app-type="applicant-inventor" designation="us-only">
+<addressbook>
+<last-name>Debeau</last-name>
+<first-name>Serge</first-name>
+<address>
+<city>Laval</city>
+<country>CA</country>
+</address>
+</addressbook>
+<nationality>
+<country>CA</country>
+</nationality>
+<residence>
+<country>CA</country>
+</residence>
+</applicant>
+<applicant sequence="04" app-type="applicant-inventor" designation="us-only">
+<addressbook>
+<last-name>Brousseau</last-name>
+<first-name>Ivan</first-name>
+<address>
+<city>Montreal</city>
+<country>CA</country>
+</address>
+</addressbook>
+<nationality>
+<country>CA</country>
+</nationality>
+<residence>
+<country>CA</country>
+</residence>
+</applicant>
+</applicants>
+<correspondence-address>
+<addressbook>
+<name>Peter D. Aufrichtig;Aufrichtig Stein &#x26; Aufrichtig, P.C.</name>
+<address>
+<address-1>5th Floor</address-1>
+<address-2>300 East 42nd Street</address-2>
+<city>New York</city>
+<state>NY</state>
+<postcode>10017</postcode>
+<country>US</country>
+</address>
+</addressbook>
+</correspondence-address>
+</parties>
+</us-bibliographic-data-application>
+<abstract id="abstract">
+<p id="p-0001" num="0000">An enhanced mask system including a mask portion, for covering the nose, mouth and lower face of a wearer. The mask portion has an inner surface for being closer to the wearer and an outer surface for being further from the wearer. A head covering or balaclava is secured to the mask portion and a pocket secured to the inner surface of the mask portion removably contains the head covering or balaclava when in its secured position. The mask can be worn by the wearer either with the head covering or balaclava on the wearer's head in a deployed position or without the head covering or balaclava on the wearer's head and stowed in the pocket in the secured position. </p>
+</abstract>
+<drawings id="DRAWINGS">
+<figure id="figure-D00000" num="00000">
+<img id="EMI-D00000" he="136.08mm" wi="101.92mm" file="US20060085881A1-20060427-D00000.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="figure-D00001" num="00001">
+<img id="EMI-D00001" he="195.24mm" wi="150.96mm" file="US20060085881A1-20060427-D00001.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="figure-D00002" num="00002">
+<img id="EMI-D00002" he="193.29mm" wi="148.67mm" file="US20060085881A1-20060427-D00002.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="figure-D00003" num="00003">
+<img id="EMI-D00003" he="146.64mm" wi="162.98mm" file="US20060085881A1-20060427-D00003.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="figure-D00004" num="00004">
+<img id="EMI-D00004" he="122.51mm" wi="162.14mm" file="US20060085881A1-20060427-D00004.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="figure-D00005" num="00005">
+<img id="EMI-D00005" he="92.96mm" wi="167.98mm" file="US20060085881A1-20060427-D00005.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="figure-D00006" num="00006">
+<img id="EMI-D00006" he="187.11mm" wi="122.09mm" file="US20060085881A1-20060427-D00006.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="figure-D00007" num="00007">
+<img id="EMI-D00007" he="202.61mm" wi="157.56mm" file="US20060085881A1-20060427-D00007.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="figure-D00008" num="00008">
+<img id="EMI-D00008" he="180.42mm" wi="133.77mm" file="US20060085881A1-20060427-D00008.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+</drawings>
+<description id="description">
+<?summary-of-invention description="Summary of Invention" end="lead"?>
+<heading level="2" id="h-0001">BACKGROUND OF THE INVENTION </heading>
+<p id="p-0002" num="0001"> This application claims the priority of prior application Ser. No. 60/505,086 filed on Sep. 23, 2003 and prior application Ser. No. 60/579,907 filed on Jun. 15, 2004. </p>
+<p id="p-0003" num="0002"> The invention is generally directed to an article of clothing intended to be worn on the head of a person in cold and windy weather and, in particular, to cover the neck, face and possibly the top of the wearer's head. In the past, there have been various cold and inclement weather devices such as masks developed to protect the wearer's face. Many of these have been in the form of a mask or a mask and a scarf designed to cover the lower portion of the wearer's face below the eyes, including the nose, mouth, cheeks, chin and neck of the wearer. A scarf, added to the mask, has also protected the wearer's neck and is generally devised to slide within the collar of the wearer's coat so that cold air does not enter between the coat and the mask. In addition, for very cold and windy conditions, it is often desired to cover the wearer's entire head to provide additional insulative properties while leaving the wearer's eyes free, generally so that a pair of ski or snowboarding goggles can be worn covering eyes and allowing good visibility while preventing the cold air from contacting the eyes. </p>
+<p id="p-0004" num="0003"> However, there is a need for variability of protection of the wearer's head, depending upon the conditions at the time and the type of other headgear that the user may be wearing. In some situations the weather is particularly cold and uncomfortable such that a full head covering, requiring a balaclava is necessary. In other cases the temperature and wind chill factors are not so unpleasant as to require coverage of the entire head, but still cold enough to make coverage of the nose and mouth important, particularly where direct contact with the cold air creates breathing problems. In addition, as more skiers and snowboarders wear crash helmets to protect their heads as they ski or snowboard, there is also a need on occasion for some protective insulative and a vibration reducing layer between the helmet and the wearer's head. Again, in other situations where a skier or snowboarder is wearing a traditional wool or baseball cap on his or her head, the balaclava head covering could interfere with the comfortable fitting of the hats. Thus, there is a need for a head covering which can cover the user's lower face and neck and, when desired, also cover the wearer's upper and back head regions without the need for multiple articles of clothing. Accordingly, there is a need for a convertible head covering which can easily and conveniently shift from a full head covering to a mask and scarf arrangement, without additional parts required or to be removed. </p>
+<heading level="2" id="h-0002">SUMMARY OF THE INVENTION </heading>
+<p id="p-0005" num="0004"> The invention is generally directed to a convertible head covering including a face mask adjustable in size to cover the wearer's face, below the eyes, and cheeks with a balaclava secured to an upper surface of the mask for covering the remaining portion of the wearer's head, other than the area around the eyes, the balaclava being movable between a deployed position in which it is adapted to cover the wearer's head and a stowed position in which the balaclava portion is hidden within the mask portion. </p>
+<p id="p-0006" num="0005"> Another object of the invention is to provide an improved combination of balaclava and face mask which is versatile so that it can be used as a fully adjustable mask and loosened and tightened through the use of Velcro&#xae;. </p>
+<p id="p-0007" num="0006"> A further object of the invention is to provide an improved combination balaclava and face mask convertible from a face mask to a face mask and balaclava without adding or removing any parts. </p>
+<p id="p-0008" num="0007"> Still a further object of the invention is to provide an improved combination balaclava and face mask in which the balaclava headpiece is a thin, wind-proof material which can serve as a helmet liner or a wind-proof liner under a hat. </p>
+<p id="p-0009" num="0008"> Yet still another object of the invention is to provide an improved combination balaclava and face mask in which the balaclava component can be folded up and stowed in a resting position inside a pocket within the cheek portion of the face mask. </p>
+<p id="p-0010" num="0009"> Still yet another object of the invention is to provide an improved combination balaclava and face mask arrangement in which the balaclava can be easily deployed or stowed dependent upon the ambient conditions. </p>
+<p id="p-0011" num="0010"> Still other objects and advantages of the invention will, in part, be obvious and will, in part, be apparent from the specification. </p>
+<p id="p-0012" num="0011"> The invention accordingly comprises the features of construction, combinations of elements and arrangements of parts which will be exemplified in the construction as hereinafter set forth, and the scope of the invention will be indicated in the claims.</p>
+<?summary-of-invention description="Summary of Invention" end="tail"?>
+<?brief-description-of-drawings description="Brief Description of Drawings" end="lead"?>
+<heading level="2" id="h-0003">BRIEF DESCRIPTION OF THE DRAWINGS </heading>
+<p id="p-0013" num="0012"> For a fuller understanding of the invention, reference is had to the following description taken in connection with the accompanying drawings, in which: </p>
+<p id="p-0014" num="0013"> <figref idref="DRAWINGS">FIG. 1</figref> is a perspective view of the combination of the balaclava and face mask in accordance with the invention in which the balaclava and face mask are deployed on the wearer's head; </p>
+<p id="p-0015" num="0014"> <figref idref="DRAWINGS">FIG. 2</figref> is a perspective view of the combination of the balaclava and face mask of <figref idref="DRAWINGS">FIG. 1</figref> in which the balaclava is stowed in the interior pocket; </p>
+<p id="p-0016" num="0015"> <figref idref="DRAWINGS">FIG. 3</figref><i>a </i>is a top plan view of the inner surface of the balaclava and face mask of <figref idref="DRAWINGS">FIG. 1</figref> in which the balaclava is removed from the pocket; </p>
+<p id="p-0017" num="0016"> <figref idref="DRAWINGS">FIG. 3</figref><i>b </i>is a similar top plan view to that of <figref idref="DRAWINGS">FIG. 3</figref><i>a </i>in which the balaclava is folded and inserted in the pocket; </p>
+<p id="p-0018" num="0017"> <figref idref="DRAWINGS">FIG. 4</figref> is a top plan view of the outer surface of the combination of the balaclava and face mask of <figref idref="DRAWINGS">FIG. 1</figref>; </p>
+<p id="p-0019" num="0018"> <figref idref="DRAWINGS">FIG. 5</figref> is a cross-sectional view of the mask portion of the embodiment of <figref idref="DRAWINGS">FIG. 1</figref>; </p>
+<p id="p-0020" num="0019"> <figref idref="DRAWINGS">FIG. 6</figref> is a cross-sectional view of the mask portion in accordance with another embodiment of the invention; </p>
+<p id="p-0021" num="0020"> <figref idref="DRAWINGS">FIG. 7</figref> is a perspective view of an enhanced mask system constructed in accordance with a preferred embodiment of the invention with the balaclava in the secured position; and </p>
+<p id="p-0022" num="0021"> <figref idref="DRAWINGS">FIG. 8</figref> is a perspective view of an enhanced mask system constructed in accordance with another preferred embodiment of the invention with the balaclava in the secured position.</p>
+<?brief-description-of-drawings description="Brief Description of Drawings" end="tail"?>
+<?detailed-description description="Detailed Description" end="lead"?>
+<heading level="2" id="h-0004">DETAILED DESCRIPTION OF THE PREFERRED EMBODIMENTS </heading>
+<p id="p-0023" num="0022"> Reference is made to <figref idref="DRAWINGS">FIGS. 1-4</figref> in connection with the construction of a convertible combination balaclava and face mask, generally indicated as <b>100</b>, constructed in accordance with a preferred embodiment of the invention. The combination balaclava and face mask <b>100</b> includes, generally, a mask portion <b>110</b>, which generally covers the lower portion of the wearer's face below the eyes and the cheeks and neck and a balaclava portion <b>120</b> which covers the remaining portions of the wearer's head except for the area around the wearer's eyes. Generally, this open area of face including the eyes <b>125</b> is sized so as to fit within traditional ski or snowboarding goggles so that, when wearing the combination balaclava and face mask <b>100</b> and a pair of goggles (not shown) the entire head and neck of the wearer are covered and protected against the cold and wind. As best seen in <figref idref="DRAWINGS">FIGS. 3</figref><i>a</i>, <b>3</b><i>b </i>and <b>4</b>, the mask component includes two wing-like sections <b>111</b> and <b>112</b> which are designed to fit around the sides of the wearer's face and join in the back of the head with mating hook and pad connectors <b>130</b>, <b>131</b>. These hook and pad connectors <b>130</b>, <b>131</b> are sized and spaced so as to allow a certain degree of flexibility in adjusting the length of the mask around the wearer's head to fit people with different sized heads and adjust the degree of snugness of the mask. Of course, different size mask and balaclava assemblies can be made to fit a broader range of head sizes. </p>
+<p id="p-0024" num="0023"> In addition to the wing pieces <b>111</b> and <b>112</b>, there is a central nose covering flap <b>113</b>, a lower central panel <b>114</b>, a mouth mesh <b>115</b> and a lower nose section <b>116</b>. These panels are sewn in place between wing members <b>111</b> and <b>112</b>, along ridges <b>141</b> and <b>142</b> with stitched seams <b>143</b> and <b>144</b>. Ridges <b>141</b> and <b>142</b> are built up in a fashion such that a channel between the nose piece <b>113</b> and the bottom the mask is achieved which allows for easier breathing and also an insulative column of air against the wearer's face. Generally, ridges <b>141</b> and <b>142</b> are built up so as to allow a small clearance between the user's skin and the mask so that the mouth portion <b>115</b> does not rub against the wearer's lips and tongue in normal conditions. These components are held together by stitching and an outer finishing piping shown as <b>117</b> at the top and <b>118</b> at the bottom, which provides a finished look and appearance to the mask <b>110</b>. Other means of attaching the three main components of the mask <b>110</b> to each other may be used including glueing, heat sealing, ultrasonic sealing and the like. The connection of the central components along ridges <b>141</b> and <b>142</b> also acts to stabilize these elements and maintain them in alignment. </p>
+<p id="p-0025" num="0024"> In addition, as seen in <figref idref="DRAWINGS">FIGS. 3</figref><i>a </i>and <b>3</b><i>b</i>, there is a pocket piece <b>150</b> with stitching <b>151</b> on the cheek portion of the mask <b>110</b> forming a pocket <b>152</b> which is adapted to stow or hold balaclava <b>120</b>. As shown in <figref idref="DRAWINGS">FIGS. 3</figref><i>a </i>and <b>3</b><i>b</i>, balaclava <b>120</b> is sewn along a seam <b>129</b> at the top surface of wing <b>112</b>, proximate pocket <b>152</b> to wing <b>112</b>. Alternatively, the balaclava <b>120</b> could be reasonably connected to the mesh <b>110</b> with a zipper, or one or more buttons, Velcro&#xae; pads or other removable closure mechanism. In the current preferred embodiment the balaclava <b>120</b> is permanently secured to the mask portion <b>110</b> so that there is less likelihood of losing the balaclava portion and a certainty, that when needed the balaclava will be in the pocket <b>152</b>, ready to be deployed without the need to fumble to locate it or secure it to the mask portion <b>110</b>. </p>
+<p id="p-0026" num="0025"> When folded up, the balaclava <b>120</b>, which is generally a thin, stretchy material which is either a wind-proof or non-wind-proof material, can fit within pocket <b>152</b> on one cheek of the mask <b>110</b>. For convenience the pocket is shown on the left cheek of the mask <b>112</b>, but it could as easily be placed on the right cheek. Balaclava <b>122</b> is generally shaped to fit a wearer's head and, in a current preferred embodiment, is assembled including two seams, <b>121</b> and <b>122</b>, and has two openings, <b>124</b> and <b>125</b>. Opening <b>124</b> is designed to fit around the wearer's head at the lower reach of the balaclava and opening <b>125</b> is the opening designed for the eye region. Where the headpiece or balaclava <b>120</b> is intended to be worn as a helmet liner, it can be made of a non-wind-proof material. However, if the balaclava is going to be worn as a wind-proof liner under a hat, it is preferably made of a thin wind-proof material. Any suitable, relatively stretchy woven or non-woven, wicking or non-wicking, natural or synthetic materials can be used, depending upon the specific need. However, it is important that the material utilized be sufficiently thin that, when folded up and placed in pocket <b>152</b>, the material does not create too significant of a bulge at the wearer's cheek. The headpiece <b>120</b> is shown as a balaclava, but, depending on the intended use, a less covering headpiece <b>120</b> or a more fully covering headpiece <b>120</b> can be used. Where the headpiece <b>120</b> is intended as a helmet liner and the helmet has a face mask, the balaclava can have an open face and just be a cap. However, if the balaclava will be worn only with sunglasses or other small eyewear, the only openings would be small eye slits or openings. In any of these cases the headpiece <b>120</b> would fit within the pocket <b>152</b>. Generally, the bottom surface of the headpiece <b>120</b> extends below the upper edge of the mask <b>110</b> so that there is no gap through which the wind and any precipitation could contact the wearer's skin. </p>
+<p id="p-0027" num="0026"> <figref idref="DRAWINGS">FIG. 1</figref> shows the combination balaclava and face mask deployed on the wearer's head with both the balaclava and the face mask in place. <figref idref="DRAWINGS">FIG. 2</figref> shows the combination balaclava and face mask deployed on the wearer's face without the balaclava covering the wearer's head and, instead, deployed in pocket <b>152</b>. In practice, a wearer could deploy the balaclava while wearing the mask if conditions change or require the additional warmth or coverage on a rush basis. Generally, to take off the balaclava and stow it in the pocket <b>152</b>, the wearer would have to remove the mask from his or her face, take off the balaclava portion <b>120</b> and fold or otherwise crumple it into pocket <b>152</b>, before reattaching the mask <b>110</b>. In other embodiments a small closure can be put at the end of the pocket to seal the opening, but is not required in all applications. The small closure could be a pair of mating hook and pad connectors (like closures <b>130</b> and <b>131</b> in <figref idref="DRAWINGS">FIG. 3A</figref>) or a button or zipper. However, in a current preferred embodiment there is no need for the closure because the opening at the top of pocket <b>152</b> is held closed when the mask is worn. </p>
+<p id="p-0028" num="0027"> Reference is made to <figref idref="DRAWINGS">FIGS. 5 and 6</figref> wherein cross-sectional views of wing sections <b>111</b> or <b>112</b> are shown in accordance with two preferred embodiments of the invention. In a first preferred embodiment of the invention shown in <figref idref="DRAWINGS">FIG. 5</figref>, the wing components <b>111</b> and <b>112</b>, as well as the nose covering layer <b>113</b> and lower central section <b>114</b>, are formed as a two-layer laminate including highly breathable stretch woven fabric <b>171</b>, laminated to a one-sided fleece <b>170</b>. In the case of a three-layer laminate as shown in <figref idref="DRAWINGS">FIG. 6</figref>, the stretch woven layer <b>171</b> has a wind-proof/breathable film <b>172</b> and one-sided fleece <b>170</b> in a sandwich arrangement with the wind-proof/breathable film <b>172</b> as the middle layer. The fleece <b>170</b> is generally a performance fabric which reduces the relative humidity next to the wearer's skin by dispersing the moisture throughout the surface area of the fabric. To the extent that the wind-proof/breathable film <b>172</b> is utilized, the moisture is able to migrate away from the wearer's face and the fleece layer in contact with the wearer's skin. </p>
+<p id="p-0029" num="0028"> The layer <b>115</b> covering the wearer's mouth area is generally formed as a thin, open-weave mesh layer which allows for the wearer to breathe through the mouth without substantial resistance but still providing protection against the wind and cold air contacting the mouth. Layer <b>116</b> at the top of the mouth area <b>115</b> and below the gap <b>128</b> between nose flap <b>113</b> and member <b>116</b> is formed as a more ridged mesh member which provides some flow of air but provides more structural rigidity than the mesh <b>115</b>. Nose flap portion <b>113</b> is configured so that it has additional material beyond the necessary distance between ridges <b>141</b> and <b>142</b> in these regions so that it provides a tent-like cover over the wearer's nose so that the mask does not press strongly against the wearer's nose. </p>
+<p id="p-0030" num="0029"> In use, the wearer, when going out for a day of skiing, snowboarding or other cold weather outdoor activity, would determine whether they wish to wear just the mask portion <b>110</b> of the combination mask and balaclava headgear <b>100</b> or the fully deployed mask and balaclava. In the event that only the mask is desired, the wearer would merely place the mask properly over the wearer's face, centering and locating the nose and mouth openings in the correct spots, and then adjusting the fit and pressing hook and pile connectors <b>130</b> and <b>131</b> against each other in the appropriate location at the back of the wearer's head. However, if the wearer decides, either initially or subsequently, that he or she requires the full mask and balaclava, he or she merely removes the balaclava <b>120</b> from pocket <b>152</b> and slides the wearer's head through opening <b>124</b>, centering opening <b>125</b> about the wearer's head, before closing mask portion <b>110</b> about the wearer's head as above. When the mask is closed, it also encircles the bottom of the balaclava, so that there is a complete covering of the head except for the opening in the front of the balaclava around the eyes. If, during the course of wearing the mask, the user determines that he or she wants to add the balaclava portion; such as, when sitting on a cold and windy ski lift; the balaclava <b>120</b> can be easily removed from pocket <b>152</b> and slipped over the wearer's head either without removing the mask <b>110</b> or more normally by taking off the mask and then easily deploying the balaclava <b>120</b>, putting it on the head and finally securing the mask portion <b>110</b> in place. </p>
+<p id="p-0031" num="0030"> Reference is next made to <figref idref="DRAWINGS">FIG. 7</figref> wherein a combination mask and headgear, generally indicated as <b>200</b>, constructed in accordance with a current preferred embodiment of the invention is depicted, like elements represented by like reference numerals. Generally, combination mask <b>200</b> is generally similar to combination <b>100</b> described above except for the central section of the mask including mouth and nose piece <b>213</b> and lower central piece <b>230</b>, which provide an access opening about the wearer's mouth formed with flap <b>214</b>, creating opening <b>215</b> and having slits <b>216</b>. In a current preferred embodiment of the invention the mouth and nose piece <b>213</b> is formed using a compression molded foam that sits between panels <b>111</b>, <b>112</b> which in turn are secured around the back of the wearer's head with mating hook and pile pads <b>130</b>, <b>131</b> (shown in <figref idref="DRAWINGS">FIGS. 3A and 3B</figref>). The mouth and nose piece <b>213</b> has a low density flange that wraps around the contour of piece <b>213</b> so that it can be easily sewn to panels <b>111</b> and <b>112</b> without creating uncomfortable seams. Mouth and nose piece <b>213</b> has an additional molded component <b>214</b> that is in the mouth area, which acts as a panel that can be opened and closed. The small foam panel would detach from a mating hook and pile landing at the upper extremity of the panel and be hinged to the foam piece <b>213</b> on the lower extremity. This hinge is created as part of the actual mold and is subsequently die cut on three sides (with the fourth side remaining attached and acting as the hinge). This allows the piece to open and close, with the hook and pile pads acting as a way to maintain the small panel <b>214</b> to remain closed when desired. The foam pad <b>214</b> which acts as the door is ventilated with horizontal perforations <b>216</b>, so that when the door <b>214</b> is closed and resting on its Velcro landing the wearer can still have sufficient ventilation. When wearer opens the panel <b>214</b> it optimizes the ventilation and breathability. It also serves a variety of other purposes. Hydration is popular in winter cardiovascular sports, including Nordic and Alpine skiing, snowshoeing, running, mountain biking and others. By having the selectively openable panel function, this allows the wearer to easily hydrate by having full access for a hydration tube to enter the wearer's mouth without having to remove the mask. In addition, hunters will be able to blow duck calls while wearing a face mask without having to take off the face mask. Also, when ski goggles fog up due to condensation created by a face mask rising into the lens area, the wearer can open the mouth piece panel <b>214</b> for full breathability and to disperse the condensation which causes the fogging up. </p>
+<p id="p-0032" num="0031"> As seen in <figref idref="DRAWINGS">FIG. 7</figref>, the mask combination <b>200</b> includes side panels <b>111</b> and <b>112</b> which have piping and sewn seams <b>217</b>, <b>218</b> around the tops and along the border with central sections <b>213</b> and <b>230</b> in the middle, and a bottom piping and sewn seam <b>219</b> which secures side panels <b>111</b>, <b>112</b> to bottom section <b>230</b> and forms a clean bottom. In addition, there is a piping <b>231</b> and seam <b>232</b> between bottom section <b>230</b> and nose and mouth section <b>213</b>. Generally, a flange (not shown) extends beyond the bottom of the face of section <b>213</b> to form a clean and smooth connection. Generally, bottom section <b>230</b> can be made of the same materials as side panels <b>111</b> and <b>112</b>. There is a piping <b>220</b> at the top of section <b>213</b> to form a clean and smooth edge for this tender contact point and a seam <b>221</b>. This section of nose and mouth section <b>213</b> is formed in a tent shape so that it fits the wearer's nose without exerting undue pressure on the bridge of the wearer's nose. In a current preferred embodiment, the nose and mouth portion <b>213</b> is formed as a compression molded foam laminated as a sandwich between a woven fabric on the outside, which provides some wind resistance and a soft moisture management fabric on the interior, such as a fleece. This sandwich arrangement would look like the sandwich shown in <figref idref="DRAWINGS">FIG. 6</figref>, with the foam being like layer <b>172</b> and the woven fabric being <b>170</b> and the fleece <b>171</b>. The compression molded foam assures that the sandwich arrangement retains the molded shape. </p>
+<p id="p-0033" num="0032"> Reference is next made to <figref idref="DRAWINGS">FIG. 8</figref> which shows another mask combination <b>300</b> in accordance with another preferred embodiment of the invention, like elements represented by like reference numerals. The major difference between the embodiment of <figref idref="DRAWINGS">FIG. 7</figref> and <figref idref="DRAWINGS">FIG. 8</figref> is that there is an opening for the nostrils <b>255</b> surrounded by a frame <b>256</b>. There can be a mesh in the opening <b>255</b>, or a open weaved fabric, but an opening can also be used. The next difference is that the flap <b>252</b> which fills opening <b>253</b>, either completely or with a small margin around flap <b>252</b>, opens from the bottom up rather than from the top down as in the embodiment of <figref idref="DRAWINGS">FIG. 7</figref>. The flap <b>252</b> includes perforations <b>260</b>. The bottom section <b>254</b> is essentially the same as bottom section <b>230</b> in the embodiment of <figref idref="DRAWINGS">FIG. 7</figref>. </p>
+<p id="p-0034" num="0033"> In each of the embodiments of <figref idref="DRAWINGS">FIGS. 7 and 8</figref>, the pocket is formed on the inside of the mask portion which is adapted to hold the balaclava or other head covering piece when it is not being deployed on the wearer's head. Generally, the head covering piece or balaclava are made of a very thin material so that when folded and stowed in the pouch it doesn't cause a large bulge in the mask portion, as shown in <figref idref="DRAWINGS">FIG. 2</figref>, in panel <b>112</b>. </p>
+<p id="p-0035" num="0034"> Other types of hats or balaclavas can be used with the mask system, to cover more or less of the wearer's head and face, depending on the use intended. In addition, depending on whether the balaclava will be the outside layer, or merely a liner for a helmet or some other covering, the characteristics of the material used can be modified. </p>
+<p id="p-0036" num="0035"> Accordingly, an improved combination mask and balaclava which is sufficiently versatile so that it can be a fully adjustable mask and have a deployable and stowable balaclava included therein is provided. </p>
+<p id="p-0037" num="0036"> It will thus be seen that the objects set forth above, among those made apparent in the preceding description, are efficiently obtained and, since certain changes may be made in the above constructions without departing from the spirit and scope of the invention, it is intended that all matter contained in the above description or shown in the accompanying drawings shall be interpreted as illustrative, and not in a limiting sense. </p>
+<p id="p-0038" num="0037"> It is also to be understood that the following claims are intended to cover all of the generic and specific features of the invention, herein described and all statements of the scope of the invention which, as a matter of language, might be said to fall therebetween. </p>
+<?detailed-description description="Detailed Description" end="tail"?>
+</description>
+<us-claim-statement>What is claimed is: </us-claim-statement>
+<claims id="claims">
+<claim id="CLM-00001" num="00001">
+<claim-text><b>1</b>. An enhanced mask system, comprising: 
+<claim-text>a mask portion, for covering the nose, mouth and lower face of a wearer, the mask portion having an inner surface for being closer to the wearer and an outer surface for being further from the wearer; </claim-text>
+<claim-text>a head covering or balaclava secured to the mask portion; and </claim-text>
+<claim-text>stowing means, secured to the inner surface of the mask portion for removably containing the head covering or balaclava when in its secured position; </claim-text>
+<claim-text>whereby the mask can be worn by the wearer either with the head covering or balaclava on the wearer's head in a deployed position or without the head covering or balaclava on the wearer's head and stowed in the stowing means in the secured position. </claim-text>
+</claim-text>
+ </claim>
+<claim id="CLM-00002" num="00002">
+<claim-text><b>2</b>. The enhanced mask system of <claim-ref idref="CLM-00001">claim 1</claim-ref> wherein the stowing means is a pouch attached to the inner surface of the mask portion. </claim-text>
+ </claim>
+<claim id="CLM-00003" num="00003">
+<claim-text><b>3</b>. The enhanced mask system of <claim-ref idref="CLM-00002">claim 2</claim-ref> wherein the pouch has an open end for stowing or deploying the head covering or balaclava. </claim-text>
+ </claim>
+<claim id="CLM-00004" num="00004">
+<claim-text><b>4</b>. The enhanced mask system of <claim-ref idref="CLM-00001">claim 1</claim-ref> wherein the mask portion includes a central portion and two wing portions. </claim-text>
+ </claim>
+<claim id="CLM-00005" num="00005">
+<claim-text><b>5</b>. The enhanced mask system of <claim-ref idref="CLM-00004">claim 4</claim-ref> wherein the wing portions include mating connectors to secure the wing portions to each other and retain the mask portion around the wearer's face. </claim-text>
+ </claim>
+<claim id="CLM-00006" num="00006">
+<claim-text><b>6</b>. The enhanced mask system of <claim-ref idref="CLM-00004">claim 4</claim-ref> wherein the central portion includes a selectively openable section for maintaining direct access through the central portion of the mask proximate the mouth. </claim-text>
+ </claim>
+<claim id="CLM-00007" num="00007">
+<claim-text><b>7</b>. The enhanced mask system of <claim-ref idref="CLM-00006">claim 6</claim-ref> wherein the openable section is an integrally formed flap with a hinge. </claim-text>
+ </claim>
+<claim id="CLM-00008" num="00008">
+<claim-text><b>8</b>. The enhanced mask system of <claim-ref idref="CLM-00001">claim 1</claim-ref> wherein the head covering or balaclava is a balaclava intended to cover the wearer's entire head, beyond the portion already covered by the mask portion, aside from an area around the eyes. </claim-text>
+ </claim>
+<claim id="CLM-00009" num="00009">
+<claim-text><b>9</b>. The enhanced mask system of <claim-ref idref="CLM-00008">claim 8</claim-ref> wherein the area around the eyes is smaller than the area of an eye covering to be worn with the enhanced mask system. </claim-text>
+ </claim>
+<claim id="CLM-00010" num="00010">
+<claim-text><b>10</b>. The enhanced mask system of <claim-ref idref="CLM-00001">claim 1</claim-ref> wherein the mask portion includes a central portion covering the nose, mouth and chin of the wearer's face and two wing portions secured to the central portion. </claim-text>
+ </claim>
+<claim id="CLM-00011" num="00011">
+<claim-text><b>11</b>. The enhanced mask system of <claim-ref idref="CLM-00010">claim 10</claim-ref> wherein the central portion includes a compressed foam layer sandwiched between an outer and an inner fabric. </claim-text>
+ </claim>
+<claim id="CLM-00012" num="00012">
+<claim-text><b>12</b>. The enhanced mask system of <claim-ref idref="CLM-00011">claim 11</claim-ref> wherein the outer and inner fabrics are designed to be weather resistant on the outer surface and comfortable against the wearer's face on the inner surface. </claim-text>
+ </claim>
+<claim id="CLM-00013" num="00013">
+<claim-text><b>13</b>. The enhanced mask system of <claim-ref idref="CLM-00010">claim 10</claim-ref> wherein the inner fabric is a fleece. </claim-text>
+ </claim>
+<claim id="CLM-00014" num="00014">
+<claim-text><b>14</b>. The enhanced mask system of <claim-ref idref="CLM-00010">claim 10</claim-ref> wherein the central portion is sewn to the wing portions. </claim-text>
+ </claim>
+<claim id="CLM-00015" num="00015">
+<claim-text><b>15</b>. The enhanced mask system of <claim-ref idref="CLM-00001">claim 1</claim-ref> wherein the head piece or balaclava is formed as a thin layer which acts as a liner for a helmet.</claim-text>
+ </claim>
+</claims>
+</us-patent-application>

@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE patent-application-publication SYSTEM "pap-v15-2001-01-31.dtd" [
+<!ENTITY US20010002518A1-20010607-D00001.TIF SYSTEM "US20010002518A1-20010607-D00001.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00002.TIF SYSTEM "US20010002518A1-20010607-D00002.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00003.TIF SYSTEM "US20010002518A1-20010607-D00003.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00004.TIF SYSTEM "US20010002518A1-20010607-D00004.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00005.TIF SYSTEM "US20010002518A1-20010607-D00005.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00006.TIF SYSTEM "US20010002518A1-20010607-D00006.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00007.TIF SYSTEM "US20010002518A1-20010607-D00007.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00008.TIF SYSTEM "US20010002518A1-20010607-D00008.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00009.TIF SYSTEM "US20010002518A1-20010607-D00009.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00010.TIF SYSTEM "US20010002518A1-20010607-D00010.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00011.TIF SYSTEM "US20010002518A1-20010607-D00011.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00012.TIF SYSTEM "US20010002518A1-20010607-D00012.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00013.TIF SYSTEM "US20010002518A1-20010607-D00013.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00014.TIF SYSTEM "US20010002518A1-20010607-D00014.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00015.TIF SYSTEM "US20010002518A1-20010607-D00015.TIF" NDATA TIF>
+<!ENTITY US20010002518A1-20010607-D00016.TIF SYSTEM "US20010002518A1-20010607-D00016.TIF" NDATA TIF>
+]>
+<patent-application-publication>
+<subdoc-bibliographic-information>
+<document-id>
+<doc-number>20010002518</doc-number>
+<kind-code>A1</kind-code>
+<document-date>20010607</document-date></document-id>
+<publication-filing-type>new-utility</publication-filing-type>
+<domestic-filing-data>
+<application-number>
+<doc-number>09761340</doc-number>
+</application-number>
+<application-number-series-code>09</application-number-series-code>
+<filing-date>20010116</filing-date>
+</domestic-filing-data>
+<technical-information>
+<classification-ipc>
+<classification-ipc-primary>
+<ipc>B62B009/04</ipc>
+</classification-ipc-primary>
+<classification-ipc-secondary>
+<ipc>B62B013/00</ipc>
+</classification-ipc-secondary>
+<classification-ipc-secondary>
+<ipc>A43B005/04</ipc>
+</classification-ipc-secondary>
+<classification-ipc-secondary>
+<ipc>A63C009/00</ipc>
+</classification-ipc-secondary>
+<classification-ipc-edition>07</classification-ipc-edition>
+</classification-ipc>
+<classification-us>
+<classification-us-primary>
+<uspc>
+<class>036</class>
+<subclass>118800</subclass>
+</uspc>
+</classification-us-primary>
+<classification-us-secondary>
+<uspc>
+<class>036</class>
+<subclass>118200</subclass>
+</uspc>
+</classification-us-secondary>
+<classification-us-secondary>
+<uspc>
+<class>280</class>
+<subclass>014220</subclass>
+</uspc>
+</classification-us-secondary>
+<classification-us-secondary>
+<uspc>
+<class>280</class>
+<subclass>613000</subclass>
+</uspc>
+</classification-us-secondary>
+<classification-us-secondary>
+<uspc>
+<class>036</class>
+<subclass>118400</subclass>
+</uspc>
+</classification-us-secondary>
+<classification-us-secondary>
+<uspc>
+<class>036</class>
+<subclass>117600</subclass>
+</uspc>
+</classification-us-secondary>
+</classification-us>
+<title-of-invention>Step-in snowboard binding and boot therefor</title-of-invention>
+</technical-information>
+<continuity-data>
+<division-of>
+<parent-child>
+<child>
+<document-id>
+<doc-number>09761340</doc-number>
+<kind-code>A1</kind-code>
+<document-date>20010116</document-date>
+</document-id>
+</child>
+<parent>
+<document-id>
+<doc-number>08998863</doc-number>
+<document-date>19971229</document-date>
+<country-code>US</country-code>
+</document-id>
+</parent>
+<parent-status>GRANTED</parent-status>
+<parent-patent>
+<document-id>
+<doc-number>6189913</doc-number>
+<country-code>US</country-code>
+</document-id>
+</parent-patent>
+</parent-child>
+</division-of>
+<non-provisional-of-provisional>
+<document-id>
+<doc-number>60068089</doc-number>
+<document-date>19971218</document-date>
+<country-code>US</country-code>
+</document-id>
+</non-provisional-of-provisional>
+</continuity-data>
+<inventors>
+<first-named-inventor>
+<name>
+<given-name>Neil</given-name>
+<middle-name>E.</middle-name>
+<family-name>Morrow</family-name>
+</name>
+<residence>
+<residence-us>
+<city>Salem</city>
+<state>OR</state>
+<country-code>US</country-code>
+</residence-us>
+</residence>
+<authority-applicant>INV</authority-applicant>
+</first-named-inventor>
+<inventor>
+<name>
+<given-name>Robert</given-name>
+<middle-name>J.</middle-name>
+<family-name>Morrow</family-name>
+</name>
+<residence>
+<residence-us>
+<city>Salem</city>
+<state>OR</state>
+<country-code>US</country-code>
+</residence-us>
+</residence>
+<authority-applicant>INV</authority-applicant>
+</inventor>
+<inventor>
+<name>
+<given-name>Phillip</given-name>
+<middle-name>H.</middle-name>
+<family-name>Salvatori</family-name>
+</name>
+<residence>
+<residence-us>
+<city>Salem</city>
+<state>OR</state>
+<country-code>US</country-code>
+</residence-us>
+</residence>
+<authority-applicant>INV</authority-applicant>
+</inventor>
+<inventor>
+<name>
+<given-name>Martin</given-name>
+<middle-name>J.</middle-name>
+<family-name>Maiers</family-name>
+</name>
+<residence>
+<residence-us>
+<city>Central Point</city>
+<state>OR</state>
+<country-code>US</country-code>
+</residence-us>
+</residence>
+<authority-applicant>INV</authority-applicant>
+</inventor>
+</inventors>
+<assignee>
+<organization-name>K-2 Corporation</organization-name>
+<assignee-type>02</assignee-type>
+</assignee>
+<correspondence-address>
+<name-1>CHRISTENSEN, O&apos;CONNOR, JOHNSON, KINDNESS, PLLC</name-1>
+<name-2></name-2>
+<address>
+<address-1>1420 FIFTH AVENUE</address-1>
+<address-2>SUITE 2800</address-2>
+<city>SEATTLE</city>
+<state>WA</state>
+<postalcode>98101-2347</postalcode>
+<country>
+<country-code>US</country-code>
+</country>
+</address>
+</correspondence-address>
+</subdoc-bibliographic-information>
+<subdoc-abstract>
+<paragraph id="A-0001" lvl="0">A three point step-in snowboard binding includes medial and lateral binding pin engagers that interact with corresponding pins in a boot. The binding latches the boot after the snowboarder steps into the binding, and remains latched until a release control is actuated. </paragraph>
+</subdoc-abstract>
+<subdoc-description>
+<cross-reference-to-related-applications>
+<heading lvl="1">Cross-Reference to Related Applications </heading>
+<paragraph id="P-0001" lvl="0"><number>&lsqb;0001&rsqb;</number> This application is a divisional of U.S. patent application Ser. No. 08/998,863, filed Dec. 29, 1997, which claims the benefit of U.S. Provisional Patent Application No. 60/068,089, filed Dec. 18, 1997. </paragraph>
+</cross-reference-to-related-applications>
+<summary-of-invention>
+<section>
+<heading lvl="1">FIELD OF THE INVENTION </heading>
+<paragraph id="P-0002" lvl="0"><number>&lsqb;0002&rsqb;</number> This invention relates to snowboarding, and more particularly to an improved snowboard boot and an improved snowboard binding system for securing the snowboard rider to the snowboard. </paragraph>
+</section>
+<section>
+<heading lvl="1">BACKGROUND OF THE INVENTION </heading>
+<paragraph id="P-0003" lvl="0"><number>&lsqb;0003&rsqb;</number> The sport of snowboarding is an increasingly popular wintertime activity wherein a snowboarding enthusiast (hereinafter &ldquo;snowboarder&rdquo;) maneuvers the board down a snow-covered slope while standing thereon. To facilitate snowboard maneuvers, the snowboarder requires intimate association with the board and therefore bindings are used for securing the snowboarder&apos;s boots to the board. </paragraph>
+<paragraph id="P-0004" lvl="0"><number>&lsqb;0004&rsqb;</number> Boots for snowboarding are characterized as either soft or hard. Soft boots employ a flexible shell to permit foot/ankle flexing. Hard boots have similar insulating features, but have a hardened outer shell more particularly suited for specific applications such as downhill skiing. The standard downhill ski boot is worn by a skier for obtaining a rigid association between the skier&apos;s feet and lower legs and the downhill ski. In snowboarding, on the other hand, the snowboarder usually desires tight coupling to the snowboard for assisting board manipulation, but at the same time desires a greater degree of freedom for foot/ankle flexing. Unlike downhill skiing, wherein the boots attach to left and right skis with the toes pointed along the respective longitudinal axes, the boots for snowboarding are mounted to the snowboard so that the snowboarder stands over the board with the toes pointed primarily perpendicular to the longitudinal axis with the feet spaced apart from one another beyond shoulder width. With such foot placement, the methods used for manipulating the snowboard generally require that the snowboarder be permitted a great degree of freedom for foot/ankle flexing. </paragraph>
+<paragraph id="P-0005" lvl="0"><number>&lsqb;0005&rsqb;</number> At least two different types of bindings are available for securing boots to a snowboard depending upon the type of boot worn, i.e., hard and soft. Known hard boot bindings use a two engagement point system, with separate toe and heel pieces which bolt to the snowboard via a mounting plate. The toe piece has an engagement clamp for seating a specifically molded toe projection of the hard boot while the heel piece has a clamping bracket, an engagement lever, and a release lever. The clamping bracket releasably engages a molded heel protrusion of the hard boot when the boot is inserted into the binding, the heel of the boot depressing the engagement lever. In order to release the boot from the binding, the release lever is actuated for releasing the heel bracket so that the skier or snowboarder may step out of the hard boot binding. Other hard boot bindings may be one piece and may engage the heel of the boot only, for example. Such one or two point bindings do not always provide a highly stable base for engagement with the board, for a two point binding may tend to allow excessive flexing to either side of a line defined between the two points. </paragraph>
+<paragraph id="P-0006" lvl="0"><number>&lsqb;0006&rsqb;</number> The elements of a soft boot binding include an optional cant, a seating frame including toe and ankle straps and a calf support, known as a highback. The cant supports the frame and comprises a rectangular block which has a flat upper surface sloped relative to its flat bottom surface. The seating frame includes a plate, a heel bracket, and a toe strap mounting bracket. The plate has a pattern of holes for passing bolts used in mounting the plate to the snowboard, or alternatively to the optional cant. Another popular binding style uses a mounting plate with a relatively large hole in the center, with a corresponding disk, which engages the mounting plate hole. The disk is bolted to the snowboard and thus secures the mounting plate to the board. The boot is held to the board by interaction with the binding plate. </paragraph>
+<paragraph id="P-0007" lvl="0"><number>&lsqb;0007&rsqb;</number> The toe and ankle straps of the soft boot binding have essentially identical elements and functionality except that the length of the ankle strap is generally longer than that of the toe strap. Each strap cooperates with the seating frame for strapping over respective toe and ankle portions of a boot for securing the boot to the frame. The strap system requires, however, that the snowboarder place the boot in the binding and then manually tighten each of the straps in order to secure the boot to the binding. </paragraph>
+<paragraph id="P-0008" lvl="0"><number>&lsqb;0008&rsqb;</number> The known binding systems, however, are somewhat constraining in that they employ a fixed stance and a fixed flexibility for leaning and side-to-side movements. As a rider becomes more skilled at snowboarding, it is often desired to be able to adjust the action of the binding such that the angle of the rider&apos;s leg with respect to the horizontal plane, is adjusted. Further, the rider may often wish to change the stance orientation with respect to the board, the stance width, the rotation of the rider&apos;s feet or the relative centering of the boot with respect to the board, such that different maneuvers are possible. For example, the rider may wish a differing amount of freedom for medial leans, i.e., inwardly toward the center of the rider&apos;s body, versus lateral leaning, i.e., away from the center of the rider&apos;s body. It is also desirable that the medial and lateral lean directions be substantially parallel to the longitudinal axis of the snowboard. Heretofore, such lean direction adjustment or lean tension with respect to the board has been fixed and would require replacement of the binding or adjustment of the highback to a different location along an adjustment slot to enable a different degree of freedom in any particular motion or direction. Similarly, the amount of lean has been somewhat fixed as well as the amount of force applied to pull the board upwardly when the rider leans. </paragraph>
+<paragraph id="P-0009" lvl="0"><number>&lsqb;0009&rsqb;</number> Other binding types also result in a rigid boot, for example as shown by Raines et al, U.S. Pat. No. 4,973,073. Raines et al employ an elongate binding ridge which extends along the central portion of the boot, laterally away from the sole of the boot. The ridge is engaged by a corresponding receiving member on the snowboard. However, the elongate nature of the binding ridge adds stiffness to the boot, making walking with the boot while not attached to the snowboard uncomfortable or unnatural feeling. </paragraph>
+<paragraph id="P-0010" lvl="0"><number>&lsqb;0010&rsqb;</number> Further, heretofore, boot highbacks have been fixed in relation to the boot, so it was not possible for a rider to change the pivot angle of the highback relative to the boot, without completely switching to another boot. </paragraph>
+</section>
+<section>
+<heading lvl="1">SUMMARY OF THE INVENTION </heading>
+<paragraph id="P-0011" lvl="0"><number>&lsqb;0011&rsqb;</number> In accordance with the invention, a step-in three point binding is provided that includes first and second binding pin engagers on a first side of the binding and a third binding pin engager on a second side of the binding. At least one of the binding pin engagers moves from an unlocked to a locked position when the snowboarder steps onto the binding with a boot, securing the boot to the binding. </paragraph>
+<paragraph id="P-0012" lvl="0"><number>&lsqb;0012&rsqb;</number> Accordingly, it is an object of the present invention to provide an improved three point binding system with improved side to side and front to back stability. </paragraph>
+<paragraph id="P-0013" lvl="0"><number>&lsqb;0013&rsqb;</number> It is a further object of the present invention to provide an improved step-in binding for a snowboard. </paragraph>
+<paragraph id="P-0014" lvl="0"><number>&lsqb;0014&rsqb;</number> Another object of the present invention is to provide an improved snowboard boot with adjustable forward lean. </paragraph>
+<paragraph id="P-0015" lvl="0"><number>&lsqb;0015&rsqb;</number> It is yet another object of the present invention to provide an improved binding that is easily adaptable for receiving a left or a right foot at a given binding location. </paragraph>
+<paragraph id="P-0016" lvl="0"><number>&lsqb;0016&rsqb;</number> The subject matter of the present invention is particularly pointed out and distinctly claimed in the concluding portion of this specification. However, both the organization and method of operation, together with further advantages and objects thereof, may best be understood by reference to the following description taken in connection with accompanying drawings wherein like reference characters refer to like elements. </paragraph>
+</section>
+</summary-of-invention>
+<brief-description-of-drawings>
+<section>
+<heading lvl="1">BRIEF DESCRIPTION OF THE DRAWINGS </heading>
+<paragraph id="P-0017" lvl="0"><number>&lsqb;0017&rsqb;</number> The foregoing aspects and many of the attendant advantages of this invention will become more readily appreciated as the same become better understood by reference to the following detailed description, when taken in conjunction with the accompanying drawings, wherein: </paragraph>
+<paragraph id="P-0018" lvl="0"><number>&lsqb;0018&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 1</cross-reference> is a lateral side view of a snowboarding boot according to the present invention; </paragraph>
+<paragraph id="P-0019" lvl="0"><number>&lsqb;0019&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 2</cross-reference> is a sectional view of the engaging pin region of the boot of <cross-reference target="DRAWINGS">FIG. 1</cross-reference>, taken along line <highlight><bold>2</bold></highlight>-<highlight><bold>2</bold></highlight>; </paragraph>
+<paragraph id="P-0020" lvl="0"><number>&lsqb;0020&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 3</cross-reference> is a medial side view of the boot of <cross-reference target="DRAWINGS">FIG. 1</cross-reference>; </paragraph>
+<paragraph id="P-0021" lvl="0"><number>&lsqb;0021&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 4</cross-reference> is a bottom view of the boot of <cross-reference target="DRAWINGS">FIG. 1</cross-reference> and <cross-reference target="DRAWINGS">FIG. 3</cross-reference> with the interior frame member illustrated in phantom; </paragraph>
+<paragraph id="P-0022" lvl="0"><number>&lsqb;0022&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 5</cross-reference> is a top view of a binding apparatus in accordance with an embodiment of the invention, with a portion of a snowboard also shown; </paragraph>
+<paragraph id="P-0023" lvl="0"><number>&lsqb;0023&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 6</cross-reference> is an end view of the binding and snowboard of <cross-reference target="DRAWINGS">FIG. 5</cross-reference>; </paragraph>
+<paragraph id="P-0024" lvl="0"><number>&lsqb;0024&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 7</cross-reference> is a top view of a boot and binding system according to the present invention, with the boot illustrated in phantom to show the interaction with the internal boot frame and the binding apparatus; </paragraph>
+<paragraph id="P-0025" lvl="0"><number>&lsqb;0025&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 8</cross-reference> is an end view from the front of the system of <cross-reference target="DRAWINGS">FIG. 7</cross-reference>, with the boot again in phantom; </paragraph>
+<paragraph id="P-0026" lvl="0"><number>&lsqb;0026&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 9</cross-reference> is a partial sectional illustration of the latching portion of the binding system taken from the top thereof showing in greater detail the interaction of the internal boot frame with the binding; </paragraph>
+<paragraph id="P-0027" lvl="0"><number>&lsqb;0027&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 10</cross-reference> is a sectional view of the engaged boot and binding, taken along line <highlight><bold>10</bold></highlight>-<highlight><bold>10</bold></highlight> in <cross-reference target="DRAWINGS">FIG. 9</cross-reference>; </paragraph>
+<paragraph id="P-0028" lvl="0"><number>&lsqb;0028&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 11</cross-reference> is a top partial cut away view of the binding of <cross-reference target="DRAWINGS">FIG. 9</cross-reference>, illustrating the released position; </paragraph>
+<paragraph id="P-0029" lvl="0"><number>&lsqb;0029&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 12</cross-reference> is a sectional view of the binding system of <cross-reference target="DRAWINGS">FIG. 11</cross-reference> taken along line <highlight><bold>12</bold></highlight>-<highlight><bold>12</bold></highlight>; </paragraph>
+<paragraph id="P-0030" lvl="0"><number>&lsqb;0030&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 13</cross-reference> is a rear view of the boot forward lean adjustment mechanism according to the invention; </paragraph>
+<paragraph id="P-0031" lvl="0"><number>&lsqb;0031&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 14</cross-reference> is a side view of the forward lean system of <cross-reference target="DRAWINGS">FIG. 1</cross-reference> at line <highlight><bold>14</bold></highlight>-<highlight><bold>14</bold></highlight> illustrating the position of the cable member; </paragraph>
+<paragraph id="P-0032" lvl="0"><number>&lsqb;0032&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 15</cross-reference> is a rear view of the boot forward lean adjustment system with the cable in an alternative position; </paragraph>
+<paragraph id="P-0033" lvl="0"><number>&lsqb;0033&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 16</cross-reference> is a partial side view of the forward lean adjustment system in the released position; </paragraph>
+<paragraph id="P-0034" lvl="0"><number>&lsqb;0034&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 17</cross-reference> is a medial side view of an alternative engaging system for a binding system according to the invention; </paragraph>
+<paragraph id="P-0035" lvl="0"><number>&lsqb;0035&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 18</cross-reference> is an end view of the engaging system of <cross-reference target="DRAWINGS">FIG. 17</cross-reference> with the engager in an open position; </paragraph>
+<paragraph id="P-0036" lvl="0"><number>&lsqb;0036&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 19</cross-reference> is a sectional view of the mechanism of <cross-reference target="DRAWINGS">FIG. 18</cross-reference> just prior to engagement with the corresponding boot frame; </paragraph>
+<paragraph id="P-0037" lvl="0"><number>&lsqb;0037&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 20</cross-reference> is a sectional view of the mechanism of <cross-reference target="DRAWINGS">FIG. 18</cross-reference> after engagement and locking of the boot frame member; </paragraph>
+<paragraph id="P-0038" lvl="0"><number>&lsqb;0038&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 21</cross-reference> is a side view of an embodiment of a snowboard boot illustrating adjustability aspects of the highback; </paragraph>
+<paragraph id="P-0039" lvl="0"><number>&lsqb;0039&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 22</cross-reference> is a partially phantom rear view of the boot of <cross-reference target="DRAWINGS">FIG. 21</cross-reference>; </paragraph>
+<paragraph id="P-0040" lvl="0"><number>&lsqb;0040&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 23</cross-reference> is an alternative structural frame member having less rigidity or stiffness; </paragraph>
+<paragraph id="P-0041" lvl="0"><number>&lsqb;0041&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 24</cross-reference> is another alternative structural frame member having greater rigidity; </paragraph>
+<paragraph id="P-0042" lvl="0"><number>&lsqb;0042&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 25</cross-reference> is a partial rear view of the shell of <cross-reference target="DRAWINGS">FIG. 36</cross-reference> taken along line <highlight><bold>25</bold></highlight>-<highlight><bold>25</bold></highlight> of <cross-reference target="DRAWINGS">FIG. 36</cross-reference>, illustrating the connection of the upper shell to the lower shell; </paragraph>
+<paragraph id="P-0043" lvl="0"><number>&lsqb;0043&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 26</cross-reference> is a partial rear view of an alternative embodiment of the connection of the upper and lower shells; </paragraph>
+<paragraph id="P-0044" lvl="0"><number>&lsqb;0044&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 27</cross-reference> is an alternative embodiment of the forward lean adjustment system of <cross-reference target="DRAWINGS">FIG. 13</cross-reference>; </paragraph>
+<paragraph id="P-0045" lvl="0"><number>&lsqb;0045&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 28</cross-reference> is another embodiment of the forward lean adjustment system of <cross-reference target="DRAWINGS">FIG. 13</cross-reference>; </paragraph>
+<paragraph id="P-0046" lvl="0"><number>&lsqb;0046&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 29</cross-reference> is a top diagrammatic view of the spacing of the binding pins in accordance with the invention; </paragraph>
+<paragraph id="P-0047" lvl="0"><number>&lsqb;0047&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 30</cross-reference> is a side diagrammatic view of a single binding pin as installed in a boot; </paragraph>
+<paragraph id="P-0048" lvl="0"><number>&lsqb;0048&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 31</cross-reference> is yet another alternative structural frame member having less rigidity or stiffness; </paragraph>
+<paragraph id="P-0049" lvl="0"><number>&lsqb;0049&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 32</cross-reference> is a sectional view of a preferred embodiment of the boot engaging portion of the binding system in a disengaged state; </paragraph>
+<paragraph id="P-0050" lvl="0"><number>&lsqb;0050&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 33</cross-reference> is a sectional view of an engaged boot and binding with a preferred embodiment of the boot engaging mechanism; </paragraph>
+<paragraph id="P-0051" lvl="0"><number>&lsqb;0051&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 34</cross-reference> is a top partially cut-away view of the binding system&apos;s boot engaging portion of <cross-reference target="DRAWINGS">FIG. 32</cross-reference> and <highlight><bold>33</bold></highlight>; </paragraph>
+<paragraph id="P-0052" lvl="0"><number>&lsqb;0052&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 35</cross-reference> is a lateral side view of interior elements of a snowboard boot illustrating the attachment of forward lean control aspects of the invention, with some external straps also shown; </paragraph>
+<paragraph id="P-0053" lvl="0"><number>&lsqb;0053&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 36</cross-reference> is a medial side view of the interior boot elements and some external straps of <cross-reference target="DRAWINGS">FIG. 35</cross-reference>; and </paragraph>
+<paragraph id="P-0054" lvl="0"><number>&lsqb;0054&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 37</cross-reference> is yet another alternative embodiment of the buckle for adjusting the forward lean of the boot. </paragraph>
+</section>
+</brief-description-of-drawings>
+<detailed-description>
+<section>
+<heading lvl="1">DETAILED DESCRIPTION OF THE PREFERRED EMBODIMENT </heading>
+<paragraph id="P-0055" lvl="0"><number>&lsqb;0055&rsqb;</number> Referring to <cross-reference target="DRAWINGS">FIG. 1, a</cross-reference> lateral side view of a snowboard boot in accordance with an embodiment of the invention, the boot <highlight><bold>22</bold></highlight> includes a lateral binding engaging pin <highlight><bold>24</bold></highlight>, located approximately centrally with respect to the front and rear ends of the boot, slightly forward toward the toes. Pin <highlight><bold>24</bold></highlight> is oriented substantially parallel to the bottom surface of the boot (which in use positions the pin parallel to the surface of a snowboard) and is set in slightly from the outer edges of the boot, both horizontally and vertically. In a particular embodiment, the exposed length of the pin is approximately one inch. The secured ends of the pin enter into the body of the boot, but the exposed portion is substantially free from engagement by the boot, and is surrounded by a semispherical void <highlight><bold>26</bold></highlight>. <cross-reference target="DRAWINGS">FIG. 2, a</cross-reference> sectional view of the pin <highlight><bold>24</bold></highlight> and semispherical void <highlight><bold>26</bold></highlight> taken along line <highlight><bold>2</bold></highlight>-<highlight><bold>2</bold></highlight> of <cross-reference target="DRAWINGS">FIG. 1</cross-reference>, illustrates the relative spacing of the pin to the center of the void. Referring to <cross-reference target="DRAWINGS">FIG. 1</cross-reference> and <cross-reference target="DRAWINGS">FIG. 2</cross-reference> together, the semispherical void is defined into the sole <highlight><bold>30</bold></highlight> of the boot, and may comprise a material <highlight><bold>28</bold></highlight> that is substantially more abrasion resistant than the rest of the sole of the boot, which is intended more for traction or grip. The increased abrasion resistance ensures longer wear of this portion <highlight><bold>28</bold></highlight> of the boot, as it is continuously engaging and disengaging with portions of the binding system as will be discussed hereinbelow. </paragraph>
+<paragraph id="P-0056" lvl="0"><number>&lsqb;0056&rsqb;</number> Referring to <cross-reference target="DRAWINGS">FIG. 3, a</cross-reference> view of the medial side of the snowboard boot, the boot has a forward binding engaging pin <highlight><bold>32</bold></highlight> disposed forwardly of the front-to-rear center line of the boot on the boot&apos;s medial side, and a rearward binding engaging pin <highlight><bold>34</bold></highlight> positioned on the rear side of the front-to-rear center line of the boot, toward the heel region. Pins <highlight><bold>32</bold></highlight> and <highlight><bold>34</bold></highlight> are contained within respective concave semispherical regions <highlight><bold>36</bold></highlight> and <highlight><bold>38</bold></highlight>, where regions <highlight><bold>36</bold></highlight> and <highlight><bold>38</bold></highlight> have corresponding cross sectional shapes to the shape of portion <highlight><bold>28</bold></highlight> of the lateral side (although this is not a requirement), wherein the semispheres are suitably defined within harder shells <highlight><bold>40</bold></highlight> and <highlight><bold>42</bold></highlight>. </paragraph>
+<paragraph id="P-0057" lvl="0"><number>&lsqb;0057&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 4</cross-reference> is a bottom view of the boot of <cross-reference target="DRAWINGS">FIG. 1</cross-reference> and <cross-reference target="DRAWINGS">FIG. 3</cross-reference>, further showing construction detail thereof. The bottom of sole <highlight><bold>30</bold></highlight> may carry a tread pattern <highlight><bold>44</bold></highlight> thereon, to provide increased traction for walking and for standing on the snowboard. Substantially parallel to the plane of the bottom of the sole and located within the interior of the boot body, is a structural frame member <highlight><bold>46</bold></highlight>, shown in phantom in <cross-reference target="DRAWINGS">FIG. 4</cross-reference>, wherein the lateral engaging pin <highlight><bold>24</bold></highlight> and the medial engaging pins <highlight><bold>32</bold></highlight> and <highlight><bold>34</bold></highlight> are spatially positioned relative to one another by the structural frame member. The pins <highlight><bold>24</bold></highlight>, <highlight><bold>32</bold></highlight>, <highlight><bold>34</bold></highlight> may either be connected to the structural member, or may be formed as an integral portion thereof. In a preferred embodiment, the pins and structural frame member are constructed from aluminum. The frame member is suitably formed within a portion of an insole within the boot interior, wherein the insole is made of plastic, for example, and roughly conforms to the shape of a wearer&apos;s foot. The relative stiffness of the boot is at least partially determined by the frame member. Therefore, it is possible to construct a boot with a modified frame member, such that the frame member is stiffer or less stiff. Referring to <cross-reference target="DRAWINGS">FIG. 23, a</cross-reference> less stiff structural frame member <highlight><bold>46</bold></highlight>&prime; is shown. Frame member <highlight><bold>46</bold></highlight>&prime; interconnects pin <highlight><bold>24</bold></highlight> with pin <highlight><bold>32</bold></highlight>, and pin <highlight><bold>24</bold></highlight> with pin <highlight><bold>34</bold></highlight>, but, unlike structural frame member <highlight><bold>46</bold></highlight> of <cross-reference target="DRAWINGS">FIG. 4</cross-reference>, frame <highlight><bold>46</bold></highlight>&prime; does not directly interconnect pins <highlight><bold>32</bold></highlight> and <highlight><bold>34</bold></highlight>. Therefore more independent movement or flexing of the pins relative to each other can occur. <cross-reference target="DRAWINGS">FIG. 24</cross-reference> illustrates a stiffer frame member <highlight><bold>46</bold></highlight>&Prime;, wherein the frame defines a more rectangular region. This frame member will be substantially more rigid than the frame of <cross-reference target="DRAWINGS">FIG. 22</cross-reference>. A further removable tab <highlight><bold>48</bold></highlight> is illustrated in phantom. This removable tab, if left in place, makes an even more rigid frame. Also, the rigidity can be altered by employing different thicknesses of material in the frame member. For example, with the frame member of <cross-reference target="DRAWINGS">FIG. 24</cross-reference>, when constructed of metal, may suitably employ a relatively thick region near the heel region <highlight><bold>45</bold></highlight>, to provide greater stiffness. However, the area near region <highlight><bold>48</bold></highlight> can be relatively thin, to allow more flexing. The riding performance characteristics of the boot and binding are changed depending on the stiffness characteristics of the frame, so boots with different responses can be provided to suit a snowboarder&apos;s particular riding style or tastes, by using a boot with a different frame member therein. </paragraph>
+<paragraph id="P-0058" lvl="0"><number>&lsqb;0058&rsqb;</number> For a boot having different characteristics, a further embodiment of the frame <highlight><bold>46</bold></highlight> is illustrated in <cross-reference target="DRAWINGS">FIG. 31</cross-reference>, wherein each of the medial binding pins <highlight><bold>32</bold></highlight> and <highlight><bold>34</bold></highlight> are connected to lateral binding pin <highlight><bold>24</bold></highlight> via members <highlight><bold>286</bold></highlight> which are relatively flexible as compared with metal. Such a binding frame will result in a boot that is able to flex much more than those boots employing a rigid frame. Members <highlight><bold>286</bold></highlight> may comprise, for example, glass filled plastic or nylon members. </paragraph>
+<paragraph id="P-0059" lvl="0"><number>&lsqb;0059&rsqb;</number> Yet another alternative frame extends all the way to the heel region of the boot and up around the sides of the foot. A still further embodiment employs a beam member connecting 2 of the pins (e.g. pins <highlight><bold>32</bold></highlight>, <highlight><bold>34</bold></highlight>) and a second beam member connecting the third pin to the first beam member. </paragraph>
+<paragraph id="P-0060" lvl="0"><number>&lsqb;0060&rsqb;</number> In order to use the boot, a corresponding binding member is employed on a snowboard, to secure the boot to the board during riding. Referring to <cross-reference target="DRAWINGS">FIG. 5, a</cross-reference> top view of a binding apparatus in accordance with the invention, with a portion of a snowboard also shown, together with <cross-reference target="DRAWINGS">FIG. 6</cross-reference>, an end view of the binding and snowboard of <cross-reference target="DRAWINGS">FIG. 5</cross-reference>, the binding system <highlight><bold>50</bold></highlight> is attached to the surface of a snowboard <highlight><bold>52</bold></highlight> via any suitable means. In the illustrated embodiment, a relatively planar binding base member <highlight><bold>54</bold></highlight> includes a central circular opening <highlight><bold>56</bold></highlight> therein, which may suitably have a series of teeth or serrations about the inner circumference thereof. A binding disk <highlight><bold>58</bold></highlight> is circular and of a diameter to fit within the opening <highlight><bold>56</bold></highlight>. A series of mating teeth or serrations are provided on the underside of the disk to mesh with the corresponding teeth in the base member. Disk <highlight><bold>58</bold></highlight> preferably is of slightly larger diameter than the opening in the base member, so that its perimeter overhangs the upper surface of the base plate, or a shallow perimeter trough is defined in the base member to correspond to the overhang of the disk. A series of slots <highlight><bold>60</bold></highlight> are provided in the disk for receiving fasteners therein. The fasteners mate with corresponding members defined in the surface of the snowboard, whereupon tightening of the fasteners as positioned in the slots <highlight><bold>60</bold></highlight> will pull the disk down towards the surface of the snowboard, thereby pulling the binding base member into tight engagement with the snowboard surface. </paragraph>
+<paragraph id="P-0061" lvl="0"><number>&lsqb;0061&rsqb;</number> Secured to the base member at the medial edge thereof are front and rear medial binding pin engaging dogs <highlight><bold>62</bold></highlight> and <highlight><bold>64</bold></highlight>, spaced apart from each other a distance corresponding to the distance between front and rear boot medial binding pins <highlight><bold>32</bold></highlight> and <highlight><bold>34</bold></highlight>. Dogs <highlight><bold>62</bold></highlight> and <highlight><bold>64</bold></highlight> have a mushroom like shape, with a narrower base region <highlight><bold>68</bold></highlight> and an overhanging upper region <highlight><bold>70</bold></highlight>, at least as considered in the area toward the lateral side of the binding. The top surface of the upper region <highlight><bold>70</bold></highlight> is substantially convex-spherical in shape. The overhang defines an upward stop <highlight><bold>72</bold></highlight>, which provides a flat surface region that is horizontally oriented and substantially parallel to the surface of the snowboard and that is advantageous for engaging and preventing movement of boot binding pins <highlight><bold>32</bold></highlight> and <highlight><bold>34</bold></highlight> as will be described hereinbelow. A vertically aligned medial stop <highlight><bold>74</bold></highlight> is provided by the inner vertical wall of the dogs, preventing movement beyond a stop position in the medial direction <highlight><bold>76</bold></highlight>. Dogs <highlight><bold>62</bold></highlight> and <highlight><bold>64</bold></highlight> are suitably fixed to the binding plate <highlight><bold>54</bold></highlight> and do not move relative thereto. </paragraph>
+<paragraph id="P-0062" lvl="0"><number>&lsqb;0062&rsqb;</number> At the lateral edge of the binding base plate is the binding latch mechanism <highlight><bold>78</bold></highlight>. The basic pieces of the mechanism <highlight><bold>78</bold></highlight> are the lateral binding pin receiver <highlight><bold>80</bold></highlight>, which comprises a semicircular disk with a binding pin receiving channel about the perimeter thereof, a hollow housing member <highlight><bold>82</bold></highlight> which contains the operative components of the latch mechanism therewithin, and a binding latch release control <highlight><bold>84</bold></highlight>. In <cross-reference target="DRAWINGS">FIG. 5</cross-reference> and <cross-reference target="DRAWINGS">FIG. 6</cross-reference>, the binding pin receiver <highlight><bold>80</bold></highlight> is in the open position, ready to receive the boot lateral binding pin <highlight><bold>24</bold></highlight> therein. Underneath the binding plate <highlight><bold>54</bold></highlight>, an elastomeric spacer <highlight><bold>83</bold></highlight> may be provided to ensure a tight engagement between the board and the binding, at least at the lateral side thereof. </paragraph>
+<paragraph id="P-0063" lvl="0"><number>&lsqb;0063&rsqb;</number> Now, referring to <cross-reference target="DRAWINGS">FIG. 7, a</cross-reference> top view of a boot and binding system according to the present invention, with a boot engaged therein and illustrated in phantom to show the interaction with the internal boot frame and the binding apparatus, and to <cross-reference target="DRAWINGS">FIG. 8, a</cross-reference> front end view of the system of <cross-reference target="DRAWINGS">FIG. 7</cross-reference>, to secure the boot within the binding, a snowboarder first positions the boot above the binding slightly more to the lateral side of the binding and with the medial edge of the boot tilted downwardly relative toward the horizontal. Then, moving the boot in a medial direction, the binding pins <highlight><bold>32</bold></highlight> and <highlight><bold>34</bold></highlight> move into engagement with the medial dogs <highlight><bold>62</bold></highlight> and <highlight><bold>64</bold></highlight>. The binding pins <highlight><bold>32</bold></highlight> and <highlight><bold>34</bold></highlight> are thus trapped by dogs <highlight><bold>62</bold></highlight> and <highlight><bold>64</bold></highlight> against further medial movement as well as against upward movement. Now, the snowboarder pivots the lateral side of the boot down, which causes lateral binding pin <highlight><bold>24</bold></highlight> to meet lateral pin receiver <highlight><bold>80</bold></highlight>. As a result of the configuration of the latching mechanism described hereinbelow, the latching mechanism pivots downwardly with the downward movement of the boot, and locks in the position shown in <cross-reference target="DRAWINGS">FIG. 8</cross-reference>, effectively trapping the lateral binding pin against escaping from the receiving channel in the receiver <highlight><bold>80</bold></highlight>. The cooperation of the binding pins, the dogs and the latch mechanism result in the boot being secured to the binding, and therefore the rider is now secured to the snowboard (at least with respect to this first foot). If the rider&apos;s second foot is to be secured to the board, a second binding system and boot are suitably provided. In <cross-reference target="DRAWINGS">FIG. 7</cross-reference> and <cross-reference target="DRAWINGS">FIG. 8</cross-reference>, it may be observed that receiver <highlight><bold>80</bold></highlight> is convex-spherical in shape along a top portion thereof. This spherical portion is pivotally retracted within housing <highlight><bold>82</bold></highlight> when the receiver is in the unlatched position of <cross-reference target="DRAWINGS">FIG. 5</cross-reference> and <cross-reference target="DRAWINGS">FIG. 6</cross-reference>. </paragraph>
+<paragraph id="P-0064" lvl="0"><number>&lsqb;0064&rsqb;</number> Still referring to <cross-reference target="DRAWINGS">FIG. 7</cross-reference>, the structural frame member <highlight><bold>46</bold></highlight> may be observed with its relationship to the binding pins. Trapping the binding pins thereby anchors the structural frame, and as the frame is secured within the boot, a stable engagement between the rider and board is provided. </paragraph>
+<paragraph id="P-0065" lvl="0"><number>&lsqb;0065&rsqb;</number> Considering FIGS. <highlight><bold>1</bold></highlight>-<highlight><bold>8</bold></highlight> together, the convex semispherical upper portions of dogs <highlight><bold>62</bold></highlight> and <highlight><bold>64</bold></highlight> suitably are received within the respective concave semispherical regions <highlight><bold>36</bold></highlight> and <highlight><bold>38</bold></highlight> at the boot&apos;s medial side, and the convex semispherical portion of receiver <highlight><bold>80</bold></highlight> mates with the corresponding concave semispherical void <highlight><bold>26</bold></highlight> of the lateral side of the boot. Therefore, even if the boot is not precisely aligned as it is moved in toward the binding, the shapes of the dogs and voids will assist in guiding the boot and binding together. </paragraph>
+<paragraph id="P-0066" lvl="0"><number>&lsqb;0066&rsqb;</number> As alluded to hereinabove, once the snowboarder steps into the binding, receiver <highlight><bold>80</bold></highlight> moves to a latched position. <cross-reference target="DRAWINGS">FIG. 9</cross-reference> is a partial sectional illustration of the latching portion of the binding system viewed from the top with housing cover <highlight><bold>82</bold></highlight> removed, showing in greater detail the interaction of the internal boot frame with the binding. The engaging pin <highlight><bold>24</bold></highlight>, as secured to frame <highlight><bold>46</bold></highlight> is held in position by receiver <highlight><bold>80</bold></highlight>, in a slot <highlight><bold>86</bold></highlight> which has a first portion aligned along axis <highlight><bold>87</bold></highlight> and a second portion aligned along axis <highlight><bold>85</bold></highlight>. Referring also to <cross-reference target="DRAWINGS">FIG. 10, a</cross-reference> sectional view of the engaged boot and binding, taken along line <highlight><bold>10</bold></highlight>-<highlight><bold>1</bold></highlight>O in <cross-reference target="DRAWINGS">FIG. 9</cross-reference>, receiver <highlight><bold>80</bold></highlight> includes an arm portion <highlight><bold>88</bold></highlight> defining a shelf, at the side of the receiver distal from the slot <highlight><bold>86</bold></highlight>. Receiver <highlight><bold>80</bold></highlight> is pivotally mounted on a shaft <highlight><bold>90</bold></highlight> to allow rotation along the arc <highlight><bold>92</bold></highlight> shown in <cross-reference target="DRAWINGS">FIG. 10</cross-reference>. A pair of springs <highlight><bold>94</bold></highlight> are fitted on the shaft <highlight><bold>90</bold></highlight>, and suitably bias receiver <highlight><bold>80</bold></highlight> into the open or unlatched position (as in <cross-reference target="DRAWINGS">FIG. 6</cross-reference>, for example). Shaft <highlight><bold>90</bold></highlight> is supported at its ends by first and second shaft supports <highlight><bold>96</bold></highlight>. The shaft supports include a laterally extending leg portion <highlight><bold>98</bold></highlight>, which supports a shaft <highlight><bold>100</bold></highlight> in spaced relation to and parallel with shaft <highlight><bold>90</bold></highlight>. The leg portions define a space between each other. In the illustrated embodiment, shaft <highlight><bold>100</bold></highlight> is of lesser diameter than shaft <highlight><bold>90</bold></highlight>. A catch member <highlight><bold>102</bold></highlight> is slidingly mounted to shaft <highlight><bold>100</bold></highlight>, and is suitably translatable along the direction of arrow <highlight><bold>104</bold></highlight>, to slide back and forth between the two legs <highlight><bold>98</bold></highlight>. Catch member <highlight><bold>102</bold></highlight> defines an inverted L shape. A biasing member <highlight><bold>106</bold></highlight>, suitably a spring, is positioned around the shaft <highlight><bold>100</bold></highlight>, and is partially received within a bore at the base end of the inverted L shaped catch member. The opposing end of the biasing member pushes against one of the legs <highlight><bold>98</bold></highlight>, suitably urging the catch member <highlight><bold>102</bold></highlight> in the direction of arrow <highlight><bold>108</bold></highlight>, away from the one leg member <highlight><bold>98</bold></highlight>. It will be noted that as a result of the positioning of the catch member <highlight><bold>102</bold></highlight> and arm portion <highlight><bold>88</bold></highlight> of receiver <highlight><bold>80</bold></highlight>, the biasing member causes the L leg of the catch member to slide underneath the flat shelf portion of arm <highlight><bold>88</bold></highlight>. Accordingly, receiver <highlight><bold>80</bold></highlight> is prevented from rotating to the open position about shaft <highlight><bold>90</bold></highlight>, since the catch member acts as a block by its position underneath arm <highlight><bold>88</bold></highlight>. </paragraph>
+<paragraph id="P-0067" lvl="0"><number>&lsqb;0067&rsqb;</number> Still referring to <cross-reference target="DRAWINGS">FIG. 9, a</cross-reference> release cable <highlight><bold>10</bold></highlight> passes through an opening in one of legs <highlight><bold>98</bold></highlight>, and is attached to the distal end of the L portion of catch member <highlight><bold>102</bold></highlight>. Cable <highlight><bold>110</bold></highlight> then loops around, along the lateral side of the binding, and is connected to the other one of the legs <highlight><bold>98</bold></highlight>. A covering <highlight><bold>112</bold></highlight> is provided, to increase the diameter of the cable and provide a gripping member for ease of grasping by the snowboarder. </paragraph>
+<paragraph id="P-0068" lvl="0"><number>&lsqb;0068&rsqb;</number> Accordingly, while biasing member <highlight><bold>106</bold></highlight> urges the catch <highlight><bold>102</bold></highlight> in the direction of arrow <highlight><bold>104</bold></highlight>, causing the L shaped leg of the catch to be positioned underneath the arm <highlight><bold>88</bold></highlight> of the receiver member, which keeps the receiver positioned in its closed position, suitably keeping the binding pin <highlight><bold>24</bold></highlight> trapped within the slot <highlight><bold>86</bold></highlight>. Rotation of the receiver <highlight><bold>80</bold></highlight> results in the slot or channel <highlight><bold>86</bold></highlight> rotating to surround the pin <highlight><bold>24</bold></highlight> above, below and to the lateral side thereof. The pin is thus prevented from moving upwardly, downwardly or laterally. Medial movement in the direction of arrow <highlight><bold>113</bold></highlight>, is prevented because the medial binding pins <highlight><bold>32</bold></highlight> and <highlight><bold>34</bold></highlight> are trapped against medial, upward or downward movement by the dogs <highlight><bold>62</bold></highlight> and <highlight><bold>64</bold></highlight>, and the three binding pins <highlight><bold>24</bold></highlight>, <highlight><bold>32</bold></highlight> and <highlight><bold>34</bold></highlight> are all maintained in their spatial configuration relative to one another by the structural frame. The pins, structural frame and therefore the boot, are thereby secured within the binding. </paragraph>
+<paragraph id="P-0069" lvl="0"><number>&lsqb;0069&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 11</cross-reference> is a top partial cut away view of the binding of <cross-reference target="DRAWINGS">FIG. 9</cross-reference>, illustrating the released position thereof, while <cross-reference target="DRAWINGS">FIG. 12</cross-reference> is a sectional view of the binding in its state of <cross-reference target="DRAWINGS">FIG. 11</cross-reference>, taken along line <highlight><bold>12</bold></highlight>-<highlight><bold>12</bold></highlight>. In <cross-reference target="DRAWINGS">FIG. 11</cross-reference>, cable <highlight><bold>110</bold></highlight> has been pulled in the direction of arrow <highlight><bold>114</bold></highlight>, which pulls catch member <highlight><bold>102</bold></highlight> in the same direction and compresses the spring biasing member <highlight><bold>106</bold></highlight>. As the catch member is pulled a sufficient distance in the direction of arrow <highlight><bold>114</bold></highlight>, the L leg of the catch member is pulled beyond the edge of arm <highlight><bold>88</bold></highlight>, and as it is no longer underneath the shelf defined by the arm, receiving member <highlight><bold>80</bold></highlight> is now free to rotate in the direction of arc <highlight><bold>116</bold></highlight> (<cross-reference target="DRAWINGS">FIG. 12</cross-reference>). So, the snowboarder can now lift up the lateral edge of the boot, which will cause rotation of the receiver along arc <highlight><bold>116</bold></highlight> about the shaft <highlight><bold>90</bold></highlight>. The spring biasing members <highlight><bold>94</bold></highlight> (<cross-reference target="DRAWINGS">FIG. 9</cross-reference>) will assist in urging the receiver to remain in its upper, open orientation until such time as the snowboarder again inserts the binding pin <highlight><bold>24</bold></highlight> into slot <highlight><bold>86</bold></highlight>. Then, as the receiver <highlight><bold>80</bold></highlight> pivots downwardly, arm <highlight><bold>88</bold></highlight> will eventually move to a position where it no longer blocks catch member <highlight><bold>102</bold></highlight> from moving, and the bias of spring <highlight><bold>106</bold></highlight> will then urge the catch member away from the spring, to move it into the blocking position of <cross-reference target="DRAWINGS">FIGS. 9 and 10</cross-reference>, to secure the binding in the close position. Therefore, in accordance with the invention, a step-in style binding that allows quick, hands-free engagement of the boot and binding is provided, with a three point engagement system. The binding will maintain the boot therein until such time as the snowboarder pulls on the release cable, to free the catch and arm mechanisms. </paragraph>
+<paragraph id="P-0070" lvl="0"><number>&lsqb;0070&rsqb;</number> Referring again to <cross-reference target="DRAWINGS">FIG. 5, a</cross-reference> further advantage of the binding system in accordance with the present invention is illustrated by dashed lines <highlight><bold>85</bold></highlight> and <highlight><bold>87</bold></highlight> (also shown in <cross-reference target="DRAWINGS">FIG. 9</cross-reference>). Lines <highlight><bold>85</bold></highlight> and <highlight><bold>87</bold></highlight> represent the angle of engagement of the binding pin of the boot when the left and right feet are being employed. Assuming the illustrated binding is the forwardmost binding on the snowboard, if the rider prefers to have the left foot forward on the board, then the binding base plate <highlight><bold>54</bold></highlight> might be in the illustrated configuration, and the lateral binding pin <highlight><bold>24</bold></highlight> of the boot will engage receiver <highlight><bold>80</bold></highlight> somewhat along the angle of line <highlight><bold>85</bold></highlight>. However, if the rider prefers the other boot to be in this binding, then the disk <highlight><bold>58</bold></highlight> is loosened, and the base <highlight><bold>54</bold></highlight> is rotated approximately 14.5 degrees or so, to move the lateral latch portion. Now, the other foot&apos;s boot binding pin <highlight><bold>24</bold></highlight> will mate with receiver <highlight><bold>80</bold></highlight> approximately along line <highlight><bold>87</bold></highlight>. If a simple straight receiver portion were employed, the angle of the receiving member would now be wrong, and the angle of the receiver would not now match the angle of the binding pin in the boot. With the multi-angled channel <highlight><bold>86</bold></highlight> of the receiver (first and second angled portions on axes <highlight><bold>85</bold></highlight> and <highlight><bold>87</bold></highlight>), a wide range of angles of orientation is accommodated, without having to replace the binding with a different orientation binding. </paragraph>
+<paragraph id="P-0071" lvl="0"><number>&lsqb;0071&rsqb;</number> Referring now to <cross-reference target="DRAWINGS">FIGS. 1 and 3</cross-reference>, together with FIGS. <highlight><bold>13</bold></highlight>-<highlight><bold>15</bold></highlight>, which are a rear view of the boot tensioning adjustment mechanism according to the invention, a side view of the tensioning system of <cross-reference target="DRAWINGS">FIG. 13</cross-reference> illustrating the position of the cable member, and a rear view of the boot tensioning system with the cable in an alternative position, respectively, a shaft <highlight><bold>118</bold></highlight> is secured on an arm <highlight><bold>120</bold></highlight> at an upper rear portion of the boot <highlight><bold>22</bold></highlight>. Pivotally mounted to the shaft is an engagement member <highlight><bold>122</bold></highlight>, which is able to rotate about the shaft along arc <highlight><bold>124</bold></highlight> (<cross-reference target="DRAWINGS">FIG. 3</cross-reference>). A tension cable <highlight><bold>126</bold></highlight> passes through the engagement member via apertures at either side thereof. The apertures and cable are suitably sized so that the cable may be freely fed and moved through the apertures. The engagement member extends away from the end thereof receiving the shaft, and includes first and second shelf dogs <highlight><bold>128</bold></highlight> and <highlight><bold>130</bold></highlight> in spaced relation to each other, dog <highlight><bold>128</bold></highlight> being positioned closer to shaft <highlight><bold>120</bold></highlight> than dog <highlight><bold>130</bold></highlight>. The space between the dogs is sufficient to allow the cable <highlight><bold>126</bold></highlight> to easily be placed therebetween. As can be seen in <cross-reference target="DRAWINGS">FIGS. 1 and 3</cross-reference>, cable <highlight><bold>126</bold></highlight> extends around from the back of the boot and the engagement member, up over a medial guide <highlight><bold>134</bold></highlight> and a lateral guide <highlight><bold>132</bold></highlight>, where the guides are positioned at least partially around the sides of the boot. The guides are suitably hidden from view by the external covering of the boot, and the cable passes through the boot&apos;s covering to reach the guide. The cable continues over the guide around the medial side of the boot to an attachment point <highlight><bold>136</bold></highlight> at the front of the boot, at a position on the top of the boot forward of the ankle region. On the lateral side of the boot, the cable continues down from guide <highlight><bold>132</bold></highlight> to a second guide <highlight><bold>140</bold></highlight>. </paragraph>
+<paragraph id="P-0072" lvl="0"><number>&lsqb;0072&rsqb;</number> The cooperation of the aforementioned elements enable tension adjustment of the boot, whereby the snowboarder can alter the forward lean of the boot or can completely release the tension to facilitate walking in the boots when not riding on the snowboard. In <cross-reference target="DRAWINGS">FIG. 16</cross-reference>, the engagement member <highlight><bold>122</bold></highlight> has been flipped up in the direction of arc <highlight><bold>142</bold></highlight>, releasing the tension on the cable. Now, the snowboarder selects the desired amount of forward lean, by positioning the cable so it passes over a selected one of the dogs <highlight><bold>128</bold></highlight> or <highlight><bold>130</bold></highlight>. Dog <highlight><bold>128</bold></highlight> provides a relatively lesser tension or less forward lean, while dog <highlight><bold>130</bold></highlight> provides an increased forward lean. After the desired amount of lean is selected, engagement member <highlight><bold>122</bold></highlight> is flipped back down in the direction of arc <highlight><bold>144</bold></highlight>, which will put the cable in to tension, thereby tightening up the boot system to its desired degree of forward lean. <cross-reference target="DRAWINGS">FIG. 15</cross-reference> illustrates the cable passing over dog <highlight><bold>130</bold></highlight>, in a more stiff configuration, while <cross-reference target="DRAWINGS">FIG. 13</cross-reference> shows the configuration with the cable passing over dog <highlight><bold>128</bold></highlight>. <cross-reference target="DRAWINGS">FIG. 14</cross-reference> is a partial phantom side view of the engagement member in the configuration of <cross-reference target="DRAWINGS">FIG. 13</cross-reference>, taken along line <highlight><bold>14</bold></highlight>-<highlight><bold>14</bold></highlight>, illustrating the position of the cable relative to the dogs. It will be appreciated that more dogs can be provided, with different relative spacings, to enable further options to select for the boot forward lean. Enabling different degrees of lean allows the snowboarder to adjust the responsiveness of the boot binding system for riding style or conditions. </paragraph>
+<paragraph id="P-0073" lvl="0"><number>&lsqb;0073&rsqb;</number> Referring to <cross-reference target="DRAWINGS">FIG. 27</cross-reference>, an alternative engagement member <highlight><bold>122</bold></highlight>&prime; includes plural pairs of slots <highlight><bold>272</bold></highlight> in spaced relation to each other along the length of member <highlight><bold>122</bold></highlight>&prime;. Cable <highlight><bold>126</bold></highlight>&prime; is cut at the end to provide <highlight><bold>2</bold></highlight> separate ends thereto. Near each end of the cable, a cylindrical keeper <highlight><bold>274</bold></highlight> is fused thereto, where the keepers are sized so as to be received in any one of slots <highlight><bold>272</bold></highlight>. A sufficient length of the cable extends beyond the keepers to allow grasping by the snowboarder. To adjust the amount of forward lean, the user flips up member <highlight><bold>122</bold></highlight>&prime; (to a configuration as in <cross-reference target="DRAWINGS">FIG. 16</cross-reference>) and places the keepers of each side of the cable in a selected pair of slots <highlight><bold>272</bold></highlight>, pushing the keepers down into the slots to be firmly engaged therein. Then, member <highlight><bold>122</bold></highlight>&prime; is flipped down in the direction of arrow <highlight><bold>273</bold></highlight>, which puts the cable in tension and pulls the highback portion (upper shell) of the boot forwardly to the degree dictated by which set of slots <highlight><bold>272</bold></highlight> have the keepers therein. In the illustrated configuration, the keepers are positioned to provide the maximum amount of forward lean. To obtain the least amount of forward lean, the keepers would be moved to the slots <highlight><bold>272</bold></highlight> at the opposite end of member <highlight><bold>122</bold></highlight>&prime;. It will be understood by those of skill in the art that the boot can lean even further forward than the amount of lean dictated by the setting of the lean adjustment, but the lean adjustment defines a stop point of the rearward extent of the lean angle. </paragraph>
+<paragraph id="P-0074" lvl="0"><number>&lsqb;0074&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 28</cross-reference> is another embodiment of a forward lean adjustment member <highlight><bold>122</bold></highlight>&Prime;. This embodiment carries a threaded shaft <highlight><bold>276</bold></highlight> that extends substantially the length of member <highlight><bold>122</bold></highlight>&Prime;. The two ends of cable <highlight><bold>126</bold></highlight>&prime; are secured to a stud <highlight><bold>278</bold></highlight> that is in threaded engagement with shaft <highlight><bold>276</bold></highlight>. A handle <highlight><bold>280</bold></highlight> mounts to one end of the shaft to enable the shaft to be rotated (<highlight><bold>282</bold></highlight>) about its central axis. Stud <highlight><bold>278</bold></highlight> moves upwardly and downwardly along axis <highlight><bold>284</bold></highlight> as handle <highlight><bold>280</bold></highlight> is rotated, altering the position of the cable ends. Then, when member <highlight><bold>122</bold></highlight>&Prime; is flipped down, the cable is put into tension with the desired amount of forward lean being provided. </paragraph>
+<paragraph id="P-0075" lvl="0"><number>&lsqb;0075&rsqb;</number> Referring now to <cross-reference target="DRAWINGS">FIG. 35</cross-reference>, which is a lateral side view of a preferred embodiment of some of the interior elements of a snowboard boot (in this case, the right boot) illustrating the attachment of forward lean control aspects of the invention, the boot includes a resilient inner shell <highlight><bold>220</bold></highlight>, which in a preferred embodiment consists of an upper portion <highlight><bold>222</bold></highlight> that is adapted to partially encircle a user&apos;s lower calf, and a lower portion <highlight><bold>224</bold></highlight> that receives the foot therewithin. At the rear of the upper portion <highlight><bold>222</bold></highlight> is an attachment shaft or post <highlight><bold>120</bold></highlight>&prime;. In the illustrated embodiment, post <highlight><bold>120</bold></highlight>&prime; is positioned on the lateral side of a centerline of the boot, rather then being centered relative to the lateral and medial sides. The forward lean engagement member <highlight><bold>122</bold></highlight> attaches to the shaft (or post) <highlight><bold>120</bold></highlight>&prime; in a manner corresponding to that described herein in conjunction with FIGS. <highlight><bold>13</bold></highlight>-<highlight><bold>15</bold></highlight>. Cable <highlight><bold>126</bold></highlight> passes through member <highlight><bold>122</bold></highlight> and then through a rearward aperture <highlight><bold>226</bold></highlight> in the upper shell portion <highlight><bold>222</bold></highlight> to the interior side of the shell. Continuing forwardly a short distance, suitably one-half inch, the cable then passes through a forward aperture <highlight><bold>228</bold></highlight>, extending downwardly and crossing over the top of shell portion <highlight><bold>224</bold></highlight>, to the other side of the boot. Referring now to <cross-reference target="DRAWINGS">FIG. 36</cross-reference>, which is a view of the other side of the boot shell, the cable then passes through a loop back member <highlight><bold>230</bold></highlight> that redirects the cable direction to pass up toward the upper shell portion, passing through upper shell apertures <highlight><bold>232</bold></highlight> and <highlight><bold>234</bold></highlight>, finally passing back down to the engagement member <highlight><bold>122</bold></highlight>. In the illustrated embodiment, loop back member <highlight><bold>230</bold></highlight> comprises a first semicircular channel <highlight><bold>236</bold></highlight> and a second semicircular channel <highlight><bold>238</bold></highlight>. These channels allow the cable to move while changing the direction of orientation thereof. The loop back is fixed in this particular embodiment, but in alternative embodiments, the loop back member can be moved forwardly or backwardly along the boot shell, to alter the attachment point there, and may comprise, for example, a pulley member that slides along and then fixedly engages a slot <highlight><bold>240</bold></highlight> (illustrated in phantom) in the shell. Slot <highlight><bold>240</bold></highlight> suitably can extend from the medial to the lateral side of the boot to allow a wide variation in the attachment position. </paragraph>
+<paragraph id="P-0076" lvl="0"><number>&lsqb;0076&rsqb;</number> The bottom portion of the shell is suitably discontinuous over a central portion of the instep region <highlight><bold>242</bold></highlight>, such that the top edges of the medial and lateral portions are separated from each other by approximately two inches. Also, the lower shell portion is open at the toe region. In use, the outer of the boot covers these components so that they are not visible to the user. It will also be observed that the binding engaging pins protrude from the lower shell portion and the voids <highlight><bold>26</bold></highlight>, <highlight><bold>36</bold></highlight> and <highlight><bold>38</bold></highlight> are formed as a portion of the lower shell. Suitably, the lower shell is formed around the structural frame member, which carries the binding pins thereon. </paragraph>
+<paragraph id="P-0077" lvl="0"><number>&lsqb;0077&rsqb;</number> Referring to <cross-reference target="DRAWINGS">FIG. 25, a</cross-reference> partial rear view of the shell of <cross-reference target="DRAWINGS">FIG. 36</cross-reference> taken along line <highlight><bold>25</bold></highlight>-<highlight><bold>25</bold></highlight> of <cross-reference target="DRAWINGS">FIG. 36</cross-reference>, the upper and lower shell portions are suitably formed as discrete portions, and are secured to each other by an elongate and relatively stiff member <highlight><bold>244</bold></highlight>, suitably an aluminum bar. The bar is attached to the upper portion by rivets, for example, and attaches to the lower portion via a hinge <highlight><bold>246</bold></highlight> that enables rotational motion of the two shells relative to each other along arc <highlight><bold>248</bold></highlight>. Thus, the upper shell can flex medially and laterally with the user&apos;s calf, while the wearer is shifting about during snowboarding. </paragraph>
+<paragraph id="P-0078" lvl="0"><number>&lsqb;0078&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 26</cross-reference> is an alternative embodiment of the attachment of the upper and lower shells. In this embodiment, hinge <highlight><bold>246</bold></highlight>&prime; is received in a lateral slot <highlight><bold>247</bold></highlight> in member <highlight><bold>224</bold></highlight>, whereby member <highlight><bold>244</bold></highlight> is adapted to move leftwardly or rightwardly along arrows <highlight><bold>249</bold></highlight> and <highlight><bold>251</bold></highlight> and to be fixed at a desired position, to allow adjustment of the flex point towards the lateral or medial side of the boot center line. </paragraph>
+<paragraph id="P-0079" lvl="0"><number>&lsqb;0079&rsqb;</number> Also provided on the lower shell portion on both the medial and lateral sides are medial mounting aperture <highlight><bold>250</bold></highlight> and lateral mounting aperture <highlight><bold>252</bold></highlight>. Medial aperture <highlight><bold>250</bold></highlight> mounts a strap <highlight><bold>254</bold></highlight> thereto, strap <highlight><bold>254</bold></highlight> extending out to a buckle <highlight><bold>256</bold></highlight> with which the strap is fixedly engaged. Strap <highlight><bold>254</bold></highlight> has a rear loop portion <highlight><bold>255</bold></highlight>, adapted to go around the back side of a user&apos;s foot. Buckle <highlight><bold>256</bold></highlight> receives a second strap <highlight><bold>258</bold></highlight> therethrough, where a first end of strap <highlight><bold>258</bold></highlight> is secured to lateral aperture <highlight><bold>252</bold></highlight> on the interior of the shell. A second end of strap <highlight><bold>258</bold></highlight> attaches to a ratchet slide <highlight><bold>260</bold></highlight>, which is engaged by ratchet strap <highlight><bold>262</bold></highlight>. The ratchet strap is secured to the external of the shell at aperture <highlight><bold>252</bold></highlight> (and suitably externally of the boot outer in an assembled boot) and is free to rotate about the aperture along arc <highlight><bold>264</bold></highlight>. These various straps cooperate to comfortably secure the user&apos;s foot to the boot. Further provided on the strap <highlight><bold>254</bold></highlight> on the medial and lateral sides of the boot are lace loops <highlight><bold>261</bold></highlight>, <highlight><bold>263</bold></highlight>, which enable the user to pass the boot laces therethrough, to provide further securement between the boot and the user. </paragraph>
+<paragraph id="P-0080" lvl="0"><number>&lsqb;0080&rsqb;</number> Referring still to <cross-reference target="DRAWINGS">FIG. 36</cross-reference>, the inner shell (and therefore the boot when completely assembled) can flex forwardly (illustrated by dash line <highlight><bold>268</bold></highlight>) and rearwardly (illustrated by dash line <highlight><bold>270</bold></highlight>) at the area indicated by arrow <highlight><bold>266</bold></highlight>. Accordingly, as the user adjusts the amount of forward lean by altering the adjustment member <highlight><bold>122</bold></highlight>, the boot will lean more or less forwardly, depending on the individual user&apos;s riding style. Further, when the adjustment member <highlight><bold>122</bold></highlight> is flipped upwardly to release the tension on cord <highlight><bold>126</bold></highlight>, the boot can flex forwardly and backwardly as the user walks, for a more comfortable and less awkward stride when off of the snowboard. </paragraph>
+<paragraph id="P-0081" lvl="0"><number>&lsqb;0081&rsqb;</number> An advantage over the prior art is provided by the present invention wherein the medial and lateral side cords <highlight><bold>126</bold></highlight> attach to the front or instep region of the shell at one general position. In accordance with the prior art, any forward lean adjusting straps connected to the respective side of the boot at which the strap originated. Therefore a medial side strap connected to the forward portion of the boot at the medial side and a lateral side strap connected to the forward portion of the boot at the lateral side. The invention&apos;s improved connection brings both the medial and lateral side cords to a single connection point or region on one side of the boot. In the illustrated embodiment, this side is the medial side. Therefore, the boot has improved flexing properties when riding. </paragraph>
+<paragraph id="P-0082" lvl="0"><number>&lsqb;0082&rsqb;</number> The portion <highlight><bold>224</bold></highlight> of the boot shell is preferably split along the length of the foot receiving area, at an area above the top of the user&apos;s foot, to allow the shell to flex for tightening and untightening of the laces. </paragraph>
+<paragraph id="P-0083" lvl="0"><number>&lsqb;0083&rsqb;</number> <cross-reference target="DRAWINGS">FIG. 37</cross-reference> is a view of the components of yet another alternative engagement member. This member employs a rotatable threaded shaft <highlight><bold>276</bold></highlight>&prime;, with a pulley <highlight><bold>277</bold></highlight> threadably mounted thereon. A knob <highlight><bold>280</bold></highlight>&prime; mounts to one end of shaft <highlight><bold>276</bold></highlight>&prime; to enable turning of the shaft. Cable ends <highlight><bold>126</bold></highlight>&prime; are fixed in position to a plate <highlight><bold>279</bold></highlight>, and extend over the pulley and back up over guides <highlight><bold>281</bold></highlight>, ultimately extending out of the body of the engagement member. In use, as knob <highlight><bold>280</bold></highlight>&prime; is turned, the pulley travels up and down the extent of the shaft, altering the effective length of the cables. </paragraph>
+<paragraph id="P-0084" lvl="0"><number>&lsqb;0084&rsqb;</number> An alternative embodiment of the step-in binding system is illustrated in FIGS. <highlight><bold>17</bold></highlight>-<highlight><bold>20</bold></highlight>. Referring to <cross-reference target="DRAWINGS">FIG. 17</cross-reference> and <cross-reference target="DRAWINGS">FIG. 18, a</cross-reference> medial side view and an end view respectively of an alternative engaging system for a binding system according to the invention, the apparatus for engaging the lateral binding pin <highlight><bold>24</bold></highlight> comprises a housing <highlight><bold>150</bold></highlight> which supports a binding pin receiver <highlight><bold>152</bold></highlight>, pivotally mounted to a shaft <highlight><bold>154</bold></highlight> whereby the receiver <highlight><bold>152</bold></highlight> can pivot along the arc <highlight><bold>156</bold></highlight>, from the open and ready to receive the pin position of <cross-reference target="DRAWINGS">FIG. 18</cross-reference>, to the closed or locked position (<cross-reference target="DRAWINGS">FIG. 20</cross-reference>). A release control shaft <highlight><bold>158</bold></highlight> mounts centrally of a bracket <highlight><bold>160</bold></highlight>, which is biased downwardly in the direction of arrow <highlight><bold>162</bold></highlight> by a pair of springs <highlight><bold>164</bold></highlight>. The springs are mounted on support shafts <highlight><bold>166</bold></highlight> that pass through an opening (not show) in left and right end flanges of the bracket <highlight><bold>160</bold></highlight>. The lower ends of the springs rest against the flanges, while the upper ends press against an overhanging portion of the housing <highlight><bold>150</bold></highlight>. Release control shaft has a release strap or cable <highlight><bold>168</bold></highlight> secured thereto, so a snowboarder can grasp the strap and pull to operate the release control. A wedge member <highlight><bold>170</bold></highlight> is carried by the central portion of bracket <highlight><bold>160</bold></highlight>, and is oriented and extends downwardly. The center portion of the housing is substantially hollow, and provides a space in which the bracket can move upwardly and downwardly. Binding pin receiver <highlight><bold>152</bold></highlight> is removed from <cross-reference target="DRAWINGS">FIG. 17</cross-reference> to assist in viewing the internal components of the binding. Referring now to <cross-reference target="DRAWINGS">FIGS. 17 and 18</cross-reference>, together with <cross-reference target="DRAWINGS">FIGS. 19 and 20</cross-reference>, which are sectional views of the binding and housing interior, mounted within the housing are a second shaft <highlight><bold>172</bold></highlight> which is attached to a rear leg of the receiving member <highlight><bold>152</bold></highlight> and a third shaft <highlight><bold>174</bold></highlight>, supported in fixed engagement with the housing. A first pair of connecting arms <highlight><bold>176</bold></highlight> are mounted on distal ends of and are pivotal about shaft <highlight><bold>174</bold></highlight> along arc <highlight><bold>175</bold></highlight>, all within the interior of the housing. A fourth shaft <highlight><bold>178</bold></highlight> extends between the two arms <highlight><bold>176</bold></highlight>, and also has a second pair of arms <highlight><bold>180</bold></highlight> mounted thereon at the distal ends of the shaft <highlight><bold>178</bold></highlight>. Shaft <highlight><bold>178</bold></highlight> defines the &ldquo;elbow&rdquo; of the left and right compound arms defined by arms <highlight><bold>176</bold></highlight> and <highlight><bold>180</bold></highlight>. Arms <highlight><bold>180</bold></highlight> also pivotally mount to shaft <highlight><bold>172</bold></highlight> on receiver <highlight><bold>152</bold></highlight>. </paragraph>
+<paragraph id="P-0085" lvl="0"><number>&lsqb;0085&rsqb;</number> In operation, as shown in <cross-reference target="DRAWINGS">FIGS. 19 and 20</cross-reference>, as the snowboarder moves the boot in the direction of arrow <highlight><bold>181</bold></highlight> to bring the binding pin <highlight><bold>24</bold></highlight> into engagement with receiver <highlight><bold>152</bold></highlight>, arm <highlight><bold>176</bold></highlight> is oriented substantially vertically, and is maintained in that position by the springs <highlight><bold>164</bold></highlight> exerting downward bias to cause the wedge <highlight><bold>170</bold></highlight> to press against the top of arm <highlight><bold>176</bold></highlight> and shaft <highlight><bold>178</bold></highlight>. As the boot and binding pin move are moved down (arrow <highlight><bold>182</bold></highlight>), receiver <highlight><bold>152</bold></highlight> will pivot along arc <highlight><bold>184</bold></highlight>, pulling arm <highlight><bold>180</bold></highlight> forwardly, which also pulls pin <highlight><bold>178</bold></highlight> and arm <highlight><bold>176</bold></highlight> forwardly. Wedge <highlight><bold>170</bold></highlight> can move only downwardly at this point, and will travel down in the direction of arrow <highlight><bold>186</bold></highlight> as a result of the bias from the springs <highlight><bold>164</bold></highlight>, moving the wedge behind pin <highlight><bold>178</bold></highlight>. Since the wedge is now behind pin <highlight><bold>178</bold></highlight>, receiver <highlight><bold>152</bold></highlight> is locked in place, since it cannot pivot up, as it is interconnected via the shafts and arms to pin <highlight><bold>178</bold></highlight>. The wedge essentially blocks the pin which prevents backward movement thereof and thereby prevents upward pivoting of the receiver. The binding pin <highlight><bold>24</bold></highlight> is therefore secured against movement, locking the boot to the binding. To release the binding, the snowboarder pulls upwardly on control strap <highlight><bold>168</bold></highlight> with sufficient force to overcome the bias of the springs <highlight><bold>164</bold></highlight>, which moves the bracket <highlight><bold>160</bold></highlight> and wedge <highlight><bold>170</bold></highlight> up away from pin <highlight><bold>172</bold></highlight>. Pin <highlight><bold>172</bold></highlight> then no longer blocked from rearward movement, so receiver <highlight><bold>152</bold></highlight> can now pivot upwardly and the snowboarder is able to step out of the binding. Illustrated in phantom in <cross-reference target="DRAWINGS">FIG. 19</cross-reference> and <cross-reference target="DRAWINGS">FIG. 20</cross-reference> is an alternative handle member <highlight><bold>171</bold></highlight> that is up when the binding is disengaged, and down when the binding is engaged. </paragraph>
+<paragraph id="P-0086" lvl="0"><number>&lsqb;0086&rsqb;</number> Referring now to <cross-reference target="DRAWINGS">FIG. 21</cross-reference> and <cross-reference target="DRAWINGS">FIG. 22</cross-reference>, an additional aspect of a boot in accordance with the present invention comprises a calf plate <highlight><bold>198</bold></highlight> is positioned at the rear of the boot and may carry a series of vertically oriented stiffening ribs <highlight><bold>206</bold></highlight> thereon. The upper end of the plate extends out of the boot, while the lower end is fastened to the top plate <highlight><bold>200</bold></highlight> of the boot&apos;s internal highback. Top highback plate <highlight><bold>200</bold></highlight> is pivotal about hinge <highlight><bold>202</bold></highlight> relative to the lower highback plate <highlight><bold>204</bold></highlight> to allow flexing of the boot, and suitably is secured within the boot. Fasteners <highlight><bold>208</bold></highlight> received within slots <highlight><bold>210</bold></highlight> enable the highback to be loosened and shifted either more to the lateral side of the boot or more to the medial side. In a corresponding manner, calf plate <highlight><bold>198</bold></highlight> is secured by fasteners <highlight><bold>208</bold></highlight> in slots <highlight><bold>212</bold></highlight>, and may also be shifted medially or laterally of the boot&apos;s center line by loosening the fasteners, sliding the calf plate to a new position, and retightening the fasteners. Therefore, the rider can move the highback so it is in a position and flexes in a manner preferred by that rider. </paragraph>
+<paragraph id="P-0087" lvl="0"><number>&lsqb;0087&rsqb;</number> Referring to <cross-reference target="DRAWINGS">FIG. 29, a</cross-reference> schematic diagram of the position of the medial and lateral binding pins, two preferred spacings thereof will be described. For a first size boot and binding, forward medial binding pin <highlight><bold>32</bold></highlight> and rearward medial binding pin <highlight><bold>34</bold></highlight> have their centers spaced at 4.620 inches from each other (distance <highlight><bold>288</bold></highlight>). Distance <highlight><bold>289</bold></highlight> in the illustration is 2.310 inches, half of distance <highlight><bold>288</bold></highlight>. Each medial binding pin suitably has 1.190 inches of pin exposed (distance <highlight><bold>290</bold></highlight>) to the exterior when formed in a boot. Lateral binding pin <highlight><bold>24</bold></highlight> has its outer center positioned 4.242 inches from a line tangent to the outer edges of pins <highlight><bold>32</bold></highlight> and <highlight><bold>34</bold></highlight> (distance <highlight><bold>292</bold></highlight>), the center of pin <highlight><bold>24</bold></highlight> being 0.101 inches forward of the center line between the medial pins (distance <highlight><bold>294</bold></highlight>). Rather than being parallel to the medial pins, lateral binding pin <highlight><bold>24</bold></highlight> is tilted at an angle (17 degrees in the preferred embodiment) off the center line. Suitably, medial pin <highlight><bold>24</bold></highlight> has 1.045 inches of pin exposed at the outer edge when the boot is assembled (distance <highlight><bold>296</bold></highlight>). </paragraph>
+<paragraph id="P-0088" lvl="0"><number>&lsqb;0088&rsqb;</number> Referring to <cross-reference target="DRAWINGS">FIG. 30, a</cross-reference> side view of one binding pin as positioned within a boot, the top of the medial and lateral binding pins and the bottom of the boot are 0.436 inches apart (distance <highlight><bold>298</bold></highlight>). The diameter of the pins is 0.250 inches (distance <highlight><bold>300</bold></highlight>). </paragraph>
+<paragraph id="P-0089" lvl="0"><number>&lsqb;0089&rsqb;</number> Referring to <cross-reference target="DRAWINGS">FIG. 33, a</cross-reference> sectional view of a preferred embodiment of the boot engaging portion and <cross-reference target="DRAWINGS">FIG. 34, a</cross-reference> top view thereof, a receiver <highlight><bold>80</bold></highlight>&prime; has a rearwardly extending arm portion <highlight><bold>88</bold></highlight>&prime; that is flat at the bottom surface thereof. An upper stop <highlight><bold>89</bold></highlight> is positioned at approximately <highlight><bold>45</bold></highlight> degrees between the horizontal and vertical planes. A laterally translatable catch <highlight><bold>304</bold></highlight> slides underneath the arm portion, to block rotation of the receiver <highlight><bold>80</bold></highlight>&prime; about its shaft <highlight><bold>90</bold></highlight>&prime;. Receiver <highlight><bold>80</bold></highlight> is urged to rotate in the direction of arc <highlight><bold>315</bold></highlight> by springs <highlight><bold>91</bold></highlight>, positioned to either side of receiver <highlight><bold>80</bold></highlight>&prime; on shaft <highlight><bold>90</bold></highlight>&prime;, but is prevented from doing so by the interaction of arm <highlight><bold>88</bold></highlight>&prime; and catch <highlight><bold>304</bold></highlight>. Catch <highlight><bold>304</bold></highlight> is adapted to translate along axis <highlight><bold>302</bold></highlight>, and is urged toward receiver <highlight><bold>80</bold></highlight>&prime; by biasing spring <highlight><bold>306</bold></highlight>. A cover <highlight><bold>82</bold></highlight>&prime; is provided (shown in phantom). Catch <highlight><bold>304</bold></highlight> further includes a finger member <highlight><bold>308</bold></highlight> that extends away from rear portion of catch <highlight><bold>304</bold></highlight>. The distal end of finger <highlight><bold>308</bold></highlight> stops at the edge of the cover <highlight><bold>82</bold></highlight>&prime;. An opening is provided in the cover to enable the finger to slide outwardly of the cover as the catch <highlight><bold>304</bold></highlight> moves away from the receiver along axis <highlight><bold>302</bold></highlight>. An arm <highlight><bold>310</bold></highlight> is horizontally aligned and mounts to pivot axle <highlight><bold>312</bold></highlight>, carrying a downwardly extending leg <highlight><bold>314</bold></highlight> that abuts against a front face of catch <highlight><bold>304</bold></highlight>. </paragraph>
+<paragraph id="P-0090" lvl="0"><number>&lsqb;0090&rsqb;</number> Referring to <cross-reference target="DRAWINGS">FIG. 32</cross-reference>, which illustrates the receiver in the open or released position, as arm <highlight><bold>310</bold></highlight> is moved upwardly in the direction of arrow <highlight><bold>316</bold></highlight>, leg <highlight><bold>314</bold></highlight> pushes catch <highlight><bold>304</bold></highlight> rearwardly (against the bias of spring <highlight><bold>306</bold></highlight>). Springs <highlight><bold>91</bold></highlight> cause the receiver to move up along arc <highlight><bold>315</bold></highlight>, with the rearward limit of movement defined by the engagement of upper stop <highlight><bold>89</bold></highlight> and an upper portion of catch <highlight><bold>304</bold></highlight>. Finger <highlight><bold>308</bold></highlight> extends outwardly of the cover <highlight><bold>82</bold></highlight>&prime;, providing a visual indicator that the binding is disengaged. Arm <highlight><bold>308</bold></highlight> is preferably colored in a bright or contrasting color relative to the cover, to be highly visible when extended. </paragraph>
+<paragraph id="P-0091" lvl="0"><number>&lsqb;0091&rsqb;</number> Therefore, in accordance with the invention, an improved binding system with a three point engagement is provided, enabling a more stable interaction between the boot and the binding. The binding is easily engaged, merely by stepping into it without requiring manual tightening of straps. Also, a boot with a releasable and adjustable tension system is provided. Further, the flexing characteristics of the boot may be individualized or varied to match different rider&apos;s skills or tastes, or to accommodate varying tastes of a single rider. The boot may also include a calf plate that extends above the rear of the boot, to provide additional adjustable support. </paragraph>
+<paragraph id="P-0092" lvl="0"><number>&lsqb;0092&rsqb;</number> While a plural embodiments of the present invention have been shown and described, it will be apparent to those skilled in the art that many changes and modifications may be made without departing from the invention in its broader aspects. The appended claims are therefore intended to cover all such changes and modifications as fall within the true spirit and scope of the invention. </paragraph>
+</section>
+</detailed-description>
+</subdoc-description>
+<subdoc-claims>
+<heading lvl="1">The embodiments of the invention in which an exclusive property or privilege is claimed are defined as follows: </heading>
+<claim id="CLM-00001">
+<claim-text><highlight><bold>1</bold></highlight>. A binding system for a snowboard comprising: 
+<claim-text>a first boot engager; </claim-text>
+<claim-text>a second boot engager; and </claim-text>
+<claim-text>a third boot engager, wherein said first and said second engagers are positioned to engage a boot at a first side, and wherein said third engager is positioned to engage the boot at a second side thereof. </claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00002">
+<claim-text><highlight><bold>2</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00001"><claim-text>claim 1</claim-text></dependent-claim-reference> wherein said first side is a medial side of the boot and said second side is a lateral side of the boot. </claim-text>
+</claim>
+<claim id="CLM-00003">
+<claim-text><highlight><bold>3</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00001"><claim-text>claim 1</claim-text></dependent-claim-reference> wherein at least one of said engagers includes a step-in lock member that locks the boot to the binding system when a user steps into the said at least one engager with the boot. </claim-text>
+</claim>
+<claim id="CLM-00004">
+<claim-text><highlight><bold>4</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00003"><claim-text>claim 3</claim-text></dependent-claim-reference> wherein said step in lock member includes a pivotal member adapted for pivoting between a locked and an unlocked position, wherein when said pivotal member is in the locked position it is adapted to engage a boot, and when it is in the unlocked position, it is adapted to receive or disengage from a boot. </claim-text>
+</claim>
+<claim id="CLM-00005">
+<claim-text><highlight><bold>5</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00001"><claim-text>claim 1</claim-text></dependent-claim-reference> wherein at least one of said engagers comprises a stationary dog member. </claim-text>
+</claim>
+<claim id="CLM-00006">
+<claim-text><highlight><bold>6</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00005"><claim-text>claim 5</claim-text></dependent-claim-reference> wherein at least one of said dog members comprises an overhanging portion defining a space thereundeneath. </claim-text>
+</claim>
+<claim id="CLM-00007">
+<claim-text><highlight><bold>7</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00005"><claim-text>claim 5</claim-text></dependent-claim-reference> wherein at least one of said dog members further comprises a substantially spherically shaped convex portion thereon. </claim-text>
+</claim>
+<claim id="CLM-00008">
+<claim-text><highlight><bold>8</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00005"><claim-text>claim 5</claim-text></dependent-claim-reference> wherein at least one of said dog members further comprises at least a convex portion thereon that is substantially semi-cylindrically shaped. </claim-text>
+</claim>
+<claim id="CLM-00009">
+<claim-text><highlight><bold>9</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00005"><claim-text>claim 5</claim-text></dependent-claim-reference> wherein at least one of said dog members comprises a substantially flat portion. </claim-text>
+</claim>
+<claim id="CLM-00010">
+<claim-text><highlight><bold>10</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00001"><claim-text>claim 1</claim-text></dependent-claim-reference> further comprising a boot, said boot including: 
+<claim-text>a first engagement member; </claim-text>
+<claim-text>a second engagement member; and </claim-text>
+<claim-text>a third engagement members, wherein said first, second and third engagement members cooperate with said first, second and third engagers for securing said boot to the binding system. </claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00011">
+<claim-text><highlight><bold>11</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00010"><claim-text>claim 10</claim-text></dependent-claim-reference> wherein said first and second engagement members are positioned on a medial side of said boot and said third engager is positioned on a lateral side of said boot. </claim-text>
+</claim>
+<claim id="CLM-00012">
+<claim-text><highlight><bold>12</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00011"><claim-text>claim 11</claim-text></dependent-claim-reference> wherein at least two of said boot engagers comprise stationary dog members, said dog members comprising an overhanging portion defining a space thereunderneath, wherein said dog members further comprise convex portions thereon, and wherein at least two of said engagement members of said boot comprise concave portions adapted for engaging with corresponding ones of said convex portions. </claim-text>
+</claim>
+<claim id="CLM-00013">
+<claim-text><highlight><bold>13</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00012"><claim-text>claim 12</claim-text></dependent-claim-reference> wherein said concave and convex portions are substantially spherically shaped. </claim-text>
+</claim>
+<claim id="CLM-00014">
+<claim-text><highlight><bold>14</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00010"><claim-text>claim 10</claim-text></dependent-claim-reference> further comprising a structural frame member defined within said boot, wherein said first, second and third engagement members are secured in spatial relation relative to one another by said structural frame member. </claim-text>
+</claim>
+<claim id="CLM-00015">
+<claim-text><highlight><bold>15</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00014"><claim-text>claim 14</claim-text></dependent-claim-reference> wherein said structural frame member comprises a first beam portion connecting said first engagement member to said third engagement member, and a second beam portion connecting said second engagement member to said third engagement member. </claim-text>
+</claim>
+<claim id="CLM-00016">
+<claim-text><highlight><bold>16</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00015"><claim-text>claim 15</claim-text></dependent-claim-reference> wherein said structural frame member further comprises a third beam portion connecting said first engagement member to said second engagement member. </claim-text>
+</claim>
+<claim id="CLM-00017">
+<claim-text><highlight><bold>17</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00014"><claim-text>claim 14</claim-text></dependent-claim-reference> wherein said structural frame member comprises a first beam portion connecting two of said engagement members and a second beam portion connecting a third of said engagement members to said first beam portion. </claim-text>
+</claim>
+<claim id="CLM-00018">
+<claim-text><highlight><bold>18</bold></highlight>. A binding system according to <dependent-claim-reference depends_on="CLM-00010"><claim-text>claim 10</claim-text></dependent-claim-reference> wherein at least one of said engagers is adapted to cooperate with at least one of said engagement members whether said boot comprises either a right boot or a left boot. </claim-text>
+</claim>
+<claim id="CLM-00019">
+<claim-text><highlight><bold>19</bold></highlight>. A binding system according to <dependent-claim-reference depends_on="CLM-00010"><claim-text>claim 10</claim-text></dependent-claim-reference> wherein one of said engagers is positioned on a lateral side of said binding and said one engager is adapted to receive either a right or a left boot engagement member therein without altering the spatial relation of said one engager with the other two of said engagers. </claim-text>
+</claim>
+<claim id="CLM-00020">
+<claim-text><highlight><bold>20</bold></highlight>. A binding system according to <dependent-claim-reference depends_on="CLM-00010"><claim-text>claim 10</claim-text></dependent-claim-reference> wherein at least one of said engagers comprises either a male or a female shape and wherein at least one of said engagement members comprise a counterpart male or female shape to the shape of said at least one of said engager shapes. </claim-text>
+</claim>
+<claim id="CLM-00021">
+<claim-text><highlight><bold>21</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00014"><claim-text>claim 14</claim-text></dependent-claim-reference> wherein said structural frame member comprises metal. </claim-text>
+</claim>
+<claim id="CLM-00022">
+<claim-text><highlight><bold>22</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00014"><claim-text>claim 14</claim-text></dependent-claim-reference> wherein said structural frame member comprises a composite material. </claim-text>
+</claim>
+<claim id="CLM-00023">
+<claim-text><highlight><bold>23</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00001"><claim-text>claim 1</claim-text></dependent-claim-reference> wherein one of said engagers comprises a member with a channel defined therein, said engager adapted to receive and secure a binding engagement member therein. </claim-text>
+</claim>
+<claim id="CLM-00024">
+<claim-text><highlight><bold>24</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00023"><claim-text>claim 23</claim-text></dependent-claim-reference> wherein one of said engagers secures said binding engagement member by trapping said binding engagement member against substantial movement on a top, a bottom and a side portion thereof. </claim-text>
+</claim>
+<claim id="CLM-00025">
+<claim-text><highlight><bold>25</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00023"><claim-text>claim 23</claim-text></dependent-claim-reference> wherein one of said engagers secures said binding engagement member by trapping said binding engagement member against substantial movement on a top portion thereof. </claim-text>
+</claim>
+<claim id="CLM-00026">
+<claim-text><highlight><bold>26</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00023"><claim-text>claim 23</claim-text></dependent-claim-reference> wherein one of said engagers secures said binding engagement member by trapping said binding engagement member against substantial movement on a bottom portion thereof. </claim-text>
+</claim>
+<claim id="CLM-00027">
+<claim-text><highlight><bold>27</bold></highlight>. A binding system for a snowboard according to <dependent-claim-reference depends_on="CLM-00023"><claim-text>claim 23</claim-text></dependent-claim-reference> wherein one of said engagers secures said binding engagement member by trapping said binding engagement member against substantial movement on a side portion thereof. </claim-text>
+</claim>
+<claim id="CLM-00028">
+<claim-text><highlight><bold>28</bold></highlight>. A binding system according to <dependent-claim-reference depends_on="CLM-00001"><claim-text>claim 1</claim-text></dependent-claim-reference> wherein at least one of said engagers comprises: 
+<claim-text>a pivotal receiver member adapted to pivot between an open and a closed position, for receiving a portion of a boot therein, said pivotal receiver member having a block engaging portion thereon; </claim-text>
+<claim-text>a locking member for locking said pivotal member in the closed position, said locking member being biased to move to a position to engage said block engaging portion of said receiver member, for locking said receiver member in the closed position as said receiver moves from the open position to the closed position. </claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00029">
+<claim-text><highlight><bold>29</bold></highlight>. A binding system according to <dependent-claim-reference depends_on="CLM-00028"><claim-text>claim 28</claim-text></dependent-claim-reference> wherein the boot portion that said pivotal receiver member receives therein is a lateral side boot portion. </claim-text>
+</claim>
+<claim id="CLM-00030">
+<claim-text><highlight><bold>30</bold></highlight>. A binding system according to <dependent-claim-reference depends_on="CLM-00001"><claim-text>claim 1</claim-text></dependent-claim-reference> wherein a center edge of an engaging surface of said third boot engager is spaced between 2 and 6 inches from a line tangent to edges of engaging surfaces of said first and second boot engagers. </claim-text>
+</claim>
+<claim id="CLM-00031">
+<claim-text><highlight><bold>31</bold></highlight>. A binding system according to <dependent-claim-reference depends_on="CLM-00030"><claim-text>claim 30</claim-text></dependent-claim-reference> wherein a center outer edge of said third boot engager is spaced 4.242 inches from a line tangent to outer edges of said first and second boot engagers. </claim-text>
+</claim>
+<claim id="CLM-00032">
+<claim-text><highlight><bold>32</bold></highlight>. A binding system according to <dependent-claim-reference depends_on="CLM-00030"><claim-text>claim 30</claim-text></dependent-claim-reference> wherein the center outer edge of said third boot engager is between &minus;0.5 inches rearward of and 0.5 inches forward of a center line between centers of said first and second engagers. </claim-text>
+</claim>
+<claim id="CLM-00033">
+<claim-text><highlight><bold>33</bold></highlight>. A binding system according to <dependent-claim-reference depends_on="CLM-00032"><claim-text>claim 32</claim-text></dependent-claim-reference> wherein the center edge of said third boot engager is 0.101 inches forward of a center line between centers of said first and second engagers. </claim-text>
+</claim>
+<claim id="CLM-00034">
+<claim-text><highlight><bold>34</bold></highlight>. A binding system according to <dependent-claim-reference depends_on="CLM-00031"><claim-text>claim 31</claim-text></dependent-claim-reference> wherein a line tangent to an edge of said third boot engager is at an angle relative to the line tangent to said first and second engagers. </claim-text>
+</claim>
+<claim id="CLM-00035">
+<claim-text><highlight><bold>35</bold></highlight>. The binding system according to <dependent-claim-reference depends_on="CLM-00034"><claim-text>claim 34</claim-text></dependent-claim-reference> wherein said angle is between 13 and 22 degrees. </claim-text>
+</claim>
+<claim id="CLM-00036">
+<claim-text><highlight><bold>36</bold></highlight>. The binding system according to <dependent-claim-reference depends_on="CLM-00034"><claim-text>claim 34</claim-text></dependent-claim-reference> wherein said angle is 17 degrees. </claim-text>
+</claim>
+<claim id="CLM-00037">
+<claim-text><highlight><bold>37</bold></highlight>. A binding member for a boot binding comprising: 
+<claim-text>a pivotal receiver member adapted to pivot between an open and a closed position, for receiving a portion of a boot therein, said pivotal receiver member having a block engaging portion thereon; </claim-text>
+<claim-text>a locking member for locking said pivotal member in the closed position, said locking member being biased to move to a position to engage said block engaging portion of said receiver member, for locking said receiver member in the closed position as said receiver moves from the open position to the closed position. </claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00038">
+<claim-text><highlight><bold>38</bold></highlight>. A binding member for a boot binding according to <dependent-claim-reference depends_on="CLM-00037"><claim-text>claim 37</claim-text></dependent-claim-reference> further comprising a release member for urging said locking member to a disengaged position relative to said block engaging portion, thereby enabling movement of said pivotal member from the closed position to the open position. </claim-text>
+</claim>
+<claim id="CLM-00039">
+<claim-text><highlight><bold>39</bold></highlight>. A binding member for a boot binding according to <dependent-claim-reference depends_on="CLM-00037"><claim-text>claim 37</claim-text></dependent-claim-reference> wherein said locking member comprises a lever, wherein said lever is adapted for movement to an open position, thereby unlocking the locking member. </claim-text>
+</claim>
+<claim id="CLM-00040">
+<claim-text><highlight><bold>40</bold></highlight>. A binding member for a boot binding according to <dependent-claim-reference depends_on="CLM-00037"><claim-text>claim 37</claim-text></dependent-claim-reference> wherein said locking member comprises a cord, wherein said cord is adapted for movement towards an open position, thereby unlocking the locking member. </claim-text>
+</claim>
+<claim id="CLM-00041">
+<claim-text><highlight><bold>41</bold></highlight>. A snowboard boot, said boot comprising: 
+<claim-text>a first engagement member; </claim-text>
+<claim-text>a second engagement member; and </claim-text>
+<claim-text>a third engagement members, wherein said first, second and third engagement members are adapted to cooperate with a binding for securing said boot to a snowboard. </claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00042">
+<claim-text><highlight><bold>42</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00041"><claim-text>claim 41</claim-text></dependent-claim-reference> wherein said first and second engagement members are positioned on a medial side of said boot and said third engager is positioned on a lateral side of said boot. </claim-text>
+</claim>
+<claim id="CLM-00043">
+<claim-text><highlight><bold>43</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00042"><claim-text>claim 42</claim-text></dependent-claim-reference> wherein at least two of said engagement members of said boot comprise concave portions adapted for engaging with corresponding portions of opposite concavity on a binding. </claim-text>
+</claim>
+<claim id="CLM-00044">
+<claim-text><highlight><bold>44</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00043"><claim-text>claim 43</claim-text></dependent-claim-reference> wherein said concave and convex portions are substantially spherically shaped. </claim-text>
+</claim>
+<claim id="CLM-00045">
+<claim-text><highlight><bold>45</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00041"><claim-text>claim 41</claim-text></dependent-claim-reference> further comprising a structural frame member defined within said boot, wherein said first, second and third engagement members are secured in spatial relation relative to one another by said structural frame member. </claim-text>
+</claim>
+<claim id="CLM-00046">
+<claim-text><highlight><bold>46</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00045"><claim-text>claim 45</claim-text></dependent-claim-reference> wherein said structural frame member comprises a first beam portion connecting said first engagement member to said third engagement member, and a second beam portion connecting said second engagement member to said third engagement member. </claim-text>
+</claim>
+<claim id="CLM-00047">
+<claim-text><highlight><bold>47</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00045"><claim-text>claim 45</claim-text></dependent-claim-reference> wherein said structural frame member further comprises a third beam portion connecting said first engagement member to said second engagement member. </claim-text>
+</claim>
+<claim id="CLM-00048">
+<claim-text><highlight><bold>48</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00045"><claim-text>claim 45</claim-text></dependent-claim-reference> wherein said structural frame member comprises a first beam portion connecting two of said engagement members and a second beam portion connecting a third of said engagement members to said first beam portion. </claim-text>
+</claim>
+<claim id="CLM-00049">
+<claim-text><highlight><bold>49</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00041"><claim-text>claim 41</claim-text></dependent-claim-reference> wherein a center outer edge of said third boot engagement member is spaced between 2 and 6 inches from a line tangent to outer edges of said first and second engagement members. </claim-text>
+</claim>
+<claim id="CLM-00050">
+<claim-text><highlight><bold>50</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00049"><claim-text>claim 49</claim-text></dependent-claim-reference> wherein a center outer edge of said third boot engagement member is spaced 4.242 inches from a line tangent to outer edges of said first and second boot engagement members. </claim-text>
+</claim>
+<claim id="CLM-00051">
+<claim-text><highlight><bold>51</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00049"><claim-text>claim 49</claim-text></dependent-claim-reference> wherein the center outer edge of said third boot engagement member is between &minus;0.5 inches rearward of and 0.5 inches forward of a center line between centers of said first and second engagement members. </claim-text>
+</claim>
+<claim id="CLM-00052">
+<claim-text><highlight><bold>52</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00051"><claim-text>claim 51</claim-text></dependent-claim-reference> wherein the center outer edge of said third boot engagement member is 0.101 inches forward of a center line between centers of said first and second engagement members. </claim-text>
+</claim>
+<claim id="CLM-00053">
+<claim-text><highlight><bold>53</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00049"><claim-text>claim 49</claim-text></dependent-claim-reference> wherein a line tangent to an outer edge of said third boot engagement member is at an angle relative to the line tangent to said first and second engagement members. </claim-text>
+</claim>
+<claim id="CLM-00054">
+<claim-text><highlight><bold>54</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00053"><claim-text>claim 53</claim-text></dependent-claim-reference> wherein said angle is between 13 and 22 degrees. </claim-text>
+</claim>
+<claim id="CLM-00055">
+<claim-text><highlight><bold>55</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00053"><claim-text>claim 53</claim-text></dependent-claim-reference> wherein said angle is 17 degrees. </claim-text>
+</claim>
+<claim id="CLM-00056">
+<claim-text><highlight><bold>56</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00041"><claim-text>claim 41</claim-text></dependent-claim-reference> wherein a top portion of at least one of said engagement members is spaced 0.436 inches from a plane parallel to a bottom portion of the boot. </claim-text>
+</claim>
+<claim id="CLM-00057">
+<claim-text><highlight><bold>57</bold></highlight>. A forward lean adjustment system for a boot comprising: 
+<claim-text>medial and lateral side cable members for urging a highback portion of the boot forwardly along medial and lateral sides thereof; and </claim-text>
+<claim-text>a tension adjustment member for altering the length of said cable members, to provide more or less forward lean of the boot relative to a vertical line. </claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00058">
+<claim-text><highlight><bold>58</bold></highlight>. A forward lean adjustment system according to <dependent-claim-reference depends_on="CLM-00057"><claim-text>claim 57</claim-text></dependent-claim-reference> wherein forward ends of said medial and lateral side cables attach to a forward portion of the boot on a location at one side of the boot. </claim-text>
+</claim>
+<claim id="CLM-00059">
+<claim-text><highlight><bold>59</bold></highlight>. A forward lean adjustment system according to <dependent-claim-reference depends_on="CLM-00058"><claim-text>claim 58</claim-text></dependent-claim-reference> wherein said location is on a medial side of the boot. </claim-text>
+</claim>
+<claim id="CLM-00060">
+<claim-text><highlight><bold>60</bold></highlight>. A forward lean adjustment system according to <dependent-claim-reference depends_on="CLM-00057"><claim-text>claim 57</claim-text></dependent-claim-reference> wherein said tension adjustment member comprises an engaging arm pivotally attached to a rear portion of the boot. </claim-text>
+</claim>
+<claim id="CLM-00061">
+<claim-text><highlight><bold>61</bold></highlight>. A forward lean adjustment system according to <dependent-claim-reference depends_on="CLM-00060"><claim-text>claim 60</claim-text></dependent-claim-reference> wherein said arm includes plural engaging members for selective engagement of said cables to lengthen or shorten the effective length of the cables. </claim-text>
+</claim>
+<claim id="CLM-00062">
+<claim-text><highlight><bold>62</bold></highlight>. A forward lean adjustment system according to <dependent-claim-reference depends_on="CLM-00060"><claim-text>claim 60</claim-text></dependent-claim-reference> wherein said plural engaging members comprise slots and wherein said cables carry keeper members adapted to fit in ones of said slots. </claim-text>
+</claim>
+<claim id="CLM-00063">
+<claim-text><highlight><bold>63</bold></highlight>. A forward lean adjustment system according to <dependent-claim-reference depends_on="CLM-00060"><claim-text>claim 60</claim-text></dependent-claim-reference> wherein said tension arm comprises an adjustable threaded member connected to said cables, wherein adjustment of said threaded member alters the effective length of said cables for altering the forward lean of the boot. </claim-text>
+</claim>
+<claim id="CLM-00064">
+<claim-text><highlight><bold>64</bold></highlight>. A forward lean adjustment system according to <dependent-claim-reference depends_on="CLM-00063"><claim-text>claim 63</claim-text></dependent-claim-reference> wherein said adjustable threaded member is in threaded engagement with a pulley and adjustment of said threaded member alters the position of said pulley, said pulley receiving said cables thereon, thereby altering the effective length of said cables. </claim-text>
+</claim>
+<claim id="CLM-00065">
+<claim-text><highlight><bold>65</bold></highlight>. A forward lean adjustment system for a boot comprising: 
+<claim-text>medial and lateral side cable members for urging a highback portion of the boot forwardly along medial and lateral sides thereof, wherein said medial an lateral side cable members attach to a front portion of the boot at a region thereon. </claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00066">
+<claim-text><highlight><bold>66</bold></highlight>. A forward lean adjustment system for a boot according to <dependent-claim-reference depends_on="CLM-00065"><claim-text>claim 65</claim-text></dependent-claim-reference> wherein said region comprises first and second locations that are within 2 inches of each other. </claim-text>
+</claim>
+<claim id="CLM-00067">
+<claim-text><highlight><bold>67</bold></highlight>. A forward lean adjustment system for a boot according to <dependent-claim-reference depends_on="CLM-00065"><claim-text>claim 65</claim-text></dependent-claim-reference> wherein said region comprises first and second locations that are within 1 inches of each other. </claim-text>
+</claim>
+<claim id="CLM-00068">
+<claim-text><highlight><bold>68</bold></highlight>. A forward lean adjustment system for a boot according to <dependent-claim-reference depends_on="CLM-00065"><claim-text>claim 65</claim-text></dependent-claim-reference> wherein said region comprises first and second locations that are substantially adjacent each other. </claim-text>
+</claim>
+<claim id="CLM-00069">
+<claim-text><highlight><bold>69</bold></highlight>. A forward lean adjustment system for a boot according to <dependent-claim-reference depends_on="CLM-00065"><claim-text>claim 65</claim-text></dependent-claim-reference> wherein said region comprises a substantially single position. </claim-text>
+</claim>
+<claim id="CLM-00070">
+<claim-text><highlight><bold>70</bold></highlight>. A forward lean adjustment system for a boot according to <dependent-claim-reference depends_on="CLM-00069"><claim-text>claim 69</claim-text></dependent-claim-reference> wherein said single position comprises a pulley member attached to a front portion of the boot. </claim-text>
+</claim>
+<claim id="CLM-00071">
+<claim-text><highlight><bold>71</bold></highlight>. A forward lean adjustment system for a boot according to <dependent-claim-reference depends_on="CLM-00070"><claim-text>claim 70</claim-text></dependent-claim-reference> further comprising means for adjusting the relative position of said pulley member on the front portion of the boot. </claim-text>
+</claim>
+<claim id="CLM-00072">
+<claim-text><highlight><bold>72</bold></highlight>. A forward lean adjustment system for a boot according to <dependent-claim-reference depends_on="CLM-00065"><claim-text>claim 65</claim-text></dependent-claim-reference> wherein said medial and lateral side cable members comprise portions of a continuous cable and wherein said cable loops back from the medial side to the lateral side of the boot around a loop back member at a front portion of the boot. </claim-text>
+</claim>
+<claim id="CLM-00073">
+<claim-text><highlight><bold>73</bold></highlight>. A forward lean adjustment system for a boot according to <dependent-claim-reference depends_on="CLM-00065"><claim-text>claim 65</claim-text></dependent-claim-reference>, further comprising means for altering the location of said single position on the front of said boot. </claim-text>
+</claim>
+<claim id="CLM-00074">
+<claim-text><highlight><bold>74</bold></highlight>. A snowboard boot comprising: 
+<claim-text>a shell member defining at least a portion of the snowboard boot; and </claim-text>
+<claim-text>an ankle strap adapted to substantially surround and secure a wearer&apos;s ankle region, wherein said ankle strap is secured to said shell member of the snowboard boot. </claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00075">
+<claim-text><highlight><bold>75</bold></highlight>. A snowboard boot according to <dependent-claim-reference depends_on="CLM-00074"><claim-text>claim 74</claim-text></dependent-claim-reference> wherein said ankle strap further comprises a lace receiving portion for receiving a lace of the boot therethrough, for further securing said ankle strap to the snowboard boot. </claim-text>
+</claim>
+</subdoc-claims>
+<subdoc-drawings id="DRAWINGS">
+<heading lvl="0" align="CENTER">Drawings</heading>
+<representative-figure>1</representative-figure>
+<figure id="figure-D00001">
+<image id="EMI-D00001" file="US20010002518A1-20010607-D00001.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00002">
+<image id="EMI-D00002" file="US20010002518A1-20010607-D00002.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00003">
+<image id="EMI-D00003" file="US20010002518A1-20010607-D00003.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00004">
+<image id="EMI-D00004" file="US20010002518A1-20010607-D00004.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00005">
+<image id="EMI-D00005" file="US20010002518A1-20010607-D00005.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00006">
+<image id="EMI-D00006" file="US20010002518A1-20010607-D00006.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00007">
+<image id="EMI-D00007" file="US20010002518A1-20010607-D00007.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00008">
+<image id="EMI-D00008" file="US20010002518A1-20010607-D00008.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00009">
+<image id="EMI-D00009" file="US20010002518A1-20010607-D00009.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00010">
+<image id="EMI-D00010" file="US20010002518A1-20010607-D00010.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00011">
+<image id="EMI-D00011" file="US20010002518A1-20010607-D00011.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00012">
+<image id="EMI-D00012" file="US20010002518A1-20010607-D00012.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00013">
+<image id="EMI-D00013" file="US20010002518A1-20010607-D00013.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00014">
+<image id="EMI-D00014" file="US20010002518A1-20010607-D00014.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00015">
+<image id="EMI-D00015" file="US20010002518A1-20010607-D00015.TIF" imf="TIFF" ti="DR"/>
+</figure>
+<figure id="figure-D00016">
+<image id="EMI-D00016" file="US20010002518A1-20010607-D00016.TIF" imf="TIFF" ti="DR"/>
+</figure>
+</subdoc-drawings>
+</patent-application-publication>
+
