@@ -113,13 +113,20 @@ class XMLDoc():
     def publication_details(self):
         """ Return US publication details. """
         try:
+            # do we need to look for <publication-reference> first?
             pub_section = self.soup.find("document-id")
             pub_number = pub_section.find("doc-number").text
-            pub_kind = pub_section.find("kind-code").text
+            # US grants in 2010 has "kind"
+            pub_kind = pub_section.find(["kind", "kind-code"]).text
             pub_date = datetime.strptime(
-                pub_section.find("document-date").text,
+                pub_section.find(["date", "document-date"]).text,
                 "%Y%m%d")
-            return ("US" + pub_number + pub_kind, pub_date)
+            return {
+                        'full_number': "US" + pub_number + pub_kind,
+                        'date': pub_date,
+                        'short_number': pub_number,
+                        'kind': pub_kind
+                    }
         except AttributeError:
             return None
 
@@ -143,7 +150,7 @@ class XMLDoc():
         # Need to adapt - up to 2001 uses string under tag 'ipc'
         # Post 2009
         class_list = list()
-        class_tags = self.soup.find_all("classifications-ipcr")
+        class_tags = self.soup.find_all("classification-ipcr")
         if class_tags:
             class_list = [
                 [

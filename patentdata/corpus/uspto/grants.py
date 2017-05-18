@@ -6,6 +6,7 @@ from patentdata.xmlparser import XMLDoc
 
 import zipfile
 import os
+import sqlite3
 
 
 def separated_xml(zip_file):
@@ -51,35 +52,6 @@ def separated_xml_with_lines(zip_file):
         yield start_offset, line_no, b''.join(data_buffer)
 
 
-#def separated_xml_with_lines(zip_file):
-    #""" Generator to separate a large XML file with concatenated
-    #<us-patent-grant></us-patent-grant> root nodes. """
-    ## Extract first file name from zip file, which = xml file
-    #xml_file = zip_file.namelist()[0]
-    #with zip_file.open(xml_file, 'r') as open_xml_file:
-        ## open_xml_file is a binary file object - hence lines are bytes
-        #data_buffer = [open_xml_file.readline()]
-        ## Initialise a buffer to store the current start byte offset
-        #start_offset = 0
-        ## Initialise a buffer to store current end byte offset
-        #end_offset = start_offset + len(data_buffer[0])
-        #for line in open_xml_file:
-            ## If line is a new XML declaration
-            #if line.startswith(b'<?xml '):
-                ## return start offset, end offeset, data
-                #yield start_offset, end_offset, b''.join(data_buffer)
-                ## Reset data buffer
-                #data_buffer = []
-                ## Increment start to previous end
-                #start_offset = end_offset
-            ## If line is not a new XML declaration
-            #data_buffer.append(line)
-            ## Increment the (byte) end offset by the length of the line
-            #end_offset += len(line)
-
-        #yield start_offset, end_offset, b''.join(data_buffer)
-
-
 def get_xml_by_line_offset(zip_file, start_offset):
     """ Retrieve XML data from zip_file based on a starting byte offset. """
     xml_file = zip_file.namelist()[0]
@@ -97,22 +69,6 @@ def get_xml_by_line_offset(zip_file, start_offset):
         return b''.join(data_buffer)
 
 
-#def get_xml_by_offset(zip_file, start_offset):
-    #""" Retrieve XML data based on a starting byte offset. """
-    ## BUT CANNOT SEEK ON A ZipExtFile WHICH = OPEN_XML_FILE
-    ## WILL NEED TO USE ORIGINAL METHOD OF SEARCHING THROUGH LINES
-    #xml_file = zip_file.namelist()[0]
-    #with zip_file.open(xml_file, 'r') as open_xml_file:
-        #open_xml_file.seek(start_offset)
-        #data_buffer = [open_xml_file.readline()]
-        #for line in open_xml_file:
-            ## If line is a new XML declaration
-            #if line.startswith(b'<?xml '):
-                #return b''.join(data_buffer)
-            #data_buffer.append(line)
-        #return b''.join(data_buffer)
-
-
 class USGrants(BasePatentDataSource):
     """ Model for US granted patent data. """
 
@@ -126,6 +82,33 @@ class USGrants(BasePatentDataSource):
             # Raise custom exception here
             return
         self.first_level_files = utils.get_files(self.path, self.exten)
+
+        # Connect to DB to store file data
+        self.conn = sqlite3.connect(os.path.join(self.path, 'fileindexes.db'))
+        self.c = self.conn.cursor()
+        # Create indexes table if it doesn't exist
+        self.c.execute('''
+            CREATE TABLE IF NOT EXISTS files
+                (
+                    pub_no TEXT,
+                    countrycode TEXT,
+                    year NUMBER,
+                    number NUMBER,
+                    kindcode TEXT,
+                    filename TEXT,
+                    start_offset NUMBER,
+                    section TEXT,
+                    class TEXT,
+                    subclass TEXT,
+                    maingroup TEXT,
+                    subgroup TEXT,
+                    UNIQUE (pub_no)
+                )
+                ''')
+        self.conn.commit()
+
+    def __del__(self):
+        self.conn.close()
 
     def read_archive_file(self, filename):
         """ Read large XML file from Zip.
@@ -148,52 +131,54 @@ class USGrants(BasePatentDataSource):
     def get_archive_list(self):
         """ Generate metadata for individual publications. """
 
-        # We have a lot of separate xml sections in each zip file
+        print("Getting archive file list - may take a while!\n")
+        # set query string for later
+        query_string = (
+                            'INSERT OR IGNORE INTO files'
+                            ' (pub_no, countrycode, year, number, '
+                            'kindcode, filename, start_offset, '
+                            'section, class, subclass, maingroup,'
+                            'subgroup) '
+                            'VALUES ({0})').format(",".join("?"*12))
 
-        # How do we quickly search and retrieve data from these files?
-
-        print("Getting archive file list - may take a few minutes\n")
-        # Iterate through subdirs as so? >
+        # Iterate through subdirs as so?
         for subdirectory in utils.get_immediate_subdirectories(self.path):
-            print("Generating list for :", subdirectory)
+            print("Generating list for: {0}".format(subdirectory))
             filtered_files = [
                 f for f in self.first_level_files
                 if subdirectory in os.path.split(f) and "SUPP" not in f
             ]
             for filename in filtered_files:
-                # OK up to here
-                pass
-                # Do we save publication number and classification with
-                # File start and end lines?
+                print("Processing file: {0}".format(filename))
+                params = []
+                i = 0
+                for sl, el, xml_doc in self.read_archive_file(filename):
+                    # Use XMLDoc publication_details() to get
+                    # publication number and other details
+                    # May as well get classifications here as well
+                    # May need to skip D, P and RE publications
+                    pub_details = xml_doc.publication_details()
+                    classifications = xml_doc.classifications()
+                    if pub_details:
+                        data = [
+                                    pub_details['full_number'],
+                                    'US',
+                                    pub_details['date'].year,
+                                    pub_details['short_number'],
+                                    pub_details['kind'],
+                                    filename,
+                                    sl
+                                ]
+                        if classifications:
+                            data += classifications[0]
+                        else:
+                            data += [None, None, None, None, None]
+                        params.append(data)
 
-                names = self.get_archive_names(filename)
-                for name in names:
-                    match = self.PUB_FORMAT.search(name)
-                    if match and name.lower().endswith(self.exten):
-                        data = (
-                            match.group(0),
-                            match.group(1),
-                            int(match.group(2)),
-                            int(match.group(3)),
-                            match.group(4),
-                            filename,
-                            name
-                        )
-                        self.c.execute((
-                            'INSERT OR IGNORE INTO files'
-                            ' (pub_no, countrycode, year, number, '
-                            'kindcode, filename, name) '
-                            'VALUES (?,?,?,?,?,?,?)'),
-                            data
-                        )
-                self.conn.commit()
-
-            # re_strip_pi = re.compile('<\?xml [^?>]+\?>', re.M)
-            # data = '<root>' + z.open(z.namelist()[0], 'r').read() + '</root>'
-            # match = re_strip_pi.search(data)
-            # data = re_strip_pi.sub('', data)
-            # tree = etree.fromstring(match.group() + data)
-            # return tree
+                    if (len(params) % 1000) == 0:
+                        i += 1000
+                        self.c.executemany(query_string, params)
+                        self.conn.commit()
 
     def get_patentdoc(self, publication_number):
         """ Return a Patent Doc object corresponding
