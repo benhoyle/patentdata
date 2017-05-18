@@ -7,7 +7,7 @@ import epo_ops
 # EPOOPSCorpus imports
 from patentdata.corpus.baseclasses import BasePatentDataSource
 # Pass these in from app settings?
-from patentdata.corpus.epo_settings import (
+from patentdata.corpus.epo.settings import (
     EPOOPS_C_KEY, EPOOPS_SECRET_KEY
 )
 from patentdata.xmlparser import (

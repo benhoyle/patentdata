@@ -1,4 +1,4 @@
-from patentdata.corpus.epo_corpus import EPOOPS
+from patentdata.corpus import EPOOPS
 import pytest
 
 

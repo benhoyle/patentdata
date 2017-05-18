@@ -1,4 +1,4 @@
-from patentdata.corpus.uspto_corpus import USPublications
+from patentdata.corpus import USPublications
 import pytest
 
 import os
