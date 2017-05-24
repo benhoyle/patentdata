@@ -18,7 +18,7 @@ setup(
     author_email='benjhoyle@gmail.com',
     url='https://github.com/benhoyle/patentdata',
     license=license,
-    packages=find_packages(exclude=('tests', 'docs'))
+    packages=find_packages(exclude=('tests', 'docs')),
     install_requires=[
         'beautifulsoup4>=4.5.3'
         'lxml>=3.7.3'
