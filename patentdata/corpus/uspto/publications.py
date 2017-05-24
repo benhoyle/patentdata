@@ -477,10 +477,18 @@ class USPublications(LocalDataSource):
                     )
                 records = self.c.execute(
                     query_string, (sample_size,)).fetchall()
-                filereader = self.iter_read(records)
-                for _, filedata in filereader:
-                    if filedata:
-                        yield XMLDoc(filedata).to_patentdoc()
+            else:
+                query_string = (
+                    "SELECT ROWID, filename, name FROM files"
+                )
+                records = self.c.execute(query_string).fetchall()
+
+            filereader = self.iter_read(records)
+            for _, filedata in filereader:
+                if filedata:
+                    yield XMLDoc(filedata).to_patentdoc()
+
+
 
         # If a list of publication numbers are supplied
         if publication_numbers:

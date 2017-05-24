@@ -200,7 +200,7 @@ class XMLDoc():
         claimset = Claimset(claims)
         number = self.publication_details()
         if number:
-            number = number[0]
+            number = number['full_number']
         return PatentDoc(
             description,
             claimset,

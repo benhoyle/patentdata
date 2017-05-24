@@ -63,6 +63,14 @@ class TestGeneral(object):
         assert "support" in xmldoc.title()
 
 
+    def test_patent_corpus(self):
+        """ Test generating a patent doc corpus. """
+        corpus = USPublications(self.testfilepath)
+        corpus.process_classifications()
+        doc_generator = corpus.patentdoc_generator()
+        doc = next(doc_generator)
+        assert "support" in doc.title
+
     #def test_class_match(self):
         #""" Test matching of classifications. """
         #class1 = corpus.m.Classification("G", "06", "F", "10", "22")
