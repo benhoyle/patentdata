@@ -19,3 +19,12 @@ class BasePatentDataSource(metaclass=ABCMeta):
         limiting group of publication numbers.
         sample_size limits results to a random sample of size sample_size"""
         pass
+
+class LocalDataSource(BasePatentDataSource):
+    """ Abstract class for files stored locally. """
+
+    @abstractmethod
+    def index(self, publication_number):
+        """ Index the files on disk. """
+        pass
+

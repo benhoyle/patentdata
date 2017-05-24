@@ -6,7 +6,7 @@ import logging
 import re
 import random
 
-from patentdata.corpus.baseclasses import BasePatentDataSource
+from patentdata.corpus.baseclasses import LocalDataSource
 
 # Libraries for Zip file processing
 # Can we use czipfile for faster processing?
@@ -103,7 +103,7 @@ def group_filenames(filelist):
     return filename_groups
 
 
-class USPublications(BasePatentDataSource):
+class USPublications(LocalDataSource):
     """
     Creates a new corpus object that simplifies processing of
     patent archive
@@ -148,7 +148,7 @@ class USPublications(BasePatentDataSource):
     def __del__(self):
         self.conn.close()
 
-    def get_archive_list(self):
+    def index(self):
         """ Generate a list of lower level archive files. """
 
         print("Getting archive file list - may take a few minutes\n")
@@ -394,7 +394,7 @@ class USPublications(BasePatentDataSource):
         years = self.c.execute('SELECT DISTINCT year FROM files').fetchall()
         if not years:
             # If no years are returned run the archive list method
-            self.get_archive_list()
+            self.index()
             years = self.c.execute(
                 'SELECT DISTINCT year FROM files'
                 ).fetchall()

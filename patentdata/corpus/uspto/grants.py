@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from patentdata.corpus.baseclasses import BasePatentDataSource
+from patentdata.corpus.baseclasses import LocalDataSource
 import patentdata.utils as utils
 from patentdata.xmlparser import XMLDoc
 
@@ -69,7 +69,7 @@ def get_xml_by_line_offset(zip_file, start_offset):
         return b''.join(data_buffer)
 
 
-class USGrants(BasePatentDataSource):
+class USGrants(LocalDataSource):
     """ Model for US granted patent data. """
 
     def __init__(self, path):
@@ -128,7 +128,7 @@ class USGrants(BasePatentDataSource):
                 ) as z:
             return XMLDoc(get_xml_by_line_offset(z, offset))
 
-    def get_archive_list(self):
+    def index(self):
         """ Generate metadata for individual publications. """
 
         print("Getting archive file list - may take a while!\n")

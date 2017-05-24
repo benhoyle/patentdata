@@ -26,14 +26,14 @@ class TestGeneral(object):
         """ Test getting archive names. """
         os.remove(self.dbpath)
         corpus = USPublications(self.testfilepath)
-        corpus.get_archive_list()
+        corpus.index()
         records = corpus.c.execute("SELECT * FROM files").fetchall()
         assert records[0][0] == "US20060085912A1"
 
     def test_read_archive_file(self):
         """ Test reading an archive file. """
         corpus = USPublications(self.testfilepath)
-        corpus.get_archive_list()
+        corpus.index()
         filename, name = corpus.search_files("US20060085912A1")
         filedata = corpus.read_archive_file(filename, name)
         assert len(filedata) == 50805
