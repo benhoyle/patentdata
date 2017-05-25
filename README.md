@@ -198,7 +198,7 @@ Usage
 ``from patentdata.models import PatentDoc, Description, Claimset, Claims, Classification``
 
 Getting a bag of words from a patent description.
-::
+```
     text = [
         ("Lorem ipsum dolor sit amet, consectetur "
             "adipiscing elit. Integer nec odio. \n"),
@@ -210,16 +210,16 @@ Getting a bag of words from a patent description.
         ]
     desc = Description(text)
     desc.bag_of_words()
-
+```
 Provides:
-::
+```
     ['lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consecteturadipisc', 'elit',
     'integ', 'nec', 'odio', 'praesent', 'libero', 'sed', 'cursu', 'ant', 'dapibu',
     'nisi', 'sed', 'dignissim', 'lacinia', 'nunc', 'curabitur', 'tortor', 'nibh',
     'quisqu', 'volutpat', 'condimentum', 'velit']
-
+```
 For a complete patent document:
-::
+```
     claims = [
                 Claim("Claim {0} has an x.".format(num), num)
                 for num in range(1, 10)
@@ -238,3 +238,4 @@ For a complete patent document:
                 )
     pd.reading_time()
     pd.claimset.get_claim(5).text
+```
