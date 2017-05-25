@@ -22,8 +22,6 @@ class Claimset(BaseTextSet):
         else:
             self.units = clean_data(initial_input)
 
-        self.count = len(self.units)
-
     @property
     def claim_count(self):
         return len(self.units)

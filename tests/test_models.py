@@ -28,7 +28,7 @@ class TestGeneral(object):
             ]
         claimset = Claimset(claims)
 
-        assert claimset.count == 10
+        assert claimset.claim_count == 10
         assert "Claim 5 has an x" in claimset.get_claim(5).text
         assert isinstance(claimset.claims[2], Claim)
 
@@ -116,5 +116,7 @@ class TestOnData(object):
 
     def test_counters(self):
         """ Test token and character counting functions. """
-        pass
+        pd = self.patent_doc
+        assert pd.vocabulary == 737
+        assert pd.unique_characters == 65
 

@@ -22,34 +22,34 @@ class Claim(BaseTextBlock):
         # Have a 'lazy' flag on this to load some of information when needed?
 
         # Check for and extract claim number
-        parsed_number, text = get_number(text)
-        if number:
-            if number != parsed_number:
-                warnings.warn(
-                    """Detected claim number
-                    does not equal passed claim number."""
-                    )
-        else:
-            number = parsed_number
+        #parsed_number, text = get_number(text)
+        #if number:
+            #if number != parsed_number:
+                #warnings.warn(
+                    #"""Detected claim number
+                    #does not equal passed claim number."""
+                    #)
+        #else:
+            #number = parsed_number
 
         self.text = text
         self.number = number
         self.dependency = dependency
 
         # Get dependency
-        parsed_dependency = detect_dependency(self.text)
-        if dependency:
-            self.dependency = dependency
-            if dependency != parsed_dependency:
-                warnings.warn(
-                    """Detected dependency does
-                    not equal passed dependency."""
-                    )
+        #parsed_dependency = detect_dependency(self.text)
+        #if dependency:
+            #self.dependency = dependency
+            #if dependency != parsed_dependency:
+                #warnings.warn(
+                    #"""Detected dependency does
+                    #not equal passed dependency."""
+                    #)
 
-                if dependency >= self.number:
-                    self.dependency = parsed_dependency
-        else:
-            self.dependency = parsed_dependency
+                #if dependency >= self.number:
+                    #self.dependency = parsed_dependency
+        #else:
+            #self.dependency = parsed_dependency
 
         # Lazily compute the functions below when required
 
