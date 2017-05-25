@@ -450,11 +450,11 @@ class USPublications(LocalDataSource):
         except:
             return None
 
-    def patentdoc_generator(
+    def xmldoc_generator(
                             self, classification=None,
                             publication_numbers=None, sample_size=None
                             ):
-        """ Generator to return Patent Doc objects.
+        """ Generator to return XML Doc objects.
 
         If classification is supplied results are limited to that
         classification (of form ["G", "06"], length 1 to 5).
@@ -486,7 +486,7 @@ class USPublications(LocalDataSource):
             filereader = self.iter_read(records)
             for _, filedata in filereader:
                 if filedata:
-                    yield XMLDoc(filedata).to_patentdoc()
+                    yield XMLDoc(filedata)
 
 
 
@@ -512,4 +512,31 @@ class USPublications(LocalDataSource):
         if classification:
             filegenerator = self.iter_filter_xml(classification, sample_size)
             for xmldoc in filegenerator:
-                yield xmldoc.to_patentdoc()
+                yield xmldoc
+
+    def patentdoc_generator(
+                            self, classification=None,
+                            publication_numbers=None, sample_size=None
+                            ):
+        """ Generator to return Patent Doc objects.
+
+        If classification is supplied results are limited to that
+        classification (of form ["G", "06"], length 1 to 5).
+
+        If publication_numbers is supplied as list, results are limited
+        to those publication numbers.
+
+        (classification and publication filtering is XOR)
+
+        If sample_size is provided returned documents are limited to
+        this integer.
+        """
+        xmldoc_gen = self.xmldoc_generator(
+                                            classification,
+                                            publication_numbers,
+                                            sample_size
+                                        )
+        for xmldoc in xmldoc_gen:
+            yield xmldoc.to_patentdoc()
+
+

@@ -20,6 +20,7 @@ class BasePatentDataSource(metaclass=ABCMeta):
         sample_size limits results to a random sample of size sample_size"""
         pass
 
+
 class LocalDataSource(BasePatentDataSource):
     """ Abstract class for files stored locally. """
 
@@ -28,3 +29,12 @@ class LocalDataSource(BasePatentDataSource):
         """ Index the files on disk. """
         pass
 
+    @abstractmethod
+    def xmldoc_generator(self, publication_numbers=None, sample_size=None):
+        """ Return a generator that provides XML Doc objects.
+        publication_numbers is a list or iterator that provides a
+        limiting group of publication numbers.
+        sample_size limits results to a random sample of size sample_size.
+
+        This may be faster than returning the whole patent docs."""
+        pass

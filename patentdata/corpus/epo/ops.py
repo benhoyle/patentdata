@@ -6,10 +6,7 @@ import epo_ops
 
 # EPOOPSCorpus imports
 from patentdata.corpus.baseclasses import BasePatentDataSource
-# Pass these in from app settings?
-from patentdata.corpus.epo.settings import (
-    EPOOPS_C_KEY, EPOOPS_SECRET_KEY
-)
+
 from patentdata.xmlparser import (
     XMLDoc, XMLRegisterData, get_epodoc, extract_pub_no
 )
@@ -19,7 +16,7 @@ import warnings
 
 
 class EPOOPS(BasePatentDataSource):
-    def __init__(self):
+    def __init__(self, EPOOPS_C_KEY, EPOOPS_SECRET_KEY):
         """
         Intialise EPO OPS client
         Load Dogpile if it exists - if not just use Throttler

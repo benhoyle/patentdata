@@ -202,8 +202,8 @@ class XMLDoc():
         if number:
             number = number['full_number']
         return PatentDoc(
-            description,
             claimset,
+            description,
             title=self.title(),
             classifications=self.classifications(),
             number = number

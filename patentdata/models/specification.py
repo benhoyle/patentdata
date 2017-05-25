@@ -2,6 +2,8 @@
 from nltk import word_tokenize
 from patentdata.models.basemodels import BaseTextSet, BaseTextBlock
 from patentdata.models.lib.utils import check_list
+import string
+
 
 class PatentDoc:
     """ Object to model a patent document. """
@@ -38,7 +40,7 @@ class PatentDoc:
 
     def bag_of_words(
         self, clean_non_words=True, clean_stopwords=True, stem_words=True
-        ):
+    ):
         """ Return tokens from description and claims. """
         joined_bow = self.description.bag_of_words(
             clean_non_words, clean_stopwords, stem_words
@@ -47,6 +49,36 @@ class PatentDoc:
             )
         remove_duplicates = list(set(joined_bow))
         return remove_duplicates
+
+    def string2int(self, filter_printable=True):
+        """ Convert text of document into a list of integers representing
+        its characters.
+
+        If filter_printable is true limit to 98 printable characters."""
+        if filter_printable:
+            ints = [
+                ord(c) if c in string.printable[:-2] else ord(" ")
+                for c in self.text
+                ]
+        else:
+            ints = [ord(c) for c in self.text]
+        return ints
+
+    def string2printint(self):
+        """ Convert a string into a list of integers representing
+        its printable characters."""
+        char_map = {c: i for i, c in enumerate(string.printable[:-2])}
+        return [
+            char_map[c] if c in char_map.keys() else char_map(" ")
+            for c in self.text
+        ]
+
+    @classmethod
+    def printint2string(cls, doc_as_ints):
+        """ Reconstruct document string from list of integers."""
+        char_map = {i:c for i, c in enumerate(string.printable[:-2])}
+        return "".join([char_map[i] for i in doc_as_ints])
+
 
 class Paragraph(BaseTextBlock):
     """ Object to model a paragraph of a patent description. """

@@ -30,6 +30,14 @@ class PatentCorpus:
         self.documents.append(document)
         return self
 
+    def char_stats(self):
+        """ Provide statistics on characters in corpus."""
+        sum_counter = Counter()
+        for doc in self.documents:
+            sum_counter += Counter(doc)
+        print("Documents contain {0} unique characters.".format(len(sum_counter)))
+        return sum_counter
+
 # May not need this - functionality handled by USPublications object
 class LazyPatentCorpus:
     """ Object to model a collection of patent documents that loads
