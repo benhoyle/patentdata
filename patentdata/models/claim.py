@@ -34,9 +34,7 @@ class Claim(BaseTextBlock):
 
         self.text = text
         self.number = number
-
-        # Get category
-        self.category = detect_category(self.text)
+        self.dependency = dependency
 
         # Get dependency
         parsed_dependency = detect_dependency(self.text)
@@ -66,6 +64,14 @@ class Claim(BaseTextBlock):
 
         # Split claim into features
         # self.features = self.split_into_features()
+
+    @property
+    def category(self):
+        try:
+            return self._category
+        except AttributeError:
+            self._category = detect_category(self.text)
+            return self._category
 
     def determine_entities(self):
         """ Determines noun entities within a patent claim.

@@ -2,6 +2,8 @@ import pytest
 from patentdata.models import (
     PatentDoc, Description, Figures, Claimset, Claim, Classification
 )
+from patentdata.corpus import USPublications
+import os
 
 
 class TestGeneral(object):
@@ -90,3 +92,29 @@ class TestDescription(object):
         assert "554" not in bow
         assert "." not in bow
         assert "sed" in bow
+
+
+class TestOnData(object):
+    """ Testing functions on Patent Example."""
+
+    @pytest.fixture(autouse=True)
+    def set_common_fixtures(self):
+        filepath = os.path.dirname(os.path.realpath(__file__))
+        testfilepath = os.path.join(filepath, 'test_files')
+        corpus = USPublications(testfilepath)
+        self.patent_doc = next(corpus.iter_xml()).to_patentdoc()
+
+    def test_features(self):
+        pd = self.patent_doc
+        assert "39 claims" in pd.__repr__()
+        assert pd.description.get_paragraph(26).sentence_count == 6
+        assert pd.description.sentence_count == 194
+        assert (
+            "siderail" in
+            pd.description.get_paragraph(26).sentences[2].words
+            )
+
+    def test_counters(self):
+        """ Test token and character counting functions. """
+        pass
+

@@ -24,6 +24,10 @@ class Claimset(BaseTextSet):
 
         self.count = len(self.units)
 
+    @property
+    def claim_count(self):
+        return len(self.units)
+
     def get_claim(self, number):
         """ Return claim having the passed number. """
         return super(Claimset, self).get_unit(number)

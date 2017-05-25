@@ -17,17 +17,43 @@ class BaseTextBlock:
     def __init__(self, text, number=None):
         self.text = text
         self.number = number
-        self.words = []
 
-    def set_words(self):
+    def __repr__(self):
+        if self.number:
+            return "{0} {1}".format(self.number, self.text)
+        else:
+            return self.text
+
+    @property
+    def words(self):
         """ Tokenise text and store as variable. """
-        self.words = word_tokenize(self.text)
-        return self.words
+        try:
+            return self._words
+        except AttributeError:
+            self._words = word_tokenize(self.text)
+            return self._words
+
+    @property
+    def word_count(self):
+        return len(self.words)
+
+    @property
+    def unfiltered_counter(self):
+        """ Return a counter of unfiltered tokens in text block. """
+        return Counter(self.words)
+
+    @property
+    def characters(self):
+        """ Return characters in text block as list. """
+        return [c for c in self.text]
+
+    @property
+    def character_counter(self):
+        """ Return a counter of unfiltered characters in text block. """
+        return Counter(self.characters)
 
     def get_word_freq(self, stopwords=True, normalize=True):
         """ Calculate term frequencies for words in claim. """
-        if not self.words:
-            self.set_words()
         # Take out punctuation
         if stopwords:
             # If stopwords = true then remove stopwords
@@ -48,8 +74,6 @@ class BaseTextBlock:
 
     def set_pos(self):
         """ Get the parts of speech."""
-        if not self.words:
-            self.set_words()
         pos_list = pos_tag(self.words)
         # Hard set 'comprising' as VBG
         pos_list = [
@@ -61,14 +85,10 @@ class BaseTextBlock:
 
     def appears_in(self, term):
         """ Determine if term appears in claim. """
-        if not self.words:
-            self.set_words()
         return term.lower() in [w.lower() for w in self.words]
 
     def set_word_order(self):
         """ Generate a list of tuples of word, order in claim. """
-        if not self.words:
-            self.set_words()
         self.word_order = list(enumerate(self.words))
         return self.word_order
 
@@ -93,6 +113,16 @@ class BaseTextSet:
         """ Return unit set as text string. """
         return "\n".join([u.text for u in self.units])
 
+    @property
+    def unfiltered_counter(self):
+        """ Return count of tokens in text set. """
+        return sum([u.unfiltered_counter for u in self.units], Counter())
+
+    @property
+    def character_counter(self):
+        """ Return count of characters in text set. """
+        return sum([u.character_counter for u in self.units], Counter())
+
     def get_unit(self, number):
         """ Return unit having the passed number. """
         return self.units[number - 1]
@@ -109,7 +139,7 @@ class BaseTextSet:
     def bag_of_words(
         self, clean_non_words=True, clean_stopwords=True, stem_words=True
         ):
-        """ Get an array of all the words in the patent doc text. """
+        """ Get an array of all the words in the text set. """
         lowers = self.text.lower()
 
         tokens = word_tokenize(lowers)

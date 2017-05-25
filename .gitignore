@@ -11,6 +11,7 @@ __pycache__/
 *.db
 *.p
 settings.py
+notebooks/
 
 # Home directory HTML
 /*.html

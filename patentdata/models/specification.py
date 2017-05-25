@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from nltk import word_tokenize
+from nltk import word_tokenize, sent_tokenize
 from patentdata.models.basemodels import BaseTextSet, BaseTextBlock
 from patentdata.models.lib.utils import check_list
 import string
@@ -24,6 +24,22 @@ class PatentDoc:
         self.classifications = classifications
         self.number = number
 
+    def __repr__(self):
+        return (
+            "<Patent Document object for {0}, "
+            "title: {1} - containing: "
+            "description with {2} paragraphs and "
+            "claimset with {3} claims; "
+            "classifications: {4}"
+            ).format(
+                self.number,
+                self.title,
+                self.description.paragraph_count,
+                self.claimset.claim_count,
+                self.classifications
+            )
+
+
     @property
     def text(self):
         """  Get text of patent document as string. """
@@ -32,6 +48,23 @@ class PatentDoc:
         else:
             desc_text = ""
         return "\n\n".join([desc_text, self.claimset.text])
+
+
+    @property
+    def unfiltered_counter(self):
+        """ Return token counts across claims and description. """
+        return (
+            self.description.unfiltered_counter +
+            self.claimset.unfiltered_counter
+        )
+
+    @property
+    def character_counter(self):
+        """ Return token counts across claims and description. """
+        return (
+            self.description.character_counter +
+            self.claimset.character_counter
+        )
 
     def reading_time(self, reading_rate=100):
         """ Return estimate for time to read. """
@@ -69,19 +102,38 @@ class PatentDoc:
         its printable characters."""
         char_map = {c: i for i, c in enumerate(string.printable[:-2])}
         return [
-            char_map[c] if c in char_map.keys() else char_map(" ")
+            char_map[c] if c in char_map.keys() else char_map[" "]
             for c in self.text
         ]
 
     @classmethod
     def printint2string(cls, doc_as_ints):
         """ Reconstruct document string from list of integers."""
-        char_map = {i:c for i, c in enumerate(string.printable[:-2])}
+        char_map = {i: c for i, c in enumerate(string.printable[:-2])}
         return "".join([char_map[i] for i in doc_as_ints])
 
 
 class Paragraph(BaseTextBlock):
     """ Object to model a paragraph of a patent description. """
+
+    @property
+    def sentences(self):
+        """ If sentences have not been segmented, segment when accessed. """
+        try:
+            return self._sentences
+        except AttributeError:
+            self._sentences = [Sentence(s) for s in sent_tokenize(self.text)]
+            return self._sentences
+
+
+    @property
+    def sentence_count(self):
+        return len(self.sentences)
+
+
+class Sentence(BaseTextBlock):
+    """ Object to model a sentence of a patent description. """
+
     pass
 
 
@@ -117,6 +169,22 @@ class Description(BaseTextSet):
     def get_paragraph(self, number):
         """ Return paragraph having the passed number. """
         return super(Description, self).get_unit(number)
+
+
+    def sentence_segment(self):
+        """ Segment all paragraphs into sentences. """
+        for paragraph in self.units:
+            paragraph.sentence_segment()
+
+    @property
+    def paragraph_count(self):
+        """ Return count of paragraphs. """
+        return len(self.units)
+
+    @property
+    def sentence_count(self):
+        """ Return count of sentences. """
+        return sum([p.sentence_count for p in self.units])
 
 
 class Figures:
