@@ -22,6 +22,8 @@ RUN pip3 install jupyter
 
 RUN pip3 install pandas
 
+RUN pip3 install matplotlib
+
 #RUN pip3 install patentdata>=0.0.7
 
 ENV INSTALL_PATH /patentdata

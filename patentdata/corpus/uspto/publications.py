@@ -102,6 +102,33 @@ def group_filenames(filelist):
         filename_groups[filename].append((pub_id, name))
     return filename_groups
 
+def build_classification_query(classification):
+    """ Build the query string for a classification search. """
+    # First - build the SQL query
+    class_fields = [
+            'section', 'class', 'subclass', 'maingroup', 'subgroup'
+            ]
+    query_portion = "WHERE"
+
+    for i in range(0, len(class_fields)):
+        if i >= len(classification):
+            break
+        if not classification[i]:
+            break
+        if i > 0:
+            query_portion += "AND"
+        query_portion += " {0} = '{1}' ".format(
+                class_fields[i],
+                classification[i]
+            )
+
+    # Then build final query string
+    query_string = """
+                        SELECT ROWID, filename, name
+                        FROM files
+                        {0}
+                        """.format(query_portion)
+    return query_string
 
 class USPublications(LocalDataSource):
     """
@@ -289,37 +316,13 @@ class USPublications(LocalDataSource):
                     if filedata:
                         yield XMLDoc(filedata)
 
-    def iter_filter_xml(self, classification, sample_size=None):
-        """ Generator to return xml that matches has classification.
 
-        :param classification: list in form
-        ["G", "61", "K", "039", "00"]. If an entry has None or
-        no entry, it and its remaining entries are not filtered.
-        """
-        # First - build the SQL query
-        class_fields = [
-            'section', 'class', 'subclass', 'maingroup', 'subgroup'
-            ]
-        query_portion = "WHERE"
+    def get_records(self, classification, sample_size=None):
+        """ Retrieve a list of records filtered by passed classification
+        and limited by sample_size.
 
-        for i in range(0, len(class_fields)):
-            if i >= len(classification):
-                break
-            if not classification[i]:
-                break
-            if i > 0:
-                query_portion += "AND"
-            query_portion += " {0} = '{1}' ".format(
-                class_fields[i],
-                classification[i]
-            )
-        # query_portion += ")"
-        # Then build final query string
-        query_string = """
-                        SELECT ROWID, filename, name
-                        FROM files
-                        {0}
-                        """.format(query_portion)
+        return: list of records"""
+        query_string = build_classification_query(classification)
         records = self.c.execute(query_string).fetchall()
         no_of_records = len(records)
         print("{0} records located.".format(no_of_records))
@@ -329,6 +332,16 @@ class USPublications(LocalDataSource):
                     records, sample_size
                 )
             print("{0} records sampled.".format(len(records)))
+        return records
+
+    def iter_filter_xml(self, classification, sample_size=None):
+        """ Generator to return xml that matches has classification.
+
+        :param classification: list in form
+        ["G", "61", "K", "039", "00"]. If an entry has None or
+        no entry, it and its remaining entries are not filtered.
+        """
+        records = self.get_records(classification, sample_size)
         filegenerator = self.iter_read(records)
         # Iterate through records and return XMLDocs
         for _, filedata in filegenerator:

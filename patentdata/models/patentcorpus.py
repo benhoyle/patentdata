@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
+from collections import Counter
+
 from patentdata.models.specification import PatentDoc
+from patentdata.xmlparser import XMLDoc
+
 
 class PatentCorpus:
     """ Object to model a collection of patent documents. """
@@ -17,7 +21,7 @@ class PatentCorpus:
         self.documents = documents
         return self
 
-    def add_document(document):
+    def add_document(self, document):
         """ Add a document to the corpus.
 
         :param document: patent documents
@@ -35,8 +39,11 @@ class PatentCorpus:
         sum_counter = Counter()
         for doc in self.documents:
             sum_counter += Counter(doc)
-        print("Documents contain {0} unique characters.".format(len(sum_counter)))
+        print(
+            "Documents contain {0} unique characters.".format(len(sum_counter))
+            )
         return sum_counter
+
 
 # May not need this - functionality handled by USPublications object
 class LazyPatentCorpus:
@@ -65,10 +72,16 @@ class LazyPatentCorpus:
         # Then we can call init_by_filenames
         pass
 
-    def init_by_filenames(self, filelist):
+    def init_by_filenames(self, datasource, filelist):
         """ Initialise with a list of file references of the format
-        (filename, name)."""
-        pass
+        (id, filename, name)."""
+        self.datasource = datasource
+        self.filelist = filelist
+
+    @property
+    def documents(self):
+        for _, filedata in self.datasource.iter_read(self.filelist):
+            yield XMLDoc(filedata).to_patentdoc()
 
     def __iter__(self):
         """ Iterator to return patent documents. """
@@ -76,4 +89,18 @@ class LazyPatentCorpus:
         # wrap the output filedata through XMLDoc(filedata).to_patent
         pass
 
+    def build_token_dict(self):
+        """ Iterate through documents to build a dictionary of tokens. """
+        # Unfiltered
+        total_token_counter = Counter()
+        for doc in self.documents:
+            total_token_counter += doc.unfiltered_counter
+        self.token_dict = {
+            t: i for i, t in enumerate(total_token_counter.keys())
+            }
+        # Do we want to filter here and UNK rare tokens
 
+    def docs_to_index(self):
+        """ Go through documents replacing tokens with the index in
+        the token dictionary."""
+        pass
