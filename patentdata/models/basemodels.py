@@ -3,11 +3,11 @@
 from nltk import word_tokenize, pos_tag
 # Used for frequency counts
 from collections import Counter
-import string
-import re
 
 from patentdata.models.lib.utils import (
-    check_list, remove_non_words, stem, remove_stopwords
+    check_list, remove_non_words, stem, remove_stopwords,
+    replace_patent_numbers, punctuation_split, capitals_process,
+    stem_split, ENG_STOPWORDS
     )
 
 
@@ -34,6 +34,19 @@ class BaseTextBlock:
             return self._words
 
     @property
+    def filtered_tokens(self):
+        """ Clean and tokenise text and store as variable. """
+        try:
+            return self._filtered_tokens
+        except AttributeError:
+            filtered_text = replace_patent_numbers(self.text)
+            words = word_tokenize(filtered_text)
+            filtered_words = punctuation_split(words)
+            caps_processed = capitals_process(filtered_words)
+            self._filtered_tokens = stem_split(caps_processed)
+            return self._filtered_tokens
+
+    @property
     def word_count(self):
         return len(self.words)
 
@@ -41,6 +54,11 @@ class BaseTextBlock:
     def unfiltered_counter(self):
         """ Return a counter of unfiltered tokens in text block. """
         return Counter(self.words)
+
+    @property
+    def filtered_counter(self):
+        """ Return a counter of filtered tokens in text block. """
+        return Counter(self.filtered_tokens)
 
     @property
     def characters(self):
@@ -119,6 +137,11 @@ class BaseTextSet:
         return sum([u.unfiltered_counter for u in self.units], Counter())
 
     @property
+    def filtered_counter(self):
+        """ Return count of filtered tokens in text set. """
+        return sum([u.filtered_counter for u in self.units], Counter())
+
+    @property
     def character_counter(self):
         """ Return count of characters in text set. """
         return sum([u.character_counter for u in self.units], Counter())
@@ -138,7 +161,7 @@ class BaseTextSet:
 
     def bag_of_words(
         self, clean_non_words=True, clean_stopwords=True, stem_words=True
-        ):
+    ):
         """ Get an array of all the words in the text set. """
         lowers = self.text.lower()
 

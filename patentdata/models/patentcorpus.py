@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from collections import Counter
 
-from patentdata.models.specification import PatentDoc
+from patentdata.models.patentdoc import PatentDoc
 from patentdata.xmlparser import XMLDoc
 
 
@@ -104,3 +104,51 @@ class LazyPatentCorpus:
         """ Go through documents replacing tokens with the index in
         the token dictionary."""
         pass
+
+    def get_statistics(self):
+        """ Iterate through documents,compute and statistics."""
+        unfiltered_counter = Counter()
+        filtered_counter = Counter()
+        character_counter = Counter()
+        paragraph_count = Counter()
+        sentence_count = Counter()
+        sentence_dist = Counter()
+        for i, doc in enumerate(self.documents):
+            # Sum unfiltered_counter
+            unfiltered_counter += doc.unfiltered_counter
+            # Sum filtered_counter
+            filtered_counter += doc.filtered_counter
+            # Sum character_counter
+            character_counter += doc.character_counter
+            # Count description - paragraph_count (Sum counter for totals)
+            paragraph_count[doc.description.paragraph_count] += 1
+            # Count description - sentence_count (Sum counter for totals)
+            sentence_count[doc.description.sentence_count] += 1
+            # Sum sentence_dist
+            sentence_dist += doc.description.sentence_dist
+
+        unfiltered_vocabulary = len(unfiltered_counter)
+        filtered_vocabulary = len(filtered_counter)
+        character_vocabulary = len(character_counter)
+        total_paragraphs = sum([k*i for k, i in paragraph_count.items()])
+        total_sentences = sum([k*i for k, i in sentence_count.items()])
+        print_string = """
+            Unfiltered vocabulary = {0}
+            Filtered vocabulary = {1}
+            Character vocabulary = {2}
+            Total Number of Paragraphs = {3}
+            Total Number of Sentences = {4}
+        """.format(
+            unfiltered_vocabulary, filtered_vocabulary, character_vocabulary,
+            total_paragraphs, total_sentences
+        )
+        print(print_string)
+        return (
+            unfiltered_counter,
+            filtered_counter,
+            character_counter,
+            paragraph_count,
+            sentence_count,
+            sentence_dist
+        )
+

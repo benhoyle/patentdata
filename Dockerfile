@@ -8,6 +8,7 @@ RUN apt-get update \
     python3 \
     python3-numpy \
     python3-pip \
+    python3-dev \
   && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install --upgrade pip
@@ -23,6 +24,10 @@ RUN pip3 install jupyter
 RUN pip3 install pandas
 
 RUN pip3 install matplotlib
+
+RUN pip3 install -U spacy
+
+RUN python3 -m spacy download en
 
 #RUN pip3 install patentdata>=0.0.7
 

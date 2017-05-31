@@ -2,6 +2,7 @@
 from nltk import sent_tokenize
 from patentdata.models.basemodels import BaseTextSet, BaseTextBlock
 from patentdata.models.lib.utils import check_list
+from collections import Counter
 
 
 class Paragraph(BaseTextBlock):
@@ -23,7 +24,6 @@ class Paragraph(BaseTextBlock):
 
 class Sentence(BaseTextBlock):
     """ Object to model a sentence of a patent description. """
-
     pass
 
 
@@ -69,6 +69,17 @@ class Description(BaseTextSet):
     def sentence_count(self):
         """ Return count of sentences. """
         return sum([p.sentence_count for p in self.units])
+
+    @property
+    def sentence_dist(self):
+        """ Return distribution of sentences. """
+        return Counter(
+            [
+                len(s.words)
+                for p in self.units
+                for s in p.sentences
+            ]
+        )
 
 
 class Figures:
