@@ -105,6 +105,22 @@ class LazyPatentCorpus:
         the token dictionary."""
         pass
 
+    def sentences(self, add_claims=False):
+        """ Iterate through sentences in the corpus - useable as input
+        to gensim's word2vec model.
+
+        if add_claims is set to true, the claims are added as sentences.
+        """
+        for doc in self.documents:
+            for paragraph in doc.description.paragraphs:
+                for sentence in paragraph.sentences:
+                    # yield sentence.filtered_tokens
+                    yield sentence.words
+            if add_claims:
+                for claim in doc.claimset.claims:
+                    yield claim.words
+
+
     def get_statistics(self):
         """ Iterate through documents,compute and statistics."""
         unfiltered_counter = Counter()

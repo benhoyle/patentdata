@@ -7,7 +7,7 @@ from collections import Counter
 from patentdata.models.lib.utils import (
     check_list, remove_non_words, stem, remove_stopwords,
     replace_patent_numbers, punctuation_split, capitals_process,
-    stem_split, ENG_STOPWORDS
+    stem_split, ENG_STOPWORDS, string2printint
     )
 
 
@@ -110,6 +110,22 @@ class BaseTextBlock:
         self.word_order = list(enumerate(self.words))
         return self.word_order
 
+    def print_character_list(self):
+        """ Convert text into a list of integers representing the
+        characters of the text mapped to printable characters (see
+        models.lib.utils)."""
+        return string2printint(self.text)
+
+    def filtered_token2int(self, vocab_dict):
+        """ Map filtered tokens to integers based on mapping in
+        vocab_dict. Return a list of integers."""
+        tokens = self.filtered_tokens
+        return [
+            vocab_dict[token] if token in vocab_dict.keys()
+            else vocab_dict["_UNK_"]
+            for token in tokens
+            ]
+
 
 class BaseTextSet:
     """ Abstract object to model a collection of text blocks. """
@@ -177,3 +193,8 @@ class BaseTextSet:
             tokens = stem(tokens)
 
         return tokens
+
+    def print_character_list(self):
+        """ Return list of all printable characters converted to
+        integers. """
+        return sum([u.print_character_list() for u in self.units], list())

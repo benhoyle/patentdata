@@ -25,6 +25,8 @@ RUN pip3 install pandas
 
 RUN pip3 install matplotlib
 
+RUN pip3 install cython
+
 RUN pip3 install -U spacy
 
 RUN python3 -m spacy download en

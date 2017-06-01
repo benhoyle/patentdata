@@ -96,5 +96,3 @@ class PatentDoc:
             )
         remove_duplicates = list(set(joined_bow))
         return remove_duplicates
-
-
