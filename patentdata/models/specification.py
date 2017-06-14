@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from nltk import sent_tokenize
 from patentdata.models.basemodels import BaseTextSet, BaseTextBlock
-from patentdata.models.lib.utils import check_list
+from patentdata.models.lib.utils import check_list, string2printint
 from collections import Counter
 
 
@@ -21,11 +21,16 @@ class Paragraph(BaseTextBlock):
     def sentence_count(self):
         return len(self.sentences)
 
+    def print_character_list(self):
+        """ Convert text into a list of integers representing the
+        characters of the text mapped to printable characters (see
+        models.lib.utils)."""
+        return string2printint(self.text) + string2printint("\n\n")
+
 
 class Sentence(BaseTextBlock):
     """ Object to model a sentence of a patent description. """
     pass
-
 
 class Description(BaseTextSet):
     """ Object to model a patent description. """

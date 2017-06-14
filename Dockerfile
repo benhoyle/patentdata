@@ -31,6 +31,8 @@ RUN pip3 install -U spacy
 
 RUN python3 -m spacy download en
 
+RUN pip3 install -U scikit-learn
+
 #RUN pip3 install patentdata>=0.0.7
 
 ENV INSTALL_PATH /patentdata
@@ -46,7 +48,9 @@ EXPOSE 8888
 
 # Add a notebook profile.
 RUN mkdir -p -m 700 /root/.jupyter/ && \
-    echo "c.NotebookApp.ip = '*'" >> /root/.jupyter/jupyter_notebook_config.py
+    echo "c.NotebookApp.ip = '*'" >> /root/.jupyter/jupyter_notebook_config.py && \
+    echo "c.NotebookApp.password = u'sha1:dcdb6e651f8c:609a36df6ee9005f50b9e0e9d79590d108053f03'" >> /root/.jupyter/jupyter_notebook_config.py && \
+    echo "c.NotebookApp.token = ''" >> /root/.jupyter/jupyter_notebook_config.py
 
 #ENTRYPOINT ["tini", "--"]
 CMD ["jupyter", "notebook", "--no-browser", "--allow-root"]

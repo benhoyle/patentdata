@@ -99,30 +99,7 @@ def capitals_process(tokens):
 
 def punctuation_split(tokens):
     """ Split hyphenated and slashed tokens into words. """
-    token_list = list()
-    for token in tokens:
-        # Keep and/or as special high frequency token
-        if "/" in token and token is not "and/or":
-            parts = token.split("/")
-            for i, part in enumerate(parts):
-                token_list.append(part)
-                if i < (len(parts) - 1):
-                    token_list.append("or")
-        # Replace other non-alpha characters with space then split
-        elif "-" in token:
-            for part in token.split("-"):
-                token_list.append(part)
-        elif "—" in token:
-            for part in token.split("—"):
-                token_list.append(part)
-        else:
-            token_list.append(token)
-            # token = "".join(
-            # [c if c.isalnum() else " " for c in token]
-            # )
-            # for substrings in token.split(" "):
-            # token_list.append(substrings)
-    return token_list
+    return sum((re.split('(\W)', token) for token in tokens), list())
 
 
 def replace_patent_numbers(text):

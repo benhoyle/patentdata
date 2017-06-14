@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 from collections import Counter
 
-from patentdata.models.patentdoc import PatentDoc
+from patentdata.models import PatentDoc
 from patentdata.xmlparser import XMLDoc
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class PatentCorpus:
@@ -43,6 +47,14 @@ class PatentCorpus:
             "Documents contain {0} unique characters.".format(len(sum_counter))
             )
         return sum_counter
+
+    def save(self, path):
+        """ Save patentdoc objects to disk to speed up loading of data. """
+        # Create a zip archive
+        # Have zip archive open as long as object is open
+        # Serialise patentdoc using a method on that class
+        # Also add load methods
+        pass
 
 
 # May not need this - functionality handled by USPublications object
@@ -98,6 +110,7 @@ class LazyPatentCorpus:
         self.token_dict = {
             t: i for i, t in enumerate(total_token_counter.keys())
             }
+        return self.token_dict, total_token_counter
         # Do we want to filter here and UNK rare tokens
 
     def docs_to_index(self):
@@ -105,21 +118,32 @@ class LazyPatentCorpus:
         the token dictionary."""
         pass
 
+    # This is currently a generator but needs to be an iterator
     def sentences(self, add_claims=False):
         """ Iterate through sentences in the corpus - useable as input
-        to gensim's word2vec model.
+         to gensim's word2vec model.
 
         if add_claims is set to true, the claims are added as sentences.
         """
         for doc in self.documents:
-            for paragraph in doc.description.paragraphs:
-                for sentence in paragraph.sentences:
-                    # yield sentence.filtered_tokens
-                    yield sentence.words
-            if add_claims:
-                for claim in doc.claimset.claims:
-                    yield claim.words
+            try:
+                for paragraph in doc.description.paragraphs:
+                    for sentence in paragraph.sentences:
+                        # yield sentence.filtered_tokens
+                        yield sentence.words
+                if add_claims:
+                    for claim in doc.claimset.claims:
+                        yield claim.words
+            except:
+                logger.error("Error processing doc - {0}".format(doc.title))
 
+    def get_description_text(self):
+        """ Return text of all descriptions as one long string. """
+        return "\n\n".join([doc.description.text for doc in self.documents])
+
+    def get_claim_text(self):
+        """ Return text of all claims as one long string. """
+        return "\n\n".join([doc.claimset.text for doc in self.documents])
 
     def get_statistics(self):
         """ Iterate through documents,compute and statistics."""
@@ -130,18 +154,28 @@ class LazyPatentCorpus:
         sentence_count = Counter()
         sentence_dist = Counter()
         for i, doc in enumerate(self.documents):
-            # Sum unfiltered_counter
-            unfiltered_counter += doc.unfiltered_counter
-            # Sum filtered_counter
-            filtered_counter += doc.filtered_counter
-            # Sum character_counter
-            character_counter += doc.character_counter
-            # Count description - paragraph_count (Sum counter for totals)
-            paragraph_count[doc.description.paragraph_count] += 1
-            # Count description - sentence_count (Sum counter for totals)
-            sentence_count[doc.description.sentence_count] += 1
-            # Sum sentence_dist
-            sentence_dist += doc.description.sentence_dist
+            try:
+                # Sum unfiltered_counter
+                unfiltered_counter += doc.unfiltered_counter
+                # Sum filtered_counter
+                filtered_counter += doc.filtered_counter
+                # Sum character_counter
+                character_counter += doc.character_counter
+                # Count description - paragraph_count (Sum counter for totals)
+                paragraph_count[doc.description.paragraph_count] += 1
+                # Count description - sentence_count (Sum counter for totals)
+                sentence_count[doc.description.sentence_count] += 1
+                # Sum sentence_dist
+                sentence_dist += doc.description.sentence_dist
+                if (i % 500) == 0:
+                    status_string = "Processing {0}th document - {1}".format(
+                            i,
+                            doc.title
+                        )
+                    logger.info(status_string)
+                    print(status_string)
+            except:
+                logger.error("Error processing doc - {0}".format(i))
 
         unfiltered_vocabulary = len(unfiltered_counter)
         filtered_vocabulary = len(filtered_counter)
@@ -167,4 +201,64 @@ class LazyPatentCorpus:
             sentence_count,
             sentence_dist
         )
+
+    # Many introductory tutorials work with a list of words as strings
+    def word_list(self, add_claims=True):
+        """ Provide a list of all the words in the corpus
+        in lowercase and without punctuation.
+        If add_claims is true, the claim text is provided as well.
+        """
+        words = list()
+        for _, filedata in self.datasource.iter_read(self.filelist):
+            try:
+                doc = XMLDoc(filedata).to_patentdoc()
+                words += doc.description.bag_of_words(
+                                                clean_non_words=True,
+                                                clean_stopwords=False,
+                                                stem_words=False
+                                                )
+                if add_claims:
+                    words += doc.claimset.bag_of_words(
+                                                clean_non_words=True,
+                                                clean_stopwords=False,
+                                                stem_words=False
+                                                )
+            except:
+                logger.error("Error processing doc - {0}".format(filedata))
+
+        return words
+
+
+class CorpusSentenceIterator:
+    """ Iterator to return sentences from files in filelist f
+    rom datasource. """
+
+    def __init__(self, datasource, filelist, add_claims=False):
+        """ Initialise with a datasource and filelist. """
+        self.datasource = datasource
+        self.filelist = filelist
+        self.add_claims = add_claims
+
+    def __iter__(self):
+        """ Iterate through files"""
+        for _, filedata in self.datasource.iter_read(self.filelist):
+            try:
+                doc = XMLDoc(filedata).to_patentdoc()
+                for paragraph in doc.description.paragraphs:
+                    for sentence in paragraph.sentences:
+                        # yield sentence.filtered_tokens
+                        yield sentence.bag_of_words(
+                            clean_non_words=True,
+                            clean_stopwords=False,
+                            stem_words=False
+                        )
+                if self.add_claims:
+                    for claim in doc.claimset.claims:
+                        yield claim.bag_of_words(
+                            clean_non_words=True,
+                            clean_stopwords=False,
+                            stem_words=False
+                        )
+            except:
+                logger.error("Error processing doc - {0}".format(filedata))
 

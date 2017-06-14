@@ -126,6 +126,24 @@ class BaseTextBlock:
             for token in tokens
             ]
 
+    def bag_of_words(
+        self, clean_non_words=True, clean_stopwords=True, stem_words=True
+    ):
+        """ Get an array of all the words in the text set. """
+        lowers = self.text.lower()
+
+        tokens = word_tokenize(lowers)
+
+        if clean_non_words:
+            tokens = remove_non_words(tokens)
+
+        if clean_stopwords:
+            tokens = remove_stopwords(tokens)
+
+        if stem_words:
+            tokens = stem(tokens)
+
+        return tokens
 
 class BaseTextSet:
     """ Abstract object to model a collection of text blocks. """

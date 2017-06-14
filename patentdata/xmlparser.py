@@ -15,6 +15,7 @@ logging.basicConfig(
     format='%(asctime)s %(message)s'
 )
 
+
 class XMLDoc():
     """ Object to wrap the XML for a US Patent Document. """
 
@@ -83,13 +84,13 @@ class XMLDoc():
                     claim.find("dependent-claim-reference")
                     .attrs['depends_on'].split('-')[1]
                 )
-            except AttributeError:
+            except (AttributeError, ValueError):
                 try:
                     dependency = int(
                         claim.find("claim-ref")
                         .attrs['idref'].split('-')[1]
                     )
-                except AttributeError:
+                except (AttributeError, ValueError):
                     dependency = 0
             return dependency
 
@@ -185,11 +186,10 @@ class XMLDoc():
                 except:
                     logging.exception(
                         "Exception opening file: {0}".format(
-                        self.publication_details()
+                            self.publication_details()
                         )
                     )
                     return []
-
 
     def to_patentdoc(self):
         """ Return a patent doc object. """
@@ -206,7 +206,7 @@ class XMLDoc():
             description,
             title=self.title(),
             classifications=self.classifications(),
-            number = number
+            number=number
             )
 
 
