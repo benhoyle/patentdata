@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
-from nltk import sent_tokenize
+#from nltk import sent_tokenize
+from nltk import data
 from patentdata.models.basemodels import BaseTextSet, BaseTextBlock
 from patentdata.models.lib.utils import check_list, string2printint
 from collections import Counter
+
+extra_abbreviations = ['fig', 'figs', 'u.s.c', 'ser', 'no']
+sent_tokenize = data.load('tokenizers/punkt/english.pickle')
+sent_tokenize._params.abbrev_types.update(extra_abbreviations)
 
 
 class Paragraph(BaseTextBlock):
@@ -14,7 +19,8 @@ class Paragraph(BaseTextBlock):
         try:
             return self._sentences
         except AttributeError:
-            self._sentences = [Sentence(s) for s in sent_tokenize(self.text)]
+            self._sentences = [Sentence(s) 
+                                for s in sent_tokenize.tokenize(self.text)]
             return self._sentences
 
     @property
@@ -85,6 +91,11 @@ class Description(BaseTextSet):
                 for s in p.sentences
             ]
         )
+        
+    @property
+    def sentences(self):
+        """Return list of sentences."""
+        return sum([p.sentences for p in pdoc1.description.paragraphs],list())
 
 
 class Figures:

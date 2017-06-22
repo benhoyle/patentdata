@@ -42,7 +42,8 @@ WORKDIR $INSTALL_PATH
 COPY . .
 RUN pip install --editable .
 
-RUN python3 -m nltk.downloader punkt && python3 -m nltk.downloader stopwords
+RUN python3 -m nltk.downloader punkt && python3 -m nltk.downloader stopwords \
+    && python3 -m nltk.downloader averaged_perceptron_tagger
 
 EXPOSE 8888
 

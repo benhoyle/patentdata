@@ -69,6 +69,23 @@ class BaseTextBlock:
     def character_counter(self):
         """ Return a counter of unfiltered characters in text block. """
         return Counter(self.characters)
+        
+    @property
+    def pos(self):
+        """ Return parts of speech. """
+        try:
+            return self._pos
+        except AttributeError:
+            self._pos = pos_tag(self.words)
+            return self._pos
+        #pos_list = pos_tag(self.words)
+        # Hard set 'comprising' as VBG
+        # pos_list = [
+        #    (word, pos) if word != 'comprising'
+        #    else ('comprising', 'VBG') for (word, pos) in pos_list
+        #    ]
+        #self.pos = pos_list
+        #return self.pos
 
     def get_word_freq(self, stopwords=True, normalize=True):
         """ Calculate term frequencies for words in claim. """
@@ -90,16 +107,16 @@ class BaseTextBlock:
                 counter[key] /= sum_freqs
         return counter
 
-    def set_pos(self):
-        """ Get the parts of speech."""
-        pos_list = pos_tag(self.words)
-        # Hard set 'comprising' as VBG
-        pos_list = [
-            (word, pos) if word != 'comprising'
-            else ('comprising', 'VBG') for (word, pos) in pos_list
-            ]
-        self.pos = pos_list
-        return self.pos
+    #def set_pos(self):
+        #""" Get the parts of speech."""
+        #pos_list = pos_tag(self.words)
+        ## Hard set 'comprising' as VBG
+        #pos_list = [
+            #(word, pos) if word != 'comprising'
+            #else ('comprising', 'VBG') for (word, pos) in pos_list
+            #]
+        #self.pos = pos_list
+        #return self.pos
 
     def appears_in(self, term):
         """ Determine if term appears in claim. """
