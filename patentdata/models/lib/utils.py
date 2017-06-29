@@ -3,6 +3,7 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 import re
 import string
+import unicodedata
 
 # Extend these stopwords to include patent stopwords
 ENG_STOPWORDS = stopwords.words('english')
@@ -13,6 +14,50 @@ REGEX_PCT_APPLICATION = r"PCT\/[A-Z]{2}\d{2,4}\/\d{5,6}"
 
 PRINTABLE_CHAR_MAP = {c: i for i, c in enumerate(string.printable[:-2])}
 REVERSE_PRINT_CHAR_MAP = {i: c for i, c in enumerate(string.printable[:-2])}
+
+class CharDict:
+    """ Class to model mapping between characters and integers. """
+
+    def __init__(self):
+        """ Initialise and reverse control characters. """
+        # Set character set we will use
+        self.character_set = (
+            string.ascii_lowercase +
+            string.punctuation +
+            string.whitespace[:-2]
+            )
+        cs_len = len(self.character_set)
+        self.reverse_dict = {
+            i: c for i, c in enumerate(self.character_set)
+            }
+        # Reserve special characters
+        self.reverse_dict[cs_len + 0] = "<DOC>" # Document start
+        self.reverse_dict[cs_len + 1] = "</DOC>" # Document end
+        self.reverse_dict[cs_len + 2] = "<P>" # Paragraph start
+        self.reverse_dict[cs_len + 3] = "</P>" # Paragraph end
+        self.reverse_dict[cs_len + 4] = "<S>" # Sentence start
+        self.reverse_dict[cs_len + 5] = "</S>" # Sentence end
+        self.reverse_dict[cs_len + 6] = "<W>" # Word start
+        self.reverse_dict[cs_len + 7] = "</W>" # Word end
+        self.reverse_dict[cs_len + 8] = "<CAPITAL>" # Capital Letter
+        self.reverse_dict[cs_len + 9] = "<OOD>" # Out of dict
+
+        self.vocabulary_size = len(self.reverse_dict)
+
+        self.forward_dict = {
+            v: k for k, v in self.reverse_dict.items()
+            }
+
+    def char2int(self, character):
+        """ Convert a character into an integer using the object. """
+        if character in self.character_set:
+            return self.forward_dict[character]
+        else:
+
+
+    def int2char(self, integer):
+        """ Convert an integer into a character using the object. """
+        return self.reverse_dict[integer]
 
 
 def check_list(listvar):
@@ -142,3 +187,61 @@ def string2printint(text):
 def printint2string(doc_as_ints):
     """ Reconstruct document string from list of integers."""
     return "".join([REVERSE_PRINT_CHAR_MAP[i] for i in doc_as_ints])
+
+
+# Create character cleaning dictionary
+char_cleaner = dict()
+
+
+char_cleaner['”'] = '"'
+char_cleaner['“'] = '"'
+char_cleaner['\u2003'] = ' '
+char_cleaner['\ue89e'] = ' '
+char_cleaner['\u2062'] = ' '
+char_cleaner['\ue8a0'] = ' '
+char_cleaner['−'] = '-'
+char_cleaner['—'] = '-'
+char_cleaner['′'] = "'"
+char_cleaner['‘'] = "'"
+char_cleaner['’'] = "'"
+char_cleaner['×'] = '*'
+char_cleaner['⁄'] = '/'
+
+
+def decompose_character(char):
+    """ Attempt to return decomposed version of a character
+    as list of normalised."""
+    try:
+        return [
+            chr(int(u, 16))
+            for u in unicodedata.decomposition(char).split(" ")
+            if u and '<' not in u
+            ]
+    except:
+        return None
+
+
+def clean_characters(text):
+    """ Clean / normalise non-printable characters in the text.
+
+    E.g. accented characters are replaced with non-accented versions.
+    Character fractions are replaced with numbers and slashes."""
+    replacement_text = list()
+    for character in text:
+        # Perform mapping for commonly occuring characters
+        if character in char_cleaner.keys():
+            character = char_cleaner[character]
+
+        if character in string.printable:
+            replacement_text.append(character)
+        else:
+            # If not printable determine if character can be decomposed
+            replacement_chars = decompose_character(character)
+            if replacement_chars:
+                # Recursively call function on text of replacement chars
+                replacement_text.append(
+                    clean_characters("".join(replacement_chars))
+                    )
+            else:
+                replacement_text.append("_")
+    return "".join(replacement_text)
