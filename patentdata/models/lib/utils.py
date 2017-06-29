@@ -15,50 +15,6 @@ REGEX_PCT_APPLICATION = r"PCT\/[A-Z]{2}\d{2,4}\/\d{5,6}"
 PRINTABLE_CHAR_MAP = {c: i for i, c in enumerate(string.printable[:-2])}
 REVERSE_PRINT_CHAR_MAP = {i: c for i, c in enumerate(string.printable[:-2])}
 
-class CharDict:
-    """ Class to model mapping between characters and integers. """
-
-    def __init__(self):
-        """ Initialise and reverse control characters. """
-        # Set character set we will use
-        self.character_set = (
-            string.ascii_lowercase +
-            string.punctuation +
-            string.whitespace[:-2]
-            )
-        cs_len = len(self.character_set)
-        self.reverse_dict = {
-            i: c for i, c in enumerate(self.character_set)
-            }
-        # Reserve special characters
-        self.reverse_dict[cs_len + 0] = "<DOC>" # Document start
-        self.reverse_dict[cs_len + 1] = "</DOC>" # Document end
-        self.reverse_dict[cs_len + 2] = "<P>" # Paragraph start
-        self.reverse_dict[cs_len + 3] = "</P>" # Paragraph end
-        self.reverse_dict[cs_len + 4] = "<S>" # Sentence start
-        self.reverse_dict[cs_len + 5] = "</S>" # Sentence end
-        self.reverse_dict[cs_len + 6] = "<W>" # Word start
-        self.reverse_dict[cs_len + 7] = "</W>" # Word end
-        self.reverse_dict[cs_len + 8] = "<CAPITAL>" # Capital Letter
-        self.reverse_dict[cs_len + 9] = "<OOD>" # Out of dict
-
-        self.vocabulary_size = len(self.reverse_dict)
-
-        self.forward_dict = {
-            v: k for k, v in self.reverse_dict.items()
-            }
-
-    def char2int(self, character):
-        """ Convert a character into an integer using the object. """
-        if character in self.character_set:
-            return self.forward_dict[character]
-        else:
-
-
-    def int2char(self, integer):
-        """ Convert an integer into a character using the object. """
-        return self.reverse_dict[integer]
-
 
 def check_list(listvar):
     """Turns single items into a list of 1."""

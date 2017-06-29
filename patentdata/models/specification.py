@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-#from nltk import sent_tokenize
 from nltk import data
 from patentdata.models.basemodels import BaseTextSet, BaseTextBlock
 from patentdata.models.lib.utils import check_list, string2printint
@@ -19,8 +18,10 @@ class Paragraph(BaseTextBlock):
         try:
             return self._sentences
         except AttributeError:
-            self._sentences = [Sentence(s) 
-                                for s in sent_tokenize.tokenize(self.text)]
+            self._sentences = [
+                Sentence(s)
+                for s in sent_tokenize.tokenize(self.text)
+                ]
             return self._sentences
 
     @property
@@ -37,6 +38,7 @@ class Paragraph(BaseTextBlock):
 class Sentence(BaseTextBlock):
     """ Object to model a sentence of a patent description. """
     pass
+
 
 class Description(BaseTextSet):
     """ Object to model a patent description. """
@@ -91,11 +93,11 @@ class Description(BaseTextSet):
                 for s in p.sentences
             ]
         )
-        
+
     @property
     def sentences(self):
         """Return list of sentences."""
-        return sum([p.sentences for p in pdoc1.description.paragraphs],list())
+        return sum([p.sentences for p in self.units], list())
 
 
 class Figures:
