@@ -100,7 +100,8 @@ def capitals_process(tokens):
 
 def punctuation_split(tokens):
     """ Split hyphenated and slashed tokens into words. """
-    return sum((re.split('(\W)', token) for token in tokens), list())
+    # \W is an alternative but this is equal to [^a-zA-Z0-9_]
+    return sum((re.split('([^a-zA-Z0-9])', token) for token in tokens), list())
 
 
 def replace_patent_numbers(text):

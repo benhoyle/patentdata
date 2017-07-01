@@ -33,6 +33,10 @@ RUN python3 -m spacy download en
 
 RUN pip3 install -U scikit-learn
 
+RUN pip3 install wordsegment
+
+RUN pip3 install pyenchant
+
 #RUN pip3 install patentdata>=0.0.7
 
 ENV INSTALL_PATH /patentdata
@@ -43,7 +47,8 @@ COPY . .
 RUN pip install --editable .
 
 RUN python3 -m nltk.downloader punkt && python3 -m nltk.downloader stopwords \
-    && python3 -m nltk.downloader averaged_perceptron_tagger
+    && python3 -m nltk.downloader averaged_perceptron_tagger \
+    && python3 -m nltk.downloader wordnet
 
 EXPOSE 8888
 

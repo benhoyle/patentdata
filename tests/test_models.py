@@ -107,10 +107,10 @@ class TestOnData(object):
     def test_features(self):
         pd = self.patent_doc
         assert "39 claims" in pd.__repr__()
-        assert pd.description.get_paragraph(26).sentence_count == 6
-        assert pd.description.sentence_count == 194
+        assert pd.description.get_paragraph(26).sentence_count == 5
+        assert pd.description.sentence_count == 137
         assert (
-            "siderail" in
+            "shaft" in
             pd.description.get_paragraph(26).sentences[2].words
             )
 

@@ -10,6 +10,29 @@ from patentdata.models.lib.utils import (
     stem_split, ENG_STOPWORDS, string2printint
     )
 
+from patentdata.models.chardict import CharDict
+
+# Initialise character dictionary for mappings
+chardict = CharDict()
+
+
+class Word:
+    """ Abstract class to model a word. """
+    def __init__(self, text):
+        self.text = text
+
+    def as_char_list(self):
+        """ Return word as a list of character indexes.
+
+            Word start and end characters are added to start and end.
+
+            returns a list of integer indexes."""
+        # Convert main word characters to list of integers
+        text2intlist =  chardict.text2int(self.text)
+        # Add control characters to start and end
+        text2intlist.insert(0, chardict.startwordint)
+        text2intlist.append(chardict.endwordint)
+        return text2intlist
 
 class BaseTextBlock:
     """ Abstract class for a block of text. """
@@ -69,7 +92,7 @@ class BaseTextBlock:
     def character_counter(self):
         """ Return a counter of unfiltered characters in text block. """
         return Counter(self.characters)
-        
+
     @property
     def pos(self):
         """ Return parts of speech. """

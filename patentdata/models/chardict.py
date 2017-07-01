@@ -115,4 +115,14 @@ class CharDict:
                 capitalise = False
         return text
 
+    @property
+    def startwordint(self):
+        """ Return integer for start of word character. """
+        return self.forward_dict["<W>"]
+
+    @property
+    def endwordint(self):
+        """ Return integer for start of word character. """
+        return self.forward_dict["</W>"]
+
 
