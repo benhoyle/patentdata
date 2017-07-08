@@ -28,10 +28,13 @@ class CharDict:
             string.punctuation +
             string.whitespace[:-2]
             )
-        cs_len = len(self.character_set)
+        # Make sure <PADDING> control symbol is set = 0
+        self.reverse_dict[0] = "<PAD>"
+        # Populate rest of dictionary from character set
         self.reverse_dict = {
-            i: c for i, c in enumerate(self.character_set)
+            i: c for i, c in enumerate(self.character_set, start=1)
             }
+        cs_len = len(self.reverse_dict)
         # Reserve special characters
         self.reverse_dict[cs_len + 0] = "<DOC>" # Document start
         self.reverse_dict[cs_len + 1] = "</DOC>" # Document end

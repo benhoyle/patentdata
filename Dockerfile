@@ -9,9 +9,12 @@ RUN apt-get update \
     python3-numpy \
     python3-pip \
     python3-dev \
+    enchant \ 
   && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install --upgrade pip
+
+RUN pip3 install -U setuptools
 
 RUN pip3 install tensorflow
 
