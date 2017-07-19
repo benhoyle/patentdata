@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 from nltk import data
 from patentdata.models.basemodels import BaseTextSet, BaseTextBlock
-from patentdata.models.lib.utils import check_list, string2printint
+from patentdata.models.lib.utils import (
+    check_list, string2printint,
+    entity_finder, filter_entity_list, get_entity_dict,
+    highlight_multiple
+)
 from collections import Counter
 
 extra_abbreviations = ['fig', 'figs', 'u.s.c', 'ser', 'no']
@@ -98,6 +102,20 @@ class Description(BaseTextSet):
     def sentences(self):
         """Return list of sentences."""
         return sum([p.sentences for p in self.units], list())
+
+    @property
+    def entities(self):
+        """ List entities in description."""
+        entities = list()
+        for para in self.paragraphs:
+            for sentence in para.sentences:
+                entities += entity_finder(sentence.pos)
+        entities = filter_entity_list(entities)
+        return get_entity_dict(entities)
+
+    def entity_check(self):
+        """ Returns any entities with multiple reference numerals. """
+        highlight_multiple(self.entities)
 
 
 class Figures:

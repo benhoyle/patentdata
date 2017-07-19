@@ -202,3 +202,86 @@ def clean_characters(text):
             else:
                 replacement_text.append("_")
     return "".join(replacement_text)
+
+
+def entity_finder(pos_list):
+    """ Find entities with reference numerals using POS data."""
+    entity_list = list()
+    entity = []
+    record = False
+    for i, (word, pos) in enumerate(pos_list):
+        if pos == "DT":
+            record = True
+            entity = []
+
+        if record:
+            entity.append((word, pos))
+
+        if "FIG" in word:
+            # reset entity to ignore phrases that refer to Figures
+            record = False
+            entity = []
+
+        if pos == "CD" and entity and record and ('NN' in pos_list[i-1][1]):
+            record = False
+            entity_list.append(entity)
+
+    return entity_list
+
+
+def filter_entity_list(entity_list):
+    """Filter output to remove reference to priority claims."""
+    filter_list = list()
+    for entity in entity_list:
+        if not (
+            {"claims", "priority", "under"} <= set([w for w, _ in entity])
+        ):
+            filter_list.append(entity)
+    return filter_list
+
+
+def print_entity_list(entity_list):
+    """Little function to print entity list."""
+    words = [[word for word, _ in e] for e in entity_list]
+    print([" ".join(word_list) for word_list in words])
+
+
+def get_entity_set(entity_list):
+    """ Get a set of unique entity n-grams from a list of entities."""
+    ngram_list = list()
+    for entity in entity_list:
+        ngram_list.append(
+            " ".join(
+                    [
+                        word
+                        for word, pos in entity
+                        if (pos != 'DT' and pos != 'CD')
+                    ]
+                )
+            )
+    return set(ngram_list)
+
+
+def get_entity_dict(entity_list):
+    """ Get a dictionary of entities indexed by reference numeral."""
+    entity_dict = {}
+    for entity in entity_list:
+        ref_num = entity[-1][0]
+        if ref_num not in entity_dict.keys():
+            entity_dict[ref_num] = list()
+        # Check if a variation already exists
+        exists = False
+        n_gram = " ".join([w for w, _ in entity[1:-1]])
+        for existing in entity_dict[ref_num]:
+            if n_gram == existing:
+                exists = True
+        if not exists:
+            entity_dict[ref_num].append(n_gram)
+    return entity_dict
+
+
+def highlight_multiple(entity_dict):
+    """ Highlight reference numerals used for multiple entities. """
+    for key, value in entity_dict.items():
+        if len(value) > 1:
+            print(key, value)
