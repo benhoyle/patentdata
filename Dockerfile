@@ -40,7 +40,7 @@ RUN pip3 install wordsegment
 
 RUN pip3 install pyenchant
 
-RUN pip3 install python3-tk
+#RUN apt-get install -y --no-install-recommends python3-tk
 
 #RUN pip3 install patentdata>=0.0.7
 
