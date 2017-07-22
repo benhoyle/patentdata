@@ -69,9 +69,6 @@ class Description(BaseTextSet):
 
         super(Description, self).__init__(para_list)
 
-    def __getattr__(self, name):
-        if name == "paragraphs":
-            return self.units
 
     def get_paragraph(self, number):
         """ Return paragraph having the passed number. """
@@ -99,6 +96,10 @@ class Description(BaseTextSet):
         )
 
     @property
+    def paragraphs(self):
+        return self.units
+
+    @property
     def sentences(self):
         """Return list of sentences."""
         return sum([p.sentences for p in self.units], list())
@@ -106,12 +107,15 @@ class Description(BaseTextSet):
     @property
     def entities(self):
         """ List entities in description."""
-        entities = list()
-        for para in self.paragraphs:
-            for sentence in para.sentences:
-                entities += entity_finder(sentence.pos)
-        entities = filter_entity_list(entities)
-        return get_entity_dict(entities)
+        try:
+            return self._entities
+        except AttributeError:
+            entities = list()
+            for para in self.paragraphs:
+                for sentence in para.sentences:
+                    entities += entity_finder(sentence.pos)
+            self._entities = filter_entity_list(entities)
+            return self._entities
 
     def entity_check(self):
         """ Returns any entities with multiple reference numerals. """

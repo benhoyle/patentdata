@@ -10,10 +10,9 @@ from patentdata.models.lib.utils_claimset import (
 class Claimset(BaseTextSet):
     """ Object to model a claim set. """
 
-    # Map claims onto units
-    def __getattr__(self, name):
-        if name == "claims":
-            return self.units
+    @property
+    def claims(self):
+        return self.units
 
     def __init__(self, initial_input):
         """ Process initial input to clean data and check claims. """
