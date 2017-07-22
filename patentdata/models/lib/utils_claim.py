@@ -73,3 +73,28 @@ def detect_category(text):
         return "method"
     else:
         return "system"
+
+def simple_entity_finder(pos_list):
+    """ Find entities with reference numerals using POS data."""
+    entity_list = list()
+    record = False
+    # Add indices
+    enum_pos_list = list(enumerate(pos_list))
+    for i, (word, pos) in enum_pos_list:
+        if pos == "DET" and not record:
+            # Start recording and record start index
+            record = True
+            start_index = i
+
+        if pos == "DET" and record:
+            # Step back until last noun is found
+            for j, (word, pos) in reversed(enum_pos_list[:i]):
+                if "NOUN" in pos:
+                    # Add np_chunk to buffer
+                    entity_list.append(pos_list[start_index:j+1])
+                    break
+
+            # Set new start index
+            start_index = i
+
+    return entity_list
