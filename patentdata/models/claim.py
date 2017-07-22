@@ -5,9 +5,8 @@ import nltk
 from patentdata.models.basemodels import BaseTextBlock
 from patentdata.models.lib.utils_claim import (
     ends_with, get_number, detect_dependency, detect_category,
-    simple_entity_finder
+    entity_finder
 )
-import warnings
 
 
 def check_claim_class(potential_claim):
@@ -20,37 +19,9 @@ class Claim(BaseTextBlock):
 
     def __init__(self, text, number=None, dependency=None):
         """ Initiate claim object with string containing claim text."""
-        # Have a 'lazy' flag on this to load some of information when needed?
-
-        # Check for and extract claim number
-        #parsed_number, text = get_number(text)
-        #if number:
-            #if number != parsed_number:
-                #warnings.warn(
-                    #"""Detected claim number
-                    #does not equal passed claim number."""
-                    #)
-        #else:
-            #number = parsed_number
-
         self.text = text
         self.number = number
-        self.dependency = dependency
-
-        # Get dependency
-        #parsed_dependency = detect_dependency(self.text)
-        #if dependency:
-            #self.dependency = dependency
-            #if dependency != parsed_dependency:
-                #warnings.warn(
-                    #"""Detected dependency does
-                    #not equal passed dependency."""
-                    #)
-
-                #if dependency >= self.number:
-                    #self.dependency = parsed_dependency
-        #else:
-            #self.dependency = parsed_dependency
+        self._dependency = dependency
 
         # Lazily compute the functions below when required
 
@@ -74,11 +45,21 @@ class Claim(BaseTextBlock):
             self._category = detect_category(self.text)
             return self._category
 
+    @property
+    def dependency(self):
+        """ Return claim dependency. """
+        if not self._dependency:
+            self._dependency = detect_dependency(self.text)
+        return self._dependency
 
     @property
     def entities(self):
         """Get noun phrase chunks that identify entities."""
-        return simple_entity_finder(self.pos)
+        try:
+            self._entities
+        except AttributeError:
+            self._entities = entity_finder(self.pos)
+            return self._entities
 
     def determine_entities(self):
         """ Determines noun entities within a patent claim.
@@ -188,6 +169,34 @@ class Claim(BaseTextBlock):
             for i, (word, part, np) in list(enumerate(self.word_data))
             ]
         return {"claim": {"words": words}}
+
+    def ante_check(self):
+        """ Checks for terms that do not have antecedence. """
+        errors = list()
+        # Create a list of the joined form without det
+        joined_list = [" ".join(
+                [word for word, pos in entity if (pos != 'DT')]
+            ) for entity in self.entities]
+
+        for i, entity in enumerate(self.entities):
+            # Check for antecedent basis
+            if entity[0][0].lower() == "the":
+                joined = joined_list[i]
+                if joined not in joined_list[:i]:
+                    errors.append(
+                        "No antecedent basis for '{0}'".format(joined)
+                    )
+
+            # Check for previous introduction of term
+            if entity[0][0].lower() == "a":
+                joined = joined_list[i]
+                if joined in joined_list[:i]:
+                    errors.append(
+                        "Term '{0}' has already been introduced."
+                        .format(joined)
+                    )
+
+        return errors
 
     @classmethod
     def check_claim(cls, text, number=None):
