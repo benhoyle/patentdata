@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from nltk import word_tokenize, pos_tag
+#from nltk import word_tokenize, pos_tag
+from patentdata.models.lib.utils import nlp
 # Used for frequency counts
 from collections import Counter
 
@@ -40,6 +41,7 @@ class BaseTextBlock:
     def __init__(self, text, number=None):
         self.text = text
         self.number = number
+        self.doc = nlp(text)
 
     def __repr__(self):
         if self.number:
@@ -53,7 +55,7 @@ class BaseTextBlock:
         try:
             return self._words
         except AttributeError:
-            self._words = word_tokenize(self.text)
+            self._words = [w for word in self.doc]
             return self._words
 
     @property
@@ -99,7 +101,7 @@ class BaseTextBlock:
         try:
             return self._pos
         except AttributeError:
-            self._pos = pos_tag(self.words)
+            self._pos = [(word.text, word.pos_) for word in self.doc]
             return self._pos
         #pos_list = pos_tag(self.words)
         # Hard set 'comprising' as VBG

@@ -5,6 +5,9 @@ import re
 import string
 import unicodedata
 
+import spacy
+nlp = spacy.load('en')
+
 # Extend these stopwords to include patent stopwords
 ENG_STOPWORDS = stopwords.words('english')
 
@@ -14,7 +17,6 @@ REGEX_PCT_APPLICATION = r"PCT\/[A-Z]{2}\d{2,4}\/\d{5,6}"
 
 PRINTABLE_CHAR_MAP = {c: i for i, c in enumerate(string.printable[:-2])}
 REVERSE_PRINT_CHAR_MAP = {i: c for i, c in enumerate(string.printable[:-2])}
-
 
 def check_list(listvar):
     """Turns single items into a list of 1."""

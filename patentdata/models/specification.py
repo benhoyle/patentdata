@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from nltk import data
+#from nltk import data
 from patentdata.models.basemodels import BaseTextSet, BaseTextBlock
 from patentdata.models.lib.utils import (
     check_list, string2printint,
@@ -8,9 +8,9 @@ from patentdata.models.lib.utils import (
 )
 from collections import Counter
 
-extra_abbreviations = ['fig', 'figs', 'u.s.c', 'ser', 'no']
-sent_tokenize = data.load('tokenizers/punkt/english.pickle')
-sent_tokenize._params.abbrev_types.update(extra_abbreviations)
+#extra_abbreviations = ['fig', 'figs', 'u.s.c', 'ser', 'no']
+#sent_tokenize = data.load('tokenizers/punkt/english.pickle')
+#sent_tokenize._params.abbrev_types.update(extra_abbreviations)
 
 
 class Paragraph(BaseTextBlock):
@@ -19,14 +19,7 @@ class Paragraph(BaseTextBlock):
     @property
     def sentences(self):
         """ If sentences have not been segmented, segment when accessed. """
-        try:
-            return self._sentences
-        except AttributeError:
-            self._sentences = [
-                Sentence(s)
-                for s in sent_tokenize.tokenize(self.text)
-                ]
-            return self._sentences
+        return [s for s in self.doc.sents]
 
     @property
     def sentence_count(self):
