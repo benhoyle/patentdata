@@ -34,7 +34,7 @@ class TestGeneral(object):
         """ Test reading an archive file. """
         corpus = USPublications(self.testfilepath)
         corpus.index()
-        filename, name = corpus.search_files("US20060085912A1")
+        filename, name = corpus.search_files("US20060085912A1", "name")
         filedata = corpus.read_archive_file(filename, name)
         assert len(filedata) == 50805
 

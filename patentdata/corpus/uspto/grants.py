@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from patentdata.corpus.baseclasses import LocalDataSource
+from patentdata.corpus.baseclasses import DBIndexDataSource
 import patentdata.utils as utils
 from patentdata.xmlparser import XMLDoc
 
@@ -69,46 +69,34 @@ def get_xml_by_line_offset(zip_file, start_offset):
         return b''.join(data_buffer)
 
 
-class USGrants(LocalDataSource):
+def get_multiple_xml_by_offset(zip_file, offset_list):
+    """ A generator to return XML inside a zip_file
+    given a list of offsets. """
+    xml_file = zip_file.namelist()[0]
+    sorted_offsets = offset_list.sort()
+    # Reverse list so we can pop from end
+    sorted_offsets = sorted_offsets.reverse()
+    start_offset = sorted_offsets.pop()
+    with zip_file.open(xml_file, 'r') as open_xml_file:
+
+        for line_no, line in enumerate(open_xml_file):
+            if line_no < start_offset:
+                continue
+            elif line_no == start_offset:
+                data_buffer = [line]
+            elif line_no >= start_offset:
+                if line.startswith(b'<?xml '):
+                    # Get next offset if offsets
+                    if sorted_offsets:
+                        start_offset = sorted_offsets.pop()
+                    yield b''.join(data_buffer)
+                else:
+                    data_buffer.append(line)
+        yield b''.join(data_buffer)
+
+
+class USGrants(DBIndexDataSource):
     """ Model for US granted patent data. """
-
-    def __init__(self, path):
-        """ Object initialisation. """
-
-        self.exten = (".zip", ".tar")
-        self.path = path
-        if not os.path.isdir(path):
-            print("Invalid path")
-            # Raise custom exception here
-            return
-        self.first_level_files = utils.get_files(self.path, self.exten)
-
-        # Connect to DB to store file data
-        self.conn = sqlite3.connect(os.path.join(self.path, 'fileindexes.db'))
-        self.c = self.conn.cursor()
-        # Create indexes table if it doesn't exist
-        self.c.execute('''
-            CREATE TABLE IF NOT EXISTS files
-                (
-                    pub_no TEXT,
-                    countrycode TEXT,
-                    year NUMBER,
-                    number NUMBER,
-                    kindcode TEXT,
-                    filename TEXT,
-                    start_offset NUMBER,
-                    section TEXT,
-                    class TEXT,
-                    subclass TEXT,
-                    maingroup TEXT,
-                    subgroup TEXT,
-                    UNIQUE (pub_no)
-                )
-                ''')
-        self.conn.commit()
-
-    def __del__(self):
-        self.conn.close()
 
     def read_archive_file(self, filename):
         """ Read large XML file from Zip.
@@ -180,14 +168,87 @@ class USGrants(LocalDataSource):
                         self.c.executemany(query_string, params)
                         self.conn.commit()
 
+    def iter_filter_xml(self, classification, sample_size=None):
+        """ Generator to return xml that matches has classification.
+
+        :param classification: list in form
+        ["G", "61", "K", "039", "00"]. If an entry has None or
+        no entry, it and its remaining entries are not filtered.
+        """
+        records = self.get_records(classification, "start_offset", sample_size)
+        filegenerator = self.iter_read(records)
+        # Iterate through records and return XMLDocs
+        for _, filedata in filegenerator:
+            if filedata:
+                yield XMLDoc(filedata)
+
+    def filedata_generator(self, filename, entries):
+        """ Generator to return file data for each name in entries
+        for a given filename. Entries is a list of form (id, start_offset).
+
+        Returns: id, filedata as tuple."""
+        # For zip files
+        if filename.lower().endswith(".zip"):
+            with zipfile.ZipFile(
+                os.path.join(self.path, filename), 'r'
+            ) as z:
+                offsets = [o for _, o in entries]
+                for filedata in get_multiple_xml_by_offset(z, offsets):
+                    yield None, filedata
+
+    def xmldoc_generator(self, publication_numbers=None, sample_size=None):
+        """ Return a generator that provides XML Doc objects.
+        publication_numbers is a list or iterator that provides a
+        limiting group of publication numbers.
+        sample_size limits results to a random sample of size sample_size.
+
+        This may be faster than returning the whole patent docs."""
+        if not classification and not publication_numbers:
+            if sample_size:
+                query_string = (
+                    "SELECT ROWID, filename, start_offset FROM files"
+                    " WHERE ROWID IN"
+                    "(SELECT ROWID FROM files ORDER BY RANDOM() LIMIT ?)"
+                    )
+                records = self.c.execute(
+                    query_string, (sample_size,)).fetchall()
+            else:
+                query_string = (
+                    "SELECT ROWID, filename, start_offset FROM files"
+                )
+                records = self.c.execute(query_string).fetchall()
+
+            for _, filename, offset in records:
+
+                    yield XMLDoc(self.read_by_offset(filename, offset))
+
+        # If a list of publication numbers are supplied
+        if publication_numbers:
+            if sample_size and len(publication_numbers) > sample_size:
+                # Randomly sample down to sample_size
+                publication_numbers = random.sample(
+                    publication_numbers, sample_size
+                )
+
+            for publication_number in publication_numbers:
+                result = self.get_patentdoc(publication_number)
+                if result:
+                    yield result
+        # If a classification is supplied
+        if classification:
+            filegenerator = self.iter_filter_xml(classification, sample_size)
+            for xmldoc in filegenerator:
+                yield xmldoc
+
     def get_patentdoc(self, publication_number):
         """ Return a Patent Doc object corresponding
         to a publication number. """
-        pass
+        try:
+            filename, start_offset = self.search_files(publication_number)
+            if filename and start_offset:
+                return XMLDoc(
+                    self.read_by_offset(filename, offset)
+                    ).to_patentdoc()
+        except:
+            return None
 
-    def patentdoc_generator(self, publication_numbers=None, sample_size=None):
-        """ Return a generator that provides Patent Doc objects.
-        publication_numbers is a list or iterator that provides a
-        limiting group of publication numbers.
-        sample_size limits results to a random sample of size sample_size"""
-        pass
