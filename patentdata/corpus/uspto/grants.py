@@ -6,7 +6,7 @@ from patentdata.xmlparser import XMLDoc
 
 import zipfile
 import os
-import sqlite3
+import random
 
 
 def separated_xml(zip_file):
@@ -73,10 +73,10 @@ def get_multiple_xml_by_offset(zip_file, offset_list):
     """ A generator to return XML inside a zip_file
     given a list of offsets. """
     xml_file = zip_file.namelist()[0]
-    sorted_offsets = offset_list.sort()
+    offset_list.sort()
     # Reverse list so we can pop from end
-    sorted_offsets = sorted_offsets.reverse()
-    start_offset = sorted_offsets.pop()
+    offset_list.reverse()
+    start_offset = offset_list.pop()
     with zip_file.open(xml_file, 'r') as open_xml_file:
 
         for line_no, line in enumerate(open_xml_file):
@@ -87,8 +87,8 @@ def get_multiple_xml_by_offset(zip_file, offset_list):
             elif line_no >= start_offset:
                 if line.startswith(b'<?xml '):
                     # Get next offset if offsets
-                    if sorted_offsets:
-                        start_offset = sorted_offsets.pop()
+                    if offset_list:
+                        start_offset = offset_list.pop()
                     yield b''.join(data_buffer)
                 else:
                     data_buffer.append(line)
@@ -114,7 +114,13 @@ class USGrants(DBIndexDataSource):
         with zipfile.ZipFile(
                     os.path.join(self.path, filename), 'r'
                 ) as z:
-            return XMLDoc(get_xml_by_line_offset(z, offset))
+            return get_xml_by_line_offset(z, offset)
+
+    def iter_xml(self):
+        """ Generator for xml file in corpus. """
+        for filename in self.first_level_files:
+            for sl, el, xml_doc in self.read_archive_file(filename):
+                yield xml_doc
 
     def index(self):
         """ Generate metadata for individual publications. """
@@ -167,6 +173,11 @@ class USGrants(DBIndexDataSource):
                         i += 1000
                         self.c.executemany(query_string, params)
                         self.conn.commit()
+                self.c.executemany(query_string, params)
+                self.conn.commit()
+
+    def process_classifications(self):
+        self.index()
 
     def iter_filter_xml(self, classification, sample_size=None):
         """ Generator to return xml that matches has classification.
@@ -189,14 +200,17 @@ class USGrants(DBIndexDataSource):
         Returns: id, filedata as tuple."""
         # For zip files
         if filename.lower().endswith(".zip"):
+            offsets = [o for _, o in entries]
             with zipfile.ZipFile(
                 os.path.join(self.path, filename), 'r'
             ) as z:
-                offsets = [o for _, o in entries]
                 for filedata in get_multiple_xml_by_offset(z, offsets):
                     yield None, filedata
 
-    def xmldoc_generator(self, publication_numbers=None, sample_size=None):
+    def xmldoc_generator(
+        self, classification=None,
+        publication_numbers=None, sample_size=None
+    ):
         """ Return a generator that provides XML Doc objects.
         publication_numbers is a list or iterator that provides a
         limiting group of publication numbers.
@@ -247,8 +261,7 @@ class USGrants(DBIndexDataSource):
             filename, start_offset = self.search_files(publication_number)
             if filename and start_offset:
                 return XMLDoc(
-                    self.read_by_offset(filename, offset)
+                    self.read_by_offset(filename, start_offset)
                     ).to_patentdoc()
         except:
             return None
-

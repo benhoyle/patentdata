@@ -124,6 +124,11 @@ class DBIndexDataSource(LocalDataSource):
         """
         pass
 
+    @abstractmethod
+    def iter_xml(self):
+        """ Generator for xml file in corpus. """
+        pass
+
     def search_files(self, publication_number, fieldname):
         """ Return upper and lower level paths for publication.
             Returns None if no match.
