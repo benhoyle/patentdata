@@ -10,13 +10,17 @@ class TestGeneral(object):
     @pytest.fixture(autouse=True)
     def set_common_fixtures(self):
         filepath = os.path.dirname(os.path.realpath(__file__))
-        self.testfilepath = os.path.join(filepath, 'test_files')
-        self.dbpath = os.path.join(filepath, 'test_files/fileindexes.db')
+        self.testfilepath = os.path.join(filepath, 'test_files/Publication')
+        self.dbpath = os.path.join(
+            filepath,
+            'test_files/Publication/fileindexes.db'
+            )
 
 
     def test_init(self):
         """ Test initialising object. """
-        os.remove(self.dbpath)
+        if os.path.exists(self.testfilepath):
+            os.remove(self.dbpath)
         corpus = USPublications(self.testfilepath)
         # Check DB creates
         assert os.path.isfile(self.dbpath)
@@ -24,7 +28,8 @@ class TestGeneral(object):
 
     def test_archive_list(self):
         """ Test getting archive names. """
-        os.remove(self.dbpath)
+        if os.path.exists(self.testfilepath):
+            os.remove(self.dbpath)
         corpus = USPublications(self.testfilepath)
         corpus.index()
         records = corpus.c.execute("SELECT * FROM files").fetchall()
@@ -34,13 +39,14 @@ class TestGeneral(object):
         """ Test reading an archive file. """
         corpus = USPublications(self.testfilepath)
         corpus.index()
-        filename, name = corpus.search_files("US20060085912A1")
+        filename, name = corpus.search_files("US20060085912A1", "name")
         filedata = corpus.read_archive_file(filename, name)
         assert len(filedata) == 50805
 
     def test_get_store_class(self):
         """ Test retrieving and storing a classification. """
-        os.remove(self.dbpath)
+        if os.path.exists(self.testfilepath):
+            os.remove(self.dbpath)
         corpus = USPublications(self.testfilepath)
         corpus.process_classifications()
         records = corpus.c.execute(

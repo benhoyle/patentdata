@@ -3,10 +3,9 @@
 # == IMPORTS ==========================================================#
 import os
 import logging
-import re
 import random
 
-from patentdata.corpus.baseclasses import LocalDataSource
+from patentdata.corpus.baseclasses import DBIndexDataSource
 
 # Libraries for Zip file processing
 # Can we use czipfile for faster processing?
@@ -17,8 +16,6 @@ import tarfile
 from io import BytesIO
 
 import patentdata.utils as utils
-
-import sqlite3
 
 from patentdata.xmlparser import XMLDoc
 
@@ -53,127 +50,11 @@ def read_nested_zip(open_zip_file, nested_name):
         return None
 
 
-def filedata_generator(path, filename, entries):
-    """ Generator to return file data for each name in entries
-    for a given filename. Entries is a list of form (id, name).
-
-    Returns: id, filedata as tuple."""
-    # For zip files
-    if filename.lower().endswith(".zip"):
-        with zipfile.ZipFile(
-            os.path.join(path, filename), 'r'
-        ) as z:
-            for pub_id, name in entries:
-                with z.open(name, 'r') as nested_zip:
-                    try:
-                        z2 = BytesIO(nested_zip.read())
-                        yield pub_id, read_nested_zip(z2, name)
-                    except:
-                        logging.exception(
-                            "Exception opening file:" +
-                            str(name)
-                        )
-                        yield pub_id, None
-
-    # For tar files
-    elif filename.lower().endswith(".tar"):
-        with tarfile.TarFile(
-            os.path.join(path, filename), 'r'
-        ) as z:
-            for pub_id, name in entries:
-                try:
-                    z2 = z.extractfile(name)
-                    yield pub_id, read_nested_zip(z2, name)
-                except:
-                        logging.exception(
-                            "Exception opening file:" +
-                            str(name)
-                        )
-                        yield pub_id, None
-
-
-def group_filenames(filelist):
-    """ Group entries in the form (id, filename, name) by filename. """
-    filename_groups = dict()
-    # Get groups of filenames
-    for pub_id, filename, name in filelist:
-        if filename not in filename_groups.keys():
-            filename_groups[filename] = list()
-        filename_groups[filename].append((pub_id, name))
-    return filename_groups
-
-def build_classification_query(classification):
-    """ Build the query string for a classification search. """
-    # First - build the SQL query
-    class_fields = [
-            'section', 'class', 'subclass', 'maingroup', 'subgroup'
-            ]
-    query_portion = "WHERE"
-
-    for i in range(0, len(class_fields)):
-        if i >= len(classification):
-            break
-        if not classification[i]:
-            break
-        if i > 0:
-            query_portion += "AND"
-        query_portion += " {0} = '{1}' ".format(
-                class_fields[i],
-                classification[i]
-            )
-
-    # Then build final query string
-    query_string = """
-                        SELECT ROWID, filename, name
-                        FROM files
-                        {0}
-                        """.format(query_portion)
-    return query_string
-
-class USPublications(LocalDataSource):
+class USPublications(DBIndexDataSource):
     """
     Creates a new corpus object that simplifies processing of
     patent archive
     """
-    def __init__(self, path):
-
-        self.exten = (".zip", ".tar")
-        self.path = path
-        if not os.path.isdir(path):
-            print("Invalid path")
-            # Raise custom exception here
-            return
-        # Set regular expression for valid patent publication files
-        self.FILE_FORMAT_RE = re.compile(r".+US\d+[A,B].+-\d+\.\w+")
-        self.PUB_FORMAT = re.compile(r"(\w\w)(\d{4})(\d{7})(\w\d)")
-        # Get upper level zip/tar files in path
-        self.first_level_files = utils.get_files(self.path, self.exten)
-        # Connect to DB to store file data
-        self.conn = sqlite3.connect(os.path.join(self.path, 'fileindexes.db'))
-        self.c = self.conn.cursor()
-        # Create indexes table if it doesn't exist
-        self.c.execute('''
-            CREATE TABLE IF NOT EXISTS files
-                (
-                    pub_no TEXT,
-                    countrycode TEXT,
-                    year NUMBER,
-                    number NUMBER,
-                    kindcode TEXT,
-                    filename TEXT,
-                    name TEXT,
-                    section TEXT,
-                    class TEXT,
-                    subclass TEXT,
-                    maingroup TEXT,
-                    subgroup TEXT,
-                    UNIQUE (pub_no)
-                )
-                ''')
-        self.conn.commit()
-
-    def __del__(self):
-        self.conn.close()
 
     def index(self):
         """ Generate a list of lower level archive files. """
@@ -237,6 +118,45 @@ class USPublications(LocalDataSource):
                 name for name in names if self.PUB_FORMAT.search(name)
         }
 
+    def filedata_generator(self, filename, entries):
+        """ Generator to return file data for each name in entries
+        for a given filename. Entries is a list of form (id, name).
+
+        Returns: id, filedata as tuple."""
+        # For zip files
+        if filename.lower().endswith(".zip"):
+            with zipfile.ZipFile(
+                os.path.join(self.path, filename), 'r'
+            ) as z:
+                for pub_id, name in entries:
+                    with z.open(name, 'r') as nested_zip:
+                        try:
+                            z2 = BytesIO(nested_zip.read())
+                            yield pub_id, read_nested_zip(z2, name)
+                        except:
+                            logging.exception(
+                                "Exception opening file:" +
+                                str(name)
+                            )
+                            yield pub_id, None
+
+        # For tar files
+        elif filename.lower().endswith(".tar"):
+            with tarfile.TarFile(
+                os.path.join(self.path, filename), 'r'
+            ) as z:
+                for pub_id, name in entries:
+                    try:
+                        z2 = z.extractfile(name)
+                        yield pub_id, read_nested_zip(z2, name)
+                    except:
+                            logging.exception(
+                                "Exception opening file:" +
+                                str(name)
+                            )
+                            yield pub_id, None
+
+
     def read_archive_file(self, filename, name):
         """ Read file data for XML_path nested
         within name archive within filename archive. """
@@ -281,28 +201,6 @@ class USPublications(LocalDataSource):
         else:
             return False
 
-    def iter_read(self, filelist):
-        """ Read file data for a set of files
-        in filelist with (id, filename, name) entries. """
-
-        if not filelist:
-            yield None, None
-
-        filename_groups = group_filenames(filelist)
-
-        # For each filename group
-        for filename in filename_groups.keys():
-            # Get set of second level files
-            entries = filename_groups[filename]
-            try:
-                for pub_id, filedata in filedata_generator(
-                                                    self.path,
-                                                    filename,
-                                                    entries
-                                                    ):
-                    yield pub_id, filedata
-            except:
-                logging.exception("Exception opening file:" + str(filename))
 
     # Function below takes about 1.5s to return each patent document
     # > 5 days to parse one year's collection
@@ -316,24 +214,6 @@ class USPublications(LocalDataSource):
                     if filedata:
                         yield XMLDoc(filedata)
 
-
-    def get_records(self, classification, sample_size=None):
-        """ Retrieve a list of records filtered by passed classification
-        and limited by sample_size.
-
-        return: list of records"""
-        query_string = build_classification_query(classification)
-        records = self.c.execute(query_string).fetchall()
-        no_of_records = len(records)
-        print("{0} records located.".format(no_of_records))
-        # Select a random subset if a sample size is provided
-        if sample_size and no_of_records > sample_size:
-            records = random.sample(
-                    records, sample_size
-                )
-            print("{0} records sampled.".format(len(records)))
-        return records
-
     def iter_filter_xml(self, classification, sample_size=None):
         """ Generator to return xml that matches has classification.
 
@@ -341,21 +221,12 @@ class USPublications(LocalDataSource):
         ["G", "61", "K", "039", "00"]. If an entry has None or
         no entry, it and its remaining entries are not filtered.
         """
-        records = self.get_records(classification, sample_size)
+        records = self.get_records(classification, "name", sample_size)
         filegenerator = self.iter_read(records)
         # Iterate through records and return XMLDocs
         for _, filedata in filegenerator:
             if filedata:
                 yield XMLDoc(filedata)
-
-    def search_files(self, publication_number):
-        """ Return upper and lower level paths for publication.
-            Returns None if no match."""
-        self.c.execute(
-            'SELECT filename, name FROM files WHERE pub_no=?',
-            (publication_number,)
-        )
-        return self.c.fetchone()
 
     def get_patentcorpus(self, indexes, number_of_docs):
         """ Get a random sample of documents having a total number_of_docs."""
@@ -366,35 +237,6 @@ class USPublications(LocalDataSource):
         return m.PatentCorpus(
             [self.get_doc(i).to_patentdoc() for i in indexes]
             )"""
-
-    def get_classification(self, filedata):
-        """ Return patent classifications as a list of 5 items."""
-        return XMLDoc(filedata).classifications()
-
-    def store_many(self, params):
-        """ Store classification (['G', '06', 'K', '87', '00']) at
-        rowid in database.
-
-        params = ['G', '06', 'K', '87', '00', rowid]
-        """
-        query_string = """
-                        UPDATE files
-                        SET
-                            section = ?,
-                            class = ?,
-                            subclass = ?,
-                            maingroup = ?,
-                            subgroup = ?
-                        WHERE
-                            ROWID = ?
-                        """
-        try:
-            self.c.executemany(query_string, params)
-            self.conn.commit()
-            return True
-        except:
-            print("Error saving classifications")
-            return False
 
     def process_classifications(self, yearlist=None):
         """ Iterate through publications and store classifications in DB.
@@ -455,12 +297,13 @@ class USPublications(LocalDataSource):
     def get_patentdoc(self, publication_number):
         """ Return a PatentDoc object for a given publication number."""
         try:
-            filename, name = self.search_files(publication_number)
+            filename, name = self.search_files(publication_number, "name")
             if filename and name:
                 return XMLDoc(
                     self.read_archive_file(filename, name)
                     ).to_patentdoc()
         except:
+            print("Could not find publication")
             return None
 
     def xmldoc_generator(
@@ -501,8 +344,6 @@ class USPublications(LocalDataSource):
                 if filedata:
                     yield XMLDoc(filedata)
 
-
-
         # If a list of publication numbers are supplied
         if publication_numbers:
             if sample_size and len(publication_numbers) > sample_size:
@@ -526,30 +367,5 @@ class USPublications(LocalDataSource):
             filegenerator = self.iter_filter_xml(classification, sample_size)
             for xmldoc in filegenerator:
                 yield xmldoc
-
-    def patentdoc_generator(
-                            self, classification=None,
-                            publication_numbers=None, sample_size=None
-                            ):
-        """ Generator to return Patent Doc objects.
-
-        If classification is supplied results are limited to that
-        classification (of form ["G", "06"], length 1 to 5).
-
-        If publication_numbers is supplied as list, results are limited
-        to those publication numbers.
-
-        (classification and publication filtering is XOR)
-
-        If sample_size is provided returned documents are limited to
-        this integer.
-        """
-        xmldoc_gen = self.xmldoc_generator(
-                                            classification,
-                                            publication_numbers,
-                                            sample_size
-                                        )
-        for xmldoc in xmldoc_gen:
-            yield xmldoc.to_patentdoc()
 
 

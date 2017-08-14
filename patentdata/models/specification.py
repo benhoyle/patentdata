@@ -114,6 +114,10 @@ class Description(BaseTextSet):
         """ Returns any entities with multiple reference numerals. """
         highlight_multiple(self.entities)
 
+    def pos(self):
+        """ Return parts of speech for whole document."""
+        return sum([p.pos for p in doc1.description.paragraphs], list())
+
 
 class Figures:
     """ Object to model a set of patent figures. """

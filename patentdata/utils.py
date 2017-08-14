@@ -13,6 +13,7 @@ def check_list(listvar):
         listvar = [listvar]
     return listvar
 
+
 def safeget(dct, *keys):
     """ Recursive function to safely access nested dicts or return None.
     param dict dct: dictionary to process
@@ -23,6 +24,7 @@ def safeget(dct, *keys):
         except KeyError:
             return None
     return dct
+
 
 def keysearch(d, key):
     """Recursive function to look for first occurence of key in multi-level dict.
@@ -45,8 +47,10 @@ def keysearch(d, key):
                         if found:
                             return found
 
+
 # Define helper function to remove text in parenthesis
-# From http://stackoverflow.com/questions/14596884/remove-text-between-and-in-python
+# From http://stackoverflow.com/questions/14596884/
+# remove-text-between-and-in-python
 def remove_bracketed(test_str):
     """ Remove bracketed text from string. """
     ret = ''
@@ -65,16 +69,19 @@ def remove_bracketed(test_str):
             ret += i
     return ret
 
+
 # Get current year and look for publications in that year
 def get_current_year():
     """ Get current year. """
     now = datetime.datetime.now()
     return now.year
 
+
 def list_frequencies(list_of_items):
     """ Determine frequency of items in list_of_items. """
     itemfreq = [list_of_items.count(p) for p in list_of_items]
-    return dict(zip(list_of_items,itemfreq))
+    return dict(zip(list_of_items, itemfreq))
+
 
 def sort_freq_dist(freqdict):
     """ Sort frequency distribution. """
@@ -83,13 +90,16 @@ def sort_freq_dist(freqdict):
     aux.reverse()
     return aux
 
-def hasNumbers(inputString):
-    """ Return true if inputString contains numbers. """
-    return any(char.isdigit() for char in inputString)
 
-def hasReNumbers(inputString):
+def has_numbers(input_string):
+    """ Return true if inputString contains numbers. """
+    return any(char.isdigit() for char in input_string)
+
+
+def has_re_numbers(input_string):
     """ Return true if inputString contains numbers. Using regex."""
-    return bool(re.search(r'\d', inputString))
+    return bool(re.search(r'\d', input_string))
+
 
 def ends_with(s1, s2):
     """See if s1 ends with s2."""
@@ -100,14 +110,22 @@ def ends_with(s1, s2):
     else:
         return False
 
+
 def get_immediate_subdirectories(a_dir):
     """ Get immediate subdirectories. """
     return [name for name in os.listdir(a_dir)
             if os.path.isdir(os.path.join(a_dir, name))]
 
+
 def get_files(path, extensions=None):
-    """ Get a list of files within a 'path' filtering by string or tuple of extensions. """
-    return [os.path.relpath(os.path.join(subdir,f), path) for (subdir, dirs, files) in os.walk(path) for f in files if f.lower().endswith(extensions)]
+    """ Get a list of files within a 'path' filtering by string or
+    tuple of extensions. """
+    return [
+        os.path.relpath(os.path.join(subdir, f), path)
+        for (subdir, dirs, files) in os.walk(path)
+        for f in files if f.lower().endswith(extensions)
+        ]
+
 
 def substring_search(stringlist, substring):
     """ Fast binary search for substring in ordered list of strings. """
@@ -116,7 +134,8 @@ def substring_search(stringlist, substring):
         if substring in stringlist[index]:
             return stringlist[index]
     except IndexError:
-        return None # substring is not in stringlist
+        return None  # substring is not in stringlist
+
 
 def process_classification(class_string):
     """ Extract IPC classfication elements from a class_string."""
@@ -133,3 +152,43 @@ def process_classification(class_string):
             ]
             for match in p.finditer(class_string)]
     return classifications
+
+
+def build_classification_query(classification, fieldname):
+    """ Build the query string for a classification search. """
+    # First - build the SQL query
+    class_fields = [
+            'section', 'class', 'subclass', 'maingroup', 'subgroup'
+            ]
+    query_portion = "WHERE"
+
+    for i in range(0, len(class_fields)):
+        if i >= len(classification):
+            break
+        if not classification[i]:
+            break
+        if i > 0:
+            query_portion += "AND"
+        query_portion += " {0} = '{1}' ".format(
+                class_fields[i],
+                classification[i]
+            )
+
+    # Then build final query string
+    query_string = """
+                        SELECT ROWID, filename, {0}
+                        FROM files
+                        {1}
+                        """.format(fieldname, query_portion)
+    return query_string
+
+
+def group_filenames(filelist):
+    """ Group entries in the form (id, filename, X) by filename. """
+    filename_groups = dict()
+    # Get groups of filenames
+    for pub_id, filename, X in filelist:
+        if filename not in filename_groups.keys():
+            filename_groups[filename] = list()
+        filename_groups[filename].append((pub_id, X))
+    return filename_groups

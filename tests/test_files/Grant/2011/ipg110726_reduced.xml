@@ -1,0 +1,2082 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE us-patent-grant SYSTEM "us-patent-grant-v42-2006-08-23.dtd" [ ]>
+<us-patent-grant lang="EN" dtd-version="v4.2 2006-08-23" file="US07984558-20110726.XML" status="PRODUCTION" id="us-patent-grant" country="US" date-produced="20110712" date-publ="20110726">
+<us-bibliographic-data-grant>
+<publication-reference>
+<document-id>
+<country>US</country>
+<doc-number>07984558</doc-number>
+<kind>B2</kind>
+<date>20110726</date>
+</document-id>
+</publication-reference>
+<application-reference appl-type="utility">
+<document-id>
+<country>US</country>
+<doc-number>12840939</doc-number>
+<date>20100721</date>
+</document-id>
+</application-reference>
+<us-application-series-code>12</us-application-series-code>
+<us-term-of-grant>
+<disclaimer>
+<text>This patent is subject to a terminal disclaimer.</text>
+</disclaimer>
+</us-term-of-grant>
+<classifications-ipcr>
+<classification-ipcr>
+<ipc-version-indicator><date>20060101</date></ipc-version-indicator>
+<classification-level>A</classification-level>
+<section>G</section>
+<class>01</class>
+<subclass>B</subclass>
+<main-group>5</main-group>
+<subgroup>008</subgroup>
+<symbol-position>F</symbol-position>
+<classification-value>I</classification-value>
+<action-date><date>20110726</date></action-date>
+<generating-office><country>US</country></generating-office>
+<classification-status>B</classification-status>
+<classification-data-source>H</classification-data-source>
+</classification-ipcr>
+</classifications-ipcr>
+<classification-national>
+<country>US</country>
+<main-classification> 33503</main-classification>
+</classification-national>
+<invention-title id="d2e51">Coordinate measuring machine with rotatable grip</invention-title>
+<references-cited>
+<citation>
+<patcit num="00001">
+<document-id>
+<country>US</country>
+<doc-number>5084981</doc-number>
+<kind>A</kind>
+<name>McMurtry et al.</name>
+<date>19920200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00002">
+<document-id>
+<country>US</country>
+<doc-number>5088337</doc-number>
+<kind>A</kind>
+<name>Bennett</name>
+<date>19920200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00003">
+<document-id>
+<country>US</country>
+<doc-number>5148377</doc-number>
+<kind>A</kind>
+<name>McDonald</name>
+<date>19920900</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00004">
+<document-id>
+<country>US</country>
+<doc-number>5187874</doc-number>
+<kind>A</kind>
+<name>Takahashi et al.</name>
+<date>19930200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00005">
+<document-id>
+<country>US</country>
+<doc-number>5189797</doc-number>
+<kind>A</kind>
+<name>Granger</name>
+<date>19930300</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00006">
+<document-id>
+<country>US</country>
+<doc-number>5251156</doc-number>
+<kind>A</kind>
+<name>Heier et al.</name>
+<date>19931000</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00007">
+<document-id>
+<country>US</country>
+<doc-number>5396712</doc-number>
+<kind>A</kind>
+<name>Herzog</name>
+<date>19950300</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00008">
+<document-id>
+<country>US</country>
+<doc-number>5408754</doc-number>
+<kind>A</kind>
+<name>Raab</name>
+<date>19950400</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00009">
+<document-id>
+<country>US</country>
+<doc-number>5412880</doc-number>
+<kind>A</kind>
+<name>Raab</name>
+<date>19950500</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00010">
+<document-id>
+<country>US</country>
+<doc-number>5505003</doc-number>
+<kind>A</kind>
+<name>Evans et al.</name>
+<date>19960400</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00011">
+<document-id>
+<country>US</country>
+<doc-number>5510977</doc-number>
+<kind>A</kind>
+<name>Raab</name>
+<date>19960400</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00012">
+<document-id>
+<country>US</country>
+<doc-number>5521847</doc-number>
+<kind>A</kind>
+<name>Ostrowski et al.</name>
+<date>19960500</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00013">
+<document-id>
+<country>US</country>
+<doc-number>5526576</doc-number>
+<kind>A</kind>
+<name>Fuchs et al.</name>
+<date>19960600</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00014">
+<document-id>
+<country>US</country>
+<doc-number>5528505</doc-number>
+<kind>A</kind>
+<name>Granger et al.</name>
+<date>19960600</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00015">
+<document-id>
+<country>US</country>
+<doc-number>5611147</doc-number>
+<kind>A</kind>
+<name>Raab</name>
+<date>19970300</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00016">
+<document-id>
+<country>US</country>
+<doc-number>5615489</doc-number>
+<kind>A</kind>
+<name>Breyer et al.</name>
+<date>19970400</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00017">
+<document-id>
+<country>US</country>
+<doc-number>5757499</doc-number>
+<kind>A</kind>
+<name>Eaton</name>
+<date>19980500</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00018">
+<document-id>
+<country>US</country>
+<doc-number>5768792</doc-number>
+<kind>A</kind>
+<name>Raab</name>
+<date>19980600</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00019">
+<document-id>
+<country>US</country>
+<doc-number>5794356</doc-number>
+<kind>A</kind>
+<name>Raab</name>
+<date>19980800</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00020">
+<document-id>
+<country>US</country>
+<doc-number>5822450</doc-number>
+<kind>A</kind>
+<name>Arakawa et al.</name>
+<date>19981000</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00021">
+<document-id>
+<country>US</country>
+<doc-number>5829148</doc-number>
+<kind>A</kind>
+<name>Eaton</name>
+<date>19981100</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00022">
+<document-id>
+<country>US</country>
+<doc-number>5978748</doc-number>
+<kind>A</kind>
+<name>Raab</name>
+<date>19991100</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00023">
+<document-id>
+<country>US</country>
+<doc-number>5991704</doc-number>
+<kind>A</kind>
+<name>Rekar et al.</name>
+<date>19991100</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00024">
+<document-id>
+<country>US</country>
+<doc-number>6134506</doc-number>
+<kind>A</kind>
+<name>Rosenberg et al.</name>
+<date>20001000</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00025">
+<document-id>
+<country>US</country>
+<doc-number>6151789</doc-number>
+<kind>A</kind>
+<name>Raab</name>
+<date>20001100</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00026">
+<document-id>
+<country>US</country>
+<doc-number>6161079</doc-number>
+<kind>A</kind>
+<name>Zink et al.</name>
+<date>20001200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00027">
+<document-id>
+<country>US</country>
+<doc-number>6219928</doc-number>
+<kind>B1</kind>
+<name>Raab et al.</name>
+<date>20010400</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00028">
+<document-id>
+<country>US</country>
+<doc-number>6366831</doc-number>
+<kind>B1</kind>
+<name>Raab</name>
+<date>20020400</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00029">
+<document-id>
+<country>US</country>
+<doc-number>6430828</doc-number>
+<kind>B1</kind>
+<name>Ulbrich</name>
+<date>20020800</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00030">
+<document-id>
+<country>US</country>
+<doc-number>6487896</doc-number>
+<kind>B1</kind>
+<name>Dall'Aglio</name>
+<date>20021200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00031">
+<document-id>
+<country>US</country>
+<doc-number>6526670</doc-number>
+<kind>B1</kind>
+<name>Carli</name>
+<date>20030300</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00032">
+<document-id>
+<country>US</country>
+<doc-number>6598306</doc-number>
+<kind>B2</kind>
+<name>Eaton</name>
+<date>20030700</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00033">
+<document-id>
+<country>US</country>
+<doc-number>6611346</doc-number>
+<kind>B2</kind>
+<name>Granger</name>
+<date>20030800</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00034">
+<document-id>
+<country>US</country>
+<doc-number>6611617</doc-number>
+<kind>B1</kind>
+<name>Crampton</name>
+<date>20030800</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00035">
+<document-id>
+<country>US</country>
+<doc-number>6618496</doc-number>
+<kind>B1</kind>
+<name>Tassakos et al.</name>
+<date>20030900</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00036">
+<document-id>
+<country>US</country>
+<doc-number>6668466</doc-number>
+<kind>B1</kind>
+<name>Bieg et al.</name>
+<date>20031200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00037">
+<document-id>
+<country>US</country>
+<doc-number>6759648</doc-number>
+<kind>B2</kind>
+<name>Baxter et al.</name>
+<date>20040700</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00038">
+<document-id>
+<country>US</country>
+<doc-number>6817108</doc-number>
+<kind>B2</kind>
+<name>Eaton</name>
+<date>20041100</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00039">
+<document-id>
+<country>US</country>
+<doc-number>6892465</doc-number>
+<kind>B2</kind>
+<name>Raab et al.</name>
+<date>20050500</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00040">
+<document-id>
+<country>US</country>
+<doc-number>6904691</doc-number>
+<kind>B2</kind>
+<name>Raab et al.</name>
+<date>20050600</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00041">
+<document-id>
+<country>US</country>
+<doc-number>6925722</doc-number>
+<kind>B2</kind>
+<name>Raab et al.</name>
+<date>20050800</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00042">
+<document-id>
+<country>US</country>
+<doc-number>6931745</doc-number>
+<kind>B2</kind>
+<name>Granger</name>
+<date>20050800</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00043">
+<document-id>
+<country>US</country>
+<doc-number>6952882</doc-number>
+<kind>B2</kind>
+<name>Raab et al.</name>
+<date>20051000</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00044">
+<document-id>
+<country>US</country>
+<doc-number>6984236</doc-number>
+<kind>B2</kind>
+<name>Raab</name>
+<date>20060100</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00045">
+<document-id>
+<country>US</country>
+<doc-number>6988322</doc-number>
+<kind>B2</kind>
+<name>Raab et al.</name>
+<date>20060100</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00046">
+<document-id>
+<country>US</country>
+<doc-number>7003892</doc-number>
+<kind>B2</kind>
+<name>Eaton et al.</name>
+<date>20060200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00047">
+<document-id>
+<country>US</country>
+<doc-number>7017275</doc-number>
+<kind>B2</kind>
+<name>Raab et al.</name>
+<date>20060300</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00048">
+<document-id>
+<country>US</country>
+<doc-number>7043847</doc-number>
+<kind>B2</kind>
+<name>Raab et al.</name>
+<date>20060500</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00049">
+<document-id>
+<country>US</country>
+<doc-number>7051450</doc-number>
+<kind>B2</kind>
+<name>Raab et al.</name>
+<date>20060500</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00050">
+<document-id>
+<country>US</country>
+<doc-number>7073271</doc-number>
+<kind>B2</kind>
+<name>Raab et al.</name>
+<date>20060700</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00051">
+<document-id>
+<country>US</country>
+<doc-number>7096077</doc-number>
+<kind>B2</kind>
+<name>Price et al.</name>
+<date>20060800</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00052">
+<document-id>
+<country>US</country>
+<doc-number>7152456</doc-number>
+<kind>B2</kind>
+<name>Eaton</name>
+<date>20061200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00053">
+<document-id>
+<country>US</country>
+<doc-number>7174651</doc-number>
+<kind>B2</kind>
+<name>Raab et al.</name>
+<date>20070200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00054">
+<document-id>
+<country>US</country>
+<doc-number>7246030</doc-number>
+<kind>B2</kind>
+<name>Raab et al.</name>
+<date>20070700</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00055">
+<document-id>
+<country>US</country>
+<doc-number>7269910</doc-number>
+<kind>B2</kind>
+<name>Raab et al.</name>
+<date>20070900</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00056">
+<document-id>
+<country>US</country>
+<doc-number>7296364</doc-number>
+<kind>B2</kind>
+<name>Seitz et al.</name>
+<date>20071100</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00057">
+<document-id>
+<country>US</country>
+<doc-number>7296979</doc-number>
+<kind>B2</kind>
+<name>Raab et al.</name>
+<date>20071100</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00058">
+<document-id>
+<country>US</country>
+<doc-number>7372581</doc-number>
+<kind>B2</kind>
+<name>Raab et al.</name>
+<date>20080500</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00059">
+<document-id>
+<country>US</country>
+<doc-number>7395606</doc-number>
+<kind>B2</kind>
+<name>Crampton</name>
+<date>20080700</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00060">
+<document-id>
+<country>US</country>
+<doc-number>7525276</doc-number>
+<kind>B2</kind>
+<name>Eaton</name>
+<date>20090400</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00061">
+<document-id>
+<country>US</country>
+<doc-number>7624510</doc-number>
+<kind>B2</kind>
+<name>Ferrari</name>
+<date>20091200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00062">
+<document-id>
+<country>US</country>
+<doc-number>7676945</doc-number>
+<kind>B2</kind>
+<name>Prestidge et al.</name>
+<date>20100300</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00063">
+<document-id>
+<country>US</country>
+<doc-number>7779548</doc-number>
+<kind>B2</kind>
+<name>Ferrari</name>
+<date>20100800</date>
+</document-id>
+</patcit>
+<category>cited by examiner</category>
+<classification-national><country>US</country><main-classification> 33503</main-classification></classification-national>
+</citation>
+<citation>
+<patcit num="00064">
+<document-id>
+<country>US</country>
+<doc-number>2008/0016711</doc-number>
+<kind>A1</kind>
+<name>Baebler</name>
+<date>20080100</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00065">
+<document-id>
+<country>US</country>
+<doc-number>2010/0095542</doc-number>
+<kind>A1</kind>
+<name>Ferrari</name>
+<date>20100400</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00066">
+<document-id>
+<country>DE</country>
+<doc-number>4345091</doc-number>
+<kind>A1</kind>
+<date>19950700</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00067">
+<document-id>
+<country>DE</country>
+<doc-number>10112977</doc-number>
+<date>20021100</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00068">
+<document-id>
+<country>EP</country>
+<doc-number>0522610</doc-number>
+<date>19930100</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00069">
+<document-id>
+<country>FR</country>
+<doc-number>2740546</doc-number>
+<date>19970400</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00070">
+<document-id>
+<country>GB</country>
+<doc-number>2274526</doc-number>
+<date>19940700</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00071">
+<document-id>
+<country>JP</country>
+<doc-number>04-032393</doc-number>
+<date>19920200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00072">
+<document-id>
+<country>JP</country>
+<doc-number>404057690</doc-number>
+<date>19920200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00073">
+<document-id>
+<country>JP</country>
+<doc-number>05-031685</doc-number>
+<date>19930200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00074">
+<document-id>
+<country>JP</country>
+<doc-number>2003-021133</doc-number>
+<date>20030100</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00075">
+<document-id>
+<country>JP</country>
+<doc-number>2003-175484</doc-number>
+<date>20030600</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00076">
+<document-id>
+<country>JP</country>
+<doc-number>2003275484</doc-number>
+<date>20030900</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00077">
+<document-id>
+<country>JP</country>
+<doc-number>2006-214559</doc-number>
+<date>20060800</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00078">
+<document-id>
+<country>WO</country>
+<doc-number>WO 98/08050</doc-number>
+<date>19980200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00079">
+<document-id>
+<country>WO</country>
+<doc-number>WO 2008/080142</doc-number>
+<date>20080700</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<nplcit num="00080">
+<othercit>Redacted Whidden Letter re Inter Partes Reexam of U.S. Patent No. 7779548.</othercit>
+</nplcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<nplcit num="00081">
+<othercit>Redacted Response to Cass re U.S. Patent No. 7779548.</othercit>
+</nplcit>
+<category>cited by other</category>
+</citation>
+</references-cited>
+<number-of-claims>20</number-of-claims>
+<us-exemplary-claim>1</us-exemplary-claim>
+<us-field-of-classification-search>
+<classification-national>
+<country>US</country>
+<main-classification> 33503</main-classification>
+</classification-national>
+</us-field-of-classification-search>
+<figures>
+<number-of-drawing-sheets>7</number-of-drawing-sheets>
+<number-of-figures>7</number-of-figures>
+</figures>
+<us-related-documents>
+<continuation>
+<relation>
+<parent-doc>
+<document-id>
+<country>US</country>
+<doc-number>12057966</doc-number>
+<date>20080328</date>
+</document-id>
+<parent-grant-document>
+<document-id>
+<country>US</country>
+<doc-number>7779548</doc-number>
+<date>20100824</date>
+</document-id>
+</parent-grant-document>
+</parent-doc>
+<child-doc>
+<document-id>
+<country>US</country>
+<doc-number>12840939</doc-number>
+</document-id>
+</child-doc>
+</relation>
+</continuation>
+<related-publication>
+<document-id>
+<country>US</country>
+<doc-number>20100281706</doc-number>
+<kind>A1</kind>
+<date>20101111</date>
+</document-id>
+</related-publication>
+</us-related-documents>
+<parties>
+<applicants>
+<applicant sequence="001" app-type="applicant-inventor" designation="us-only">
+<addressbook>
+<last-name>Ferrari</last-name>
+<first-name>Paul</first-name>
+<address>
+<city>Carlsbad</city>
+<state>CA</state>
+<country>US</country>
+</address>
+</addressbook>
+<nationality>
+<country>omitted</country>
+</nationality>
+<residence>
+<country>US</country>
+</residence>
+</applicant>
+</applicants>
+<agents>
+<agent sequence="01" rep-type="attorney">
+<addressbook>
+<orgname>Knobbe, Martens, Olson &#x26; Bear LLP</orgname>
+<address>
+<country>unknown</country>
+</address>
+</addressbook>
+</agent>
+</agents>
+</parties>
+<assignees>
+<assignee>
+<addressbook>
+<orgname>Hexagon Metrology, Inc.</orgname>
+<role>02</role>
+<address>
+<city>Norcross</city>
+<state>GA</state>
+<country>US</country>
+</address>
+</addressbook>
+</assignee>
+</assignees>
+<examiners>
+<primary-examiner>
+<last-name>Fulton</last-name>
+<first-name>Christopher W</first-name>
+<department>2841</department>
+</primary-examiner>
+</examiners>
+</us-bibliographic-data-grant>
+<abstract id="abstract">
+<p id="p-0001" num="0000">A portable coordinate measuring machine (PCMM) can have one or more rotatable grip assemblies to provide a locations for an operator to grasp the PCMM. A rotatable grip assembly can include a rotatable sleeve, a grip portion disposed over the sleeve, and one or more retaining rings to prevent the rotatable grip from axially sliding along one or more members of an articulated arm PCMM. A PCMM can include two rotatable grips to allow an operator to grasp the PCMM with both hands for positioning and repositioning operations. One rotatable grip can be positioned on an arm member most distant the PCMM base, and another rotatable grip can be positioned on a housing at least partially encasing an articulating joint assembly coupled to the arm member most distant the PCMM base. Other numbers of and locations of rotatable grip assemblies can be used in PCMMs.</p>
+</abstract>
+<drawings id="DRAWINGS">
+<figure id="Fig-EMI-D00000" num="00000">
+<img id="EMI-D00000" he="176.53mm" wi="185.42mm" file="US07984558-20110726-D00000.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00001" num="00001">
+<img id="EMI-D00001" he="187.71mm" wi="183.56mm" orientation="landscape" file="US07984558-20110726-D00001.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00002" num="00002">
+<img id="EMI-D00002" he="167.98mm" wi="171.96mm" orientation="landscape" file="US07984558-20110726-D00002.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00003" num="00003">
+<img id="EMI-D00003" he="197.53mm" wi="177.88mm" orientation="landscape" file="US07984558-20110726-D00003.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00004" num="00004">
+<img id="EMI-D00004" he="270.00mm" wi="127.51mm" file="US07984558-20110726-D00004.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00005" num="00005">
+<img id="EMI-D00005" he="244.86mm" wi="127.17mm" file="US07984558-20110726-D00005.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00006" num="00006">
+<img id="EMI-D00006" he="180.00mm" wi="170.18mm" orientation="landscape" file="US07984558-20110726-D00006.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00007" num="00007">
+<img id="EMI-D00007" he="195.92mm" wi="164.00mm" orientation="landscape" file="US07984558-20110726-D00007.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+</drawings>
+<description id="description">
+<?RELAPP description="Other Patent Relations" end="lead"?>
+<heading id="h-0001" level="1">CROSS-REFERENCE TO RELATED APPLICATIONS</heading>
+<p id="p-0002" num="0001">This application is a continuation of U.S. patent application Ser. No. 12/057,966, filed on 28 Mar. 2008, entitled &#x201c;COORDINATE MEASURING MACHINE WITH ROTATABLE GRIP,&#x201d; and issued as U.S. Pat. No. 7,779,548 on 24 Aug. 2010, and the entirety of said application is hereby incorporated by reference in its entirety.</p>
+<?RELAPP description="Other Patent Relations" end="tail"?>
+<?BRFSUM description="Brief Summary" end="lead"?>
+<heading id="h-0002" level="1">BACKGROUND OF THE INVENTION</heading>
+<p id="p-0003" num="0002">1. Field of the Invention</p>
+<p id="p-0004" num="0003">The present application relates to measurement devices, and more particularly, to articulated arm coordinate measuring.</p>
+<p id="p-0005" num="0004">2. Description of the Related Art</p>
+<p id="p-0006" num="0005">Rectilinear measuring systems, also referred to as coordinate measuring machines (PCMM's) and articulated arm measuring machines, are used to generate geometry information. In general, these instruments capture the structural characteristics of an object for use in quality control, electronic rendering and/or duplication. One example of a conventional apparatus used for coordinate data acquisition is a portable coordinate measuring machine (PCMM), which is a portable device capable of taking highly accurate measurements within a measuring sphere of the device. Such devices often include a probe mounted on an end of an arm that includes a plurality of transfer members connected together by joints. The end of the arm opposite the probe is typically coupled to a moveable base. Typically, the joints are broken down into singular rotational degrees of freedom, each of which is measured using a dedicated rotational transducer. During a measurement, the probe of the arm is moved manually by an operator to various points in the measurement sphere. At each point, the position of each of the joints must be determined at a given instant in time. Accordingly, each transducer outputs an electrical signal that varies according to the movement of the joint in that degree of freedom. Typically, the probe also generates a signal. These position signals and the probe signal are transferred through the arm to a recorder/analyzer. The position signals are then used to determine the position of the probe within the measurement sphere. See e.g., U.S. Pat. Nos. 5,829,148 and 7,174,651.</p>
+<p id="p-0007" num="0006">Typically, when PCMMs are used, an operator positions his hands at various locations along the arms and joints of the PCMM to move the probe into a desired position for data acquisition. During the course of a measurement session, an operator may move his hands significantly to position and reposition the PCMM. Additionally, different operators may position their hands at different locations along the PCMM. Accordingly, it can be difficult to initially calibrate a PCMM to account for the various loads applied by different operators at different locations along the PCMM.</p>
+<p id="p-0008" num="0007">As mentioned above, the purpose of PCMM's is to take highly accurate measurements. Accordingly, there is a continuing need to improve the accuracy of such devices.</p>
+<heading id="h-0003" level="1">SUMMARY OF THE INVENTION</heading>
+<p id="p-0009" num="0008">In some embodiments, a coordinate measuring machine is provided that comprises a first transfer member, a second transfer member, an articulating joint assembly, and a rotatable grip assembly. The articulating joint assembly rotatably couples the first transfer member to the second transfer member. The rotatable grip assembly is disposed on an outer surface of one of the first transfer member and the second transfer member.</p>
+<p id="p-0010" num="0009">In other embodiments, a coordinate measuring machine is provided that comprises a base, a first transfer member, a second transfer member, a first articulation joint assembly, a third transfer member, a second articulation joint assembly, and a rotatable grip assembly. The first transfer member is coupled to the base. The second transfer member is rotatably coupled to the first transfer member by the first articulation joint assembly. The third transfer member is rotatably coupled to the second transfer member by the second articulation joint assembly. The rotatable grip assembly is disposed on the third transfer member.</p>
+<p id="p-0011" num="0010">In other embodiments, a coordinate measuring machine is provided that comprises a base, a first transfer member, a first articulation member, a second transfer member, a second articulation member, a third articulation member, a first housing, a second housing, a first rotatable grip assembly, and a second rotatable grip assembly. The first transfer member is coupled to the base. The second transfer member is rotatably coupled to the first transfer member by the first articulation member. The third transfer member is rotatably coupled to the second transfer member by the second articulation member. The first housing is disposed about at least a portion of the first articulation member. The second housing is disposed about at least a portion of the second articulation member. The first rotatable grip assembly is disposed on the third transfer member and rotatable about a longitudinal axis defined by the third transfer member. The second rotatable grip assembly is disposed on the second housing and rotatable about the longitudinal axis.</p>
+<p id="p-0012" num="0011">In some embodiments, a coordinate measuring machine comprises a first transfer member, a second transfer member, an articulating joint assembly, and a probe caddie. The articulating joint assembly rotatably couples the first transfer member to the second transfer member. The probe caddie is disposed on the coordinate measuring machine and is adapted to receive at least one probe.</p>
+<?BRFSUM description="Brief Summary" end="tail"?>
+<?brief-description-of-drawings description="Brief Description of Drawings" end="lead"?>
+<description-of-drawings>
+<heading id="h-0004" level="1">BRIEF DESCRIPTION OF THE DRAWINGS</heading>
+<p id="p-0013" num="0012">These and other features, aspects, and advantages of the present inventions will now be described in connection with various embodiments, in reference to the accompanying drawings. The illustrated embodiments, however are merely examples and are not intended to limit the inventions. The drawings include the following figures:</p>
+<p id="p-0014" num="0013"><figref idref="DRAWINGS">FIG. 1</figref> illustrates a perspective view of one embodiment of a coordinate measuring machine</p>
+<p id="p-0015" num="0014"><figref idref="DRAWINGS">FIG. 2A</figref> illustrates a perspective view of the coordinate measuring machine of <figref idref="DRAWINGS">FIG. 1</figref> in a first position with an operator's hands positioned on rotatable grips thereof.</p>
+<p id="p-0016" num="0015"><figref idref="DRAWINGS">FIG. 2B</figref> illustrates a perspective view of the coordinate measuring machine of <figref idref="DRAWINGS">FIG. 1</figref> in a second position with the operator's hands positioned on rotatable grips thereof.</p>
+<p id="p-0017" num="0016"><figref idref="DRAWINGS">FIG. 3</figref> illustrates a cutaway view of a transfer member of the coordinate measuring machine of <figref idref="DRAWINGS">FIG. 1</figref>.</p>
+<p id="p-0018" num="0017"><figref idref="DRAWINGS">FIG. 4</figref> illustrates an exploded perspective view of the transfer member of <figref idref="DRAWINGS">FIG. 3</figref>.</p>
+<p id="p-0019" num="0018"><figref idref="DRAWINGS">FIG. 5A</figref> illustrates a probe caddie for use with a coordinate measuring machine such as that illustrated in <figref idref="DRAWINGS">FIG. 1</figref>.</p>
+<p id="p-0020" num="0019"><figref idref="DRAWINGS">FIG. 5B</figref> illustrates the probe caddie of <figref idref="DRAWINGS">FIG. 5A</figref> with various probes removed.</p>
+</description-of-drawings>
+<?brief-description-of-drawings description="Brief Description of Drawings" end="tail"?>
+<?DETDESC description="Detailed Description" end="lead"?>
+<heading id="h-0005" level="1">DETAILED DESCRIPTION OF THE PREFERRED EMBODIMENT</heading>
+<p id="p-0021" num="0020"><figref idref="DRAWINGS">FIG. 1</figref> illustrates one embodiment of a coordinate measuring machine (PCMM) <b>10</b>. In the illustrated embodiment, the PCMM <b>10</b> comprises a base <b>20</b>, a plurality of substantially rigid, transfer members <b>24</b>, <b>26</b>, and <b>28</b>, a coordinate acquisition member <b>30</b>, and a plurality of articulation members <b>40</b>, <b>42</b>, <b>44</b>, <b>46</b>, <b>48</b>, <b>50</b> connecting the rigid transfer members <b>24</b>, <b>26</b>, <b>28</b> to one another. Each articulation member is configured to impart one or more rotational and/or angular degrees of freedom. The articulation members <b>40</b>, <b>42</b>, <b>44</b>, <b>46</b>, <b>48</b>, and <b>50</b> allow the transfer members <b>24</b>, <b>26</b>, <b>28</b> of the PCMM <b>10</b> to be aligned in various spatial orientations thereby <b>38</b> allowing fine positioning of a coordinate acquisition member <b>30</b> in three-dimensional space.</p>
+<p id="p-0022" num="0021">The position of the rigid transfer members <b>24</b>, <b>26</b>, <b>28</b> and the coordinate acquisition member <b>30</b> may be adjusted manually, or using, robotic, semi-robotic, and/or any other adjustment method. In one embodiment, the PCMM <b>10</b>, through the various articulation members <b>40</b>, <b>42</b>, <b>44</b>, <b>46</b>, <b>48</b>, <b>50</b>, is provided with six rotary axes of movement. However, there is no strict limitation to the number or order of axes of movement that may be used, and, in other embodiments, a PCMM can have more or fewer axes of movement.</p>
+<p id="p-0023" num="0022">In the embodiment of PCMM <b>10</b> illustrated in <figref idref="DRAWINGS">FIG. 1</figref>, the articulation members <b>40</b>, <b>42</b>, <b>44</b>, <b>46</b>, <b>48</b>, <b>50</b> can be divided into two functional groupings based on their operation, namely: 1) those articulation members <b>40</b>, <b>44</b>, and <b>48</b> which allow the swiveling motion associated with a specific transfer member (hereinafter, &#x201c;swiveling joints&#x201d;), and 2) those articulation members <b>42</b>, <b>46</b>, and <b>50</b> which allow a change in the relative angle formed between two adjacent members or between the coordinate acquisition member <b>30</b> and its adjacent member (hereinafter, &#x201c;hinge joints&#x201d;). While the illustrated embodiment includes three swiveling joints and three hinge joints positioned as to create six axes of movement, it is contemplated that in other embodiments, the number of and location of hinge joints and swiveling joints can be varied to achieve different movement characteristics in a PCMM. For example, a substantially similar device with seven axes of movement could simply have an additional swivel joint between the coordinate acquisition member <b>30</b> and articulation member <b>50</b>. In still other embodiments, the swiveling joints and hinge joints can be combined and/or used in different combinations.</p>
+<p id="p-0024" num="0023">The coordinate acquisition member <b>30</b> can comprise a contact sensitive member or hard probe <b>32</b> configured to engage surfaces of a selected object and/or generate coordinate data on the basis of probe contact as is known in the art. Alternatively, the coordinate acquisition member <b>30</b> can comprise a remote scanning and detection component that does not necessarily require direct contact with the selected object to acquire geometry data. In one embodiment, a laser coordinate detection device (e.g., laser camera) can be used to obtain geometry data without direct object contact. It will be appreciated that in various embodiments of PCMM, various coordinate acquisition member <b>30</b> configurations can be used including: a contact-sensitive probe, a remote-scanning probe, a laser-scanning probe, a probe that uses a strain gauge for contact detection, a probe that uses a pressure sensor for contact detection, a probe that used an infrared beam for positioning, and a probe configured to be electrostatically-responsive can be used for the purposes of coordinate acquisition.</p>
+<p id="p-0025" num="0024">With continued reference to <figref idref="DRAWINGS">FIG. 1</figref>, in various embodiments of the PCMM <b>10</b>, the various devices which may be used for coordinate acquisition, such as the probe <b>32</b>, may be configured to be manually disconnected and reconnected from the PCMM <b>10</b> such that an operator can change coordinate acquisition devices without specialized tools. Thus, an operator can quickly and easily remove one coordinate acquisition device and replace it with another coordinate acquisition device. Such a connection may comprise any quick disconnect or manual disconnect device. This rapid connection capability of a coordinate acquisition device can be particularly advantageous in a PCMM <b>10</b> that can be used for a wide variety of measuring techniques (e.g. measurements requiring physical contact of the coordinate acquisition member with a surface followed by measurements requiring only optical contact of the coordinate acquisition member) in a relatively short period of time.</p>
+<p id="p-0026" num="0025">In the embodiment of <figref idref="DRAWINGS">FIG. 1</figref>, the coordinate acquisition member <b>30</b> also comprises buttons <b>66</b>, which are configured to be accessible by an operator. By pressing one or more of the buttons <b>66</b> singly, multiply, or in a preset sequence, the operator can input various commands to the PCMM <b>10</b>. In some embodiments the buttons <b>66</b> can be used to indicate that a coordinate reading is ready to be recorded. In other embodiments the buttons <b>66</b> can be used to indicate that the location being measured is a home position and that other positions should be measured relative to the home position. In other embodiments the buttons may be used to turn on or off the PCMM <b>10</b>. In other embodiments, the buttons <b>66</b> can be programmable to meet an operator's specific needs. The location of the buttons <b>66</b> on the coordinate acquisition member <b>30</b> can be advantageous in that an operator need not access the base <b>20</b> or a computer in order to activate various functions of the PCMM <b>10</b> while using the coordinate acquisition member <b>30</b>. This positioning may be particularly advantageous in embodiments of PCMM having transfer members <b>24</b>, <b>26</b>, or <b>28</b> that are particularly long, thus placing the base <b>20</b> out of reach for an operator of the coordinate acquisition member <b>30</b>. In some embodiments of the PCMM <b>10</b>, any number of operator input buttons (e.g., more or fewer than the three illustrated in <figref idref="DRAWINGS">FIG. 1</figref>), can be provided, which may be placed in various other positions on the coordinate acquisition member <b>30</b> or anywhere on the PCMM <b>10</b>. Other embodiments of PCMM can include other operator input devices positioned on the PCMM or the coordinate acquisition member <b>30</b>, such as switches, rotary dials, or touch pads in place of, or in addition to operator input buttons.</p>
+<p id="p-0027" num="0026">With continued reference to <figref idref="DRAWINGS">FIG. 1</figref>, in some embodiments, the base <b>20</b> further comprises magnetic attachment mounts <b>60</b> that can attach the base <b>20</b> to a metallic work surface. The magnetic attachment mounts <b>60</b> can desirably be selectively engaged so that an operator can position the PCMM <b>10</b> on to a work surface then engage the magnetic attachment mounts <b>60</b> once the PCMM <b>10</b> has been placed in a desirable position. In other embodiment, the base <b>20</b> can be coupled to a work surface through a vacuum mount, bolts or other coupling devices. Additionally, in some embodiments, the base <b>20</b> can comprise various electrical interfaces such as plugs, sockets, or attachment ports <b>62</b>. In some embodiments, attachment ports <b>62</b> can comprise connectability between the PCMM <b>10</b> and a USB interface for connection to a processor such as a general purpose computer, an AC power interface for connection with a power supply, or a video interface for connection to a monitor. In some embodiments, the PCMM <b>10</b> can be configured to have a wireless connection with an external processor or general purpose computer such as by a WiFi connection, Bluetooth connection, RF connection, infrared connection, or other wireless communications protocol. In some embodiments, the various electrical interfaces or attachment ports <b>62</b> can be specifically configured to meet the requirements of a specific PCMM <b>10</b>.</p>
+<p id="p-0028" num="0027">With continued reference to <figref idref="DRAWINGS">FIG. 1</figref>, in some embodiments, the base <b>20</b> of the PCMM <b>10</b> can also include a self contained power source <b>64</b> such as a battery. Embodiments of PCMM <b>10</b> having a self contained power source can be easily moved to various locations that do not have easy access to a power source such as an AC power outlet, allowing enhanced flexibility in the operating environment of the PCMM <b>10</b>. In one embodiment, the self-contained power source <b>64</b> can be a lithium-ion rechargeable battery that can provide power to the PCMM for periods of use away from a power outlet. In other embodiments, the self-contained power source <b>64</b> can be other types of rechargeable batteries such as nickel cadmium, nickel metal hydride, or lead acid batteries. In other embodiments, the self-contained power source <b>64</b> can be a single use battery such as an alkaline battery.</p>
+<p id="p-0029" num="0028">With continued reference to <figref idref="DRAWINGS">FIG. 1</figref>, the transfer members <b>24</b>, <b>26</b>, and <b>28</b> are preferably constructed of hollow generally cylindrical tubular members so as to provide substantial rigidity to the members <b>24</b>, <b>26</b>, and <b>28</b>. The transfer members <b>24</b>, <b>26</b>, and <b>28</b> can be made of any suitable material which will provide a substantially rigid extension for the PCMM <b>10</b>. As will be discussed in greater detail below, the transfer members <b>24</b>, <b>26</b>, and <b>28</b> preferably define a double tube assembly so as to provide additional rigidity to the transfer members <b>24</b>, <b>26</b>, and <b>28</b>. Furthermore, it is contemplated that the transfer members <b>24</b>, <b>26</b>, and <b>28</b> in various other embodiments can be made of alternate shapes such as those comprising a triangular or octagonal cross-section.</p>
+<p id="p-0030" num="0029">In some embodiments, it can be desirable to use a composite material, such as a carbon fiber material, to construct at least a portion of the transfer members <b>24</b>, <b>26</b>, and <b>28</b>. In some embodiments, other components of the PCMM <b>10</b> can also comprise composite materials such as carbon fiber materials. Constructing the transfer members <b>24</b>, <b>26</b>, <b>28</b> of composite such as carbon fiber can be particularly advantageous in that the carbon fiber can react less to thermal influences as compared to metallic materials such as steel or aluminum. Thus, coordinate measuring can be accurately and consistently performed at various temperatures. In other embodiments, the transfer members <b>24</b>, <b>26</b>, <b>28</b> can comprise metallic materials, or can comprise combinations of materials such as metallic materials, ceramics, thermoplastics, or composite materials. Also, as will be appreciated by one skilled in the art, many of the other components of the PCMM <b>10</b> can also be made of composites such as carbon fiber. Presently, as the manufacturing capabilities for composites are generally not as precise when compared to manufacturing capabilities for metals, generally the components of the PCMM <b>10</b> that require a greater degree of dimensional precision are generally made of a metals such as aluminum. It is foreseeable that as the manufacturing capabilities of composites improved that a greater number of components of the PCMM <b>10</b> can be also made of composites.</p>
+<p id="p-0031" num="0030">With continued reference to <figref idref="DRAWINGS">FIG. 1</figref>, some embodiments of the PCMM <b>10</b> may also comprise a counterbalance system <b>80</b> that can assist an operator by mitigating the effects of the weight of the transfer members <b>26</b> and <b>28</b> and the articulating members <b>44</b>, <b>46</b>, <b>48</b>, and <b>50</b>. In some orientations, when the transfer members <b>26</b> and <b>28</b> are extended away from the base <b>20</b>, the weight of the transfer members <b>26</b> and <b>28</b> can create difficulties for an operator. Thus, a counterbalance system <b>80</b> can be particularly advantageous to reduce the amount of effort that an operator needs to position the PCMM for convenient measuring. In some embodiments, the counterbalance system <b>80</b> can comprise resistance units (not shown) which are configured to ease the motion of the transfer members <b>26</b> and <b>28</b> without the need for heavy weights to cantilever the transfer members <b>26</b> and <b>28</b>. It will be appreciated by one skilled in the art that in other embodiments simple cantilevered counterweights can be used in place or in combination with resistance units.</p>
+<p id="p-0032" num="0031">In the embodiment illustrated in <figref idref="DRAWINGS">FIG. 1</figref>, the resistance units are attached to the transfer member <b>26</b> to provide assisting resistance for motion of the transfer members <b>26</b> and <b>28</b>. In some embodiments, the resistance units can comprise hydraulic resistance units which use fluid resistance to provide assistance for motion of the transfer members <b>26</b> and <b>28</b>. In other embodiments the resistance units may comprise other resistance devices such as pneumatic resistance devices, or linear or rotary spring systems.</p>
+<p id="p-0033" num="0032">With continued reference to <figref idref="DRAWINGS">FIG. 1</figref>, the position of the probe <b>32</b> in space at a given instant can be calculated if the length of each transfer member <b>24</b>, <b>26</b>, and <b>28</b> and the specific position of each of the articulation members <b>40</b>, <b>42</b>, <b>44</b>, <b>46</b>, <b>48</b>, and <b>50</b> are known. The position of each of the articulation members <b>40</b>, <b>42</b>, <b>44</b>, <b>46</b>, <b>48</b>, and <b>50</b> can be measured as a singular rotational degree of motion using a dedicated rotational transducer, which will be described in more detail below. Each transducer can output a signal (e.g., an electrical signal), which can vary according to the movement of the <b>40</b>, <b>42</b>, <b>44</b>, <b>46</b>, <b>48</b>, <b>50</b> in its degree of motion. The signal can be carried through wires or otherwise transmitted to the base <b>20</b> of the PCMM <b>10</b>. From there, the signal can be processed and/or transferred to a computer for determining the position of the probe <b>32</b> in space.</p>
+<p id="p-0034" num="0033">In some embodiments of PCMM <b>10</b>, a rotational transducer for each of the articulation members <b>40</b>, <b>42</b>, <b>44</b>, <b>46</b>, <b>48</b>, and <b>50</b> can comprise an optical encoder. Various embodiments of optical encoder are discussed in more detail below with reference to <figref idref="DRAWINGS">FIGS. 3-6</figref>. In general, an optical encoder measures the rotational position of an axle by coupling is movement to a pair of internal hubs having successive transparent and opaque bands. In such embodiments, light can be shined through or reflected from the hubs onto optical sensors which feed a pair of electrical outputs. As the axle sweeps through an arc, the output of an analog optical encoder can be substantially two sinusoidal signals which are 90 degrees out of phase. Coarse positioning can be determined through monitoring a change in polarity of the two signals. Fine positioning can be determined by measuring an actual value of the two signals at a specific time. In certain embodiments, enhanced accuracy can be obtained by measuring the output precisely before it is corrupted by electronic noise. Thus, digitizing the position information before it is sent to the processor or computer can lead to enhanced measurement accuracy.</p>
+<p id="p-0035" num="0034">As will be described in detail below, in the illustrated embodiment, the articulation members <b>40</b>, <b>42</b>, <b>44</b>, <b>46</b>, <b>48</b>., and <b>50</b> can be divided into two general categories, namely: 1) articulation members <b>40</b>, <b>44</b>, <b>48</b>, which allow swiveling motion of a transfer member <b>24</b>, <b>26</b>, <b>28</b> and are thus sometimes referred to as &#x201c;swivel members&#x201d; <b>40</b>, <b>44</b>, <b>48</b> herein and 2) articulation members <b>42</b>, <b>46</b> and <b>50</b>, which allow for change in the relative angle formed between two adjacent members and are sometimes referred to herein as &#x201c;pivot or hinge members&#x201d; <b>42</b>, <b>46</b>, <b>50</b>.</p>
+<p id="p-0036" num="0035">While several embodiment and related features of a PCMM <b>10</b> have been generally discussed herein, additional details and embodiments of PCMM <b>10</b> can be found in U.S. Pat. Nos. 5,829,148 and 7,174,651, the entirety of these patents are hereby incorporated by reference herein. While certain features below are discussed with reference to the embodiments of PCMM <b>10</b> described above, it is contemplated that they can be applied in other embodiments of PCMM such as those described in U.S. Pat. No. 5,829,148 or U.S. Pat. No. 7,174,651, U.S. patent application Ser. No. 11/963,531, filed Dec. 21, 2007, entitled &#x201c;IMPROVED JOINT AXIS FOR COORDINATE MEASUREMENT MACHINE&#x201d;, U.S. patent application Ser. No. 11/943,463, filed Nov. 20, 2007, entitled &#x201c;COORDINATE MEASUREMENT DEVICE WITH IMPROVED JOINT &#x201d; and U.S. patent application Ser. No. 11/775,081, filed Jul. 9, 2007, entitled &#x201c; JOINT FOR COORDINATE MEASUREMENT DEVICE&#x201d;, the entire contents of these patents and patent applications being incorporated herein by reference.</p>
+<p id="p-0037" num="0036">With reference to <figref idref="DRAWINGS">FIGS. 1</figref>, <b>2</b>A, and <b>2</b>B, in some embodiments, the PCMM <b>10</b> can comprise one or more rotatable grip assemblies <b>100</b>. In the illustrated embodiment, the PCMM <b>10</b> can comprise a lower rotatable grip assembly <b>102</b> and an upper rotatable grip assembly <b>104</b>. Advantageously, having a lower rotatable grip assembly <b>102</b> and an upper rotatable grip assembly <b>104</b> disposed on the transfer member <b>28</b>, allows the operator to easily use both hands in positioning the PCMM <b>10</b>. In other embodiments, the PCMM <b>10</b> can comprise one, or more than two rotatable grips.</p>
+<p id="p-0038" num="0037">Certain desirable characteristics of a manually operated articulated arm PCMM are that the PCMM is easy to articulate by an operator and accurate in its measurement. One advantage of a rotatable grip assembly <b>100</b> as described herein is that it can make the PCMM easier for an operator to articulate. The rotatable grip assembly <b>100</b> rolls through the operator's hands with the grip relieving the majority of the friction that would normally exist between the operator's hand and the transfer member of the PCMM.</p>
+<p id="p-0039" num="0038">Another advantage of the easy, ergonomic, and low friction operation of the rotatable grip assembly <b>100</b> is a more accurate PCMM. When an operator positions a hand on the transfer member of the PCMM, variability of fictional forces between the operator and the PCMM can be a source of error in the accuracy of a PCMM's measurement. When an operator's hand is not on a rotatable grip assembly <b>100</b>, fictional forces between the operator's hand and the transfer member of the PCMM can change as the operator articulates the arm into different positions. Further these forces can vary as the operator stiffens or loosens his grip on the arm. These forces also vary from one operator to another.</p>
+<p id="p-0040" num="0039">Some previous PCMMs have had overdesigned joint assemblies to compensate for the variability in fictional forces and the variability and in positions in which an operator may grasp the PCMM. These joint assemblies resulted in a PCMM that was relatively heavy and costly. Other PCMMs have included costly strain sensors or additional encoder read heads in order to compensate for operator forces. Advantageously, a PCMM with one or more rotatable grip assemblies <b>100</b> can reduce operator forces on the PCMM in a cost-efficient manner.</p>
+<p id="p-0041" num="0040">Desirably, the rotatable grip assemblies <b>100</b> can rotate freely and infinitely about a portion of the PCMM <b>10</b>. This free and infinite rotation allows an operator to easily grasp the rotatable grips <b>100</b> and position the PCMM <b>10</b> as desired. In other embodiments the rotatable grips <b>100</b> can rotate through a predetermined range defined by rotational stops.</p>
+<p id="p-0042" num="0041">With reference to <figref idref="DRAWINGS">FIGS. 2A and 2B</figref>, an operator may grasp the PCMM <b>10</b> using the grip assemblies <b>102</b>, <b>104</b>. As the operator moves the PCMM <b>10</b> from a first position (illustrated in <figref idref="DRAWINGS">FIG. 2A</figref>) to a second position (illustrated in <figref idref="DRAWINGS">FIG. 2B</figref>), the grip assemblies <b>102</b>, <b>104</b> can rotate to accommodate this motion. Thus, advantageously, an operator need not reposition one or both of his hands as he repositions the PCMM <b>10</b>.</p>
+<p id="p-0043" num="0042">Another advantage of the rotatable grips <b>100</b> is increased accuracy of the measurements obtained. Previously, operators would position their hands at any convenient location along the transfer member <b>28</b>. Accordingly, the PCMM <b>10</b> could experience slightly different operator-induced load conditions depending on the position of the operator's hands. While the PCMM <b>10</b> can be calibrated to account for the position of an operator's hands at an expected location, previously, there would be no indication that an operator would place his hands at this expected location. However, the rotatable grips <b>100</b> provide prescribed locations upon which an operator is to position his hands. Thus, advantageously, the PCMM <b>10</b> can be calibrated with a known position of the operator's hands on the PCMM <b>10</b>. Accordingly, variations in PCMM accuracy due to variations in positioning of individual operators' hands can be minimized.</p>
+<p id="p-0044" num="0043">Furthermore, the rotatable grips <b>100</b> can be positioned on the PCMM <b>10</b> at a location where relatively little force is required to position the PCMM <b>10</b>. Accordingly, a PCMM <b>10</b> having rotatable grips <b>100</b> so positioned would have enhanced durability and reliability as it would likely encounter lower loading during routine use than a PCMM without rotatable grips <b>100</b>.</p>
+<p id="p-0045" num="0044">With continued reference to <figref idref="DRAWINGS">FIGS. 1</figref>, <b>2</b>A, and <b>2</b>B, in the illustrated embodiment, the rotatable grip assemblies <b>100</b> can be disposed on the transfer member <b>28</b> furthest away from the base <b>20</b>. Desirably, operators typically position the PCMM <b>10</b> using this transfer member <b>28</b>. Operators typically position one hand adjacent the probe and another either along the transfer member <b>28</b> or at an end of the transfer member <b>28</b> opposite the probe, as illustrated in phantom lines in <figref idref="DRAWINGS">FIGS. 2A and 2B</figref>. In the illustrated embodiment, the PCMM <b>10</b> includes two rotatable grips assemblies <b>100</b>, one at each typical operator grasping location. In other embodiments, rotatable grip assemblies <b>100</b> can be disposed on other transfer members <b>26</b>, <b>24</b> in addition to or instead of the rotatable grips <b>102</b>, <b>104</b> on transfer member <b>28</b> furthest away from the base <b>20</b>.</p>
+<p id="p-0046" num="0045">With reference to <figref idref="DRAWINGS">FIGS. 3 and 4</figref>, construction of the illustrated embodiment of upper and lower rotatable grip assemblies <b>102</b>, <b>104</b> is further described. <figref idref="DRAWINGS">FIG. 3</figref> illustrates the longitudinal cross-sectional view of transfer member <b>28</b> with rotatable grips <b>102</b>, <b>104</b> likewise illustrated in cross-section. <figref idref="DRAWINGS">FIG. 4</figref> illustrates an exploded assembly view of transfer member <b>28</b> including rotatable grips <b>102</b>, <b>104</b>.</p>
+<p id="p-0047" num="0046">With continued reference to <figref idref="DRAWINGS">FIGS. 3 and 4</figref>, lower rotatable grip <b>102</b> can comprise a rotatable sleeve <b>110</b> disposed over an outer surface of transfer member <b>28</b>, a grip portion <b>112</b>, an upper retaining ring <b>114</b>, and a lower retaining ring <b>116</b>. The rotatable sleeve <b>110</b> can be constructed of a material having a relatively low coefficient of friction. For example, the rotatable sleeve <b>110</b> can be constructed of a synthetic material such as can be found in a bushing, for example, a nylon or Delrin&#xae; material. Desirably, the rotatable sleeve <b>110</b> can rotate freely with respect to an outer surface of the transfer member <b>28</b> and surfaces of the upper retaining ring <b>114</b> and the lower retaining ring <b>116</b>. The rotatable sleeve <b>110</b> can have a generally cylindrical body with flanged lips at a first end and a second end thereof. The flanged lips on the rotatable sleeve <b>110</b> can retain the grip portion <b>112</b>.</p>
+<p id="p-0048" num="0047">With continued reference to <figref idref="DRAWINGS">FIGS. 3 and 4</figref>, the grip portion <b>112</b> can have a generally cylindrical shape and be sized to snugly fit over the rotatable sleeve <b>110</b>. The grip portion <b>112</b> can comprise a relatively soft material such as a natural or synthetic rubber, or a silicone rubber for operator gripability and comfort. In the illustrated embodiment, the rotatable sleeve <b>110</b> and grip portion <b>112</b> are separately formed such that the rotatable sleeve <b>110</b> can allow for free rotation of the rotatable grip <b>102</b> and the grip portion <b>112</b> can provide enhanced operator gripability and comfort. In some embodiments, the grip portion <b>112</b> can be relatively elastic and can be stretch fit over the rotatable sleeve <b>110</b>. In some embodiments, the grip portion <b>112</b> can be adhered to the rotatable sleeve <b>110</b> using an adhesive or epoxy. In other embodiments, the rotatable sleeve <b>110</b> in the grip portion <b>112</b> can be integrally formed of a material having satisfactory material properties with respect to friction and operator comfort.</p>
+<p id="p-0049" num="0048">With continued reference to <figref idref="DRAWINGS">FIGS. 3 and 4</figref>, to further enhance the gripability of the grip portion <b>112</b>, in some embodiments, the grip portion <b>112</b> can include gripping features such as, for example, one or more dimples or indentations <b>113</b>, one or more protrusions or ridges, or surface texturing. Advantageously, this enhanced gripability can reduce the likelihood an operator's hand will slip from the rotatable grip <b>102</b> while the operator is positioning the PCMM <b>10</b>.</p>
+<p id="p-0050" num="0049">With continued reference to <figref idref="DRAWINGS">FIGS. 3 and 4</figref>, the upper and lower retaining rings <b>114</b>, <b>116</b> can maintain an axial position of the lower rotatable grip <b>102</b> with respect to the transfer member <b>28</b>. In some embodiments, the retaining rings <b>114</b>, <b>116</b> can be constructed of a metallic material and can be sized to be press fit onto the transfer member <b>28</b> and to limit axial movement of the rings <b>114</b>, <b>116</b> on the transfer member <b>28</b> once positioned. In other embodiments, the retaining rings can comprise nonmetallic materials such as plastics, composite materials, or other materials. Desirably, the retaining rings <b>114</b>, <b>116</b> can be constructed of a material having material properties and a surface finish that allow the rotatable sleeve <b>110</b> to freely rotate between the retaining rings <b>114</b>, <b>116</b>. In some embodiments, the outer surface of the transfer member <b>28</b> can include at least one recess configured to receive at least one of the retaining rings <b>114</b>, <b>116</b>. In other embodiments, the rotatable grip assembly <b>100</b> does not include retaining rings <b>114</b>, <b>116</b>. Thus, the rotatable grip assembly could move axially thereby enhancing positioning ease for the operator.</p>
+<p id="p-0051" num="0050">With continued reference to <figref idref="DRAWINGS">FIGS. 3 and 4</figref>, the upper rotatable grip <b>104</b> is illustrated. The upper rotatable grip <b>104</b> can comprise a rotatable sleeve <b>120</b>, a grip portion <b>122</b>, and a retaining ring <b>124</b>. The rotatable sleeve <b>120</b> can be disposed on a housing <b>150</b> positioned about an articulating joint coupled to the transfer member <b>28</b>. In some embodiments, the housing <b>150</b> can comprise a two-piece housing including a first portion <b>154</b> and a second portion <b>156</b>. In other embodiments, the housing <b>150</b> can include more or fewer than two pieces. In still other embodiments, the rotatable sleeve <b>120</b> can be configured to be disposed on an upper end of the transfer member <b>128</b> with no housing present.</p>
+<p id="p-0052" num="0051">In some embodiments, the rotatable sleeve <b>120</b> can comprise a first portion <b>121</b> and a second portion <b>123</b>. Each of the first and second portions <b>121</b>, <b>123</b> can include a generally cylindrical portion configured to underlie the grip portion <b>122</b> and a flanged lip configured to retain the grip portion <b>122</b>. In the illustrated embodiment, this two-piece rotatable sleeve <b>120</b> can be easily installed on the housing <b>150</b> during manufacture of the PCMM <b>10</b>. In other embodiments, the rotatable sleeve <b>120</b> can be formed as a single unitary component. The rotatable sleeve <b>120</b> can have generally cylindrical shape having flanged lips at first and second end thereof to retain a gripping portion <b>122</b>. Desirably, the rotatable sleeve <b>120</b> can be constructed of material having a relatively low coefficient of friction such that it can freely rotate with respect to the housing <b>150</b> and the retaining ring <b>124</b>. In some embodiments the rotatable sleeve <b>120</b> can be constructed of the same material as the rotatable sleeve <b>110</b> of the lower rotatable grip <b>102</b>. In other embodiments, the rotatable sleeve <b>120</b> can be constructed of one of a variety of different materials having the desired properties.</p>
+<p id="p-0053" num="0052">With continued reference to <figref idref="DRAWINGS">FIGS. 3 and 4</figref>, and the grip portion <b>122</b> of the upper rotatable grip <b>104</b> can have a generally cylindrical shape and be sized to snugly fit over the rotatable sleeve <b>120</b>. The grip portion <b>122</b> can comprise a relatively soft material such as natural or synthetic rubber, or a silicone rubber for operator gripability and comfort. In the illustrated embodiment, the rotatable sleeve <b>120</b> and a grip portion <b>122</b> are separately formed such that the rotatable sleeve <b>120</b> can allow for free rotation of the rotatable grip and the grip portion <b>122</b> can provide enhanced operator gripability and comfort. In some embodiments, the grip portion <b>122</b> can be relatively elastic can be stretch fit over the rotatable sleeve <b>120</b>. In some embodiments, the grip portion <b>122</b> can be adhered to the rotatable sleeve <b>120</b> using an adhesive or epoxy. However, in other embodiments, the rotatable sleeve <b>120</b> and the grip portion <b>122</b> can be integrally formed from a material having satisfactory material properties with respect to friction and operator comfort.</p>
+<p id="p-0054" num="0053">With continued reference to <figref idref="DRAWINGS">FIGS. 3 and 4</figref>, to further enhance the gripability of the grip portion <b>122</b>, in some embodiments, the grip portion <b>122</b> can include gripping features such as, for example, one or more dimples or indentations <b>123</b>, one or more protrusions or ridges, or surface texturing. Advantageously, this enhanced gripability can reduce the likelihood an operator's hand will slip from the rotatable grip <b>104</b> when the operator is positioning the PCMM <b>10</b>.</p>
+<p id="p-0055" num="0054">With continued reference to <figref idref="DRAWINGS">FIGS. 3 and 4</figref>, the retaining ring <b>124</b> can maintain an axial position of the upper rotatable grip with respect to the transfer member <b>28</b> and the housing <b>150</b>. In some embodiments, the retaining ring <b>124</b> can be constructed of a metallic material and can be sized to be press fit onto the housing <b>150</b> and to limit axial movement of the ring <b>124</b> on the housing <b>150</b> once positioned. In other embodiments, the retaining ring <b>124</b> can comprise a nonmetallic material such as a plastic, composite material, or other material. Desirably, the retaining ring <b>124</b> can be constructed of a material having material properties and a surface finish that allow the rotatable sleeve <b>120</b> to freely rotate. In some embodiments, the housing <b>150</b> can comprise a recess <b>126</b> formed therein against which an end of the rotatable sleeve <b>120</b> can abut. Accordingly, in some embodiments the upper rotatable grip <b>104</b> comprises a single retaining ring <b>124</b> to restrict axial movement of the rotatable grip <b>104</b>. In other embodiments, the upper rotatable grip <b>104</b> can comprise two retaining rings, positioned at opposite ends of the rotatable sleeve <b>120</b> to restrict axial movement thereof. In other embodiments, a recess formed in the housing <b>150</b> can restrict axial movement of the rotatable sleeve <b>120</b> at each end of the rotatable sleeve <b>120</b>.</p>
+<p id="p-0056" num="0055">With respect to <figref idref="DRAWINGS">FIGS. 1-4</figref>, joint housings <b>150</b>, <b>152</b> are illustrated which can at least partially encase portions of several of the articulation members <b>42</b>, <b>44</b>, <b>46</b>, <b>48</b>. As discussed above with respect to <figref idref="DRAWINGS">FIGS. 3 and 4</figref>, in some embodiments a joint housing <b>150</b> can comprise a two-piece housing including a first housing portion <b>154</b> in the second housing portion <b>156</b>, and can include a rotatable joint <b>104</b> disposed thereon. In other embodiments, the joint housings <b>150</b>, <b>152</b> can be unitarily formed, and in other embodiments, the joint housings <b>150</b>, <b>152</b> can comprise more than two portions such as, for example, three portions or four portions.</p>
+<p id="p-0057" num="0056">Advantageously, the two-piece joint housings <b>150</b>, <b>152</b> illustrated in the embodiments of <figref idref="DRAWINGS">FIGS. 1-4</figref>, can be relatively inexpensively manufactured and assembled. Also, desirably, the joint housings <b>150</b>, <b>152</b> can provide a uniform aesthetic appearance to the PCMM <b>10</b>. The joint housings <b>150</b>, <b>152</b> can likewise protect the articulation members <b>42</b>, <b>44</b>, <b>46</b>, <b>48</b> from impacts and exposure to dust or debris.</p>
+<p id="p-0058" num="0057">With reference to <figref idref="DRAWINGS">FIGS. 1-2</figref> and <b>5</b>A-<b>5</b>B, a probe caddie <b>200</b> is illustrated. The probe caddie <b>200</b> can allow an operator to quickly and easily switch probes <b>202</b>, <b>204</b>, <b>206</b> on the PCMM <b>10</b>. The probe caddie <b>200</b> can include a body <b>210</b> having recesses <b>212</b>, <b>214</b>, <b>216</b> formed therein. The body <b>210</b> can have an edge <b>220</b> having a curved profile configured to couple to a transfer member <b>24</b> of the PCMM <b>10</b> such as with a fastener, welding, an adhesive, or snap-fit. Desirably, the probe caddie <b>200</b> can be coupled to the PCMM <b>10</b> at a location near the base <b>20</b> such that an operator can have easy access to the probes stored therein and controls on the base <b>20</b> and such that the probe caddie <b>200</b> does not affect the measuring operation of the PCMM <b>10</b>. In other embodiments, the probe caddie <b>200</b> can be shaped and configured to couple at a different location with of the PCMM <b>10</b>, such as, for example, the base <b>20</b>.</p>
+<p id="p-0059" num="0058">With reference to <figref idref="DRAWINGS">FIGS. 5A and 5B</figref>, the probe caddie <b>200</b> can include a plurality of recesses <b>212</b>, <b>214</b>, <b>216</b> formed therein and configured to receive a corresponding plurality of probes <b>202</b>, <b>204</b>, <b>206</b>. In the illustrated embodiment, the probe caddie <b>200</b> comprises three recesses <b>212</b>, <b>214</b>, <b>216</b> to receive the corresponding three probes <b>202</b>, <b>204</b>, <b>206</b>. In other embodiments, however, more or fewer than three recesses can be included in the probe caddie <b>200</b> to allow the probe caddie to retain a desired number of probes. Each of the recesses <b>212</b>, <b>214</b>, <b>216</b> can include one or more retention members <b>222</b> to selectively retain a probe received therein. In the illustrated embodiment, the retention members <b>222</b> comprise tabs formed in the body <b>210</b> of the probe caddie <b>200</b>. In the illustrated embodiment, the tabs can be biased into a retention position such that they tend to retain a probe in recess. The tabs can be sufficiently flexible to allow an operator to withdraw a probe from or replace a probe into the recess as desired. In other embodiments, other retention members or latches can be used to selectively retain a probe. In the illustrated embodiment, each of the recesses <b>212</b>, <b>214</b>, <b>216</b> has a similar size and configuration. In other embodiments, recesses having different sizes and/or configurations can be provided to retain probes having different sizes or configurations.</p>
+<p id="p-0060" num="0059">With reference to <figref idref="DRAWINGS">FIGS. 5A and 5B</figref>, in various embodiments, the probe caddie <b>200</b> can be constructed of various materials. For example, in some embodiments the probe caddie <b>200</b> can be constructed of a thermoplastic material. In other embodiments, the probe caddie <b>200</b> can be constructed of a metallic material.</p>
+<p id="p-0061" num="0060">With continued reference to <figref idref="DRAWINGS">FIGS. 5A and 5B</figref>, probes <b>202</b>, <b>204</b>, <b>206</b> can be provided for use with the PCMM <b>10</b> that, in conjunction with the probe caddie <b>200</b> allow for ease and speed in switching probes on the PCMM <b>10</b>. For example, the probes <b>202</b>, <b>204</b>, <b>206</b> can be configured to allow rapidly repeatable kinematic mounting. In some embodiments, the probes can include push pin connectors <b>230</b> to electrically couple each probe <b>202</b>, <b>204</b>, <b>206</b> to the PCMM <b>10</b> when in use. The probes <b>202</b>, <b>204</b>, <b>206</b> can also include alignment features, such as grooves <b>232</b> formed therein to allow repeatable mounting at a desired alignment with the PCMM <b>10</b>.</p>
+<p id="p-0062" num="0061">Although this application has been disclosed in the context of certain preferred embodiments and examples, it will be understood by those skilled in the art that the present inventions extend beyond the specifically disclosed embodiments to other alternative embodiments and/or uses of the inventions and obvious modifications and equivalents thereof. In addition, while the number of variations of the inventions have been shown and described in detail, other modifications, which are within the scope of this inventions, will be readily apparent to those of skill in the art based upon this disclosure. It is also contemplated that various combinations or subcombinations of the specific features and aspects of the embodiments may be made and still fall within the scope of the inventions. Accordingly, it should be understood that various features and aspects of the disclosed embodiments can be combined with, or substituted for, one another in order to perform varying modes of the disclosed invention. Thus, it is intended that the scope of the present inventions herein disclosed should not be limited by the particular disclosed embodiments described above, but should be determined only by a fair reading of the claims.</p>
+<?DETDESC description="Detailed Description" end="tail"?>
+</description>
+<us-claim-statement>What is claimed is:</us-claim-statement>
+<claims id="claims">
+<claim id="CLM-00001" num="00001">
+<claim-text>1. A coordinate measuring machine comprising:
+<claim-text>a first transfer member;</claim-text>
+<claim-text>a second transfer member;</claim-text>
+<claim-text>an articulating joint assembly rotatably coupling the first transfer member to the second transfer member;</claim-text>
+<claim-text>a probe connected to the transfer members and the joint assembly; and</claim-text>
+<claim-text>a rotatable grip assembly comprising:
+<claim-text>a rotatable sleeve disposed on an outer surface of the first transfer member; and</claim-text>
+<claim-text>a grip portion disposed about the rotatable sleeve,</claim-text>
+</claim-text>
+<claim-text>wherein the first transfer member is separated from the probe by at least one articulating joint assembly.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00002" num="00002">
+<claim-text>2. The coordinate measuring machine of <claim-ref idref="CLM-00001">claim 1</claim-ref>, wherein the rotatable grip assembly further comprises a first retention ring positioned about the transfer member on which the rotatable grip assembly is disposed.</claim-text>
+</claim>
+<claim id="CLM-00003" num="00003">
+<claim-text>3. The coordinate measuring machine of <claim-ref idref="CLM-00002">claim 2</claim-ref>, wherein the rotatable grip assembly further comprises a second retention ring positioned about the transfer member on which the rotatable grip assembly is disposed.</claim-text>
+</claim>
+<claim id="CLM-00004" num="00004">
+<claim-text>4. The coordinate measuring machine of <claim-ref idref="CLM-00001">claim 1</claim-ref>, wherein the grip portion comprises a plurality of dimples formed therein.</claim-text>
+</claim>
+<claim id="CLM-00005" num="00005">
+<claim-text>5. The coordinate measuring machine of <claim-ref idref="CLM-00001">claim 1</claim-ref>, further comprising a second rotatable grip assembly disposed on an outer surface of the second transfer member.</claim-text>
+</claim>
+<claim id="CLM-00006" num="00006">
+<claim-text>6. The coordinate measuring machine of <claim-ref idref="CLM-00001">claim 1</claim-ref>, further comprising a housing disposed about at least a portion of the articulating joint assembly.</claim-text>
+</claim>
+<claim id="CLM-00007" num="00007">
+<claim-text>7. The coordinate measuring machine of <claim-ref idref="CLM-00006">claim 6</claim-ref>, further comprising a second rotatable grip assembly disposed on an outer surface of the housing.</claim-text>
+</claim>
+<claim id="CLM-00008" num="00008">
+<claim-text>8. A coordinate measuring machine comprising:
+<claim-text>a base;</claim-text>
+<claim-text>a first transfer member coupled to the base;</claim-text>
+<claim-text>a second transfer member rotatably coupled to the first transfer member by a first articulation joint assembly;</claim-text>
+<claim-text>a third transfer member rotatably coupled to the second transfer member by a second articulation joint assembly;</claim-text>
+<claim-text>a probe connected to the transfer members; and</claim-text>
+<claim-text>a rotatable grip assembly disposed on the third transfer member and separated from the probe by at least one articulation joint assembly.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00009" num="00009">
+<claim-text>9. The coordinate measuring machine of <claim-ref idref="CLM-00008">claim 8</claim-ref>, wherein the rotatable grip assembly comprises a rotatable sleeve and a grip portion.</claim-text>
+</claim>
+<claim id="CLM-00010" num="00010">
+<claim-text>10. The coordinate measuring machine of <claim-ref idref="CLM-00008">claim 8</claim-ref>, wherein the rotatable grip assembly further comprises a retaining ring configured to prevent axial movement of the rotatable grip assembly relative to the third transfer member.</claim-text>
+</claim>
+<claim id="CLM-00011" num="00011">
+<claim-text>11. A coordinate measuring machine comprising:
+<claim-text>a first transfer member;</claim-text>
+<claim-text>a second transfer member;</claim-text>
+<claim-text>an articulating joint assembly rotatably coupling the first transfer member to the second transfer member;</claim-text>
+<claim-text>a probe connected to the transfer members and the joint assembly, the probe being rotatable relative to the first transfer member; and</claim-text>
+<claim-text>a rotatable grip assembly disposed on the first transfer member.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00012" num="00012">
+<claim-text>12. The coordinate measuring machine of <claim-ref idref="CLM-00011">claim 11</claim-ref>, wherein the rotatable grip assembly comprises a first retention ring positioned about the transfer member on which the rotatable grip assembly is disposed.</claim-text>
+</claim>
+<claim id="CLM-00013" num="00013">
+<claim-text>13. The coordinate measuring machine of <claim-ref idref="CLM-00012">claim 12</claim-ref>, wherein the rotatable grip assembly further comprises a second retention ring positioned about the transfer member on which the rotatable grip assembly is disposed.</claim-text>
+</claim>
+<claim id="CLM-00014" num="00014">
+<claim-text>14. The coordinate measuring machine of <claim-ref idref="CLM-00011">claim 11</claim-ref>, wherein the grip assembly comprises a plurality of dimples formed therein.</claim-text>
+</claim>
+<claim id="CLM-00015" num="00015">
+<claim-text>15. A coordinate measuring machine comprising:
+<claim-text>a first transfer member;</claim-text>
+<claim-text>a second transfer member;</claim-text>
+<claim-text>an articulating joint assembly rotatably coupling the first transfer member to the second transfer member;</claim-text>
+<claim-text>a probe connected to the transfer members and the joint assembly, the probe being rotatable relative to the first transfer member; and</claim-text>
+<claim-text>a rotatable grip assembly disposed about the articulating joint assembly.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00016" num="00016">
+<claim-text>16. The coordinate measuring machine of <claim-ref idref="CLM-00015">claim 15</claim-ref>, further comprising a housing disposed about at least a portion of the articulating joint assembly.</claim-text>
+</claim>
+<claim id="CLM-00017" num="00017">
+<claim-text>17. The coordinate measuring machine of <claim-ref idref="CLM-00016">claim 16</claim-ref>, wherein the rotatable grip assembly is disposed on an outer surface of the housing.</claim-text>
+</claim>
+<claim id="CLM-00018" num="00018">
+<claim-text>18. The coordinate measuring machine of <claim-ref idref="CLM-00017">claim 17</claim-ref>, wherein the rotatable grip assembly further comprises a rotatable sleeve disposed on the housing.</claim-text>
+</claim>
+<claim id="CLM-00019" num="00019">
+<claim-text>19. The coordinate measuring machine of <claim-ref idref="CLM-00018">claim 18</claim-ref>, wherein the rotatable sleeve is a two-piece rotatable sleeve.</claim-text>
+</claim>
+<claim id="CLM-00020" num="00020">
+<claim-text>20. The coordinate measuring machine of <claim-ref idref="CLM-00016">claim 16</claim-ref>, wherein the rotatable grip assembly further comprises a retaining ring press fit onto the housing. </claim-text>
+</claim>
+</claims>
+</us-patent-grant>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE us-patent-grant SYSTEM "us-patent-grant-v42-2006-08-23.dtd" [ ]>
+<us-patent-grant lang="EN" dtd-version="v4.2 2006-08-23" file="US07984559-20110726.XML" status="PRODUCTION" id="us-patent-grant" country="US" date-produced="20110712" date-publ="20110726">
+<us-bibliographic-data-grant>
+<publication-reference>
+<document-id>
+<country>US</country>
+<doc-number>07984559</doc-number>
+<kind>B2</kind>
+<date>20110726</date>
+</document-id>
+</publication-reference>
+<application-reference appl-type="utility">
+<document-id>
+<country>US</country>
+<doc-number>12345355</doc-number>
+<date>20081229</date>
+</document-id>
+</application-reference>
+<us-application-series-code>12</us-application-series-code>
+<us-term-of-grant>
+<us-term-extension>388</us-term-extension>
+</us-term-of-grant>
+<classifications-ipcr>
+<classification-ipcr>
+<ipc-version-indicator><date>20060101</date></ipc-version-indicator>
+<classification-level>A</classification-level>
+<section>G</section>
+<class>01</class>
+<subclass>B</subclass>
+<main-group>1</main-group>
+<subgroup>00</subgroup>
+<symbol-position>F</symbol-position>
+<classification-value>I</classification-value>
+<action-date><date>20110726</date></action-date>
+<generating-office><country>US</country></generating-office>
+<classification-status>B</classification-status>
+<classification-data-source>H</classification-data-source>
+</classification-ipcr>
+<classification-ipcr>
+<ipc-version-indicator><date>20060101</date></ipc-version-indicator>
+<classification-level>A</classification-level>
+<section>G</section>
+<class>01</class>
+<subclass>B</subclass>
+<main-group>7</main-group>
+<subgroup>02</subgroup>
+<symbol-position>L</symbol-position>
+<classification-value>I</classification-value>
+<action-date><date>20110726</date></action-date>
+<generating-office><country>US</country></generating-office>
+<classification-status>B</classification-status>
+<classification-data-source>H</classification-data-source>
+</classification-ipcr>
+<classification-ipcr>
+<ipc-version-indicator><date>20060101</date></ipc-version-indicator>
+<classification-level>A</classification-level>
+<section>G</section>
+<class>01</class>
+<subclass>B</subclass>
+<main-group>7</main-group>
+<subgroup>30</subgroup>
+<symbol-position>L</symbol-position>
+<classification-value>I</classification-value>
+<action-date><date>20110726</date></action-date>
+<generating-office><country>US</country></generating-office>
+<classification-status>B</classification-status>
+<classification-data-source>H</classification-data-source>
+</classification-ipcr>
+</classifications-ipcr>
+<classification-national>
+<country>US</country>
+<main-classification> 33508</main-classification>
+</classification-national>
+<invention-title id="d2e53">Golf club fitting apparatus and method</invention-title>
+<references-cited>
+<citation>
+<patcit num="00001">
+<document-id>
+<country>US</country>
+<doc-number>4885847</doc-number>
+<kind>A</kind>
+<name>Korfanta</name>
+<date>19891200</date>
+</document-id>
+</patcit>
+<category>cited by examiner</category>
+<classification-national><country>US</country><main-classification> 33508</main-classification></classification-national>
+</citation>
+<citation>
+<patcit num="00002">
+<document-id>
+<country>US</country>
+<doc-number>5469627</doc-number>
+<kind>A</kind>
+<name>Denny et al.</name>
+<date>19951100</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00003">
+<document-id>
+<country>US</country>
+<doc-number>5782005</doc-number>
+<kind>A</kind>
+<name>Reilly, III</name>
+<date>19980700</date>
+</document-id>
+</patcit>
+<category>cited by examiner</category>
+<classification-national><country>US</country><main-classification> 33508</main-classification></classification-national>
+</citation>
+<citation>
+<patcit num="00004">
+<document-id>
+<country>US</country>
+<doc-number>5864960</doc-number>
+<kind>A</kind>
+<name>Denicolo et al.</name>
+<date>19990200</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00005">
+<document-id>
+<country>US</country>
+<doc-number>6449860</doc-number>
+<kind>B1</kind>
+<name>Nakai</name>
+<date>20020900</date>
+</document-id>
+</patcit>
+<category>cited by examiner</category>
+<classification-national><country>US</country><main-classification> 33508</main-classification></classification-national>
+</citation>
+<citation>
+<patcit num="00006">
+<document-id>
+<country>US</country>
+<doc-number>6767282</doc-number>
+<kind>B2</kind>
+<name>Matsuyama et al.</name>
+<date>20040700</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00007">
+<document-id>
+<country>US</country>
+<doc-number>7172513</doc-number>
+<kind>B1</kind>
+<name>Rinker</name>
+<date>20070200</date>
+</document-id>
+</patcit>
+<category>cited by examiner</category>
+<classification-national><country>US</country><main-classification> 33508</main-classification></classification-national>
+</citation>
+<citation>
+<patcit num="00008">
+<document-id>
+<country>US</country>
+<doc-number>7221114</doc-number>
+<kind>B2</kind>
+<name>Kojima</name>
+<date>20070500</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00009">
+<document-id>
+<country>US</country>
+<doc-number>7802373</doc-number>
+<kind>B1</kind>
+<name>Diesterheft</name>
+<date>20100900</date>
+</document-id>
+</patcit>
+<category>cited by examiner</category>
+<classification-national><country>US</country><main-classification> 33508</main-classification></classification-national>
+</citation>
+<citation>
+<patcit num="00010">
+<document-id>
+<country>US</country>
+<doc-number>2002/0069133</doc-number>
+<kind>A1</kind>
+<name>Currie et al.</name>
+<date>20020600</date>
+</document-id>
+</patcit>
+<category>cited by examiner</category>
+<classification-national><country>US</country><main-classification>705 26</main-classification></classification-national>
+</citation>
+<citation>
+<patcit num="00011">
+<document-id>
+<country>US</country>
+<doc-number>2003/0005593</doc-number>
+<kind>A1</kind>
+<name>Muldoon</name>
+<date>20030100</date>
+</document-id>
+</patcit>
+<category>cited by examiner</category>
+<classification-national><country>US</country><main-classification> 33508</main-classification></classification-national>
+</citation>
+<citation>
+<patcit num="00012">
+<document-id>
+<country>US</country>
+<doc-number>2003/0136014</doc-number>
+<kind>A1</kind>
+<name>Sones</name>
+<date>20030700</date>
+</document-id>
+</patcit>
+<category>cited by examiner</category>
+<classification-national><country>US</country><main-classification> 33508</main-classification></classification-national>
+</citation>
+<citation>
+<patcit num="00013">
+<document-id>
+<country>US</country>
+<doc-number>2004/0172843</doc-number>
+<kind>A1</kind>
+<name>Sones</name>
+<date>20040900</date>
+</document-id>
+</patcit>
+<category>cited by examiner</category>
+<classification-national><country>US</country><main-classification> 33508</main-classification></classification-national>
+</citation>
+<citation>
+<patcit num="00014">
+<document-id>
+<country>US</country>
+<doc-number>2006/0166757</doc-number>
+<kind>A1</kind>
+<name>Butler, Jr. et al.</name>
+<date>20060700</date>
+</document-id>
+</patcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<patcit num="00015">
+<document-id>
+<country>US</country>
+<doc-number>2008/0201107</doc-number>
+<kind>A1</kind>
+<name>Doherty et al.</name>
+<date>20080800</date>
+</document-id>
+</patcit>
+<category>cited by examiner</category>
+<classification-national><country>US</country><main-classification>702182</main-classification></classification-national>
+</citation>
+<citation>
+<patcit num="00016">
+<document-id>
+<country>US</country>
+<doc-number>2010/0083518</doc-number>
+<kind>A1</kind>
+<name>Kramski</name>
+<date>20100400</date>
+</document-id>
+</patcit>
+<category>cited by examiner</category>
+<classification-national><country>US</country><main-classification> 33508</main-classification></classification-national>
+</citation>
+<citation>
+<nplcit num="00017">
+<othercit>PCT/US2008/088618 International Search Report, Mar. 3, 2009, KB Golf Manufacturing, Inc, pp. 1-4.</othercit>
+</nplcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<nplcit num="00018">
+<othercit>PCT/US2008/088618 Written Opinion of International Searching Authority, Mar. 3, 2008, KB Golf Manufacturing, Inc., pp. 5-14.</othercit>
+</nplcit>
+<category>cited by other</category>
+</citation>
+<citation>
+<nplcit num="00019">
+<othercit>PCT/US2008/088618 Current Claims, International filing date Dec. 31, 2008, KB Golf Manufacturing, Inc., pp. 1-9.</othercit>
+</nplcit>
+<category>cited by other</category>
+</citation>
+</references-cited>
+<number-of-claims>40</number-of-claims>
+<us-exemplary-claim>1</us-exemplary-claim>
+<us-field-of-classification-search>
+<classification-national>
+<country>US</country>
+<main-classification> 33508</main-classification>
+</classification-national>
+<classification-national>
+<country>US</country>
+<main-classification> 33534</main-classification>
+</classification-national>
+</us-field-of-classification-search>
+<figures>
+<number-of-drawing-sheets>15</number-of-drawing-sheets>
+<number-of-figures>15</number-of-figures>
+</figures>
+<us-related-documents>
+<us-provisional-application>
+<document-id>
+<country>US</country>
+<doc-number>61021624</doc-number>
+<date>20080116</date>
+</document-id>
+</us-provisional-application>
+<related-publication>
+<document-id>
+<country>US</country>
+<doc-number>20090222206</doc-number>
+<kind>A1</kind>
+<date>20090903</date>
+</document-id>
+</related-publication>
+</us-related-documents>
+<parties>
+<applicants>
+<applicant sequence="001" app-type="applicant-inventor" designation="us-only">
+<addressbook>
+<last-name>Burns</last-name>
+<first-name>Kevin</first-name>
+<address>
+<city>San Carlos</city>
+<state>CA</state>
+<country>US</country>
+</address>
+</addressbook>
+<nationality>
+<country>omitted</country>
+</nationality>
+<residence>
+<country>US</country>
+</residence>
+</applicant>
+<applicant sequence="002" app-type="applicant-inventor" designation="us-only">
+<addressbook>
+<last-name>Ruigh</last-name>
+<first-name>David A.</first-name>
+<address>
+<city>San Jose</city>
+<state>CA</state>
+<country>US</country>
+</address>
+</addressbook>
+<nationality>
+<country>omitted</country>
+</nationality>
+<residence>
+<country>US</country>
+</residence>
+</applicant>
+<applicant sequence="003" app-type="applicant-inventor" designation="us-only">
+<addressbook>
+<last-name>Gustafson</last-name>
+<first-name>Russ</first-name>
+<address>
+<city>Redwood City</city>
+<state>CA</state>
+<country>US</country>
+</address>
+</addressbook>
+<nationality>
+<country>omitted</country>
+</nationality>
+<residence>
+<country>US</country>
+</residence>
+</applicant>
+</applicants>
+<agents>
+<agent sequence="01" rep-type="attorney">
+<addressbook>
+<orgname>Hickman Palermo Truong &#x26; Becker LLP</orgname>
+<address>
+<country>unknown</country>
+</address>
+</addressbook>
+</agent>
+</agents>
+</parties>
+<assignees>
+<assignee>
+<addressbook>
+<orgname>KB Golf Manufacturing, Inc.</orgname>
+<role>02</role>
+<address>
+<city>San Jose</city>
+<state>CA</state>
+<country>US</country>
+</address>
+</addressbook>
+</assignee>
+</assignees>
+<examiners>
+<primary-examiner>
+<last-name>Bennett</last-name>
+<first-name>G. Bradley</first-name>
+<department>2841</department>
+</primary-examiner>
+</examiners>
+</us-bibliographic-data-grant>
+<abstract id="abstract">
+<p id="p-0001" num="0000">A golf club fitting apparatus comprises an image display unit; a linear guide having a lower end that is attached to the image display unit and rotatable in relation to the unit; an arm that is attached to the linear guide and slidable in relation to the linear guide; a first encoder coupled to the linear guide and configured to generate a rotation signal when the linear guide is rotated relative to the image display unit; a second encoder capable of generating a linear measurement signal when the linear guide slides; and image display logic coupled to the first encoder, second encoder, and image display unit and which when executed by one or more processors causes displaying a golf club head image on the image display unit, and re-displaying the image in a changed configuration in response to one or both of the rotation signal and the linear measurement signal.</p>
+</abstract>
+<drawings id="DRAWINGS">
+<figure id="Fig-EMI-D00000" num="00000">
+<img id="EMI-D00000" he="220.64mm" wi="162.48mm" file="US07984559-20110726-D00000.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00001" num="00001">
+<img id="EMI-D00001" he="199.39mm" wi="156.38mm" file="US07984559-20110726-D00001.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00002" num="00002">
+<img id="EMI-D00002" he="203.12mm" wi="144.02mm" file="US07984559-20110726-D00002.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00003" num="00003">
+<img id="EMI-D00003" he="221.74mm" wi="153.50mm" file="US07984559-20110726-D00003.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00004" num="00004">
+<img id="EMI-D00004" he="167.13mm" wi="147.57mm" file="US07984559-20110726-D00004.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00005" num="00005">
+<img id="EMI-D00005" he="152.91mm" wi="136.14mm" file="US07984559-20110726-D00005.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00006" num="00006">
+<img id="EMI-D00006" he="145.37mm" wi="133.35mm" file="US07984559-20110726-D00006.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00007" num="00007">
+<img id="EMI-D00007" he="145.63mm" wi="130.47mm" file="US07984559-20110726-D00007.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00008" num="00008">
+<img id="EMI-D00008" he="154.18mm" wi="149.10mm" file="US07984559-20110726-D00008.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00009" num="00009">
+<img id="EMI-D00009" he="149.78mm" wi="149.35mm" file="US07984559-20110726-D00009.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00010" num="00010">
+<img id="EMI-D00010" he="157.99mm" wi="151.64mm" file="US07984559-20110726-D00010.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00011" num="00011">
+<img id="EMI-D00011" he="221.15mm" wi="163.32mm" file="US07984559-20110726-D00011.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00012" num="00012">
+<img id="EMI-D00012" he="184.15mm" wi="154.52mm" orientation="landscape" file="US07984559-20110726-D00012.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00013" num="00013">
+<img id="EMI-D00013" he="170.01mm" wi="119.13mm" file="US07984559-20110726-D00013.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00014" num="00014">
+<img id="EMI-D00014" he="231.90mm" wi="166.45mm" file="US07984559-20110726-D00014.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00015" num="00015">
+<img id="EMI-D00015" he="190.84mm" wi="150.03mm" file="US07984559-20110726-D00015.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+</drawings>
+<description id="description">
+<?RELAPP description="Other Patent Relations" end="lead"?>
+<heading id="h-0001" level="1">BENEFIT CLAIM</heading>
+<p id="p-0002" num="0001">This application claims benefit of Provisional Appln. 61/021,624, filed Jan. 16, 2008, the entire contents of which is hereby incorporated by reference as if fully set forth herein, under 35 U.S.C. &#xa7;119(e).</p>
+<?RELAPP description="Other Patent Relations" end="tail"?>
+<?BRFSUM description="Brief Summary" end="lead"?>
+<heading id="h-0002" level="1">FIELD OF THE INVENTION</heading>
+<p id="p-0003" num="0002">The present disclosure relates to fitting golf clubs to players. The disclosure relates more specifically to apparatus that can measure parameters of a golf club.</p>
+<heading id="h-0003" level="1">BACKGROUND</heading>
+<p id="p-0004" num="0003">The approaches described in this section are approaches that could be pursued, but not necessarily approaches that have been previously conceived or pursued. Therefore, unless otherwise indicated, it should not be assumed that any of the approaches described in this section qualify as prior art merely by virtue of their inclusion in this section.</p>
+<p id="p-0005" num="0004">A golfer can achieve better performance on the course when the golfer's clubs are well fitted to the height and stance of the golfer. However, current approaches for fitting golf clubs to players are crude. Players can buy pre-manufactured sets of golf clubs in which one club size is intended to fit all golfers. Alternatively, a player can opt for custom fitting.</p>
+<p id="p-0006" num="0005">One present approach for custom golf club fitting typically involves a player repeatedly gripping and test-swinging multiple different sample clubs until the player identifies a sample club that appears to fit. A drawback of this approach is that the seller of the golf clubs must maintain an inventory of sample clubs in a large range of sizes. The approach is also impractical for most retailers because a large amount of storage space is needed to store an inventory of clubs for custom fitting. When the approach is multiplied across many different golf club product lines, the number of clubs required for accurate fitting is too numerous and the cost is too large for a large number of retail locations to implement it.</p>
+<p id="p-0007" num="0006">The approach is also tedious for the golfer, who must repeatedly grip, try, and evaluate many different clubs having different parameters such as shaft length, head lie angle, shaft flexibility, etc.</p>
+<p id="p-0008" num="0007">Golf club vendors typically address some of these issues by holding periodic club fitting events. For example, a truck carrying the inventory of clubs visits a country club, golf store or other retail outlet for a short period of time. However, for the golfer this approach is inconvenient because the golfer may not learn about the fitting event until too late.</p>
+<p id="p-0009" num="0008">Further using the foregoing approach to accurately fit a golfer may require the golf club vendor to make up dozens of clubs that fit only a small percentage of golfers, thus wasting manufacturing resources.</p>
+<p id="p-0010" num="0009">U.S. Pat. No. 5,469,627 shows a golf club fitting apparatus that uses electrical contacts and sensors to detect the length and angle at which a golf club has held. However, the use of electrical contacts as described in the '627 patent is believed to provide inaccurate measurements. Further, the '627 patent uses a single fixed fitting club head <b>14</b> (<figref idref="DRAWINGS">FIG. 1</figref>). If a golfer prefers to use a golf club head of a different type (such as a two-ball putter head rather than a blade putter head), the golfer cannot accurately visualize how a custom-made club with that golfer's preferred head will actually look and feel.</p>
+<heading id="h-0004" level="1">SUMMARY OF DISCLOSURE</heading>
+<p id="p-0011" num="0010">The invention and the disclosure are summarized in the appended claims, which are the exclusive statement of the scope of the invention.</p>
+<p id="p-0012" num="0011">In one aspect, an apparatus comprises an image display unit; a golf club shaft apparatus having a lower end that is attached to the image display unit and that is slidable and rotatable in relation to the unit; and image display logic coupled to the golf club shaft apparatus and image display unit and which when executed by one or more processors causes displaying a virtual golf club head image on the image display unit, and re-displaying the image in a changed configuration in response to sliding or rotation of the golf club shaft apparatus.</p>
+<p id="p-0013" num="0012">In one aspect, the present disclosure provides a golf club fitting apparatus, comprising a shaft having a grip end and a bottom end; an elongated arm having a first end affixed to the bottom end of the shaft, and having a second end that is attached at an angle to a first linear slide member; a second linear slide member that is slidably attached to the first linear slide member and rotatably attached to a generally planar base; a linear encoder coupled to the first linear slide member; an angular encoder coupled to the second linear slide member; an image display unit affixed generally horizontally to the base; a data processor coupled to the linear encoder, the angular encoder, and the image display; logic coupled to the data processor and which, when executed by the data processor, causes: receiving a linear measurement from the linear encoder; receiving an angular measurement from the angular encoder; computing a length of a golf club and a lie angle of a golf club head based on the linear measurement and angular measurement; and displaying, on the image display, an image of the golf club head based on the linear measurement and angular measurement.</p>
+<p id="p-0014" num="0013">One feature of this aspect further comprises a network interface that couples the data processor to a data network, and the logic when executed causes the data processor to send the linear measurement and the angular measurement through the data network to a server. In another feature, the logic causes receiving a changed linear measurement from the linear encoder; receiving a changed angular measurement from the angular encoder; and re-displaying, on the image display, an updated image of the golf club head based on the changed linear measurement and changed angular measurement.</p>
+<p id="p-0015" num="0014">In one feature, the image of the golf club head is an image of a putter. In another feature, the image of the golf club head is an image of any one of a putter, an iron, a wood, a hybrid club, a wedge, and a metal wood.</p>
+<p id="p-0016" num="0015">According to another aspect, the disclosure provides an apparatus, comprising an image display unit; a linear guide having a lower end that is attached to the image display unit and rotatable in relation to the unit; an arm that is attached to the linear guide and slidable in relation to the linear guide; a first encoder coupled to the linear guide and configured to generate a rotation signal when the linear guide is rotated relative to the image display unit; a second encoder capable of generating a linear measurement signal when the linear guide slides; and image display logic coupled to the first encoder, second encoder, and image display unit and which when executed by one or more processors causes displaying a golf club head image on the image display unit, and re-displaying the image in a changed configuration in response to one or both of the rotation signal and the linear measurement signal.</p>
+<p id="p-0017" num="0016">In one feature, the arm comprises a shaft having a golf club grip attached to the shaft. In another feature, the first encoder is an optical rotary encoder. In yet another feature, the second encoder is an optical linear encoder.</p>
+<p id="p-0018" num="0017">In still another feature the apparatus further comprises data output logic which when executed causes generating an output rotation value and an output linear measurement value that represent a position of the arm.</p>
+<p id="p-0019" num="0018">In yet another feature the apparatus comprises data output logic coupled to the first encoder and the second encoder and which when executed causes generating an output rotation value and an output linear measurement value that represent a position of the arm; and golf club fitting logic coupled to the data output logic and which when executed causes reading the output rotation value and the output linear measurement value, determining a length of a shaft of a golf club based on the output linear measurement value, and determining an angle of the golf club shaft relative to the image display unit based on the output rotation value.</p>
+<p id="p-0020" num="0019">In a related feature, the golf club fitting logic is configured to determine a head weight of a head for the golf club shaft. In another feature, the golf club fitting logic is configured to determine a value of static loft at address for the golf club.</p>
+<p id="p-0021" num="0020">In yet another feature, a shaft having a golf club grip is removably attached to the arm.</p>
+<p id="p-0022" num="0021">In another variation, the apparatus further comprises data output logic coupled to the first encoder and the second encoder and which when executed causes generating an output rotation value and an output linear measurement value that represent a position of the arm; and golf club fitting logic coupled to the data output logic and which when executed causes reading the output rotation value and the output linear measurement value, determining a length of a shaft of a golf club based on the output linear measurement value, determining an angle of the golf club shaft relative to the image display unit based on the output rotation value, and communicating the output rotation value and the output linear measurement value over a data network to a data processing system associated with a maker of custom golf clubs.</p>
+<p id="p-0023" num="0022">In one feature, a shaft having a golf club grip is removably attached to the arm, wherein a length encoder is coupled to the shaft, wherein the golf club fitting logic is coupled to the shaft and is configured to determine a length of the shaft based on a signal received from the length encoder. In another feature, a spring is coupled to the linear guide and the image display unit, and positioned to urge the linear guide to rotate to a generally upright position.</p>
+<p id="p-0024" num="0023">In another aspect of the disclosure, an apparatus comprises an image display unit; a linear guide having a lower end that is attached to the image display unit and rotatable in relation to the unit; an arm that is attached to the linear guide and slidable in relation to the linear guide, wherein the arm comprises a shaft having a golf club grip attached to the shaft; a first encoder coupled to the linear guide and configured to generate a rotation signal when the linear guide is rotated relative to the image display unit; a second encoder capable of generating a linear measurement signal when the linear guide slides; image display logic coupled to the first encoder, second encoder, and image display unit and which when executed by one or more processors causes displaying a golf club head image on the image display unit, and re-displaying the image in a changed configuration in response to one or both of the rotation signal and the linear measurement signal; data output logic which when executed causes generating an output rotation value and an output linear measurement value that represent a position of the arm; golf club fitting logic coupled to the data output logic and which when executed causes reading the output rotation value and the output linear measurement value, determining a length of a shaft of a golf club based on the output linear measurement value, determining an angle value for an angle of the golf club shaft relative to the image display unit based on the output rotation value, and determining a head weight value for a head weight of a head for the golf club shaft; communicating the output rotation value, the output linear measurement value, the angle, and the head weight value over a data network to a data processing system associated with a maker of custom golf clubs.</p>
+<p id="p-0025" num="0024">Still a further aspect of the disclosure provides a computer-implemented method, comprising receiving a rotation value and a linear measurement value from a first encoder and a second encoder that are coupled to an arm that is rotatable and slidable with respect to a base when the arm is held in a golf club ball address position; creating and storing, based on the linear measurement value, a length value for a length of a golf club; creating and storing, based on the rotation value, a lie angle value for a lie angle of the golf club.</p>
+<p id="p-0026" num="0025">One feature of this aspect further comprises communicating the length and the lie angle over a data network. Another feature comprises determining a head weight value for a head weight of a head for the golf club shaft. Another feature comprises determining a value of static loft at address for the golf club.</p>
+<p id="p-0027" num="0026">In another feature, a golf club head image is displayed on the image display unit, and re-displayed in a changed configuration in response to one or both of rotating the arm and sliding the arm. The golf club head image is an image of a head of any one of a putter, an iron, a wood, a hybrid club, a wedge, and a metal wood.</p>
+<p id="p-0028" num="0027">In another aspect, the disclosure provides a method of manufacturing a golf club, comprising establishing a data communication session over a network to a golf club fitting apparatus comprising a linear guide having a lower end that is attached to the image display unit and rotatable in relation to the unit, an arm that is attached to the linear guide and slidable in relation to the linear guide, a first encoder coupled to the linear guide and configured to generate a rotation signal when the linear guide is rotated relative to the image display unit, and a second encoder capable of generating a linear measurement signal when the linear guide slides; receiving over the network a length value, representing a length of a golf club, based on the linear measurement signal; receiving over the network a lie angle value representing a lie angle of the golf club based on the rotation signal; and making a golf club having a shaft having a length equal to the received length value and having a head lie angle equal to the received lie angle value.</p>
+<p id="p-0029" num="0028">In one feature, the method comprises receiving a head weight value for a head weight of a head for the golf club shaft, and making the golf club with a head having a weight equal to the received head weight value. In another feature, the method comprises receiving a static loft value representing a static loft at address of a head of the golf club, and making the golf club with a head having a static loft value equal to the received static loft value.</p>
+<p id="p-0030" num="0029">In yet another feature, the golf club comprises any one of a putter, an iron, a wood, a hybrid club, a wedge, and a metal wood. According to a further feature, the method comprises receiving over the network an output rotation value and an output linear measurement value that represent a position of the arm; determining the length of the shaft of the golf club based on the output linear measurement value; and determining the lie angle of the golf club based on the output rotation value.</p>
+<p id="p-0031" num="0030">Other aspects and features will be come apparent from the complete disclosure and the appended claims.</p>
+<?BRFSUM description="Brief Summary" end="tail"?>
+<?brief-description-of-drawings description="Brief Description of Drawings" end="lead"?>
+<description-of-drawings>
+<heading id="h-0005" level="1">BRIEF DESCRIPTION OF THE DRAWINGS</heading>
+<p id="p-0032" num="0031">The present invention is illustrated by way of example, and not by way of limitation, in the figures of the accompanying drawings and in which like reference numerals refer to similar elements and in which:</p>
+<p id="p-0033" num="0032"><figref idref="DRAWINGS">FIG. 1A</figref> is a block diagram of a golf club fitting system;</p>
+<p id="p-0034" num="0033"><figref idref="DRAWINGS">FIG. 1B</figref> illustrates angular relationships of the head and shaft of a golf club;</p>
+<p id="p-0035" num="0034"><figref idref="DRAWINGS">FIG. 2</figref> is an exploded perspective view of a golf club fitting apparatus;</p>
+<p id="p-0036" num="0035"><figref idref="DRAWINGS">FIG. 3</figref> is a front elevation view of the apparatus of <figref idref="DRAWINGS">FIG. 2</figref>;</p>
+<p id="p-0037" num="0036"><figref idref="DRAWINGS">FIG. 4</figref> is a rear elevation view of the apparatus of <figref idref="DRAWINGS">FIG. 2</figref>;</p>
+<p id="p-0038" num="0037"><figref idref="DRAWINGS">FIG. 5</figref> is a left side elevation view of the apparatus of <figref idref="DRAWINGS">FIG. 2</figref>;</p>
+<p id="p-0039" num="0038"><figref idref="DRAWINGS">FIG. 6</figref> is a right side elevation view of the apparatus of <figref idref="DRAWINGS">FIG. 2</figref>;</p>
+<p id="p-0040" num="0039"><figref idref="DRAWINGS">FIG. 7</figref> is a top plan view of the apparatus of <figref idref="DRAWINGS">FIG. 2</figref>;</p>
+<p id="p-0041" num="0040"><figref idref="DRAWINGS">FIG. 8A</figref> is a bottom plan view of the apparatus of <figref idref="DRAWINGS">FIG. 2</figref>;</p>
+<p id="p-0042" num="0041"><figref idref="DRAWINGS">FIG. 8B</figref> is a bottom plan view of an alternative embodiment;</p>
+<p id="p-0043" num="0042"><figref idref="DRAWINGS">FIG. 9</figref> is a flow diagram of a method of fitting a golf club;</p>
+<p id="p-0044" num="0043"><figref idref="DRAWINGS">FIGS. 10A</figref>, <b>10</b>B, and <b>10</b>C are diagrams of screen displays that a computer may generate for fitting a golf club using the method and apparatus herein; and</p>
+<p id="p-0045" num="0044"><figref idref="DRAWINGS">FIG. 11</figref> is a flow diagram of a method of making a golf club.</p>
+</description-of-drawings>
+<?brief-description-of-drawings description="Brief Description of Drawings" end="tail"?>
+<?DETDESC description="Detailed Description" end="lead"?>
+<heading id="h-0006" level="1">DESCRIPTION OF EXAMPLE EMBODIMENTS</heading>
+<p id="p-0046" num="0045">In the following description, for the purposes of explanation, numerous specific details are set forth in order to provide a thorough understanding of the present invention. It will be apparent, however, that the present invention may be practiced without these specific details. In other instances, well-known structures and devices are shown in block diagram form in order to avoid unnecessarily obscuring the present invention.</p>
+<p id="p-0047" num="0046">1.0 Golf Club Fitting System</p>
+<p id="p-0048" num="0047"><figref idref="DRAWINGS">FIG. 1A</figref> is a block diagram of a golf club fitting system. A golf club retailer <b>10</b> has a kiosk <b>20</b> and a network access point <b>26</b>. Golf club retailer comprises any location that can offer golf clubs for sale, including a retail store, pro shop, truck, trailer, shopping mall kiosk location, etc. In an embodiment, kiosk <b>20</b> comprises a golf club fitting apparatus <b>12</b>, computer <b>14</b>, and display <b>22</b>.</p>
+<p id="p-0049" num="0048">Golf club fitting apparatus <b>12</b> comprises a movable golf club arm coupled to a plurality of encoders in a mechanical arrangement that is further described below with reference to <figref idref="DRAWINGS">FIG. 2-9</figref> inclusive, and which is not shown in <figref idref="DRAWINGS">FIG. 1A</figref> for clarity. Generally, a customer grasps the arm of apparatus <b>12</b> and stands in a comfortable swing address position or playing position. A linear encoder of the apparatus <b>12</b> detects a length of a golf club that a customer prefers and an angular encoder detects a lie angle of a golf club head, based on the customer's stance in the swing address position.</p>
+<p id="p-0050" num="0049">Golf club fitting apparatus <b>12</b> comprises a display <b>15</b> and an encoder interface <b>13</b> that can provide data representing positions of the encoders to computer <b>14</b>. In an embodiment, computer <b>14</b> is coupled to display <b>22</b> and to display <b>15</b>. For example, dual video cards may be used in computer <b>14</b>.</p>
+<p id="p-0051" num="0050">As further described herein, in an embodiment, the display <b>15</b> of the apparatus <b>12</b> displays a three-dimensional graphical image of a golf club head in a position that simulates the appearance of an actual golf club head when a player holds the apparatus <b>12</b> in a swing address position. As the customer moves an arm of the apparatus <b>12</b> linearly or angularly, software in computer <b>14</b> re-displays the golf club head image in a changed position that matches movement of the customer. Therefore, the customer can see a view of a virtual golf club head in display <b>15</b> that changes in real time as the customer's stance changes. The image in display <b>15</b> may also include a virtual golf ball, putting green, fairway surface, or other visual information.</p>
+<p id="p-0052" num="0051">The display <b>22</b> displays operational information, such as club selection parameters, customer identifying information, order information, etc., as further described herein. Display <b>22</b> may show information that computer <b>14</b> obtains in part over network <b>30</b> as part of interacting with data server <b>32</b>. Display <b>22</b> may show stored web pages or other electronic documents and also may display pages that are obtained in real time over network <b>30</b> as part of interacting with data server <b>32</b> or other systems.</p>
+<p id="p-0053" num="0052">In various embodiments, displays <b>15</b>, <b>22</b> may comprise LCD flat panel video displays, CRT displays, etc. In one embodiment, displays <b>15</b>, <b>22</b> comprise 10&#x2033; to 17&#x2033; LCD flat panel displays, although the diagonal dimensions of the displays are not critical.</p>
+<p id="p-0054" num="0053">In an embodiment, computer <b>14</b> comprises data tables <b>16</b>, serial port <b>18</b>, and network interface <b>24</b>. Data tables <b>16</b> store information about golf club products that are offered to customers through kiosk <b>20</b>, club selection parameters entered by or for a customer, customer identifying information, order information, etc., as further described herein.</p>
+<p id="p-0055" num="0054">Computer <b>14</b> also hosts other software elements for controlling serial port <b>18</b>, network interface <b>24</b>, and other hardware, and for providing software functions as further described herein including generating and displaying 2D or 3D graphical images of a virtual golf club head. In one embodiment, computer <b>14</b> hosts an operating system such as Linux or OpenBSD, an Internet browser such as Netscape, Internet Explorer, or Firefox, OpenGL or Macromedia Adobe Flash for generating 3D displays, and application programs that perform the functions described further herein.</p>
+<p id="p-0056" num="0055">Serial port <b>18</b> is coupled to encoder interface <b>13</b> to receive data from encoders of apparatus <b>12</b> for use in computer <b>14</b>. Using serial port <b>18</b>, computer <b>14</b> can read values of the encoders and determine a then-current position of the apparatus <b>12</b> for use in fitting a player to a golf club, as further described herein. Computer <b>14</b> then can format the values into club selection parameters that are provided to a golf club manufacturer for use in custom manufacture of golf clubs.</p>
+<p id="p-0057" num="0056">In an embodiment, a linear encoder and angular encoder interface to an RS232 serial interface of the computer <b>14</b> through an interface board, such as the Millenium Research ENC232 encoder to RS232 interface board. The Millenium Research board can receive inputs directly from the encoders and provide RS232 output. In other embodiments, the encoders interface to computer <b>14</b> using a parallel interface, USB interface, FireWire interface, etc. In an embodiment, apparatus <b>12</b> comprises a computer and a network interface, so that the apparatus <b>12</b> and computer <b>14</b> comprise individual network-enabled elements that may be coupled using a network, such as an Ethernet-based LAN.</p>
+<p id="p-0058" num="0057">Network interface <b>24</b> of computer <b>14</b> is coupled to network access point <b>26</b>, which may comprise a DSL modem, cable modem, telephone modem, router, or other interface to a network <b>30</b>. A golf club manufacturer <b>40</b> has a data server <b>32</b> that is communicatively coupled to network <b>30</b>.</p>
+<p id="p-0059" num="0058">In an embodiment, based on receiving from kiosk <b>20</b> over network <b>30</b> a customer order, which includes club selection parameters, customer identifying information, order information, etc., data server <b>32</b> generates production data <b>34</b>, which is provided to shop floor <b>36</b>. The golf club manufacturer <b>40</b> makes, either at shop floor <b>36</b> or indirectly through one or more subcontractors, one or more golf clubs that are custom-fit to the customer based on the received information. The golf club manufacturer <b>40</b> then provides or arranges to provide the custom-fit golf club(s) to the customer based on the received information.</p>
+<p id="p-0060" num="0059">Using the arrangement of <figref idref="DRAWINGS">FIG. 1A</figref>, a retailer can offer custom fitting of golf clubs without maintaining an inventory of clubs by providing the apparatus <b>12</b> for measuring player attributes and then delivering the attributes to an offsite manufacturer. The customer later returns to the retail location to pick up the custom made club. Using just-in-time manufacturing techniques and overnight courier shipping the time from custom fitting to delivery of a club can be as short as two days. The retailer is not required to maintain a large inventory of clubs, and the customer is not required to repeatedly try out multiple different clubs. The measurements that the apparatus collects are highly accurate.</p>
+<p id="p-0061" num="0060"><figref idref="DRAWINGS">FIG. 1B</figref> illustrates angular relationships of the head and shaft of a golf club in two views labeled A and B. Referring first to view A, a golf putter <b>106</b> comprises a head <b>108</b> that is affixed to a neck and an angled shaft element <b>112</b>. Golf clubs and putters are commonly constructed with the shaft affixed to the body of the club at an angle relative to the ground, as viewed from the striking face of the club, known commonly as the &#x201c;angle of lie&#x201d;, or &#x201c;lie angle&#x201d; <b>102</b>, as seen in view A. In the apparatus herein, the angle can be set to between 63 degrees and 80 degrees from the horizontal <b>104</b>, or an angle lesser or greater, limited only by applicable golf sanctioning bodies' regulations. The range of values for lie angle <b>102</b> can accommodate a wide distribution of player stances and putting styles, as well as the variety of construction of the putter to be fitted.</p>
+<p id="p-0062" num="0061">In an embodiment, a virtual display represents and displays an image of the putter <b>106</b> from the viewpoint of the player seeking to have a putter fitted to the player. The displayed position and shape of the putter head <b>108</b> is updated in real time on the display by the fitting system processor to precisely match the configuration being fitted. Though the location of the bend <b>114</b> in the putter neck <b>110</b> can vary widely among different putter styles, and be closer or nearer the ground, towards the heel end <b>116</b> or toe end <b>118</b> of the putter, a pivot point <b>120</b> used in computations within the fitting apparatus <b>12</b> is fixed at an arbitrary point which is convenient mechanically, based on a known position of the center of the neck bend <b>114</b>. Thus the displayed image of the putter neck <b>110</b> must move in unison with the fitting apparatus shaft <b>218</b> and grip <b>214</b> as if it were a real putter in the hands of the player being fitted. Further, a value for the position of the center of the neck bend <b>114</b> for different golf club models may be stored data tables <b>16</b> and retrieved by computer <b>14</b> for use in displaying images of virtual clubheads correctly.</p>
+<p id="p-0063" num="0062">In the embodiment, of <figref idref="DRAWINGS">FIG. 1B</figref> view A, the pivot axis <b>122</b> terminates at a pivot point <b>120</b> that is offset by 0.666 inches from a center <b>124</b> of the putter <b>106</b> and the lie angle <b>102</b> is 63 degrees. In the embodiment of <figref idref="DRAWINGS">FIG. 1B</figref> view B, the pivot axis terminates at a point that is offset by 0.834 inches from a center of the putter and the lie angle is 70 degrees. For other lie angle values the pivot axis <b>122</b> may terminate at other offset points.</p>
+<p id="p-0064" num="0063">In an embodiment, a three-dimensional model of the putter <b>106</b> is constructed in a Computer Aided Design (CAD) software program. The model is positioned in an assembly containing a model of the fitting apparatus <b>12</b>, such that the lie angle <b>102</b> of the putter <b>106</b> can be changed, and the shaft axis <b>122</b> of the putter is concentric with the shaft and grip of the fitting apparatus, while the head <b>108</b> of the putter <b>106</b> remains horizontal and centered in the field of view laterally. If the pivot axis <b>120</b> of the fitting apparatus <b>12</b> were placed exactly at the center of the bend <b>114</b> of the putter <b>106</b>, the only change visible in the display <b>15</b> as the neck angle changed would be the shape of the neck as it moves through its angular range. If, however, the location or center of the putter neck bend and the location of the fitting machine arm pivot are not coincident, the putter will move nearer or closer to the player as the neck angle changes.</p>
+<p id="p-0065" num="0064">The images displayed on the display <b>15</b> of fitting apparatus <b>12</b> are rendered using the photorealistic rendering module within Solidworks or a similar CAD program. The images are rendered from the perspective of the player with his eye directly above the ball vertically, which is a putting stance that is accepted as correct. A sequence of still graphical images, covering the entire range of lie angles, is rendered at an angular interval of approximately 0.2 degrees, or more or less, as appropriate to depict smooth motion. Images can be rendered from the perspective of a player of average height, or many sequences of images can be generated from the perspective of players of different heights as may be needed for players of different stature. Additionally, a standard head tracking mechanism can be employed to allow any possible player perspective to be rendered.</p>
+<p id="p-0066" num="0065">In an embodiment, the images are transferred to the processor of the fitting apparatus <b>12</b> and displayed in synchronization with the angle of the fitting machine pivoting arm, such that the image of the putter appears exactly as it would if a real putter were positioned on the floor. Additionally, two sets of images, rendered from the perspective of each eye can also be employed with an appropriate display capable of generating stereo images.</p>
+<p id="p-0067" num="0066">2.0 Golf Club Fitting Apparatus</p>
+<p id="p-0068" num="0067"><figref idref="DRAWINGS">FIG. 2</figref> is an exploded perspective view of a golf club fitting apparatus. In an embodiment, a generally rectangular, planar base plate <b>202</b> and a generally rectangular, planar top plate <b>208</b> having a hole <b>212</b> form a housing for display <b>15</b> and a circuit board <b>13</b>&#x2032;, which may comprise encoder interface <b>13</b> (<figref idref="DRAWINGS">FIG. 1A</figref>). A transparent protective sheet <b>204</b> overlays the display <b>15</b> to protect the display from scratches, dirt, or damage. The circuit board <b>13</b>&#x2032; is received in a recess in an underside of top plate <b>208</b>. In this arrangement, images appearing on display <b>15</b> are visible through hole <b>212</b> when a user is looking downward toward the top plate <b>208</b>.</p>
+<p id="p-0069" num="0068">Top plate <b>208</b> comprises a recess <b>210</b> in which a sliding, rotating arm assembly is mounted to enable a person to grasp a simulated golf club and to slide and rotate the shaft of the club until the shaft is in a comfortable position at address of a simulated golf ball. In an embodiment, a grip <b>214</b> is affixed to a shaft <b>218</b>, which comprises a lower end <b>220</b> that is affixed in a generally upright or vertical orientation in a hole <b>222</b> of a first end of an arm <b>224</b>. End <b>220</b> and hole <b>222</b> may be threaded and retained in place by a nut <b>216</b> to facilitate removing and replacing the shaft <b>218</b>. In this arrangement, the grip <b>214</b> and shaft <b>218</b> may be removed from the apparatus <b>12</b> and a different grip and/or shaft having a different length or other characteristics may be mounted on arm <b>224</b>. In an embodiment that is used for fitting putters, for example, the arrangement of <figref idref="DRAWINGS">FIG. 1A</figref> allows using an interchangeable shaft for custom fitting a belly putter or long putter.</p>
+<p id="p-0070" num="0069">A second end of the arm <b>224</b> is affixed perpendicularly to a top end of a linear guide rail <b>226</b> that forms one element of a sliding linear guide <b>228</b>. In an embodiment, linear guide <b>228</b> allows about 10&#x2033; (25 cm) to 12&#x2033; (30 cm) of upward or downward linear travel of the shaft <b>218</b> in an axial direction; in various embodiments, linear guides of 10&#x2033; to 32&#x2033; may be appropriate.</p>
+<p id="p-0071" num="0070">Thus, in use, pulling up or pushing down on grip <b>214</b> vertically with respect to base plate <b>208</b> causes the grip, shaft <b>218</b>, arm <b>224</b>, and linear guide rail <b>226</b> to slide up or down with respect to linear guide <b>228</b>. A digital linear encoder <b>229</b> is integrated into linear guide <b>228</b> and can generate digital electronic signals representing a relative linear position of the guide along its dimensions of travel. The linear encoder <b>229</b> is electrically coupled to circuit board <b>13</b>&#x2032; using wiring or cables that are omitted for clarity.</p>
+<p id="p-0072" num="0071">A lower end of the linear guide <b>228</b> comprises a hole <b>230</b> arranged perpendicular to a direction of travel of the linear guide. The linear guide <b>228</b> rotates around an axis of hole <b>230</b> on an axle <b>239</b> that is rotatably mounted in a bearing plate <b>232</b> using mounting hardware <b>238</b>, <b>240</b> that comprises nuts, washers, ball bearings, etc. The bearing plate <b>232</b> is fixed in a case mount <b>242</b> that seats in recess <b>210</b> of housing <b>208</b> and is held in the recess using one or more fasteners such as machine screws, which are omitted for clarity.</p>
+<p id="p-0073" num="0072">The linear guide <b>228</b> may be protected within a housing <b>248</b> having right and left side plates <b>250</b>A, <b>250</b>B, respectively. The side plates <b>250</b>A, <b>250</b>B may have semicircular or beveled lower ends to permit the side plates to rotate through an angle of approximately 90 degrees when affixed to housing <b>248</b> and during rotation with respect to top plate <b>208</b>. The side plates conceal the mechanism to prevent damage to the mechanism, personal injury, entanglement in the apparatus, etc.</p>
+<p id="p-0074" num="0073">Thus, in use, pulling or pushing grip <b>214</b> in a direction approximately perpendicular to linear guide <b>228</b> causes the grip, shaft <b>218</b>, arm <b>224</b>, and linear guide rail <b>226</b> to rotate with respect to axle <b>239</b> and base plate <b>208</b>. An electronic digital angular encoder <b>234</b> is integrated into the lower end of the linear guide <b>228</b> for measuring an angular position of the lower end of the linear guide as the linear guide rotates on axle <b>239</b> and can generate digital electronic signals representing a relative rotational position of the guide or relative angular position of the guide or shaft with respect to a horizontal plane coplanar with the base <b>208</b> or ground surface. The angular encoder <b>234</b> is electrically coupled to circuit board <b>13</b>&#x2032; using wiring or cables that are omitted for clarity. In this disclosure, the terms &#x201c;angular encoder&#x201d; and &#x201c;rotary encoder&#x201d; are equivalent. The angular encoder <b>234</b> may be affixed to linear guide <b>228</b> using a shoulder bolt or other suitable fastener.</p>
+<p id="p-0075" num="0074">The apparatus <b>12</b> may comprise a gas spring <b>236</b> that is mounted to the linear guide <b>228</b> for urging the linear guide into a rest position or home position when no force is exerted on the grip <b>214</b> or shaft <b>218</b>. Gas spring <b>236</b> may also function to dampen linear or rotational movement of the apparatus to prevent damage to its parts that could be caused by a user exerting excessive force on the apparatus. Gas spring <b>236</b> may also provide balance in the apparatus. In an embodiment, gas spring <b>236</b> is manufactured by Industrial Gas Systems, Inc. The gas spring <b>236</b> may be integrated into the linear guide system for compactness.</p>
+<p id="p-0076" num="0075">Additional dampening may be provided by an over-travel limiter or dampener <b>246</b> that is horizontally secured in recess <b>210</b> and to the linear guide <b>228</b> using a rocker arm and tie rod assembly <b>206</b>. In this manner the linear guide will not slam into other parts of the apparatus when the shaft is moved suddenly or released by a user, and deceleration of the apparatus is smoothly controlled. An embodiment is further described below with respect to <figref idref="DRAWINGS">FIG. 8B</figref>.</p>
+<p id="p-0077" num="0076">Detecting that the apparatus has reached a home position can be performed by moving the arm past a fiducial that is optically detected. A signal indicating detection of the fiducial may be provided to computer <b>14</b> for use in software that interprets a position of the apparatus. In an embodiment, gas spring <b>236</b> is omitted and other mechanisms for damping or reaching a home position are used, such as gears, motors, wire springs, coil springs, etc.</p>
+<p id="p-0078" num="0077"><figref idref="DRAWINGS">FIG. 3</figref> is a front elevation view of the apparatus of <figref idref="DRAWINGS">FIG. 2</figref>. The view of <figref idref="DRAWINGS">FIG. 3</figref> approximates a view of a user of the apparatus as a user approaches the apparatus for use. In this arrangement a user may grip the grip <b>214</b> in a golf club address stance with the user's feet positioned adjacent to a front edge <b>209</b> of top plate <b>208</b> looking downward on the top plate. In this position the user may urge the grip <b>214</b> and shaft <b>218</b> upward or downward in the vertical linear direction generally indicated by arrow <b>302</b>, thereby causing the grip <b>214</b>, shaft <b>218</b>, and arm <b>224</b> to move as a unit upward or downward with respect to top plate <b>208</b>.</p>
+<p id="p-0079" num="0078">From <figref idref="DRAWINGS">FIG. 3</figref> it is apparent that shaft <b>218</b> does not extend entirely to the base <b>208</b> or to an actual clubhead or base mechanism that simulates a clubhead. Instead, a display is in the base <b>208</b> and during fitting a virtual clubhead is displayed in the display using the techniques described further herein. However, the user may grasp the grip <b>214</b> and move the shaft upward or side to side until a comfortable holding position is reached.</p>
+<p id="p-0080" num="0079"><figref idref="DRAWINGS">FIG. 4</figref> is a rear elevation view of the apparatus of <figref idref="DRAWINGS">FIG. 2</figref>. In an embodiment, a rear edge <b>211</b> of top plate <b>208</b> comprises one or more connectors <b>213</b> for coupling signals from the display <b>15</b>, linear encoder <b>229</b>, and angular encoder <b>234</b> to the computer <b>14</b> (<figref idref="DRAWINGS">FIG. 1A</figref>).</p>
+<p id="p-0081" num="0080"><figref idref="DRAWINGS">FIG. 5</figref> is a left side elevation view of the apparatus of <figref idref="DRAWINGS">FIG. 2</figref>. <figref idref="DRAWINGS">FIG. 6</figref> is a right side elevation view of the apparatus of <figref idref="DRAWINGS">FIG. 2</figref>. Arrows <b>502</b>, <b>504</b> indicate a direction of angular or rotational motion through which the grip <b>214</b>, shaft <b>218</b>, arm <b>224</b>, and housing <b>248</b> travel when a user urges the grip left or right with respect to base plate <b>208</b> as seen in <figref idref="DRAWINGS">FIG. 5</figref>. Moving the grip in such directions causes the grip <b>214</b>, shaft <b>218</b>, arm <b>224</b>, and housing <b>248</b> to rotate about an axis of axle <b>239</b> as seen in <figref idref="DRAWINGS">FIG. 6</figref>. During such motion the gas lift <b>236</b> extends or retracts according to the movement of the shaft <b>218</b>.</p>
+<p id="p-0082" num="0081">A user may simultaneously move grip <b>214</b> and shaft <b>218</b> upward or downward as arrow <b>302</b> indicates. Thus, the apparatus <b>12</b> provides two degrees of freedom that allow a user to rapidly move the apparatus to a comfortable golf swing address position. When the apparatus <b>12</b> is in such a comfortable position, values of the linear encoder and angular encoder may be used to determine a shaft length and lie angle for a golf club that is custom fit to the user's comfortable position.</p>
+<p id="p-0083" num="0082"><figref idref="DRAWINGS">FIG. 7</figref> is a top plan view of the apparatus of <figref idref="DRAWINGS">FIG. 2</figref>. <figref idref="DRAWINGS">FIG. 7</figref> approximates a view of a user looking down on display <b>15</b> and about to grasp grip <b>214</b> to place the grip and shaft <b>218</b> in a comfortable golf swing address position. In such a position, the user can view display <b>15</b> to see an image of a golf club head at address of a golf ball as the grip and shaft are moved to a comfortable position.</p>
+<p id="p-0084" num="0083"><figref idref="DRAWINGS">FIG. 8A</figref> is a bottom plan view of the apparatus of <figref idref="DRAWINGS">FIG. 2</figref> further illustrating a mechanical arrangement of the base plate <b>202</b> in relation to housing <b>248</b>, arm <b>224</b>, shaft <b>218</b> and grip <b>214</b>. <figref idref="DRAWINGS">FIG. 8B</figref> is a bottom plan view of an embodiment of the base of the apparatus with base plate <b>202</b> removed. In this embodiment, within housing <b>248</b> the linear guide <b>228</b> is attached to a tie rod <b>206</b>A that is seated within recess <b>210</b> and connected to rocker arm <b>206</b>B, which is secured to a gas spring <b>246</b>B and end-of-travel damper <b>246</b>A. As a result, releasing or suddenly moving the shaft <b>214</b> after rotating the shaft will cause the shaft to slowly return to a home position, urged by gas spring <b>246</b>B yet dampened by damper <b>246</b>A so that the gas spring moves the apparatus to the home position gently and softly stops at the home position. This approach is useful to reduce wear on the encoders, linear guide, and other mechanical elements.</p>
+<p id="p-0085" num="0084">For purposes of illustrating a clear example, <figref idref="DRAWINGS">FIG. 2-8</figref> depict an apparatus having certain structural characteristics and interrelationships. However, alternative embodiments may use other structural characteristics and interrelationships while still falling within the scope of the claims and the spirit of the invention. For example, elements identified as rectangular, vertical, perpendicular, etc., may have different shapes or geometric relationships in various embodiments.</p>
+<p id="p-0086" num="0085">Further, various embodiments need not have each and every mechanical part that is shown in <figref idref="DRAWINGS">FIG. 2-8</figref>. The disclosure herein encompasses any embodiment having a shaft or the equivalent that is movable both linearly and angularly with respect to a base, or that can assume a variety of positions for a golf club at a swing address position.</p>
+<p id="p-0087" num="0086">In another embodiment, display <b>15</b> may be included in the apparatus <b>12</b> but not mounted in a base or floor mounted housing as shown for base plate <b>202</b> and top plate <b>208</b>. For example, display <b>15</b> could be mounted at an angle with respect to the ground or vertical with respect to ground. Display <b>15</b> could be mounted on a post or arm that positions the display higher or closer to a customer or golfer who is gripping the grip <b>214</b>. The size, shape and length of arm <b>224</b> are not critical and an embodiment can omit the arm <b>224</b>.</p>
+<p id="p-0088" num="0087">The linear guide <b>228</b> may mount to the base plate <b>202</b> and top plate <b>208</b> using other mechanisms and may attach at different positions on the base. An assembly comprising grip <b>214</b>, shaft <b>218</b>, arm <b>224</b>, linear guide <b>228</b>, linear encoder <b>229</b>, and angular encoder <b>234</b> may be detachable from the base and movable to another side of the base to accommodate a left-handed golfer.</p>
+<p id="p-0089" num="0088">In an embodiment, circuit board <b>13</b>&#x2032; is omitted and signals from linear encoder <b>229</b> and angular encoder <b>234</b> are coupled directly to computer <b>14</b> in kiosk <b>20</b>. Interface circuitry within the kiosk <b>20</b> is responsible to convert signals from the encoders into other signals that computer <b>14</b> can read, such as serial interface signals.</p>
+<p id="p-0090" num="0089">3.0 Methods of Using the System and Fitting Apparatus</p>
+<p id="p-0091" num="0090"><figref idref="DRAWINGS">FIG. 9</figref> is a flow diagram of a method of fitting a golf club, according to one embodiment. To clearly illustrate an example, <figref idref="DRAWINGS">FIG. 9</figref> shows steps that may be performed by personnel and steps that may be performed using a computer, such as through one or more computer application programs. However, other embodiments may use other combinations of steps, including a combination of steps that is exclusively performed by computer. Further, to clearly illustrate an example, <figref idref="DRAWINGS">FIG. 9</figref> is described herein with reference to <figref idref="DRAWINGS">FIG. 1A-8B</figref>; however, the broad approach of <figref idref="DRAWINGS">FIG. 9</figref> may be practiced with other apparatus in other embodiments.</p>
+<p id="p-0092" num="0091">In step <b>902</b>, an apparatus is started. For example, a salesperson or other operator at golf club retailer <b>10</b> activates the golf club fitting apparatus <b>12</b>. Activation may comprise applying power, restarting, rebooting, or awakening the apparatus <b>12</b> from an idle state. Activation also may be omitted in other embodiments in which the apparatus <b>12</b> is always in a ready state.</p>
+<p id="p-0093" num="0092">In response to activation, in step <b>904</b> the apparatus calibrates or determines the current position of the linear encoder and the angular encoder. Typically, the linear encoder and angular encoder are expected to be at or near home positions, and the calibration involves determining a current position of the encoders that represents the home positions.</p>
+<p id="p-0094" num="0093">In an embodiment, at step <b>904</b> the apparatus <b>12</b> also displays a start page or home page of a golf club manufacturer on display <b>22</b>. In an embodiment, a browser of apparatus <b>12</b> displays the home page, and the home page provides general information about the manufacturer and provides an icon, link or other representation of a fitting system function. The apparatus <b>12</b> may retrieve a copy of the home page from local storage, or may request and retrieve the home page in real time over network <b>30</b>. Local storage or network retrieval may be used in various embodiments for all page display steps described herein.</p>
+<p id="p-0095" num="0094">In step <b>906</b>, the operator selects the fitting system function from the home page of the golf club manufacturer. An operator selection is provided, in an embodiment, by operator interaction with computer <b>14</b> using a mouse, touchpad, touch screen, or other data input device. In response, at step <b>908</b> the apparatus <b>12</b> displays a fitting system start page. In an embodiment, the fitting system start page identifies a plurality of different golf club types that can be custom fit to a customer using the apparatus, such as putter, wedge, hybrid club, etc.</p>
+<p id="p-0096" num="0095">In step <b>910</b>, the operator selects a club type for custom fitting to a customer. For example, the operator provides user input selecting Putters from among several club types.</p>
+<p id="p-0097" num="0096">In step <b>912</b>, the apparatus displays one or more available models for the selected club type. For example, display <b>22</b> shows one or more different putter types such as straight shaft with offset head, belly style, etc. In an embodiment, step <b>912</b> may comprise displaying only one model or step <b>912</b> may be omitted if a particular manufacturer does not offer multiple models. <figref idref="DRAWINGS">FIG. 10A</figref> illustrates an example screen display that may be generated at step <b>912</b>.</p>
+<p id="p-0098" num="0097">In step <b>914</b>, the operator selects a particular club model from among the available models shown in the display.</p>
+<p id="p-0099" num="0098">In response, in step <b>916</b>, the apparatus may display detailed specifications for the selected club model. <figref idref="DRAWINGS">FIG. 10B</figref> illustrates an example screen display that may be generated at step <b>916</b>. In an embodiment, the display of step <b>916</b> includes a button, icon or other GUI widget that identifies an ordering function. By selecting the ordering function, the operator indicates interest in fitting and ordering the corresponding club model.</p>
+<p id="p-0100" num="0099">In step <b>918</b>, the ordering function is selected. In response, in step <b>920</b> a base image display unit is activated, such as display <b>15</b>, and an image of a golf club head for the selected club model is displayed. In an embodiment, the image of a virtual golf club head is displayed in a display unit in the floor of the apparatus adjacent to the user's feet so that the image of the golf club head is rendered in a position and from a perspective approximately the same as the appearance of a real golf club head if a customer were holding a real golf club.</p>
+<p id="p-0101" num="0100">In an embodiment, the image is three-dimensional and comprises a virtual golf club head. In various embodiments the image may also display a virtual golf ball, putting surface, fairway surface, etc.</p>
+<p id="p-0102" num="0101">In an embodiment, the image is a static graphical image that is stored in the apparatus, and a plurality of images are generated in advance and stored in the apparatus at the time that the apparatus is manufactured, as described above in connection with <figref idref="DRAWINGS">FIG. 1B</figref>. SolidWorks software or an equivalent 3D CAD or modeling program may be used to create the images. For example, a 3D model of a particular type of clubhead is created in SolidWorks, and a macro is prepared that rotates the model through successive angles of rotation about the center of the neck bend <b>114</b> (<figref idref="DRAWINGS">FIG. 1B</figref>) and captures and stores static graphical images of the appearance of the clubhead at each successive angle. The number of successive angles may vary in different embodiments; for example, one image may be generated for every 2 degrees of rotation of the 3D model. Preparation of an appropriate model in the 3D CAD software requires knowledge of the point of rotation about the center of the neck bend <b>114</b> for the specific model or type of putter or other club that is to be fitted to a user using the apparatus <b>12</b>.</p>
+<p id="p-0103" num="0102">The use of static graphical images enables the use of very high resolution images, if desired; in an alternative embodiment, a three-dimensional display of a virtual clubhead may be rendered based on a stored data model of a clubhead. Images appropriate for a left-handed golfer or right-handed golfer may be retrieved from memory and displayed on display <b>15</b> by computer <b>14</b> in response to data collected in steps <b>906</b>-<b>918</b> or another step.</p>
+<p id="p-0104" num="0103">In step <b>921</b>, a customer or golfer stands on a base of the fitting apparatus, grips a shaft of a simulated golf club, and slides and/or rotates the shaft to the best position for that customer when in a playing stance or other position in which the customer addresses a ball before swinging the golf club.</p>
+<p id="p-0105" num="0104">In step <b>922</b>, a rotation value and a linear measurement value are received from a first encoder and a second encoder of the apparatus.</p>
+<p id="p-0106" num="0105">In step <b>924</b>, a length value representing the length of a golf club shaft is created based on the received linear measurement value, and a lie angle value is created based on the received rotation value. In an embodiment, step <b>924</b> involves mapping the received linear measurement value to a length value using a stored data table or spreadsheet, and similarly a lie angle value is determined by mapping or looking up the received rotation value in a data table. A spreadsheet may be used to create the mappings. Alternatively, computer <b>14</b> may apply algorithm transformations to the received values to result in length in lie angle values. In an embodiment, step <b>924</b> involves computing an angle of a golf club shaft to the ground in degrees, e.g., 67 degrees. In an embodiment, step <b>924</b> involves computing a shaft length of a golf club, e.g. 33&#x2033;.In an embodiment, head weight of a custom fitted golf club is determined based upon a stored data table or retrieved from a spreadsheet file.</p>
+<p id="p-0107" num="0106">In step <b>926</b>, the golf club head image is updated and re-displayed based on any movement of the apparatus as represented in the received rotation value and linear measurement value. Successive images for re-display may be selected by comparing the received rotation value to a mapping stored in a data table that maps encoder values to names of corresponding still image files that represent the appearance of a clubhead when the shaft of a club is rotated according to the received rotation value. Thus, in an embodiment, while the user is sliding or rotating the shaft, one or more different still images of the virtual golf club head are re-displayed in the display <b>15</b>. In an embodiment, the different still images are re-displayed rapidly in &#x201c;flip-book&#x201d; fashion so that the display appears to be animated and the virtual golf club head appears to be moving in coordination with the user's movement of the shaft. As a result, the user receives the illusion of gripping an actual golf club at address to a ball while adopting a stance, grip and position that is most comfortable for that user.</p>
+<p id="p-0108" num="0107">In step <b>928</b>, the process tests whether the club fit is acceptable to the customer. Step <b>928</b> may involve, for example, determining whether the operator of the apparatus has selected a SELECT FIT button, icon or other identifier shown in display <b>22</b>. If the operator has not made such a selection, then control returns to step <b>921</b>. Using the loop formed by steps <b>921</b>-<b>928</b>, the image is updated and re-displayed in real time based on real-time movement of the golfer or customer.</p>
+<p id="p-0109" num="0108">In an embodiment, logic in the computer <b>14</b> prompts the user to allow the apparatus <b>12</b> to move to a home position and re-perform step <b>921</b> a plurality of times, and steps <b>922</b>-<b>928</b> are automatically repeated as well. As a result, the computer <b>14</b> collects a plurality of successive measurements of the same individual repeatedly grasping the simulated club in a comfortable position, which has been found to increase the accuracy of fitting. In an embodiment, six (6) measurements are collected, the greatest and lowest values for rotation and linear measurement are discarded, and the remaining four (4) values are averaged to result in final values. In other embodiments, different numbers of values and blending algorithms may be used.</p>
+<p id="p-0110" num="0109">If the club fit is acceptable, then control transfers to step <b>930</b>, at which the operator provides a signal indicating that the club fit is acceptable. Step <b>930</b> may involve, for example, the operator of the apparatus selecting a SELECT FIT button, icon or other identifier shown in display <b>22</b>. In response, the system updates an order page shown on display <b>22</b> with the shaft length and lie angle value that were created at step <b>924</b>.</p>
+<p id="p-0111" num="0110"><figref idref="DRAWINGS">FIG. 10C</figref> illustrates an example screen display that may be generated at step <b>924</b>. In an embodiment, an order summary page <b>1001</b> is displayed on the display <b>22</b> of kiosk <b>20</b> and is filled in by the apparatus in part, and in part by a salesperson or other user as part of placing an order for a club. In an embodiment, the order summary page <b>1001</b> comprises club details <b>1002</b> and an image <b>1004</b> of the club head that the customer is ordering. Order summary page <b>1001</b> comprises a grip selection widget <b>1006</b> that can receive user input specifying a particular grip size.</p>
+<p id="p-0112" num="0111">Order summary page <b>1001</b> comprises a length value <b>1008</b> and a lie angle value <b>1010</b> that are automatically determined and displayed based upon a position of shaft <b>218</b> of apparatus <b>12</b> and values received from the apparatus. Thus, in an embodiment, length value <b>1008</b> and lie angle value <b>1010</b> have been received from the apparatus <b>12</b> and are automatically filled into the order summary page <b>1001</b> at the time it is displayed.</p>
+<p id="p-0113" num="0112">In an embodiment, order summary page <b>1001</b> comprises a head weight value <b>1009</b> that displays a default head weight value for the club and that provides an option to customize the head weight value. Thus, in an embodiment the head weight value <b>1009</b> is displayed in a text box or other GUI widget and a user may replace the head weight value with a different value. The default head weight value <b>1009</b> may be obtained from a look-up table or other stored data source that associates head weight values with length values <b>1008</b>.</p>
+<p id="p-0114" num="0113">In an embodiment, for ordering putters, order summary page <b>1001</b> comprises a plurality of alignment marking options <b>1012</b>. A user or customer may select one of the options <b>1012</b> to specify where an alignment mark should appear on the club. In an embodiment, order summary page <b>1001</b> comprises an alignment color option <b>1014</b> that can receive a user selection of a color for the alignment mark. Typical colors might include black, white, red, yellow, etc.</p>
+<p id="p-0115" num="0114">In an embodiment, order summary page <b>1001</b> comprises an engraving option <b>1016</b> that can receive user entry of a set of initials or a name to engrave on the club head or club shaft. In an embodiment, order summary page <b>1001</b> comprises an engraving color option <b>1018</b> that can receive a user selection of a color for the engraved initials or engraved name.</p>
+<p id="p-0116" num="0115">In an embodiment, order summary page <b>1001</b> comprises a head cover color option <b>1020</b> that can receive a user selection of a color of a head cover that the golf club manufacturer will ship with the custom fitted club to protect the head of the club when it is in a customer's golf club bag.</p>
+<p id="p-0117" num="0116">In step <b>934</b>, order data is created and sent over a network to a manufacturer. For example, a user selects an &#x201c;Add to Cart&#x201d; button <b>1022</b> on a display of <figref idref="DRAWINGS">FIG. 10A</figref> and completes a shopping cart page sequence to provide personal information or payment details to complete an order. Step <b>934</b> may comprise creating an XML document containing order data or creating any other convenient form of message or transmission that can contain order data. The order data comprises at least the shaft length value and lie angle value that were created at step <b>924</b> and customer identifying information. Order data also may include shipping information, identifying information for golf club retailer <b>10</b> or kiosk <b>20</b>, club identifying information, etc.</p>
+<p id="p-0118" num="0117">The order data also may include any of several other parameters for custom fitted golf clubs including head paint color, grip color, initials on club head, head cover color, etc.</p>
+<p id="p-0119" num="0118">The order data also may include a grip type and user selection of a different grip type can cause a change in the head weight value retrieved from the data table. In an embodiment, the order data comprises static loft at address expressed as either a left or right measurement. Static loft represents the loft of the clubface compared to a horizontal plane of the hosel of the club.</p>
+<p id="p-0120" num="0119">In an embodiment, the order data also may include a neck offset value, which may be selected from a set of values that are displayed on display <b>22</b>.</p>
+<p id="p-0121" num="0120">In an embodiment, shaft <b>218</b> is interchangeable in the apparatus <b>12</b>, and the apparatus comprises elements to automatically detect interchangeable shafts. For example, each shaft <b>218</b> may have a lower end that is encoded with optical indicia that are detected by an optical detector integrated into hole <b>222</b> or arm <b>224</b>. Alternatively, each shaft <b>218</b> is keyed using holes, indentations, bosses or protrusions that mechanically depress or receive mechanically floating pins in the hole <b>222</b>. In such an alternative, fitting a particular shaft <b>218</b> into hole <b>222</b> causes depressing a particular pattern of pins in the hole <b>222</b> that uniquely identify the shaft length. A signal representing the pin pattern, or optical indicia, is communicated from arm <b>224</b> to computer <b>14</b>, which transforms the signal into a shaft length value for use in the custom fitting process.</p>
+<p id="p-0122" num="0121"><figref idref="DRAWINGS">FIG. 11</figref> is a flow diagram of a method of making a golf club. In step <b>1102</b>, a data communication session is established over a network between a golf club fitting apparatus and a data server. For example, in the context of <figref idref="DRAWINGS">FIG. 1A</figref>, computer <b>14</b> establishes a session through network <b>30</b> to data server <b>32</b>. A session may comprise an HTTP request-response dialog, an FTP upload session, etc. The data server is at a golf club manufacturer, contractor, distributor, reseller, etc.</p>
+<p id="p-0123" num="0122">In step <b>1104</b>, a length value representing a golf club length is received over the network. For example, data server <b>32</b> receives a length value from computer <b>14</b> that was created based on values received from encoder interface <b>13</b>. Data server <b>32</b> may receive the length value in an XML document, HTTP request, or other message format or document format. In step <b>1106</b>, a lie angle value representing a golf club lie angle is received over the network. The lie angle value may be received at data server <b>32</b> in the same XML document or HTTP request that carried the length value.</p>
+<p id="p-0124" num="0123">In step <b>1108</b>, a golf club is made having a length equal to the received length value and a head lie angle equal to the received lie angle value.</p>
+<p id="p-0125" num="0124">At step <b>1110</b>, optionally a head weight value is received and used in making the club at step <b>1108</b>. A shaft length value also may be received or retrieved from a stored data table. Alternatively, a shaft length value alone may be received, and an optimal or appropriate head weight value may be retrieved from a stored table that maps shaft length values to head weight values for various golf club models or club types. Thus, the head weight used in manufacture can vary based on shaft length.</p>
+<p id="p-0126" num="0125">At step <b>1112</b> optionally a static loft value is received and used in making the club at step <b>1108</b>. At step <b>1114</b> optionally a rotation value and linear measurement value are received from encoders of the apparatus and a length value and lie angle value are determined at the data server. Thus, step <b>1114</b> may involve receiving &#x201c;raw&#x201d; encoder position data values from the apparatus and converting the position values into length value and lie angle value. The resulting length value and lie angle value are used in making a golf club at step <b>1108</b>.</p>
+<p id="p-0127" num="0126">The approaches of <figref idref="DRAWINGS">FIG. 9</figref> and <figref idref="DRAWINGS">FIG. 11</figref> may be combined to provide a complete, integrated custom golf club fitting and manufacturing method. Further, steps and sub steps of <figref idref="DRAWINGS">FIG. 9</figref> and <figref idref="DRAWINGS">FIG. 11</figref> may be recombined in ways other than shown in <figref idref="DRAWINGS">FIG. 9</figref> and <figref idref="DRAWINGS">FIG. 11</figref> in such a complete and integrated approach.</p>
+<p id="p-0128" num="0127">The fitting apparatus <b>12</b> and methods herein may be used with left-handed or right-handed users without modification to mechanical aspects of the apparatus. The user interface may capture and provide to the data server <b>32</b> information indicating whether the user is left-handed or right-handed. Computer <b>14</b> may also receive the values and select a different set of graphical image values for display on display <b>15</b>, as part of the method of <figref idref="DRAWINGS">FIG. 9</figref>, depending on whether the user is left-handed or right-handed.</p>
+<p id="p-0129" num="0128">4.0 Extensions and Alternatives</p>
+<p id="p-0130" num="0129">In the foregoing specification, embodiments of the invention have been described with reference to numerous specific details that may vary from implementation to implementation. Thus, the sole and exclusive indicator of what is the invention, and is intended by the applicants to be the invention, is the set of claims that issue from this application, in the specific form in which such claims issue, including any subsequent correction. Any definitions expressly set forth herein for terms contained in such claims shall govern the meaning of such terms as used in the claims. Hence, no limitation, element, property, feature, advantage or attribute that is not expressly recited in a claim should limit the scope of such claim in any way. The specification and drawings are, accordingly, to be regarded in an illustrative rather than a restrictive sense.</p>
+<?DETDESC description="Detailed Description" end="tail"?>
+</description>
+<us-claim-statement>What is claimed is:</us-claim-statement>
+<claims id="claims">
+<claim id="CLM-00001" num="00001">
+<claim-text>1. A golf club fitting apparatus, comprising:
+<claim-text>a shaft having a grip end and a bottom end;</claim-text>
+<claim-text>an elongated arm having a first end affixed to the bottom end of the shaft, and having a second end that is attached to a first linear slide member;</claim-text>
+<claim-text>a second linear slide member that is slidably attached to the first linear slide member and rotatably attached to a generally planar base;</claim-text>
+<claim-text>a linear encoder coupled to the first linear slide member;</claim-text>
+<claim-text>an angular encoder coupled to the second linear slide member;</claim-text>
+<claim-text>an image display unit affixed generally horizontally to the base;</claim-text>
+<claim-text>a data processor coupled to the linear encoder, the angular encoder, and the image display;</claim-text>
+<claim-text>logic coupled to the data processor and which, when executed by the data processor, causes:
+<claim-text>receiving a linear measurement from the linear encoder;</claim-text>
+<claim-text>receiving an angular measurement from the angular encoder;</claim-text>
+<claim-text>computing a length of a golf club and a lie angle of a golf club head based on the linear measurement and angular measurement; and</claim-text>
+<claim-text>displaying, on the image display, an image of the golf club head based on the linear measurement and angular measurement.</claim-text>
+</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00002" num="00002">
+<claim-text>2. The apparatus of <claim-ref idref="CLM-00001">claim 1</claim-ref>, further comprising a network interface that couples the data processor to a data network, and wherein the logic when executed causes the data processor to send the linear measurement and the angular measurement through the data network to a server.</claim-text>
+</claim>
+<claim id="CLM-00003" num="00003">
+<claim-text>3. The apparatus of <claim-ref idref="CLM-00001">claim 1</claim-ref>, wherein the logic which when executed by the data processor causes receiving a changed linear measurement from the linear encoder; receiving a changed angular measurement from the angular encoder; and re-displaying, on the image display, an updated image of the golf club head based on the changed linear measurement and changed angular measurement.</claim-text>
+</claim>
+<claim id="CLM-00004" num="00004">
+<claim-text>4. The apparatus of <claim-ref idref="CLM-00001">claim 1</claim-ref>, wherein the image of the golf club head is an image of a putter.</claim-text>
+</claim>
+<claim id="CLM-00005" num="00005">
+<claim-text>5. The apparatus of <claim-ref idref="CLM-00001">claim 1</claim-ref>, wherein the image of the golf club head is an image of any one of a putter, an iron, a wood, a hybrid club, a wedge, and a metal wood.</claim-text>
+</claim>
+<claim id="CLM-00006" num="00006">
+<claim-text>6. An apparatus, comprising:
+<claim-text>an image display unit;</claim-text>
+<claim-text>a linear guide having a lower end that is attached to the image display unit and rotatable in relation to the unit;</claim-text>
+<claim-text>an arm that is attached to the linear guide and slidable in relation to the linear guide;</claim-text>
+<claim-text>a first encoder coupled to the linear guide and configured to generate a rotation signal when the linear guide is rotated relative to the image display unit;</claim-text>
+<claim-text>a second encoder capable of generating a linear measurement signal when the linear guide slides;</claim-text>
+<claim-text>image display logic coupled to the first encoder, second encoder, and image display unit and which when executed by one or more processors causes displaying a golf club head image on the image display unit, and re-displaying the image in a changed configuration in response to one or both of the rotation signal and the linear measurement signal.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00007" num="00007">
+<claim-text>7. The apparatus of <claim-ref idref="CLM-00006">claim 6</claim-ref>, wherein the arm comprises a shaft having a golf club grip attached to the shaft.</claim-text>
+</claim>
+<claim id="CLM-00008" num="00008">
+<claim-text>8. The apparatus of <claim-ref idref="CLM-00006">claim 6</claim-ref>, wherein the first encoder is an optical rotary encoder.</claim-text>
+</claim>
+<claim id="CLM-00009" num="00009">
+<claim-text>9. The apparatus of <claim-ref idref="CLM-00006">claim 6</claim-ref>, wherein the second encoder is an optical linear encoder.</claim-text>
+</claim>
+<claim id="CLM-00010" num="00010">
+<claim-text>10. The apparatus of <claim-ref idref="CLM-00006">claim 6</claim-ref>, further comprising data output logic which when executed causes generating an output rotation value and an output linear measurement value that represent a position of the arm.</claim-text>
+</claim>
+<claim id="CLM-00011" num="00011">
+<claim-text>11. The apparatus of <claim-ref idref="CLM-00006">claim 6</claim-ref>, further comprising:
+<claim-text>data output logic coupled to the first encoder and the second encoder and which when executed causes generating an output rotation value and an output linear measurement value that represent a position of the arm;</claim-text>
+<claim-text>golf club fitting logic coupled to the data output logic and which when executed causes reading the output rotation value and the output linear measurement value, determining a length of a shaft of a golf club based on the output linear measurement value, and determining an angle of the golf club shaft relative to the image display unit based on the output rotation value.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00012" num="00012">
+<claim-text>12. The apparatus of <claim-ref idref="CLM-00011">claim 11</claim-ref>, wherein the golf club fitting logic is configured to determine a head weight of a head for the golf club shaft.</claim-text>
+</claim>
+<claim id="CLM-00013" num="00013">
+<claim-text>13. The apparatus of <claim-ref idref="CLM-00011">claim 11</claim-ref>, wherein the golf club fitting logic is configured to determine a value of static loft at address for the golf club.</claim-text>
+</claim>
+<claim id="CLM-00014" num="00014">
+<claim-text>14. The apparatus of <claim-ref idref="CLM-00006">claim 6</claim-ref>, wherein a shaft having a golf club grip is removably attached to the arm.</claim-text>
+</claim>
+<claim id="CLM-00015" num="00015">
+<claim-text>15. The apparatus of <claim-ref idref="CLM-00006">claim 6</claim-ref>, further comprising:
+<claim-text>data output logic coupled to the first encoder and the second encoder and which when executed causes generating an output rotation value and an output linear measurement value that represent a position of the arm;</claim-text>
+<claim-text>golf club fitting logic coupled to the data output logic and which when executed causes reading the output rotation value and the output linear measurement value, determining a length of a shaft of a golf club based on the output linear measurement value, determining an angle of the golf club shaft relative to the image display unit based on the output rotation value, and communicating the output rotation value and the output linear measurement value over a data network to a data processing system associated with a maker of golf clubs.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00016" num="00016">
+<claim-text>16. The apparatus of <claim-ref idref="CLM-00006">claim 6</claim-ref>, wherein a shaft having a golf club grip is removably attached to the arm, wherein a length encoder is coupled to the shaft, wherein the golf club fitting logic is coupled to the shaft and is configured to determine a length of the shaft based on a signal received from the length encoder.</claim-text>
+</claim>
+<claim id="CLM-00017" num="00017">
+<claim-text>17. The apparatus of <claim-ref idref="CLM-00006">claim 6</claim-ref>, further comprising a spring coupled to the linear guide and the image display unit, and positioned to urge the linear guide to rotate to a generally upright position.</claim-text>
+</claim>
+<claim id="CLM-00018" num="00018">
+<claim-text>18. The apparatus of <claim-ref idref="CLM-00006">claim 6</claim-ref>, wherein the golf club head image is an image of a head of any one of a putter, an iron, a wood, a hybrid club, a wedge, and a metal wood.</claim-text>
+</claim>
+<claim id="CLM-00019" num="00019">
+<claim-text>19. An apparatus, comprising:
+<claim-text>an image display unit;</claim-text>
+<claim-text>a linear guide having a lower end that is attached to the image display unit and rotatable in relation to the unit;</claim-text>
+<claim-text>an arm that is attached to the linear guide and slidable in relation to the linear guide, wherein the arm comprises a shaft having a golf club grip attached to the shaft;</claim-text>
+<claim-text>a first encoder coupled to the linear guide and configured to generate a rotation signal when the linear guide is rotated relative to the image display unit;</claim-text>
+<claim-text>a second encoder capable of generating a linear measurement signal when the linear guide slides;</claim-text>
+<claim-text>image display logic coupled to the first encoder, second encoder, and image display unit and which when executed by one or more processors causes displaying a golf club head image on the image display unit, and re-displaying the image in a changed configuration in response to one or both of the rotation signal and the linear measurement signal;</claim-text>
+<claim-text>data output logic which when executed causes generating an output rotation value and an output linear measurement value that represent a position of the arm;</claim-text>
+<claim-text>golf club fitting logic coupled to the data output logic and which when executed causes reading the output rotation value and the output linear measurement value, determining a length of a shaft of a golf club based on the output linear measurement value, determining an angle value for an angle of the golf club shaft relative to the image display unit based on the output rotation value, and determining a head weight value for a head weight of a head for the golf club shaft;</claim-text>
+<claim-text>communicating the output rotation value, the output linear measurement value, the angle, and the head weight value over a data network to a data processing system associated with a maker of golf clubs.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00020" num="00020">
+<claim-text>20. The apparatus of <claim-ref idref="CLM-00019">claim 19</claim-ref>, wherein the golf club head image is an image of a head of any one of a putter, an iron, a wood, a hybrid club, a wedge, and a metal wood.</claim-text>
+</claim>
+<claim id="CLM-00021" num="00021">
+<claim-text>21. A computer-implemented method of fitting a golf club, comprising:
+<claim-text>receiving a rotation value and a linear measurement value from a non-contact optical angular encoder and a non-contact optical linear encoder, respectively, which encoders are coupled to an arm that is rotatable and slidable with respect to a fixed base when the arm is held in a golf position;</claim-text>
+<claim-text>creating and storing, based on the linear measurement value, a length value for a length of a golf club;</claim-text>
+<claim-text>creating and storing, based on the rotation value, a lie angle value for a lie angle of the golf club.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00022" num="00022">
+<claim-text>22. The method of <claim-ref idref="CLM-00021">claim 21</claim-ref>, further comprising communicating the length value and the lie angle value over a data network to a computer.</claim-text>
+</claim>
+<claim id="CLM-00023" num="00023">
+<claim-text>23. The method of <claim-ref idref="CLM-00021">claim 21</claim-ref>, further comprising determining a head weight value for a head weight of a head for the golf club shaft.</claim-text>
+</claim>
+<claim id="CLM-00024" num="00024">
+<claim-text>24. The method of <claim-ref idref="CLM-00021">claim 21</claim-ref>, further comprising determining a value of static loft at address for the golf club.</claim-text>
+</claim>
+<claim id="CLM-00025" num="00025">
+<claim-text>25. The method of <claim-ref idref="CLM-00021">claim 21</claim-ref>, further comprising displaying, on an image display unit, a golf club head image, determining a position of the golf club head image based on the linear measurement value and the rotation value, and re-displaying the image in a changed configuration in response to receiving changes in any of the linear measurement value and the rotation value.</claim-text>
+</claim>
+<claim id="CLM-00026" num="00026">
+<claim-text>26. The method of <claim-ref idref="CLM-00025">claim 25</claim-ref>, wherein the golf club head image is an image of a head of any one of a putter, an iron, a wood, a hybrid club, a wedge, and a metal wood.</claim-text>
+</claim>
+<claim id="CLM-00027" num="00027">
+<claim-text>27. A method of manufacturing a golf club, comprising:
+<claim-text>establishing a data communication session over a network to a golf club fitting apparatus comprising a linear guide having a lower end that is attached to a base and rotatable in relation to the base, an arm that is attached to the linear guide and slidable in relation to the linear guide, a first encoder coupled to the linear guide and configured to generate a rotation signal when the linear guide is rotated relative to the base, and a second encoder configured to generate a linear measurement signal when the linear guide slides;</claim-text>
+<claim-text>receiving over the network a length value, representing a length of a golf club, based on the linear measurement signal;</claim-text>
+<claim-text>receiving over the network a lie angle value representing a lie angle of the golf club based on the rotation signal;</claim-text>
+<claim-text>making a golf club having a shaft having a length equal to the received length value and having a head lie angle equal to the received lie angle value.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00028" num="00028">
+<claim-text>28. The method of <claim-ref idref="CLM-00027">claim 27</claim-ref>, further comprising receiving a head weight value for a head weight of a head for the golf club shaft, and making the golf club with a head having a weight equal to the received head weight value.</claim-text>
+</claim>
+<claim id="CLM-00029" num="00029">
+<claim-text>29. The method of <claim-ref idref="CLM-00027">claim 27</claim-ref>, further comprising receiving a static loft value representing a static loft at address of a head of the golf club, and making the golf club with a head having a static loft value equal to the received static loft value.</claim-text>
+</claim>
+<claim id="CLM-00030" num="00030">
+<claim-text>30. The method of <claim-ref idref="CLM-00027">claim 27</claim-ref>, wherein the golf club comprises any one of a putter, an iron, a wood, a hybrid club, a wedge, and a metal wood.</claim-text>
+</claim>
+<claim id="CLM-00031" num="00031">
+<claim-text>31. The method of <claim-ref idref="CLM-00027">claim 27</claim-ref>, further comprising:
+<claim-text>receiving over the network an output rotation value and an output linear measurement value that represent a position of the arm;</claim-text>
+<claim-text>determining the length of the shaft of the golf club based on the output linear measurement value; and</claim-text>
+<claim-text>determining the lie angle of the golf club based on the output rotation value.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00032" num="00032">
+<claim-text>32. An apparatus, comprising:
+<claim-text>an image display unit;</claim-text>
+<claim-text>a golf club shaft apparatus having a lower end that is attached to the image display unit and that is slidable and rotatable in relation to the unit;</claim-text>
+<claim-text>image display logic coupled to the golf club shaft apparatus and image display unit and which when executed by one or more processors causes displaying a virtual golf club head image on the image display unit, and re-displaying the image in a changed configuration in response to sliding or rotation of the golf club shaft apparatus.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00033" num="00033">
+<claim-text>33. The apparatus of <claim-ref idref="CLM-00032">claim 32</claim-ref>, further comprising data output logic which when executed causes generating an output rotation value and an output linear measurement value that represent a position of the golf club shaft apparatus.</claim-text>
+</claim>
+<claim id="CLM-00034" num="00034">
+<claim-text>34. The apparatus of <claim-ref idref="CLM-00032">claim 32</claim-ref>, further comprising:
+<claim-text>data output logic which when executed causes generating an output rotation value and an output linear measurement value that represent a position of the golf club shaft apparatus;</claim-text>
+<claim-text>golf club fitting logic coupled to the data output logic and which when executed causes reading the output rotation value and the output linear measurement value, determining a length of a golf club shaft based on the output linear measurement value, and determining an angle of the golf club shaft relative to the image display unit based on the output rotation value.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00035" num="00035">
+<claim-text>35. The apparatus of <claim-ref idref="CLM-00034">claim 34</claim-ref>, wherein the golf club fitting logic is configured to determine a head weight of a head for the golf club shaft.</claim-text>
+</claim>
+<claim id="CLM-00036" num="00036">
+<claim-text>36. The apparatus of <claim-ref idref="CLM-00034">claim 34</claim-ref>, wherein the golf club fitting logic is configured to determine a value of static loft at address for the golf club.</claim-text>
+</claim>
+<claim id="CLM-00037" num="00037">
+<claim-text>37. The apparatus of <claim-ref idref="CLM-00032">claim 32</claim-ref>, further comprising:
+<claim-text>data output logic coupled to the golf club shaft apparatus and which when executed causes generating an output rotation value and an output linear measurement value that represent a position of the golf club shaft apparatus;</claim-text>
+<claim-text>golf club fitting logic coupled to the data output logic and which when executed causes reading the output rotation value and the output linear measurement value, determining a length of a shaft of a golf club based on the output linear measurement value, determining an angle of the golf club shaft relative to the image display unit based on the output rotation value, and communicating the output rotation value and the output linear measurement value over a data network to a data processing system associated with a maker of golf clubs.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00038" num="00038">
+<claim-text>38. The apparatus of <claim-ref idref="CLM-00037">claim 37</claim-ref>, wherein the golf club shaft apparatus comprises a shaft having a golf club grip that is removably attached to the arm, a length encoder coupled to the shaft, and wherein the golf club fitting logic is coupled to the shaft and is configured to determine a length of the shaft based on a signal received from the length encoder.</claim-text>
+</claim>
+<claim id="CLM-00039" num="00039">
+<claim-text>39. The apparatus of <claim-ref idref="CLM-00032">claim 32</claim-ref>, wherein the golf club head image is an image of a head of any one of a putter, an iron, a wood, a hybrid club, a wedge, and a metal wood.</claim-text>
+</claim>
+<claim id="CLM-00040" num="00040">
+<claim-text>40. The apparatus of <claim-ref idref="CLM-00032">claim 32</claim-ref>, wherein the golf club head image comprises a first image of a virtual head of any one of a putter, an iron, a wood, a hybrid club, a wedge, and a metal wood, and comprises a second image of a virtual golf ball. </claim-text>
+</claim>
+</claims>
+</us-patent-grant>
