@@ -178,14 +178,11 @@ class DBIndexDataSource(LocalDataSource):
         for filename in filename_groups.keys():
             # Get set of second level files
             entries = filename_groups[filename]
-            try:
-                for pub_id, filedata in self.filedata_generator(
+            for pub_id, filedata in self.filedata_generator(
                                                     filename,
                                                     entries
                                                     ):
-                    yield pub_id, filedata
-            except:
-                logging.exception("Exception opening file:" + str(filename))
+                yield pub_id, filedata
 
     def patentdoc_generator(
                             self, classification=None,

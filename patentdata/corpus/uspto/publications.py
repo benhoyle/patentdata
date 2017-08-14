@@ -143,7 +143,7 @@ class USPublications(DBIndexDataSource):
         # For tar files
         elif filename.lower().endswith(".tar"):
             with tarfile.TarFile(
-                os.path.join(path, filename), 'r'
+                os.path.join(self.path, filename), 'r'
             ) as z:
                 for pub_id, name in entries:
                     try:
@@ -303,6 +303,7 @@ class USPublications(DBIndexDataSource):
                     self.read_archive_file(filename, name)
                     ).to_patentdoc()
         except:
+            print("Could not find publication")
             return None
 
     def xmldoc_generator(

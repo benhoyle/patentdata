@@ -89,7 +89,9 @@ def get_multiple_xml_by_offset(zip_file, offset_list):
                     # Get next offset if offsets
                     if offset_list:
                         start_offset = offset_list.pop()
-                    yield b''.join(data_buffer)
+                        yield b''.join(data_buffer)
+                    else:
+                        break
                 else:
                     data_buffer.append(line)
         yield b''.join(data_buffer)
@@ -264,4 +266,5 @@ class USGrants(DBIndexDataSource):
                     self.read_by_offset(filename, start_offset)
                     ).to_patentdoc()
         except:
+            print("Could not locate granted patent.")
             return None
