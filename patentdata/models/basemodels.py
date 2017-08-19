@@ -11,7 +11,12 @@ from patentdata.models.lib.utils import (
     stem_split, ENG_STOPWORDS, string2printint
     )
 
+from patentdata.models.utils_entities import (
+    extract_entities
+)
+
 from patentdata.models.chardict import CharDict
+from patentdata.models.entity import Entity
 
 # Initialise character dictionary for mappings
 chardict = CharDict()
@@ -168,6 +173,22 @@ class BaseTextBlock:
             tokens = stem(tokens)
 
         return tokens
+
+    @property
+    def entities(self):
+        """ Return entities."""
+        try:
+            return self._entities
+        except AttributeError:
+            ed = extract_entities(doc)
+            self._entities = [
+                Entity(
+                    string_name=k,
+                    occurrences=v
+                )
+                for k, v in extract_entities(doc).items()
+            ]
+            return self._entities
 
 class BaseTextSet:
     """ Abstract object to model a collection of text blocks. """
