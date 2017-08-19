@@ -11,7 +11,7 @@ from patentdata.models.lib.utils import (
     stem_split, ENG_STOPWORDS, string2printint
     )
 
-from patentdata.models.utils_entities import (
+from patentdata.models.lib.utils_entities import (
     extract_entities
 )
 

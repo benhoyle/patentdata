@@ -5,7 +5,6 @@ import nltk
 from patentdata.models.basemodels import BaseTextBlock
 from patentdata.models.lib.utils_claim import (
     ends_with, get_number, detect_dependency, detect_category,
-    entity_finder
 )
 
 
@@ -51,15 +50,6 @@ class Claim(BaseTextBlock):
         if not self._dependency:
             self._dependency = detect_dependency(self.text)
         return self._dependency
-
-    @property
-    def entities(self):
-        """Get noun phrase chunks that identify entities."""
-        try:
-            self._entities
-        except AttributeError:
-            self._entities = entity_finder(self.pos)
-            return self._entities
 
     def determine_entities(self):
         """ Determines noun entities within a patent claim.
