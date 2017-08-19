@@ -67,6 +67,16 @@ class Classification():
             self.maingroup,
             self.subgroup)
 
+    def as_dict(self):
+        """ Return a dictionary representation. """
+        c_dict = dict()
+        c_dict['section'] = self.section
+        c_dict['first_class'] = self.first_class
+        c_dict['subclass'] = self.subclass
+        c_dict['maingroup'] = self.maingroup
+        c_dict['subgroup'] = self.subgroup
+        return c_dict
+
     @classmethod
     def process_classification(cls, class_string):
         """ Extract IPC classfication elements from a class_string."""

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from nltk import word_tokenize
 import string
-
+import json
 
 class PatentDoc:
     """ Object to model a patent document. """
@@ -96,3 +96,27 @@ class PatentDoc:
             )
         remove_duplicates = list(set(joined_bow))
         return remove_duplicates
+
+    @property
+    def saveable(self):
+        """ Generate a saveable representation of patentdoc to disk."""
+        # First we can generate a dictionary version of the pdoc
+        # Then we can use json to convert dict to a json string
+        pdoc_dict = dict()
+        pdoc_dict['title'] = self.title
+        pdoc_dict['number'] = self.number
+        pdoc_dict['classifications'] = [
+            c.as_dict() for c in self.classifications
+            ]
+        pdoc_dict['description'] = self.description.paragraphs
+        pdoc_dict['claims'] = [
+            c.as_dict() for c in self.claimset.claims
+        ]
+        return json.dumps(pdoc_dict)
+
+    @classmethod
+    def load_from_string(cls, pdoc_string):
+        """ Load patent doc from a JSON string. """
+        pdoc_dict = json.loads(pdoc_string)
+        return cls(*pdoc_dict)
+
