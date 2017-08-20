@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from collections import Counter
 
-from patentdata.models import PatentDoc
+from patentdata.models.patentdoc import PatentDoc
 from patentdata.xmlparser import XMLDoc
 
 from datetime import datetime
