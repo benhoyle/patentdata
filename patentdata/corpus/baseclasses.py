@@ -62,7 +62,7 @@ class DBIndexDataSource(LocalDataSource):
         self.exten = (".zip", ".tar")
         self.path = path
         if not os.path.isdir(path):
-            print("Invalid path")
+            logging.warning("Invalid path")
             # Raise custom exception here
             return
         # Set regular expression for valid patent publication files
@@ -156,13 +156,13 @@ class DBIndexDataSource(LocalDataSource):
             )
         records = self.c.execute(query_string).fetchall()
         no_of_records = len(records)
-        print("{0} records located.".format(no_of_records))
+        logging.info("{0} records located.".format(no_of_records))
         # Select a random subset if a sample size is provided
         if sample_size and no_of_records > sample_size:
             records = random.sample(
                     records, sample_size
                 )
-            print("{0} records sampled.".format(len(records)))
+            logging.info("{0} records sampled.".format(len(records)))
         return records
 
     def iter_read(self, filelist):
@@ -231,7 +231,7 @@ class DBIndexDataSource(LocalDataSource):
             self.conn.commit()
             return True
         except:
-            print("Error saving classifications")
+            logging.exception("Error saving classifications")
             return False
 
     def get_classification(self, filedata):

@@ -5,10 +5,7 @@ import logging
 
 from patentdata.utils import process_classification
 
-from patentdata.models import (
-                                Paragraph, Description, Claim,
-                                Claimset, PatentDoc
-                            )
+from patentdata.models.patentdoc import PatentDoc
 
 logging.basicConfig(
     filename="processing_class.log",
@@ -194,16 +191,12 @@ class XMLDoc():
     def to_patentdoc(self):
         """ Return a patent doc object. """
 
-        paragraphs = [Paragraph(**p) for p in self.paragraph_list()]
-        description = Description(paragraphs)
-        claims = [Claim(**c) for c in self.claim_list()]
-        claimset = Claimset(claims)
         number = self.publication_details()
         if number:
             number = number['full_number']
         return PatentDoc(
-            claimset,
-            description,
+            claim_list=self.claim_list(),
+            paragraph_list=self.paragraph_list(),
             title=self.title(),
             classifications=self.classifications(),
             number=number

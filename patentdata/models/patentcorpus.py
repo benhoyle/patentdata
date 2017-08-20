@@ -7,6 +7,7 @@ from patentdata.xmlparser import XMLDoc
 from datetime import datetime
 
 import logging
+from zipfile import ZipFile
 
 logger = logging.getLogger(__name__)
 
@@ -25,10 +26,10 @@ class PatentCorpus:
             if not isinstance(doc, PatentDoc):
                 raise ValueError("Input must be a list of PatentDoc objects")
         self.documents = documents
-        return self
 
+    @classmethod
     def init_by_classification(
-        self, datasource, classification, sample_size=None
+        cls, datasource, classification, sample_size=None
     ):
         """ Initialise with a classification of kind ["G", "06"] with
         one to five entries.
@@ -44,9 +45,12 @@ class PatentCorpus:
         filegenerator = datasource.patentdoc_generator(
             classification, sample_size=sample_size
             )
+        pcorp = cls()
         for doc in filegenerator:
-            self.add_document(doc)
+            pcorp.add_document(doc)
         # Also add documents to cache here
+        pcorp.classification = classification
+        return pcorp
 
     def add_document(self, document):
         """ Add a document to the corpus.
@@ -58,12 +62,12 @@ class PatentCorpus:
         """
         if not isinstance(document, PatentDoc):
             raise ValueError("Input must be a list of PatentDoc objects")
+        logging.info("Adding Document: {0}".format(document.title))
         self.documents.append(document)
-        return self
 
     def add_flat_document(self, flat_doc):
         """ Add a document from a flattened string form. """
-        pass
+        self.documents.append(PatentDoc.load_from_string(flat_doc))
 
     def char_stats(self):
         """ Provide statistics on characters in corpus."""
@@ -81,6 +85,7 @@ class PatentCorpus:
         # Have zip archive open as long as object is open
         # Serialise patentdoc using a method on that class
         # Also add load methods
+        logging.info("Saving Patent Corpus")
         if not filename:
             filename = "{date}-{length}.patcorp.zip".format(
                 date=datetime.now().strftime(format="%Y-%m-%d_%H-%M"),
@@ -90,12 +95,21 @@ class PatentCorpus:
             for doc in self.documents:
                 myzip.writestr(doc.number, doc.saveable)
 
-    def load(self, filename):
+    @classmethod
+    def load(cls, filename):
         """ Load patentdoc objects from disk. """
+        logging.info("Loading Patent Corpus")
+        pcorp = cls()
         with ZipFile(filename) as myzip:
             for flat_doc in myzip.namelist():
                 with myzip.open(flat_doc) as myfile:
-                    self.add_flat_document(myfile.read())
+                    pcorp.add_flat_document(myfile.read().decode('utf-8'))
+        logging.info(
+            "Loaded Patent Corpus with {0} documents"
+            .format(len(pcorp.documents))
+        )
+        return pcorp
+
 
 # May not need this - functionality handled by USPublications object
 class LazyPatentCorpus:

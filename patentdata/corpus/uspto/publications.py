@@ -62,7 +62,7 @@ class USPublications(DBIndexDataSource):
         print("Getting archive file list - may take a few minutes\n")
         # Iterate through subdirs as so? >
         for subdirectory in utils.get_immediate_subdirectories(self.path):
-            print("Generating list for :", subdirectory)
+            logging.info("Generating list for :", subdirectory)
             filtered_files = [
                 f for f in self.first_level_files
                 if subdirectory in os.path.split(f) and "SUPP" not in f
@@ -261,7 +261,7 @@ class USPublications(DBIndexDataSource):
             years = [y[0] for y in years]
 
         for year in years:
-            print("Processing year: ", year)
+            logging.info("Processing year: {0}".format(year))
             # Get rows without classifications
             query_string = """
                 SELECT ROWID, filename, name FROM files
@@ -288,7 +288,10 @@ class USPublications(DBIndexDataSource):
 
                         if (len(params) % 100) == 0:
                             i += 100
-                            print(i, classifications[0])
+                            logging.info(
+                                "Process {0} with classifications {1}"
+                                .format(i, classifications[0])
+                                )
                             self.store_many(params)
                             params = []
             if params:
@@ -303,7 +306,7 @@ class USPublications(DBIndexDataSource):
                     self.read_archive_file(filename, name)
                     ).to_patentdoc()
         except:
-            print("Could not find publication")
+            logging.info("Could not find publication")
             return None
 
     def xmldoc_generator(
