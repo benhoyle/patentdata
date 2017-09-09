@@ -1,26 +1,59 @@
 # -*- coding: utf-8 -*-
 from nltk import word_tokenize
-import string
+import json
+
+from patentdata.models import (
+                                Paragraph, Description, Claim,
+                                Claimset, Classification
+                            )
+from patentdata.models.lib.utils import check_list
+
+# import logging
 
 
 class PatentDoc:
     """ Object to model a patent document. """
+
     def __init__(
             self,
-            claimset,
+            claimset=None,
             description=None,
             figures=None,
             title=None,
             classifications=None,
-            number=None
+            number=None,
+            claim_list=None,
+            paragraph_list=None
     ):
-        """ description, claimset and figures are objects as below. """
-        self.description = description
-        self.claimset = claimset
+        """ Initialise object. """
+        if claim_list and paragraph_list:
+            self.init_by_lists(claim_list, paragraph_list)
+        else:
+            self.description = description
+            self.claimset = claimset
+
+        if classifications:
+            if isinstance(check_list(classifications)[0], dict):
+                self.classifications = [
+                    Classification(**c) for c in classifications
+                ]
+            elif isinstance(check_list(classifications)[0], list):
+                self.add_classifications(classifications)
+            else:
+                self.classifications = classifications
+
         self.figures = figures
         self.title = title
-        self.classifications = classifications
         self.number = number
+
+    def init_by_lists(self, claim_list, paragraph_list):
+        """ Initialise via lists of paragraphs and claims."""
+        self.description = Description(
+            [Paragraph(**p) for p in paragraph_list]
+        )
+        self.claimset = Claimset(
+            [Claim(**c) for c in claim_list]
+        )
 
     def __repr__(self):
         return (
@@ -36,6 +69,30 @@ class PatentDoc:
                 self.claimset.claim_count,
                 self.classifications
             )
+
+    def reading_time(self, reading_rate=100):
+        """ Return estimate for time to read. """
+        # Words per minute = between 100 and 200
+        return len(word_tokenize(self.text)) / reading_rate
+
+    def bag_of_words(
+        self, clean_non_words=True, clean_stopwords=True, stem_words=True
+    ):
+        """ Return tokens from description and claims. """
+        joined_bow = self.description.bag_of_words(
+            clean_non_words, clean_stopwords, stem_words
+            ) + self.claimset.bag_of_words(
+            clean_non_words, clean_stopwords, stem_words
+            )
+        remove_duplicates = list(set(joined_bow))
+        return remove_duplicates
+
+    def add_classifications(self, classifications):
+        """ Convert classifications from list to object and add."""
+        self.classifications = [
+            Classification.parse_from_list(c)
+            for c in classifications
+        ]
 
     @property
     def text(self):
@@ -80,19 +137,34 @@ class PatentDoc:
         """ Return number of unique characters."""
         return len(self.character_counter)
 
-    def reading_time(self, reading_rate=100):
-        """ Return estimate for time to read. """
-        # Words per minute = between 100 and 200
-        return len(word_tokenize(self.text)) / reading_rate
+    @property
+    def saveable(self):
+        """ Generate a saveable representation of patentdoc to disk."""
+        # First we can generate a dictionary version of the pdoc
+        # Then we can use json to convert dict to a json string
+        pdoc_dict = dict()
+        pdoc_dict['title'] = self.title
+        pdoc_dict['number'] = self.number
+        pdoc_dict['classifications'] = [
+            c.as_dict() for c in self.classifications
+            ]
+        pdoc_dict['description'] = [
+            p.as_dict() for p in self.description.paragraphs
+        ]
+        pdoc_dict['claims'] = [
+            c.as_dict() for c in self.claimset.claims
+        ]
+        return json.dumps(pdoc_dict)
 
-    def bag_of_words(
-        self, clean_non_words=True, clean_stopwords=True, stem_words=True
-    ):
-        """ Return tokens from description and claims. """
-        joined_bow = self.description.bag_of_words(
-            clean_non_words, clean_stopwords, stem_words
-            ) + self.claimset.bag_of_words(
-            clean_non_words, clean_stopwords, stem_words
-            )
-        remove_duplicates = list(set(joined_bow))
-        return remove_duplicates
+    @classmethod
+    def load_from_string(cls, doc_string):
+        """ Load patent doc from a JSON string. """
+        pdoc_dict = json.loads(doc_string)
+        pdoc = cls(
+            title=pdoc_dict['title'],
+            number=pdoc_dict['number'],
+            claim_list=pdoc_dict['claims'],
+            paragraph_list=pdoc_dict['description'],
+            classifications=pdoc_dict['classifications']
+        )
+        return pdoc

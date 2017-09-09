@@ -34,11 +34,12 @@ class Word:
 
             returns a list of integer indexes."""
         # Convert main word characters to list of integers
-        text2intlist =  chardict.text2int(self.text)
+        text2intlist = chardict.text2int(self.text)
         # Add control characters to start and end
         text2intlist.insert(0, chardict.startwordint)
         text2intlist.append(chardict.endwordint)
         return text2intlist
+
 
 class BaseTextBlock:
     """ Abstract class for a block of text. """
@@ -189,6 +190,11 @@ class BaseTextBlock:
                 for k, v in extract_entities(doc).items()
             ]
             return self._entities
+
+    def as_dict(self):
+        """ Return object as dictionary. """
+        return {'text': self.text, 'number': self.number}
+
 
 class BaseTextSet:
     """ Abstract object to model a collection of text blocks. """

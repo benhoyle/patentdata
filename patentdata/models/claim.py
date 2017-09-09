@@ -160,6 +160,14 @@ class Claim(BaseTextBlock):
             ]
         return {"claim": {"words": words}}
 
+    def as_dict(self):
+        """ Return a dictionary representation. """
+        c_dict = dict()
+        c_dict['text'] = self.text
+        c_dict['number'] = self.number
+        c_dict['dependency'] = self._dependency
+        return c_dict
+
     def ante_check(self):
         """ Checks for terms that do not have antecedence. """
         errors = list()

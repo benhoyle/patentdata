@@ -4,11 +4,13 @@ import re
 
 from patentdata.models.lib.utils import check_list
 
+import logging
+
 
 class Classification():
     """ Object to model IPC classification. """
     def __init__(
-        self, section, first_class=None,
+        self, section=None, first_class=None,
         subclass=None, maingroup=None, subgroup=None
     ):
         """ Initialise object and save classification portions. """
@@ -67,6 +69,16 @@ class Classification():
             self.maingroup,
             self.subgroup)
 
+    def as_dict(self):
+        """ Return a dictionary representation. """
+        c_dict = dict()
+        c_dict['section'] = self.section
+        c_dict['first_class'] = self.first_class
+        c_dict['subclass'] = self.subclass
+        c_dict['maingroup'] = self.maingroup
+        c_dict['subgroup'] = self.subgroup
+        return c_dict
+
     @classmethod
     def process_classification(cls, class_string):
         """ Extract IPC classfication elements from a class_string."""
@@ -83,3 +95,17 @@ class Classification():
             )
             for match in p.finditer(class_string)]
         return classifications
+
+    @classmethod
+    def parse_from_list(cls, class_list):
+        """ Create an object from list of the form:
+        ['G', '06', 'F', '9', '44']"""
+        logging.debug("Class List Input {0}".format(class_list))
+        clsf = cls()
+        clsf.section = class_list[0]
+        clsf.first_class = class_list[1]
+        clsf.subclass = class_list[2]
+        clsf.maingroup = class_list[3]
+        clsf.subgroup = class_list[4]
+        logging.debug("Classification Output {0}".format(clsf))
+        return clsf

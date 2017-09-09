@@ -1,7 +1,8 @@
 import pytest
 from patentdata.models import (
-    PatentDoc, Description, Figures, Claimset, Claim, Classification
+    Description, Figures, Claimset, Claim, Classification
 )
+from patentdata.models.patentdoc import PatentDoc
 from patentdata.corpus import USPublications
 import os
 
