@@ -18,8 +18,7 @@ class Claim(BaseTextBlock):
 
     def __init__(self, text, number=None, dependency=None):
         """ Initiate claim object with string containing claim text."""
-        self.text = text
-        self.number = number
+        super(Claim, self).__init__(text, number)
         self._dependency = dependency
 
         # Lazily compute the functions below when required

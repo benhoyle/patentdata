@@ -6,6 +6,9 @@ from patentdata.models.lib.utils import (
     entity_finder, filter_entity_list, get_entity_dict,
     highlight_multiple
 )
+from patentdata.models.lib.utils_entities import (
+    get_entity_ref_num_dict
+)
 from collections import Counter
 
 #extra_abbreviations = ['fig', 'figs', 'u.s.c', 'ser', 'no']
@@ -103,11 +106,7 @@ class Description(BaseTextSet):
         try:
             return self._entities
         except AttributeError:
-            entities = list()
-            for para in self.paragraphs:
-                for sentence in para.sentences:
-                    entities += entity_finder(sentence.pos)
-            self._entities = filter_entity_list(entities)
+            self._entities = get_entity_ref_num_dict(self.doc)
             return self._entities
 
     def entity_check(self):

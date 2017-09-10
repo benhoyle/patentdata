@@ -181,13 +181,13 @@ class BaseTextBlock:
         try:
             return self._entities
         except AttributeError:
-            ed = extract_entities(doc)
+            ed = extract_entities(self.doc)
             self._entities = [
                 Entity(
                     string_name=k,
                     occurrences=v
                 )
-                for k, v in extract_entities(doc).items()
+                for k, v in ed.items()
             ]
             return self._entities
 
@@ -210,6 +210,7 @@ class BaseTextSet:
         units = check_list(initial_input)
         self.units = units
         self.count = len(self.units)
+        self.doc = nlp(self.text)
 
     @property
     def text(self):

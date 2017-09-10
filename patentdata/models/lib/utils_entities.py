@@ -372,3 +372,58 @@ def extract_steps(doc):
         steps.append((sv, sb))
 
     return steps
+
+
+def ref_num_entity_finder(doc):
+    """ Find entities with reference numerals a sentence
+    in the form of a spaCy span."""
+    entity_list = list()
+    start_index = 0
+    record = False
+    for token in doc:
+        if token.pos == DET:
+            record = True
+            start_index = token.i
+
+        if "FIG" in token.text:
+            record = False
+
+        if token.pos == NUM and doc[token.i-1].pos == NOUN:
+            # Hack for plural nouns that may lack a determinant
+            if not record and doc[token.i-1].tag_ == "NNS":
+                # Follow tree for plural noun phrase
+                children = [c for c in doc[token.i-1].children]
+                if children:
+                    start_index = children[0].i
+                entity_list.append(doc[start_index:token.i+1])
+            # Add
+            if record:
+                record = False
+                entity_list.append(doc[start_index:token.i+1])
+
+    return entity_list
+
+
+def get_entity_ref_num_dict(doc):
+    """ Get a dictionary of entities indexed by reference numeral.
+
+    param spaCy_doc doc: document to process as a spaCy 'doc' object
+    """
+    entity_list = ref_num_entity_finder(doc)
+    entity_dict = {}
+    for entity in entity_list:
+        ref_num = entity[-1].text
+        # Clean fullstops
+        if ref_num[-1] == ".":
+            ref_num = ref_num[:-1]
+        if ref_num not in entity_dict.keys():
+            entity_dict[ref_num] = list()
+        # Check if a variation already exists
+        exists = False
+        n_gram = entity[1:-1]
+        for existing in entity_dict[ref_num]:
+            if n_gram == existing:
+                exists = True
+        if not exists:
+            entity_dict[ref_num].append(n_gram)
+    return entity_dict
