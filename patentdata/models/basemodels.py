@@ -211,6 +211,21 @@ class BaseTextSet:
         self.units = units
         self.count = len(self.units)
         self.doc = nlp(self.text)
+        self.index = 0
+
+    def __iter__(self):
+        """ Initialise iterator that returns units."""
+        self.index = 0
+        return self
+
+    def __next__(self):
+        """ Return units one by one. """
+        try:
+            result = self.units[self.index]
+        except IndexError:
+            raise StopIteration
+        self.index += 1
+        return result
 
     @property
     def text(self):
