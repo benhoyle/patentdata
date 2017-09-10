@@ -10,16 +10,16 @@ from patentdata.models.lib.utils_claimset import (
 class Claimset(BaseTextSet):
     """ Object to model a claim set. """
 
-    @property
-    def claims(self):
-        return self.units
-
     def __init__(self, initial_input):
         """ Process initial input to clean data and check claims. """
         if check_set_claims(initial_input):
             self.units = initial_input
         else:
             self.units = clean_data(initial_input)
+
+    @property
+    def claims(self):
+        return self.units
 
     @property
     def claim_count(self):
