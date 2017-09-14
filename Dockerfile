@@ -10,6 +10,9 @@ RUN apt-get update \
     python3-pip \
     python3-dev \
     enchant \
+    libxml2-dev libxslt1-dev antiword \
+    unrtf poppler-utils pstotext tesseract-ocr \
+    flac ffmpeg lame libmad0 libsox-fmt-mp3 sox libjpeg-dev swig \
   && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install --upgrade pip
@@ -40,7 +43,8 @@ RUN pip3 install wordsegment
 
 RUN pip3 install pyenchant
 
-RUN pip3 install textract
+# Install local version that installs
+RUN pip3 install git+https://github.com/deanmalmgren/textract.git
 
 #RUN apt-get install -y --no-install-recommends python3-tk
 
