@@ -47,6 +47,10 @@ RUN pip3 install pyenchant
 
 RUN apt-get install tesseract-ocr
 
+RUN pip3 install feedparser
+
+RUN pip3 install python-docx
+
 #RUN pip3 install patentdata>=0.0.7
 
 ENV INSTALL_PATH /patentdata
