@@ -55,6 +55,38 @@ def regex_extract_claims(text):
     return claimset_list
 
 
+def clean_header(text):
+    """ Strip header text from ocr text."""
+    header_sub_re = r"\n{1,4}(\d{1,3}|W(O|0).+)\n{1,4}"
+    return re.sub(header_sub_re, "\n\n", text)
+
+
+def extract_claims_from_ocr(text):
+    """ Extract claims from a long text string generated via tesseract.
+
+    regex on claim start version."""
+    lines = text.split("\n")
+
+    start_claim_regex = r"(?P<number>\d{1,3})\s{0,4}(\.|,|‘)\s{0,4}[A-Z]"
+
+    claim_start_lines = list()
+    for i, line in enumerate(lines):
+        m = re.match(start_claim_regex, line)
+        if m:
+            claim_start_lines.append((m.group("number"), i))
+
+    claim_list = list()
+    # Add on the length of the list to allow i+1 look-ahead
+    claim_start_lines.append(("", len(lines)))
+
+    for i, csl in enumerate(claim_start_lines[:-1]):
+        claim_start = csl[1]
+        claim_end = claim_start_lines[i+1][1]-1
+        text = " ".join(lines[claim_start:claim_end])
+        claim_list.append(Claim(text, number=csl[0]))
+    return claim_list
+
+
 def score_claimset(claimset_list):
     """
     Applies checks and generates a score indicating fitness.
