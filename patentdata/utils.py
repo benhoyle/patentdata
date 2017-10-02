@@ -160,26 +160,30 @@ def build_classification_query(classification, fieldname):
     class_fields = [
             'section', 'class', 'subclass', 'maingroup', 'subgroup'
             ]
-    query_portion = "WHERE"
+    if classification:
+        query_portion = "WHERE"
 
-    for i in range(0, len(class_fields)):
-        if i >= len(classification):
-            break
-        if not classification[i]:
-            break
-        if i > 0:
-            query_portion += "AND"
-        query_portion += " {0} = '{1}' ".format(
-                class_fields[i],
-                classification[i]
-            )
-
-    # Then build final query string
-    query_string = """
+        for i in range(0, len(class_fields)):
+            if i >= len(classification):
+                break
+            if not classification[i]:
+                break
+            if i > 0:
+                query_portion += "AND"
+            query_portion += " {0} = '{1}' ".format(
+                    class_fields[i],
+                    classification[i]
+                )
+        query_string = """
                         SELECT ROWID, filename, {0}
                         FROM files
                         {1}
                         """.format(fieldname, query_portion)
+    else:
+        query_string = """
+                        SELECT ROWID, filename, {0}
+                        FROM files
+                        """.format(fieldname)
     return query_string
 
 
