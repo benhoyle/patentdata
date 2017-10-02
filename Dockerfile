@@ -10,7 +10,9 @@ RUN apt-get update \
     python3-pip \
     python3-dev \
     enchant \
-  && rm -rf /var/lib/apt/lists/*
+    poppler-utils \
+    libxml2-dev libxslt1-dev antiword \
+    unrtf tesseract-ocr libjpeg-dev
 
 RUN pip3 install --upgrade pip
 
@@ -40,9 +42,16 @@ RUN pip3 install wordsegment
 
 RUN pip3 install pyenchant
 
-RUN pip3 install textract
+# Install local version that installs
+#RUN pip3 install git+https://github.com/deanmalmgren/textract.git
 
-#RUN apt-get install -y --no-install-recommends python3-tk
+RUN apt-get install tesseract-ocr
+
+RUN pip3 install feedparser
+
+RUN pip3 install python-docx
+
+RUN pip3 install h5py
 
 #RUN pip3 install patentdata>=0.0.7
 
