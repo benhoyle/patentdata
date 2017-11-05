@@ -53,6 +53,10 @@ RUN pip3 install python-docx
 
 RUN pip3 install h5py
 
+RUN apt-get install graphviz -y --no-install-recommends
+
+RUN pip3 install graphviz
+
 #RUN pip3 install patentdata>=0.0.7
 
 ENV INSTALL_PATH /patentdata

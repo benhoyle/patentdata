@@ -118,6 +118,9 @@ class CharDict:
                 capitalise = False
         return text
 
+    # We need to add a method that returns a one-hot encoding
+
+
     @property
     def startwordint(self):
         """ Return integer for start of word character. """
@@ -127,5 +130,6 @@ class CharDict:
     def endwordint(self):
         """ Return integer for start of word character. """
         return self.forward_dict["</W>"]
+
 
 
