@@ -55,6 +55,9 @@ class USPublications(DBIndexDataSource):
     Creates a new corpus object that simplifies processing of
     patent archive
     """
+    def __init__(self, path):
+        super(USPublications, self).__init__(path)
+        self.fieldname = "name"
 
     def index(self):
         """ Generate a list of lower level archive files. """
@@ -221,7 +224,7 @@ class USPublications(DBIndexDataSource):
         ["G", "61", "K", "039", "00"]. If an entry has None or
         no entry, it and its remaining entries are not filtered.
         """
-        records = self.get_records(classification, "name", sample_size)
+        records = self.get_records(classification, sample_size)
         filegenerator = self.iter_read(records)
         # Iterate through records and return XMLDocs
         for _, filedata in filegenerator:
@@ -300,7 +303,7 @@ class USPublications(DBIndexDataSource):
     def get_patentdoc(self, publication_number):
         """ Return a PatentDoc object for a given publication number."""
         try:
-            filename, name = self.search_files(publication_number, "name")
+            filename, name = self.search_files(publication_number)
             if filename and name:
                 return XMLDoc(
                     self.read_archive_file(filename, name)

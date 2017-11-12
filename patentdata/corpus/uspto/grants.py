@@ -100,6 +100,10 @@ def get_multiple_xml_by_offset(zip_file, offset_list):
 class USGrants(DBIndexDataSource):
     """ Model for US granted patent data. """
 
+    def __init__(self, path):
+        super(USPublications, self).__init__(path)
+        self.fieldname = "start_offset"
+
     def read_archive_file(self, filename):
         """ Read large XML file from Zip.
 
@@ -188,7 +192,7 @@ class USGrants(DBIndexDataSource):
         ["G", "61", "K", "039", "00"]. If an entry has None or
         no entry, it and its remaining entries are not filtered.
         """
-        records = self.get_records(classification, "start_offset", sample_size)
+        records = self.get_records(classification, sample_size)
         filegenerator = self.iter_read(records)
         # Iterate through records and return XMLDocs
         for _, filedata in filegenerator:

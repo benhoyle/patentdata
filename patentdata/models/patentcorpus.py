@@ -8,8 +8,31 @@ from datetime import datetime
 
 import logging
 from zipfile import ZipFile
+import Pickle
+import importlib
 
 logger = logging.getLogger(__name__)
+
+from patentdata.corpus import (
+    EPOOPS, USPublications, USGrants
+)
+
+DATASOURCE_OPTIONS = {
+    'EPOOPS': EPOOPS,
+    'USPublications': USPublications,
+    'USGrants': USGrants
+}
+
+def string_to_class(datasource_str):
+    """ Return a class indicated by a datasource_str."""
+    if datasource_str not in list(DATASOURCE_OPTIONS.keys()):
+        logger.error(
+            "String value {0} not in group {1}"
+            .format(datasource_str, list(DATASOURCE_OPTIONS.keys()))
+        )
+        raise ValueError
+    else:
+        return DATASOURCE_OPTIONS[datasource_str]
 
 
 class PatentCorpus:
@@ -116,16 +139,8 @@ class LazyPatentCorpus:
     """ Object to model a collection of patent documents that loads
     each document from file lazily. """
 
-    def init_by_id(self, list_of_ids, id_type):
-        """ Initialise with a list of ids, where id_type is rowid or
-        publication (number)."""
-        # Need to run a query to get list of filename, name entries
-
-        # Then we can call init_by_filenames
-        pass
-
-    def init_by_classification(
-        self, datasource, classification, sample_size=None
+    def __init__(
+        self, datasource, classification=[], sample_size=None
     ):
         """ Initialise with a classification of kind ["G", "06"] with
         one to five entries.
@@ -138,24 +153,28 @@ class LazyPatentCorpus:
         # Need to run a query to get list of filename, name entries
 
         # Then we can call init_by_filenames
-        pass
+        self.datasource = datasource
+        self.filelist = self.datasource.get_records(
+            classification, sample_size=sample_size
+            )
+        return self
 
     def init_by_filenames(self, datasource, filelist):
         """ Initialise with a list of file references of the format
         (id, filename, name)."""
         self.datasource = datasource
         self.filelist = filelist
+        return self
 
     @property
     def documents(self):
-        for _, filedata in self.datasource.iter_read(self.filelist):
-            yield XMLDoc(filedata).to_patentdoc()
+        for doc in self:
+            yield doc
 
     def __iter__(self):
         """ Iterator to return patent documents. """
-        # This needs to basically run iter_read(filelist) then
-        # wrap the output filedata through XMLDoc(filedata).to_patent
-        pass
+        for _, filedata in self.datasource.iter_read(self.filelist):
+            yield XMLDoc(filedata).to_patentdoc()
 
     def build_token_dict(self):
         """ Iterate through documents to build a dictionary of tokens. """
@@ -172,6 +191,12 @@ class LazyPatentCorpus:
     def docs_to_index(self):
         """ Go through documents replacing tokens with the index in
         the token dictionary."""
+        pass
+
+    def save_claims(self, filter_cancelled=True, clean_chars=True):
+        """ Save all claim text as a Pickle file."""
+        # But be careful because we want indicies to sync
+        # May want to delete cancelled claims entirely
         pass
 
     # This is currently a generator but needs to be an iterator
@@ -284,6 +309,31 @@ class LazyPatentCorpus:
 
         return words
 
+    def save(self, filename=None):
+        """ Save details of the patent corpus."""
+        logging.info("Saving Lazy Patent Corpus")
+        if not filename:
+            filename = "{date}-{length}.lzypatcorp".format(
+                date=datetime.now().strftime(format="%Y-%m-%d_%H-%M"),
+                length=len(self.documents)
+            )
+        # Save the class name and path of the datasource to allow
+        # it to be re-generated?
+        ds_params = (ds.__class__.__name__, ds.path)
+        params_to_save = (ds_params, self.filelist)
+        with open(filename, 'wb') as f:
+            pickle.dump(params_to_save, f)
+
+    @classmethod
+    def load(cls, filename):
+        """ Load a lazy corpus of documents. """
+        logging.info("Loading Lazy Patent Corpus")
+        with open(filename, 'rb') as f:
+            (ds_classname, ds_path), filelist = pickle.load(f)
+        # What do we do about the datasource?
+        datasource = string_to_class(ds_classname)(ds_path)
+        lzy = cls()
+        return lzy.init_by_filenames(datasource, filelist)
 
 class CorpusSentenceIterator:
     """ Iterator to return sentences from files in filelist f
