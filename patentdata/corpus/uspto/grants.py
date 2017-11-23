@@ -101,7 +101,7 @@ class USGrants(DBIndexDataSource):
     """ Model for US granted patent data. """
 
     def __init__(self, path):
-        super(USPublications, self).__init__(path)
+        super(USGrants, self).__init__(path)
         self.fieldname = "start_offset"
 
     def read_archive_file(self, filename):

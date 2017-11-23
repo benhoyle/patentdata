@@ -38,7 +38,7 @@ class TestUSGrants(object):
         """ Test reading an archive file. """
         corpus = USGrants(self.testfilepath)
         corpus.index()
-        filename, offset = corpus.search_files('US07984558B2', "start_offset")
+        filename, offset = corpus.search_files('US07984558B2')
         filedata = corpus.read_by_offset(filename, offset)
         assert len(filedata) == 82118
 

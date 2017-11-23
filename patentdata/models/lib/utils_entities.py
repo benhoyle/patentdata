@@ -1,7 +1,9 @@
-from spacy.symbols import NUM, DET, NOUN, VERB, PUNCT
+from spacy.symbols import DET, NOUN, VERB, PUNCT, NUM, PROPN
 from collections import OrderedDict
 from difflib import SequenceMatcher
 import logging
+from spacy.matcher import Matcher
+from patentdata.models.lib.utils import nlp
 
 
 # Could we change this to slice on a key? Probably
@@ -426,4 +428,83 @@ def get_entity_ref_num_dict(doc):
                 exists = True
         if not exists:
             entity_dict[ref_num].append(n_gram)
+    return entity_dict
+
+# Newer functions
+
+
+def process_match(match, text):
+    """ Process a reference numeral match and extract data to store as an entity.
+
+    returns: list of tuples (list_of_refs, span)"""
+    _, _, start, end = match
+    ref_nums = list()
+    for token in range(start, end):
+        if text[token].pos == NUM:
+            ref_nums.append(text[token])
+    left_child_start = (start - text[start].n_lefts)
+    occ_span = text[left_child_start:start+1]
+    return ref_nums, occ_span
+
+
+def extract_refs(text):
+    """ Extract reference numbers from patent text."""
+    matcher = Matcher(nlp.vocab)
+    pattern_1a = [{'POS': NOUN}, {'POS': NUM}, {'ORTH': ','}, {'POS': NUM}]
+    pattern_1b = [{'POS': PROPN}, {'POS': NUM}, {'ORTH': ','}, {'POS': NUM}]
+    pattern_1 = [{'POS': NOUN}, {'POS': NUM}]
+    pattern_2 = [{'POS': PROPN}, {'POS': NUM}]
+    matcher.add(
+        'Reference numerals',
+        None,
+        pattern_1a,
+        pattern_1b,
+        pattern_1,
+        pattern_2
+    )
+    matches = matcher(text)
+    return [process_match(match, text) for match in matches]
+
+
+def filter_stopwords(ref_numbers):
+    """ Filter stop words from list of reference numbers."""
+    stop_words = ["claim", "reference numeral", "figure"]
+    filtered_nums = list()
+    for nums, p, span in ref_numbers:
+        keep = True
+        for sw in stop_words:
+            if sw in span.text.lower():
+                keep = False
+        if keep:
+            filtered_nums.append((nums, p, span))
+    return filtered_nums
+
+
+def expand_multiple(ref_numbers):
+    """ Expand multiple reference numbers into duplicate entries."""
+    return [(num, p, span) for nums, p, span in ref_numbers for num in nums]
+
+
+def extract_refs_from_spec(doc):
+    """ Extract references from a patent document."""
+
+    ref_numbers = [
+        (rf_n, p.number, occ)
+        for p in doc.description.paragraphs
+        for rf_n, occ in extract_refs(p.doc)
+    ]
+    # filter out "claim*" and "reference numeral*"
+    ref_numbers = filter_stopwords(ref_numbers)
+    return expand_multiple(ref_numbers)
+
+
+def get_entities(patentdoc):
+    """ Extract entities from a patentdoc object."""
+    ref_num_set = set([ref_num.text for ref_num, _, _ in rfs])
+    rfs = extract_refs_from_spec(doc)
+    entity_dict = dict()
+    for ref_num in ref_num_set:
+        entity_dict[ref_num] = Entity(ref_num, [])
+    for ref_num_token, para_num, occ in rfs:
+        entity_dict[ref_num_token.text].add_occurrence(('paragraph', para_num, occ))
     return entity_dict

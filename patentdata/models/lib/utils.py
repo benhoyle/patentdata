@@ -6,7 +6,10 @@ import string
 import unicodedata
 
 import spacy
-nlp = spacy.load('en')
+try:
+    nlp = spacy.load('en')
+except:
+    nlp = spacy.load('en_core_web_sm')
 
 # Extend these stopwords to include patent stopwords
 ENG_STOPWORDS = stopwords.words('english')

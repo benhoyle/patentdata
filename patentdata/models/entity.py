@@ -1,5 +1,25 @@
 # -*- coding: utf-8 -*-
+class Occurrence:
+    """ Model of a reference to a patent specification part."""
+    def __init__(self, location, number, spacy_span):
+        """ location = 'claim' or 'paragraph'
+            number = claim or paragraph number
+            spacy_span = span object in spacy
+        """
+        self.location = location
+        self.number = number
+        self.span = spacy_span
 
+    def __repr__(self):
+        return (
+            "<location: {l}; "
+            "number: {n}; "
+            "span: {s}"
+        ).format(
+            l=self.location,
+            n=self.number,
+            s=self.span
+        )
 
 class Entity:
     """ Abstract object for instantiating entities.
@@ -35,9 +55,12 @@ class Entity:
             l=self.limitations
         )
 
-    def add_occurrence(self, spacy_span):
+    def add_occurrence(self, occurrence):
         """ Add an occurrence in the form of a spaCy span"""
-        self.occurrences.append(spacy_span)
+        if not isinstance(occurrence, Occurrence):
+            l, n, s = occurrence
+            occurrence = Occurrence(l, n, s)
+        self.occurrences.append(occurrence)
         return self.occurrences
 
     @property

@@ -8,7 +8,7 @@ from datetime import datetime
 
 import logging
 from zipfile import ZipFile
-import Pickle
+import pickle
 import importlib
 
 logger = logging.getLogger(__name__)
@@ -68,7 +68,7 @@ class PatentCorpus:
         filegenerator = datasource.patentdoc_generator(
             classification, sample_size=sample_size
             )
-        pcorp = cls()
+        pcorp = cls([])
         for doc in filegenerator:
             pcorp.add_document(doc)
         # Also add documents to cache here
@@ -122,7 +122,8 @@ class PatentCorpus:
     def load(cls, filename):
         """ Load patentdoc objects from disk. """
         logging.info("Loading Patent Corpus")
-        pcorp = cls()
+        # [] is to prevent loading with a previous list of docs - bug?
+        pcorp = cls([])
         with ZipFile(filename) as myzip:
             for flat_doc in myzip.namelist():
                 with myzip.open(flat_doc) as myfile:
