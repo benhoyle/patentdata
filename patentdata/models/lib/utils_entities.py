@@ -433,16 +433,30 @@ def get_entity_ref_num_dict(doc):
 # Newer functions
 
 
+def get_far_left(token):
+    """ Recursive function to find left most token."""
+    lefts = list(token.lefts)
+    if lefts:
+        # Step back and see of a comma is present
+        next_token = lefts[0]
+        for i, r_l in enumerate(lefts[:-1]):
+            if r_l.text.lower() in [',']:
+                next_token = lefts[i+1]
+        return get_far_left(next_token)
+    else:
+        return token
+
+
 def process_match(match, text):
     """ Process a reference numeral match and extract data to store as an entity.
 
     returns: list of tuples (list_of_refs, span)"""
-    _, _, start, end = match
+    _, start, end = match
     ref_nums = list()
     for token in range(start, end):
         if text[token].pos == NUM:
             ref_nums.append(text[token])
-    left_child_start = (start - text[start].n_lefts)
+    left_child_start = get_far_left(text[start]).i
     occ_span = text[left_child_start:start+1]
     return ref_nums, occ_span
 
@@ -483,28 +497,3 @@ def filter_stopwords(ref_numbers):
 def expand_multiple(ref_numbers):
     """ Expand multiple reference numbers into duplicate entries."""
     return [(num, p, span) for nums, p, span in ref_numbers for num in nums]
-
-
-def extract_refs_from_spec(doc):
-    """ Extract references from a patent document."""
-
-    ref_numbers = [
-        (rf_n, p.number, occ)
-        for p in doc.description.paragraphs
-        for rf_n, occ in extract_refs(p.doc)
-    ]
-    # filter out "claim*" and "reference numeral*"
-    ref_numbers = filter_stopwords(ref_numbers)
-    return expand_multiple(ref_numbers)
-
-
-def get_entities(patentdoc):
-    """ Extract entities from a patentdoc object."""
-    ref_num_set = set([ref_num.text for ref_num, _, _ in rfs])
-    rfs = extract_refs_from_spec(doc)
-    entity_dict = dict()
-    for ref_num in ref_num_set:
-        entity_dict[ref_num] = Entity(ref_num, [])
-    for ref_num_token, para_num, occ in rfs:
-        entity_dict[ref_num_token.text].add_occurrence(('paragraph', para_num, occ))
-    return entity_dict

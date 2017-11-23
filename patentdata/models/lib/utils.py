@@ -22,6 +22,15 @@ PRINTABLE_CHAR_MAP = {c: i for i, c in enumerate(string.printable[:-2])}
 REVERSE_PRINT_CHAR_MAP = {i: c for i, c in enumerate(string.printable[:-2])}
 
 
+class Sdict(dict):
+    """ Class to extend a dict to add a value to a keyed list."""
+    def add(self, key, value):
+        if key not in self.keys():
+            self[key] = list()
+        self[key].append(value)
+        return self
+
+
 def check_list(listvar):
     """Turns single items into a list of 1."""
     if not isinstance(listvar, list):
