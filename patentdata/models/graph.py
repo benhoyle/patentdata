@@ -110,6 +110,11 @@ class Graph(object):
                 )
             for token in parent_node.tokens
             ])
+        # Reconnect any dangling grandchildren
+        grandchildren = self._Graph__graph_dict[child_node]
+        if grandchildren:
+            for grandchild in grandchildren:
+                self.add_edge((parent_node, grandchild))
         return parent_node
 
     def remove_node(self, node):
