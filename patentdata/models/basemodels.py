@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#from nltk import word_tokenize, pos_tag
 from patentdata.models.lib.utils import nlp
 # Used for frequency counts
 from collections import Counter
@@ -61,7 +60,7 @@ class BaseTextBlock:
         try:
             return self._words
         except AttributeError:
-            self._words = [w for word in self.doc]
+            self._words = [w.text for w in self.doc]
             return self._words
 
     @property
@@ -71,7 +70,7 @@ class BaseTextBlock:
             return self._filtered_tokens
         except AttributeError:
             filtered_text = replace_patent_numbers(self.text)
-            words = word_tokenize(filtered_text)
+            words = [w.text for w in nlp(filtered_text)]
             filtered_words = punctuation_split(words)
             caps_processed = capitals_process(filtered_words)
             self._filtered_tokens = stem_split(caps_processed)
@@ -159,10 +158,11 @@ class BaseTextBlock:
     def bag_of_words(
         self, clean_non_words=True, clean_stopwords=True, stem_words=True
     ):
-        """ Get an array of all the words in the text set. """
-        lowers = self.text.lower()
+        """ Get an array of all the words in the block of text. """
 
-        tokens = word_tokenize(lowers)
+        tokens = [
+                token.text.lower() for token in self.words
+            ]
 
         if clean_non_words:
             tokens = remove_non_words(tokens)
@@ -210,7 +210,7 @@ class BaseTextSet:
         units = check_list(initial_input)
         self.units = units
         self.count = len(self.units)
-        #self.doc = nlp(self.text)
+        # self.doc = nlp(self.text)
         self.index = 0
 
     def __iter__(self):
@@ -264,20 +264,16 @@ class BaseTextSet:
         self, clean_non_words=True, clean_stopwords=True, stem_words=True
     ):
         """ Get an array of all the words in the text set. """
-        lowers = self.text.lower()
-
-        tokens = word_tokenize(lowers)
-
-        if clean_non_words:
-            tokens = remove_non_words(tokens)
-
-        if clean_stopwords:
-            tokens = remove_stopwords(tokens)
-
-        if stem_words:
-            tokens = stem(tokens)
-
-        return tokens
+        return sum(
+            [
+                unit.bag_of_words(
+                    clean_non_words,
+                    clean_stopwords,
+                    stem_words
+                ) for unit in self.units
+            ],
+            list()
+        )
 
     def print_character_list(self):
         """ Return list of all printable characters converted to

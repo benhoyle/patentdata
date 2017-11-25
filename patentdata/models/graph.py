@@ -174,14 +174,30 @@ class Graph(object):
 
     def merge_single_children(self):
         """ Merge nodes with single children."""
-        # This doesn't work when parsing top > bottom
-        # as we merge parents before children
+
         nodes_to_pop = []
+        nodes_to_merge = []
         for node in self.nodes:
             # Get nodes connected to current node
-            if len(self.__graph_dict[node]) == 1:
-                child = self.__graph_dict[node][0]
-                self.merge_nodes(node, child)
+            children = self._Graph__graph_dict[node]
+            if len(children) == 1:
+                child = children[0]
+                nodes_to_merge.append((node, child))
                 nodes_to_pop.append(child)
+
+        # Merge nodes
+        nodes_to_merge = list(reversed(nodes_to_merge))
+        while nodes_to_merge:
+            parent_node, child_node = nodes_to_merge.pop()
+            updated_parent_node = self.merge_nodes(parent_node, child_node)
+            nodes_to_merge = [
+                (updated_parent_node, c) if p == child_node
+                else (p, c)
+                for p, c in nodes_to_merge
+            ]
+
+        # Remove merged nodes
         for ntp in nodes_to_pop:
             self.remove_node(ntp)
+
+        return self

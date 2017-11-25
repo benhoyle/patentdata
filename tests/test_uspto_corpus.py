@@ -19,8 +19,10 @@ class TestGeneral(object):
 
     def test_init(self):
         """ Test initialising object. """
-        if os.path.exists(self.testfilepath):
+        try:
             os.remove(self.dbpath)
+        except:
+            pass
         corpus = USPublications(self.testfilepath)
         # Check DB creates
         assert os.path.isfile(self.dbpath)
@@ -28,8 +30,10 @@ class TestGeneral(object):
 
     def test_archive_list(self):
         """ Test getting archive names. """
-        if os.path.exists(self.testfilepath):
+        try:
             os.remove(self.dbpath)
+        except:
+            pass
         corpus = USPublications(self.testfilepath)
         corpus.index()
         records = corpus.c.execute("SELECT * FROM files").fetchall()
@@ -45,8 +49,10 @@ class TestGeneral(object):
 
     def test_get_store_class(self):
         """ Test retrieving and storing a classification. """
-        if os.path.exists(self.testfilepath):
+        try:
             os.remove(self.dbpath)
+        except:
+            pass
         corpus = USPublications(self.testfilepath)
         corpus.process_classifications()
         records = corpus.c.execute(
