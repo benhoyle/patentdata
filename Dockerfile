@@ -32,6 +32,8 @@ RUN pip3 install matplotlib
 
 RUN pip3 install cython
 
+RUN pip3 install h5py
+
 RUN pip3 install -U spacy
 
 RUN python3 -m spacy download en
@@ -50,8 +52,6 @@ RUN apt-get install tesseract-ocr
 RUN pip3 install feedparser
 
 RUN pip3 install python-docx
-
-RUN pip3 install h5py
 
 RUN apt-get install graphviz -y --no-install-recommends
 

@@ -210,7 +210,7 @@ class BaseTextSet:
         units = check_list(initial_input)
         self.units = units
         self.count = len(self.units)
-        self.doc = nlp(self.text)
+        #self.doc = nlp(self.text)
         self.index = 0
 
     def __iter__(self):
