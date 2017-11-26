@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from collections import OrderedDict
 from graphviz import Digraph
-
+import mumpy as np
 
 class Node(object):
     """ Node in a graph. """
@@ -40,9 +40,31 @@ class Graph(object):
         return self.__generate_edges()
 
     @property
+    def edge_indices(self):
+        """ returns edges in terms of indices in nodes"""
+        return [
+            (self.nodes.index(node1), self.nodes.index(node2))
+            for node1, node2 in self.edges
+        ]
+
+    @property
     def node_labels(self):
         """ Return all node labels."""
         return [n.label for n in self.nodes]
+
+    @property
+    def adj_mat(self):
+        """ Return adjacency matrix as a numpy array.
+        parent>child connections are indicated with +1,
+        child>parent with -1
+        """
+        n = len(self.nodes)
+        A = np.zeros((n,n))
+        new_edges = edges_to_indices(self.edges, self.nodes)
+        for i, j in new_edges:
+            A[i, j] = 1
+            A[j, i] = -1
+        return A
 
     def add_node(self, node_label, token=None):
         """ If the node "node" is not in
@@ -165,6 +187,7 @@ class Graph(object):
 
     def flatten_graph(self):
         """ Merge nodes with no children into parent node."""
+        # Does this need to run recursively?
         nodes_to_pop = []
         for node in self.nodes:
             # Get nodes connected to current node
@@ -182,6 +205,7 @@ class Graph(object):
 
         nodes_to_pop = []
         nodes_to_merge = []
+        # Does this need to run recursively?
         for node in self.nodes:
             # Get nodes connected to current node
             children = self._Graph__graph_dict[node]
