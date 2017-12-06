@@ -46,13 +46,22 @@ class BaseTextBlock:
     def __init__(self, text, number=None):
         self.text = text
         self.number = number
-        self.doc = nlp(text)
+        # self.doc = nlp(text)
 
     def __repr__(self):
         if self.number:
             return "{0} {1}".format(self.number, self.text)
         else:
             return self.text
+
+    @property
+    def doc(self):
+        """ Return spaCy doc. """
+        try:
+            return self._doc
+        except AttributeError:
+            self._doc = nlp(self.text)
+            return self._doc
 
     @property
     def words(self):
@@ -70,6 +79,7 @@ class BaseTextBlock:
             return self._filtered_tokens
         except AttributeError:
             filtered_text = replace_patent_numbers(self.text)
+            # Add in here space information by " " > "_" prefix
             words = [w.text for w in nlp(filtered_text)]
             filtered_words = punctuation_split(words)
             caps_processed = capitals_process(filtered_words)

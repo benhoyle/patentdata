@@ -7,7 +7,7 @@ import unicodedata
 
 import spacy
 try:
-    nlp = spacy.load('en')
+    nlp = spacy.load('en', disable=['ner', 'textcat'])
 except:
     nlp = spacy.load('en_core_web_sm')
 
@@ -128,6 +128,41 @@ def replace_patent_numbers(text):
         )
     m = re.sub(regex, "_PATENT_NO_", text)
     return m
+
+
+def filter_tokens(spacy_doc):
+    """ Takes a list of tokens and splits stemmed tokens into
+    stem, ending - inserting ending as extra token.
+
+    returns: revised (possibly longer) list of tokens. """
+
+    # Generate token string list with capitals replaced
+
+    stemmer = PorterStemmer()
+    token_list = list()
+    for token in spacy_doc:
+        if token.i >= 1:
+            if spacy_doc[token.i-1].whitespace_:
+                token_list.append(" ")
+        token_text = token.text
+        if token_text[0] is not "_" and token_text[-1] is not "_":
+            if token.is_upper:
+                token_list.append("_ALL_CAPITAL_")
+                token_text = token.lower_
+            elif token.is_title:
+                token_list.append("_CAPITAL_")
+                token_text = token.lower_
+
+        stem = stemmer.stem(token_text)
+        split_list = token_text.split(stem)
+        if token_text == stem:
+            token_list.append(token_text)
+        elif len(split_list) > 1:
+            token_list.append(stem)
+            token_list.append(split_list[1])
+        else:
+            token_list.append(token_text)
+    return token_list
 
 
 def string2int(text, filter_printable=True):

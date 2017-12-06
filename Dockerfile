@@ -57,6 +57,10 @@ RUN apt-get install graphviz -y --no-install-recommends
 
 RUN pip3 install graphviz
 
+RUN pip3 install pytest-cov
+
+# RUN python3 -m spacy download en_core_web_lg
+
 #RUN pip3 install patentdata>=0.0.7
 
 ENV INSTALL_PATH /patentdata
