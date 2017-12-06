@@ -6,8 +6,8 @@ from collections import Counter
 
 from patentdata.models.lib.utils import (
     check_list, remove_non_words, stem, remove_stopwords,
-    replace_patent_numbers, punctuation_split, capitals_process,
-    stem_split, ENG_STOPWORDS, string2printint
+    replace_patent_numbers,
+    filter_tokens, ENG_STOPWORDS, string2printint
     )
 
 from patentdata.models.lib.utils_entities import (
@@ -79,11 +79,7 @@ class BaseTextBlock:
             return self._filtered_tokens
         except AttributeError:
             filtered_text = replace_patent_numbers(self.text)
-            # Add in here space information by " " > "_" prefix
-            words = [w.text for w in nlp(filtered_text)]
-            filtered_words = punctuation_split(words)
-            caps_processed = capitals_process(filtered_words)
-            self._filtered_tokens = stem_split(caps_processed)
+            self._filtered_tokens = filter_tokens(nlp(filtered_text))
             return self._filtered_tokens
 
     @property
