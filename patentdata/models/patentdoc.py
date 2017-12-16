@@ -137,11 +137,8 @@ class PatentDoc:
         """ Return number of unique characters."""
         return len(self.character_counter)
 
-    @property
-    def saveable(self):
-        """ Generate a saveable representation of patentdoc to disk."""
-        # First we can generate a dictionary version of the pdoc
-        # Then we can use json to convert dict to a json string
+    def as_dict(self):
+        """ Return patent document as a dictionary."""
         pdoc_dict = dict()
         pdoc_dict['title'] = self.title
         pdoc_dict['number'] = self.number
@@ -154,7 +151,14 @@ class PatentDoc:
         pdoc_dict['claims'] = [
             c.as_dict() for c in self.claimset.claims
         ]
-        return json.dumps(pdoc_dict)
+        return pdoc_dict
+
+    @property
+    def saveable(self):
+        """ Generate a saveable representation of patentdoc to disk."""
+        # First we can generate a dictionary version of the pdoc
+        # Then we can use json to convert dict to a json string
+        return json.dumps(self.as_dict())
 
     @classmethod
     def load_from_string(cls, doc_string):
