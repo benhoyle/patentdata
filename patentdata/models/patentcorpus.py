@@ -158,7 +158,6 @@ class LazyPatentCorpus:
         self.filelist = self.datasource.get_records(
             classification, sample_size=sample_size
             )
-        return self
 
     def init_by_filenames(self, datasource, filelist):
         """ Initialise with a list of file references of the format
