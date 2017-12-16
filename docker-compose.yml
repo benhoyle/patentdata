@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+
+  ml_playground:
+    build: .
+    command: >
+      jupyter notebook --no-browser --allow-root
+    volumes:
+      - /home/ben/projects/patentdata:/patentdata
+      - /media/ben/:/media
+      - /home/ben/Public/deep-learning/notebooks:/patentdata/notebooks
+    ports:
+      - '8888:8888'
+    links:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    volumes:
+      - /media/ben/HDD1/mongodata:/data
+

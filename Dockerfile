@@ -59,6 +59,8 @@ RUN pip3 install graphviz
 
 RUN pip3 install pytest-cov
 
+RUN pip3 install pymongo
+
 # RUN python3 -m spacy download en_core_web_lg
 
 #RUN pip3 install patentdata>=0.0.7
