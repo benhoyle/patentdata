@@ -161,9 +161,8 @@ class PatentDoc:
         return json.dumps(self.as_dict())
 
     @classmethod
-    def load_from_string(cls, doc_string):
+    def load_from_dict(cls, pdoc_dict):
         """ Load patent doc from a JSON string. """
-        pdoc_dict = json.loads(doc_string)
         pdoc = cls(
             title=pdoc_dict['title'],
             number=pdoc_dict['number'],
@@ -172,3 +171,9 @@ class PatentDoc:
             classifications=pdoc_dict['classifications']
         )
         return pdoc
+
+    @classmethod
+    def load_from_string(cls, doc_string):
+        """ Load patent doc from a JSON string. """
+        pdoc_dict = json.loads(doc_string)
+        return cls.load_from_dict(pdoc_dict)

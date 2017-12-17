@@ -59,12 +59,19 @@ class USPublications(DBIndexDataSource):
         super(USPublications, self).__init__(path)
         self.fieldname = "name"
 
-    def index(self):
-        """ Generate a list of lower level archive files. """
+    def index(self, subdirectories=None):
+        """ Generate a list of lower level archive files.
+
+         Limit to subdirectories (as list of strings) if passed.
+        """
 
         print("Getting archive file list - may take a few minutes\n")
+
+        if not subdirectories:
+            subdirectories = utils.get_immediate_subdirectories(self.path)
+
         # Iterate through subdirs as so? >
-        for subdirectory in utils.get_immediate_subdirectories(self.path):
+        for subdirectory in subdirectories:
             logging.info("Generating list for :", subdirectory)
             filtered_files = [
                 f for f in self.first_level_files

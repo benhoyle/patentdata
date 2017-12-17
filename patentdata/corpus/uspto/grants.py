@@ -128,8 +128,11 @@ class USGrants(DBIndexDataSource):
             for sl, el, xml_doc in self.read_archive_file(filename):
                 yield xml_doc
 
-    def index(self):
-        """ Generate metadata for individual publications. """
+    def index(self, subdirectories=None):
+        """ Generate metadata for individual publications.
+
+        Limit to subdirectories (as list of strings) if passed.
+        """
 
         print("Getting archive file list - may take a while!\n")
         # set query string for later
@@ -141,8 +144,11 @@ class USGrants(DBIndexDataSource):
                             'subgroup) '
                             'VALUES ({0})').format(",".join("?"*12))
 
+        if not subdirectories:
+            subdirectories = utils.get_immediate_subdirectories(self.path)
+
         # Iterate through subdirs as so?
-        for subdirectory in utils.get_immediate_subdirectories(self.path):
+        for subdirectory in subdirectories:
             print("Generating list for: {0}".format(subdirectory))
             filtered_files = [
                 f for f in self.first_level_files
