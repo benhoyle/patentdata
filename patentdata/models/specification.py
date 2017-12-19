@@ -10,10 +10,11 @@ from patentdata.models.lib.utils_entities import (
     extract_refs, filter_stopwords, expand_multiple
 )
 from collections import Counter
+import nltk
 
-# extra_abbreviations = ['fig', 'figs', 'u.s.c', 'ser', 'no']
-# sent_tokenize = data.load('tokenizers/punkt/english.pickle')
-# sent_tokenize._params.abbrev_types.update(extra_abbreviations)
+extra_abbreviations = ['fig', 'figs', 'u.s.c', 'ser', 'no']
+sent_tokenize = nltk.data.load('tokenizers/punkt/english.pickle')
+sent_tokenize._params.abbrev_types.update(extra_abbreviations)
 
 
 class Paragraph(BaseTextBlock):
@@ -22,7 +23,9 @@ class Paragraph(BaseTextBlock):
     @property
     def sentences(self):
         """ If sentences have not been segmented, segment when accessed. """
-        return [s for s in self.doc.sents]
+        # Using NLTK is faster
+        # return [s for s in self.doc.sents]
+        return sent_tokenize.tokenize(self.text)
 
     @property
     def sentence_count(self):

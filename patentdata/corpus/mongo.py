@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+
+from patentdata.corpus.baseclasses import BasePatentDataSource
+
 import os
 import pickle
 import patentdata.utils as utils
@@ -6,13 +10,56 @@ from patentdata.corpus.uspto.grants import get_multiple_xml_by_offset
 import zipfile
 from pymongo import MongoClient
 from patentdata.xmlparser import XMLDoc
+from patentdata.models.patentdoc import PatentDoc
 
+# Will need to move database parameters into a separate config file
+client = MongoClient('mongodb', 27017)
+db = client.patent_db
+
+def MongoDataSource(BasePatentDataSource):
+    """ Data source that uses mongo DB documents."""
+
+    def get_patentdoc(self, publication_number):
+        """ Return a Patent Doc object corresponding
+        to a publication number.
+
+        Publication number is a string like "US08847966B2" """
+        try:
+            return PatentDoc.load_from_dict(
+                db.patents.find_one({"number": publication_number})
+            )
+        except Exception as e:
+            print("Cannot retrieve Patent Document.")
+            print(e)
+            return None
+
+    def patentdoc_generator(self, publication_numbers=None, sample_size=None):
+        """ Return a generator that provides Patent Doc objects.
+        publication_numbers is a list or iterator that provides a
+        limiting group of publication numbers.
+        sample_size limits results to a random sample of size sample_size"""
+        if publication_numbers:
+            for pub_no in publication_numbers:
+                yield self.get_patentdoc(self, pub_no)
+
+        if sample_size:
+            cursor = db.patents.aggregate(
+                [ { "$sample": { "size": sample_size } } ]
+            )
+            for document in cursor:
+                yield PatentDoc.load_from_dict(document)
+
+        if not publication_numbers and not sample_size:
+            cursor = db.patents.find()
+            for document in cursor:
+                yield PatentDoc.load_from_dict(document)
 
 def to_mongo(path=None, records=None):
-    """ Convert stored and zipped XML records to Mongodb Documents."""
+    """ Convert stored and zipped XML records from USGrants
+    to Mongodb Documents.
 
-    client = MongoClient('mongodb', 27017)
-    db = client.patent_db
+
+    TODO: generalise to other datasources."""
 
     rec_savefile = "saved_records.pkl"
     pro_savefile = "processed_records.pkl"

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from collections import OrderedDict
 from graphviz import Digraph
-import mumpy as np
+import numpy as np
 
 class Node(object):
     """ Node in a graph. """

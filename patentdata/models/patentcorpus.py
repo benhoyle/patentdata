@@ -35,6 +35,11 @@ def string_to_class(datasource_str):
         return DATASOURCE_OPTIONS[datasource_str]
 
 
+"""
+We probably want to extract the datasource specific functions from
+these classes - we want to leave the statistical functions.
+"""
+
 class PatentCorpus:
     """ Object to model a collection of patent documents. """
     def __init__(self, documents=[]):

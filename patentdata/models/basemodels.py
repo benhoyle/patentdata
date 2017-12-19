@@ -167,7 +167,7 @@ class BaseTextBlock:
         """ Get an array of all the words in the block of text. """
 
         tokens = [
-                token.text.lower() for token in self.words
+                token.lower() for token in self.words
             ]
 
         if clean_non_words:
