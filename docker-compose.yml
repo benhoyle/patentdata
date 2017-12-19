@@ -9,7 +9,7 @@ services:
     volumes:
       - /home/ben/projects/patentdata:/patentdata
       - /media/ben/:/media
-      - /home/ben/Public/deep-learning/notebooks:/patentdata/notebooks
+      - /HDD1/deep-learning/notebooks:/patentdata/notebooks
     ports:
       - '8888:8888'
     links:
@@ -18,5 +18,5 @@ services:
   mongodb:
     image: mongo
     volumes:
-      - /media/ben/HDD1/mongodata:/data
+      - /HDD1/mongodata:/data
 

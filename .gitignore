@@ -12,6 +12,7 @@ __pycache__/
 *.p
 settings.py
 notebooks/
+*.pkl
 
 # Home directory HTML
 /*.html
