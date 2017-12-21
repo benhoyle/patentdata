@@ -16,7 +16,7 @@ from patentdata.models.patentdoc import PatentDoc
 client = MongoClient('mongodb', 27017)
 db = client.patent_db
 
-def MongoDataSource(BasePatentDataSource):
+class MongoDataSource(BasePatentDataSource):
     """ Data source that uses mongo DB documents."""
 
     def get_patentdoc(self, publication_number):

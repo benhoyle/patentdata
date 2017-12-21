@@ -25,7 +25,13 @@ class Paragraph(BaseTextBlock):
         """ If sentences have not been segmented, segment when accessed. """
         # Using NLTK is faster
         # return [s for s in self.doc.sents]
-        return sent_tokenize.tokenize(self.text)
+        try:
+            return self._sentences
+        except AttributeError:
+            self._sentences = [
+                Sentence(s) for s in sent_tokenize.tokenize(self.text)
+                ]
+            return self._sentences
 
     @property
     def sentence_count(self):

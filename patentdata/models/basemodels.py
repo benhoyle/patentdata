@@ -14,6 +14,8 @@ from patentdata.models.lib.utils_entities import (
     extract_entities
 )
 
+from nltk.tokenize import word_tokenize
+
 from patentdata.models.chardict import CharDict
 from patentdata.models.entity import Entity
 
@@ -69,7 +71,8 @@ class BaseTextBlock:
         try:
             return self._words
         except AttributeError:
-            self._words = [w.text for w in self.doc]
+            # This is too slow for large groups of documents
+            self._words = word_tokenize(self.text)
             return self._words
 
     @property
