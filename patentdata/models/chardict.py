@@ -16,42 +16,84 @@ def decompose_character(char):
         return None
 
 
-class CharDict:
-    """ Class to model mapping between characters and integers. """
+CONTROL_CHARACTERS = [
+    "_PAD_",  # Make sure <PADDING> control symbol is set = 0
+    "_SODOC_", "_EODOC_",  # Document start / end
+    "_SOP_", "_EOP_",  # Paragraph start / end
+    "_SOS_", "_SOS_",  # Sentence start / end
+    "_SOW_", "_EOW_",  # Word start / end
+    "_CAPITAL_", "_ALL_CAPITAL_",  # Capital / Uppercase markers
+    "_OOD_"  # Out of dict
+]
 
-    def __init__(self):
-        """ Initialise and reverse control characters. """
-        # Set character set we will use
-        self.character_set = (
+CHARACTER_VOCAB = list(
             string.ascii_lowercase +
             string.digits +
             string.punctuation +
             string.whitespace[:-2]
             )
+
+
+class BaseDict:
+    """Abstract class for character and word dictionaries."""
+
+    def __init__(self):
+        """ Initialise and add control tokens. """
+        self.token_set = [] + CONTROL_CHARACTERS
+
+    def build_dicts(self):
+        """ Build mapping dictionaries."""
         # Populate rest of dictionary from character set
         self.reverse_dict = {
-            i: c for i, c in enumerate(self.character_set, start=1)
+            i: c for i, c in enumerate(self.token_set)
             }
-        # Make sure <PADDING> control symbol is set = 0
-        self.reverse_dict[0] = "<PAD>"
-        cs_len = len(self.reverse_dict)
-        # Reserve special characters
-        self.reverse_dict[cs_len + 0] = "<DOC>" # Document start
-        self.reverse_dict[cs_len + 1] = "</DOC>" # Document end
-        self.reverse_dict[cs_len + 2] = "<P>" # Paragraph start
-        self.reverse_dict[cs_len + 3] = "</P>" # Paragraph end
-        self.reverse_dict[cs_len + 4] = "<S>" # Sentence start
-        self.reverse_dict[cs_len + 5] = "</S>" # Sentence end
-        self.reverse_dict[cs_len + 6] = "<W>" # Word start
-        self.reverse_dict[cs_len + 7] = "</W>" # Word end
-        self.reverse_dict[cs_len + 8] = "<CAPITAL>" # Capital Letter
-        self.reverse_dict[cs_len + 9] = "<OOD>" # Out of dict
 
-        self.vocabulary_size = len(self.reverse_dict)
+        self.vocab_size = len(self.reverse_dict)
 
         self.forward_dict = {
             v: k for k, v in self.reverse_dict.items()
             }
+
+    def int2token(self, integer):
+        """ Convert an integer into a token using the object. """
+        try:
+            return self.reverse_dict[integer]
+        except AttributeError:
+            self.build_dicts()
+            return self.reverse_dict[integer]
+
+    def token2int(self, token):
+        """ Convert a token into an integer using the object. """
+        try:
+            if token in self.forward_dict.keys():
+                return self.forward_dict[token]
+            else:
+                # Return OOD token
+                return self.forward_dict["_OOD_"]
+        except AttributeError:
+            self.build_dicts()
+            return self.token2int(token)
+
+    @property
+    def startwordint(self):
+        """ Return integer for start of word character. """
+        return self.forward_dict["_SOW_"]
+
+    @property
+    def endwordint(self):
+        """ Return integer for start of word character. """
+        return self.forward_dict["_EOW_"]
+
+
+class CharDict(BaseDict):
+    """ Class to model mapping between characters and integers. """
+
+    def __init__(self):
+        """ Initialise and reverse control characters. """
+        # Set character set we will use
+        super(CharDict, self).__init__()
+        self.token_set += CHARACTER_VOCAB
+        self.build_dicts()
 
         # Create character cleaning dictionary
         self.char_cleaner = dict()
@@ -69,11 +111,7 @@ class CharDict:
         self.char_cleaner['×'] = '*'
         self.char_cleaner['⁄'] = '/'
 
-    def int2char(self, integer):
-        """ Convert an integer into a character using the object. """
-        return self.reverse_dict[integer]
-
-    def clean_char(character):
+    def clean_char(self, character):
         if character in self.char_cleaner.keys():
             return self.char_cleaner[character]
         else:
@@ -93,14 +131,14 @@ class CharDict:
                 integer_list.append(self.forward_dict[character])
             elif character in string.ascii_uppercase:
                 # If uppercase
-                integer_list.append(self.forward_dict["<CAPITAL>"])
+                integer_list.append(self.forward_dict["_CAPITAL_"])
                 integer_list.append(self.forward_dict[character.lower()])
             else:
                 replacement_chars = decompose_character(character)
                 if replacement_chars:
                     integer_list += self.text2int("".join(replacement_chars))
                 else:
-                    integer_list.append(self.forward_dict["<OOD>"])
+                    integer_list.append(self.forward_dict["_OOD_"])
         return integer_list
 
     def intlist2text(self, int_list):
@@ -109,23 +147,16 @@ class CharDict:
         capitalise = False
         for i in int_list:
             char = self.reverse_dict[i]
-            if char == "<CAPITAL>":
+            if char == "_CAPITAL_":
                 capitalise = True
             else:
-                if capitalise == True:
+                if capitalise:
                     char = char.upper()
                 text += char
                 capitalise = False
         return text
 
-    @property
-    def startwordint(self):
-        """ Return integer for start of word character. """
-        return self.forward_dict["<W>"]
 
-    @property
-    def endwordint(self):
-        """ Return integer for start of word character. """
-        return self.forward_dict["</W>"]
-
-
+class WordDict(BaseDict):
+    """ Class to model mapping between words and integers. """
+    pass
