@@ -7,7 +7,9 @@ from collections import Counter
 from patentdata.models.lib.utils import (
     check_list, remove_non_words, stem, remove_stopwords,
     replace_patent_numbers,
-    filter_tokens, ENG_STOPWORDS, string2printint
+    filter_tokens, ENG_STOPWORDS, string2printint,
+    stem_split, capitals_process, punctuation_split,
+    replace_non_alpha, clean_characters
     )
 
 from patentdata.models.lib.utils_entities import (
@@ -81,9 +83,24 @@ class BaseTextBlock:
         try:
             return self._filtered_tokens
         except AttributeError:
+            self.text = clean_characters(self.text)
             filtered_text = replace_patent_numbers(self.text)
-            self._filtered_tokens = filter_tokens(nlp(filtered_text))
+            words = word_tokenize(filtered_text)
+            words = punctuation_split(words)
+            words = capitals_process(words)
+            words = replace_non_alpha(words)
+            self._filtered_tokens = stem_split(words)
             return self._filtered_tokens
+
+    @property
+    def spacy_filtered_tokens(self):
+        """ Clean and tokenise text and store as variable. """
+        try:
+            return self._spacy_filtered_tokens
+        except AttributeError:
+            filtered_text = replace_patent_numbers(self.text)
+            self._spacy_filtered_tokens = filter_tokens(nlp(filtered_text))
+            return self._spacy_filtered_tokens
 
     @property
     def word_count(self):

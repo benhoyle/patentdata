@@ -80,15 +80,19 @@ def stem_split(tokens):
     stemmer = PorterStemmer()
     token_list = list()
     for token in tokens:
-        stem = stemmer.stem(token)
-        split_list = token.split(stem)
-        if token == stem:
+        if (token[0] is "_" and token[-1] is "_") or token in string.punctuation:
+            # Control token so add and skip
             token_list.append(token)
-        elif len(split_list) > 1:
-            token_list.append(stem)
-            token_list.append(split_list[1])
         else:
-            token_list.append(split_list[0])
+            stem = stemmer.stem(token)
+            split_list = token.split(stem)
+            if token == stem:
+                token_list.append("_" + token)
+            elif len(split_list) > 1:
+                token_list.append("_" + stem)
+                token_list.append(split_list[1])
+            else:
+                token_list.append("_" + split_list[0])
     return token_list
 
 
@@ -128,6 +132,16 @@ def replace_patent_numbers(text):
         )
     m = re.sub(regex, "_PATENT_NO_", text)
     return m
+
+
+def replace_non_alpha(tokens):
+    """ Replace non alpha tokens with a special control symbol."""
+    return [
+        "_NOTALPHA_" if (
+            t not in string.punctuation and not t.isalpha() and
+            t[0] is not "_" and t[-1] is not "_"
+        ) else t for t in tokens
+    ]
 
 
 def filter_tokens(spacy_doc):

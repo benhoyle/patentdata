@@ -44,7 +44,8 @@ class MongoDataSource(BasePatentDataSource):
 
         if sample_size:
             cursor = db.patents.aggregate(
-                [ { "$sample": { "size": sample_size } } ]
+                [ { "$sample": { "size": sample_size } } ],
+                allowDiskUse=True
             )
             for document in cursor:
                 yield PatentDoc.load_from_dict(document)
