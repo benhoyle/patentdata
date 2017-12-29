@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import string
 import unicodedata
+import json
 
 
 def decompose_character(char):
@@ -39,13 +40,13 @@ class BaseDict:
 
     def __init__(self):
         """ Initialise and add control tokens. """
-        self.token_set = [] + CONTROL_CHARACTERS
+        self.vocab = [] + CONTROL_CHARACTERS
 
     def build_dicts(self):
         """ Build mapping dictionaries."""
         # Populate rest of dictionary from character set
         self.reverse_dict = {
-            i: c for i, c in enumerate(self.token_set)
+            i: c for i, c in enumerate(self.vocab)
             }
 
         self.vocab_size = len(self.reverse_dict)
@@ -92,7 +93,7 @@ class CharDict(BaseDict):
         """ Initialise and reverse control characters. """
         # Set character set we will use
         super(CharDict, self).__init__()
-        self.token_set += CHARACTER_VOCAB
+        self.vocab += CHARACTER_VOCAB
         self.build_dicts()
 
         # Create character cleaning dictionary
@@ -159,4 +160,13 @@ class CharDict(BaseDict):
 
 class WordDict(BaseDict):
     """ Class to model mapping between words and integers. """
-    pass
+
+    def load_vocab(self, filepath="vocab.json", vocab_size=None):
+        """ Load vocab from a json file."""
+        with open(filepath, 'r') as f:
+            data = json.loads(f.read())
+        if vocab_size:
+            upper_index = vocab_size - len(self.vocab)
+            # We would need to here shift the weights matrix
+            # E.g. add x random rows to accomodate the control characters
+
