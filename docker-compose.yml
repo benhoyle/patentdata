@@ -8,8 +8,8 @@ services:
       jupyter notebook --no-browser --allow-root
     volumes:
       - /home/ben/projects/patentdata:/patentdata
-      - /media/ben/:/media
-      - /media/ben/HDD1/deep-learning/notebooks:/patentdata/notebooks
+      - /media/ben/:/patentdata/media
+      - /media/ben/SAMSUNG1/Notebooks/deep-learning/notebooks:/patentdata/notebooks
     ports:
       - '8888:8888'
     links:

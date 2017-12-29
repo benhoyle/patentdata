@@ -16,6 +16,7 @@ from patentdata.models.patentdoc import PatentDoc
 client = MongoClient('mongodb', 27017)
 db = client.patent_db
 
+
 class MongoDataSource(BasePatentDataSource):
     """ Data source that uses mongo DB documents."""
 
@@ -44,7 +45,7 @@ class MongoDataSource(BasePatentDataSource):
 
         if sample_size:
             cursor = db.patents.aggregate(
-                [ { "$sample": { "size": sample_size } } ],
+                [{"$sample": {"size": sample_size}}],
                 allowDiskUse=True
             )
             for document in cursor:
@@ -54,6 +55,7 @@ class MongoDataSource(BasePatentDataSource):
             cursor = db.patents.find()
             for document in cursor:
                 yield PatentDoc.load_from_dict(document)
+
 
 def to_mongo(path=None, records=None):
     """ Convert stored and zipped XML records from USGrants
@@ -113,3 +115,37 @@ def to_mongo(path=None, records=None):
         processed_files.append(filename)
         with open(pro_savefile, "wb") as f:
             pickle.dump(processed_files, f)
+
+
+class CorpusSentenceIterator:
+    """ Iterator to return sentences from files in filelist
+    from datasource. """
+
+    def __init__(self, add_claims=True, sample_size=None):
+        """ Initialise with a datasource and filelist. """
+        self.mdb = MongoDataSource()
+        self.sample_size = sample_size
+        self.add_claims = add_claims
+
+    def __iter__(self):
+        """ Iterate through files. """
+        pdg = self.mdb.patentdoc_generator(sample_size=self.sample_size)
+        for doc in pdg:
+            try:
+                for paragraph in doc.description.paragraphs:
+                    for sentence in paragraph.sentences:
+                        # yield sentence.filtered_tokens
+                        yield sentence.bag_of_words(
+                            clean_non_words=True,
+                            clean_stopwords=False,
+                            stem_words=False
+                        )
+                    if self.add_claims:
+                        for claim in doc.claimset.claims:
+                            yield claim.bag_of_words(
+                                clean_non_words=True,
+                                clean_stopwords=False,
+                                stem_words=False
+                            )
+            except:
+                print("Error processing doc - {0}".format(doc.number))

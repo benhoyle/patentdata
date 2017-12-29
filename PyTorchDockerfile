@@ -1,0 +1,26 @@
+FROM ubuntu
+
+RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
+    libglib2.0-0 libxext6 libsm6 libxrender1 \
+    git mercurial subversion
+
+RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
+    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
+    /bin/bash ~/miniconda.sh -b -p /opt/conda && \
+    rm ~/miniconda.sh
+
+ENV PATH /opt/conda/bin:$PATH
+
+RUN conda install jupyter -y && \
+    mkdir /opt/notebooks
+
+RUN conda install pytorch torchvision -c pytorch
+
+EXPOSE 8888
+
+RUN mkdir -p -m 700 /root/.jupyter/ && \
+    echo "c.NotebookApp.ip = '*'" >> /root/.jupyter/jupyter_notebook_config.py && \
+    echo "c.NotebookApp.password = u'sha1:dcdb6e651f8c:609a36df6ee9005f50b9e0e9d79590d108053f03'" >> /root/.jupyter/jupyter_notebook_config.py && \
+    echo "c.NotebookApp.token = ''" >> /root/.jupyter/jupyter_notebook_config.py
+
+CMD ["jupyter", "notebook", "--no-browser", "--allow-root"]
