@@ -59,6 +59,8 @@ RUN apt-get install graphviz -y --no-install-recommends
 
 RUN pip3 install graphviz
 
+RUN pip3 install pydot
+
 RUN pip3 install pytest-cov
 
 RUN pip3 install pymongo
