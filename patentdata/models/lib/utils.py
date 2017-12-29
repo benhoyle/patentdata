@@ -5,6 +5,12 @@ import re
 import string
 import unicodedata
 
+import spacy
+try:
+    nlp = spacy.load('en', disable=['ner', 'textcat'])
+except:
+    nlp = spacy.load('en_core_web_sm')
+
 # Extend these stopwords to include patent stopwords
 ENG_STOPWORDS = stopwords.words('english')
 
@@ -14,6 +20,15 @@ REGEX_PCT_APPLICATION = r"PCT\/[A-Z]{2}\d{2,4}\/\d{5,6}"
 
 PRINTABLE_CHAR_MAP = {c: i for i, c in enumerate(string.printable[:-2])}
 REVERSE_PRINT_CHAR_MAP = {i: c for i, c in enumerate(string.printable[:-2])}
+
+
+class Sdict(dict):
+    """ Class to extend a dict to add a value to a keyed list."""
+    def add(self, key, value):
+        if key not in self.keys():
+            self[key] = list()
+        self[key].append(value)
+        return self
 
 
 def check_list(listvar):
@@ -65,15 +80,19 @@ def stem_split(tokens):
     stemmer = PorterStemmer()
     token_list = list()
     for token in tokens:
-        stem = stemmer.stem(token)
-        split_list = token.split(stem)
-        if token == stem:
+        if (token[0] is "_" and token[-1] is "_") or token in string.punctuation:
+            # Control token so add and skip
             token_list.append(token)
-        elif len(split_list) > 1:
-            token_list.append(stem)
-            token_list.append(split_list[1])
         else:
-            token_list.append(split_list[0])
+            stem = stemmer.stem(token)
+            split_list = token.split(stem)
+            if token == stem:
+                token_list.append("_" + token)
+            elif len(split_list) > 1:
+                token_list.append("_" + stem)
+                token_list.append(split_list[1])
+            else:
+                token_list.append("_" + split_list[0])
     return token_list
 
 
@@ -113,6 +132,59 @@ def replace_patent_numbers(text):
         )
     m = re.sub(regex, "_PATENT_NO_", text)
     return m
+
+
+def replace_non_alpha(tokens):
+    """ Replace non alpha tokens with a special control symbol."""
+    return [
+        "_NOTALPHA_" if (
+            t not in string.punctuation and not t.isalpha() and
+            t[0] is not "_" and t[-1] is not "_"
+        ) else t for t in tokens
+    ]
+
+
+def filter_tokens(spacy_doc):
+    """ Takes a list of tokens and splits stemmed tokens into
+    stem, ending - inserting ending as extra token.
+
+    returns: revised (possibly longer) list of tokens. """
+
+    # Generate token string list with capitals replaced
+
+    stemmer = PorterStemmer()
+    token_list = list()
+    for token in spacy_doc:
+        if not token.is_alpha and token.pos_ != "PUNCT":
+            token_list.append("_NOTALPHA_")
+        else:
+            space = False
+            if token.i >= 1:
+                if spacy_doc[token.i-1].whitespace_:
+                    space = True
+            token_text = token.text
+            if token_text[0] is not "_" and token_text[-1] is not "_":
+                if token.is_upper:
+                    token_list.append("_ALL_CAPITAL_")
+                    token_text = token.lower_
+                elif token.is_title:
+                    token_list.append("_CAPITAL_")
+                    token_text = token.lower_
+
+            stem = stemmer.stem(token_text)
+            split_list = token_text.split(stem)
+            if token_text == stem or len(split_list) <= 1:
+                if space:
+                    token_list.append("_" + token_text)
+                else:
+                    token_list.append(token_text)
+            elif len(split_list) > 1:
+                if space:
+                    token_list.append("_" + stem)
+                else:
+                    token_list.append(stem)
+                token_list.append(split_list[1])
+    return token_list
 
 
 def string2int(text, filter_printable=True):

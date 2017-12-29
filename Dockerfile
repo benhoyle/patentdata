@@ -32,6 +32,8 @@ RUN pip3 install matplotlib
 
 RUN pip3 install cython
 
+RUN pip3 install h5py
+
 RUN pip3 install -U spacy
 
 RUN python3 -m spacy download en
@@ -43,7 +45,9 @@ RUN pip3 install wordsegment
 RUN pip3 install pyenchant
 
 # Install local version that installs
-#RUN pip3 install git+https://github.com/deanmalmgren/textract.git
+# RUN pip3 install git+https://github.com/deanmalmgren/textract.git
+# Or pip install
+# RUN pip3 install textract
 
 RUN apt-get install tesseract-ocr
 
@@ -51,9 +55,23 @@ RUN pip3 install feedparser
 
 RUN pip3 install python-docx
 
-RUN pip3 install h5py
+RUN apt-get install graphviz -y --no-install-recommends
 
-#RUN pip3 install patentdata>=0.0.7
+RUN pip3 install graphviz
+
+RUN pip3 install pytest-cov
+
+RUN pip3 install pymongo
+
+# Pytorch doesn't seem to work on current install
+# RUN pip3 install http://download.pytorch.org/whl/cu80/torch-0.3.0.post4-cp35-cp35m-linux_x86_64.whl
+# RUN pip3 install torchvision
+
+# RUN apt-get install -y --no-install-recommends python3-tk
+
+# RUN python3 -m spacy download en_core_web_lg
+
+# RUN pip3 install patentdata>=0.0.7
 
 ENV INSTALL_PATH /patentdata
 RUN mkdir -p $INSTALL_PATH

@@ -18,8 +18,10 @@ class TestUSGrants(object):
 
     def test_init(self):
         """ Test initialising object. """
-        if os.path.exists(self.testfilepath):
+        try:
             os.remove(self.dbpath)
+        except:
+            pass
         corpus = USGrants(self.testfilepath)
         # Check DB creates
         assert os.path.isfile(self.dbpath)
@@ -27,8 +29,10 @@ class TestUSGrants(object):
 
     def test_archive_list(self):
         """ Test getting archive names. """
-        if os.path.exists(self.testfilepath):
+        try:
             os.remove(self.dbpath)
+        except:
+            pass
         corpus = USGrants(self.testfilepath)
         corpus.index()
         records = corpus.c.execute("SELECT * FROM files").fetchall()
@@ -38,14 +42,16 @@ class TestUSGrants(object):
         """ Test reading an archive file. """
         corpus = USGrants(self.testfilepath)
         corpus.index()
-        filename, offset = corpus.search_files('US07984558B2', "start_offset")
+        filename, offset = corpus.search_files('US07984558B2')
         filedata = corpus.read_by_offset(filename, offset)
         assert len(filedata) == 82118
 
     def test_get_store_class(self):
         """ Test retrieving and storing a classification. """
-        if os.path.exists(self.testfilepath):
+        try:
             os.remove(self.dbpath)
+        except:
+            pass
         corpus = USGrants(self.testfilepath)
         corpus.process_classifications()
         records = corpus.c.execute(

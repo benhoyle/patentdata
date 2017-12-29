@@ -1,16 +1,25 @@
 # -*- coding: utf-8 -*-
 
-from nltk import word_tokenize, pos_tag
+from patentdata.models.lib.utils import nlp
 # Used for frequency counts
 from collections import Counter
 
 from patentdata.models.lib.utils import (
     check_list, remove_non_words, stem, remove_stopwords,
-    replace_patent_numbers, punctuation_split, capitals_process,
-    stem_split, ENG_STOPWORDS, string2printint
+    replace_patent_numbers,
+    filter_tokens, ENG_STOPWORDS, string2printint,
+    stem_split, capitals_process, punctuation_split,
+    replace_non_alpha, clean_characters
     )
 
+from patentdata.models.lib.utils_entities import (
+    extract_entities
+)
+
+from nltk.tokenize import word_tokenize
+
 from patentdata.models.chardict import CharDict
+from patentdata.models.entity import Entity
 
 # Initialise character dictionary for mappings
 chardict = CharDict()
@@ -41,6 +50,7 @@ class BaseTextBlock:
     def __init__(self, text, number=None):
         self.text = text
         self.number = number
+        # self.doc = nlp(text)
 
     def __repr__(self):
         if self.number:
@@ -49,11 +59,21 @@ class BaseTextBlock:
             return self.text
 
     @property
+    def doc(self):
+        """ Return spaCy doc. """
+        try:
+            return self._doc
+        except AttributeError:
+            self._doc = nlp(self.text)
+            return self._doc
+
+    @property
     def words(self):
         """ Tokenise text and store as variable. """
         try:
             return self._words
         except AttributeError:
+            # This is too slow for large groups of documents
             self._words = word_tokenize(self.text)
             return self._words
 
@@ -63,12 +83,24 @@ class BaseTextBlock:
         try:
             return self._filtered_tokens
         except AttributeError:
+            self.text = clean_characters(self.text)
             filtered_text = replace_patent_numbers(self.text)
             words = word_tokenize(filtered_text)
-            filtered_words = punctuation_split(words)
-            caps_processed = capitals_process(filtered_words)
-            self._filtered_tokens = stem_split(caps_processed)
+            words = punctuation_split(words)
+            words = capitals_process(words)
+            words = replace_non_alpha(words)
+            self._filtered_tokens = stem_split(words)
             return self._filtered_tokens
+
+    @property
+    def spacy_filtered_tokens(self):
+        """ Clean and tokenise text and store as variable. """
+        try:
+            return self._spacy_filtered_tokens
+        except AttributeError:
+            filtered_text = replace_patent_numbers(self.text)
+            self._spacy_filtered_tokens = filter_tokens(nlp(filtered_text))
+            return self._spacy_filtered_tokens
 
     @property
     def word_count(self):
@@ -100,12 +132,8 @@ class BaseTextBlock:
         try:
             return self._pos
         except AttributeError:
-            self._pos = pos_tag(self.words)
-            # Hard set 'comprising' as VBG
-            self._pos = [
-                (word, pos) if word != 'comprising'
-                else ('comprising', 'VBG') for (word, pos) in self._pos
-            ]
+
+            self._pos = [(word.text, word.pos_) for word in self.doc]
             return self._pos
 
     def get_word_freq(self, stopwords=True, normalize=True):
@@ -156,10 +184,11 @@ class BaseTextBlock:
     def bag_of_words(
         self, clean_non_words=True, clean_stopwords=True, stem_words=True
     ):
-        """ Get an array of all the words in the text set. """
-        lowers = self.text.lower()
+        """ Get an array of all the words in the block of text. """
 
-        tokens = word_tokenize(lowers)
+        tokens = [
+                token.lower() for token in self.words
+            ]
 
         if clean_non_words:
             tokens = remove_non_words(tokens)
@@ -171,6 +200,22 @@ class BaseTextBlock:
             tokens = stem(tokens)
 
         return tokens
+
+    @property
+    def entities(self):
+        """ Return entities."""
+        try:
+            return self._entities
+        except AttributeError:
+            ed = extract_entities(self.doc)
+            self._entities = [
+                Entity(
+                    string_name=k,
+                    occurrences=v
+                )
+                for k, v in ed.items()
+            ]
+            return self._entities
 
     def as_dict(self):
         """ Return object as dictionary. """
@@ -191,6 +236,7 @@ class BaseTextSet:
         units = check_list(initial_input)
         self.units = units
         self.count = len(self.units)
+        # self.doc = nlp(self.text)
         self.index = 0
 
     def __iter__(self):
@@ -244,20 +290,16 @@ class BaseTextSet:
         self, clean_non_words=True, clean_stopwords=True, stem_words=True
     ):
         """ Get an array of all the words in the text set. """
-        lowers = self.text.lower()
-
-        tokens = word_tokenize(lowers)
-
-        if clean_non_words:
-            tokens = remove_non_words(tokens)
-
-        if clean_stopwords:
-            tokens = remove_stopwords(tokens)
-
-        if stem_words:
-            tokens = stem(tokens)
-
-        return tokens
+        return sum(
+            [
+                unit.bag_of_words(
+                    clean_non_words,
+                    clean_stopwords,
+                    stem_words
+                ) for unit in self.units
+            ],
+            list()
+        )
 
     def print_character_list(self):
         """ Return list of all printable characters converted to

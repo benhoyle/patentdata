@@ -4,3 +4,4 @@ from patentdata.models.specification import (
 from patentdata.models.claim import Claim
 from patentdata.models.claimset import Claimset
 from patentdata.models.classification import Classification
+

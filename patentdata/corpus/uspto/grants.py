@@ -100,6 +100,10 @@ def get_multiple_xml_by_offset(zip_file, offset_list):
 class USGrants(DBIndexDataSource):
     """ Model for US granted patent data. """
 
+    def __init__(self, path):
+        super(USGrants, self).__init__(path)
+        self.fieldname = "start_offset"
+
     def read_archive_file(self, filename):
         """ Read large XML file from Zip.
 
@@ -124,8 +128,11 @@ class USGrants(DBIndexDataSource):
             for sl, el, xml_doc in self.read_archive_file(filename):
                 yield xml_doc
 
-    def index(self):
-        """ Generate metadata for individual publications. """
+    def index(self, subdirectories=None):
+        """ Generate metadata for individual publications.
+
+        Limit to subdirectories (as list of strings) if passed.
+        """
 
         print("Getting archive file list - may take a while!\n")
         # set query string for later
@@ -137,8 +144,11 @@ class USGrants(DBIndexDataSource):
                             'subgroup) '
                             'VALUES ({0})').format(",".join("?"*12))
 
+        if not subdirectories:
+            subdirectories = utils.get_immediate_subdirectories(self.path)
+
         # Iterate through subdirs as so?
-        for subdirectory in utils.get_immediate_subdirectories(self.path):
+        for subdirectory in subdirectories:
             print("Generating list for: {0}".format(subdirectory))
             filtered_files = [
                 f for f in self.first_level_files
@@ -188,7 +198,7 @@ class USGrants(DBIndexDataSource):
         ["G", "61", "K", "039", "00"]. If an entry has None or
         no entry, it and its remaining entries are not filtered.
         """
-        records = self.get_records(classification, "start_offset", sample_size)
+        records = self.get_records(classification, sample_size)
         filegenerator = self.iter_read(records)
         # Iterate through records and return XMLDocs
         for _, filedata in filegenerator:

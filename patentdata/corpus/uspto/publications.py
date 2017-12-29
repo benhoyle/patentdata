@@ -55,13 +55,23 @@ class USPublications(DBIndexDataSource):
     Creates a new corpus object that simplifies processing of
     patent archive
     """
+    def __init__(self, path):
+        super(USPublications, self).__init__(path)
+        self.fieldname = "name"
 
-    def index(self):
-        """ Generate a list of lower level archive files. """
+    def index(self, subdirectories=None):
+        """ Generate a list of lower level archive files.
+
+         Limit to subdirectories (as list of strings) if passed.
+        """
 
         print("Getting archive file list - may take a few minutes\n")
+
+        if not subdirectories:
+            subdirectories = utils.get_immediate_subdirectories(self.path)
+
         # Iterate through subdirs as so? >
-        for subdirectory in utils.get_immediate_subdirectories(self.path):
+        for subdirectory in subdirectories:
             logging.info("Generating list for :", subdirectory)
             filtered_files = [
                 f for f in self.first_level_files
@@ -221,7 +231,7 @@ class USPublications(DBIndexDataSource):
         ["G", "61", "K", "039", "00"]. If an entry has None or
         no entry, it and its remaining entries are not filtered.
         """
-        records = self.get_records(classification, "name", sample_size)
+        records = self.get_records(classification, sample_size)
         filegenerator = self.iter_read(records)
         # Iterate through records and return XMLDocs
         for _, filedata in filegenerator:
@@ -300,7 +310,7 @@ class USPublications(DBIndexDataSource):
     def get_patentdoc(self, publication_number):
         """ Return a PatentDoc object for a given publication number."""
         try:
-            filename, name = self.search_files(publication_number, "name")
+            filename, name = self.search_files(publication_number)
             if filename and name:
                 return XMLDoc(
                     self.read_archive_file(filename, name)

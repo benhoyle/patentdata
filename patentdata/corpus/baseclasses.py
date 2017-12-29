@@ -94,6 +94,7 @@ class DBIndexDataSource(LocalDataSource):
                 )
                 ''')
         self.conn.commit()
+        self.fieldname = ""
 
     def __del__(self):
         try:
@@ -129,7 +130,7 @@ class DBIndexDataSource(LocalDataSource):
         """ Generator for xml file in corpus. """
         pass
 
-    def search_files(self, publication_number, fieldname):
+    def search_files(self, publication_number):
         """ Return upper and lower level paths for publication.
             Returns None if no match.
 
@@ -137,7 +138,7 @@ class DBIndexDataSource(LocalDataSource):
             """
         query_string = (
             'SELECT filename, {0} FROM files WHERE pub_no=?'
-            .format(fieldname)
+            .format(self.fieldname)
             )
         self.c.execute(
             query_string,
@@ -145,14 +146,15 @@ class DBIndexDataSource(LocalDataSource):
         )
         return self.c.fetchone()
 
-    def get_records(self, classification, fieldname, sample_size=None):
+    # On this can we set fieldname as self.fieldname during instantiation?
+    def get_records(self, classification, sample_size=None):
         """ Retrieve a list of records filtered by passed classification
         and limited by sample_size.
 
         return: list of records"""
         query_string = utils.build_classification_query(
             classification,
-            fieldname
+            self.fieldname
             )
         records = self.c.execute(query_string).fetchall()
         no_of_records = len(records)
@@ -237,3 +239,7 @@ class DBIndexDataSource(LocalDataSource):
     def get_classification(self, filedata):
         """ Return patent classifications as a list of 5 items."""
         return XMLDoc(filedata).classifications()
+
+    def saveable(self):
+        """ Return a saveable version of the object."""
+        pass
