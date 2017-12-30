@@ -10,7 +10,7 @@ class TestGeneral(object):
         assert b.int2token(0) == '_PAD_'
         assert b.token2int(b.int2token(0)) == 0
         assert b.int2token(b.startwordint) == "_SOW_"
-        assert b.int2token(b.startwordint) == "_EOW_"
+        assert b.int2token(b.endwordint) == "_EOW_"
 
     def test_char(self):
         """ Test chardict object."""

@@ -118,6 +118,6 @@ class TestOnData(object):
     def test_counters(self):
         """ Test token and character counting functions. """
         pd = self.patent_doc
-        assert pd.vocabulary == 737
+        assert pd.vocabulary == 730
         assert pd.unique_characters == 65
 
