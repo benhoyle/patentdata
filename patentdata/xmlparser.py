@@ -2,6 +2,7 @@
 from bs4 import BeautifulSoup
 from datetime import datetime
 import logging
+from collections import OrderedDict
 
 from patentdata.utils import process_classification
 
@@ -11,6 +12,21 @@ logging.basicConfig(
     filename="processing_class.log",
     format='%(asctime)s %(message)s'
 )
+
+
+def safe_extract_number(p):
+    try:
+        return int(p.attrs.get('id', "").split('-')[1])
+    except:
+        return 0
+
+
+def safe_abstract_check(p):
+    """ Returns true if not abstract or no "A" prefix ids."""
+    try:
+        return p.attrs.get('id', ' - ').split('-')[0] != "A"
+    except:
+        return True
 
 
 class XMLDoc():
@@ -43,21 +59,9 @@ class XMLDoc():
 
     def paragraph_list(self):
         """ Get list of paragraphs and numbers. """
-        def safe_extract_number(p):
-            try:
-                return int(p.attrs.get('id', "").split('-')[1])
-            except:
-                return 0
-
-        def safe_abstract_check(p):
-            """ Returns true if not abstract or no "A" prefix ids."""
-            try:
-                return p.attrs.get('id', ' - ').split('-')[0] != "A"
-            except:
-                return True
 
         # In at least US grant data there are headings we can extract
-        # <heading id="h-0005" level="1">DETAILED DESCRIPTION OF THE PREFERRED EMBODIMENT</heading>
+        # <heading id="h-0005" level="1">DETAILED ...</heading>
 
         paras = self.soup.find_all(["p", "paragraph"])
         return [{
@@ -65,6 +69,36 @@ class XMLDoc():
             "number": safe_extract_number(p)
             }
             for p in paras if safe_abstract_check(p)]
+
+    def extract_sections(self):
+        """ Extract sections and their paragraph indices."""
+        headings = [
+            h for h in self.soup.find_all("heading")
+            if (
+                "claim" not in h.text.lower() and
+                "drawing" not in h.text[0:7].lower()
+            )
+        ]
+        sections = OrderedDict()
+        previous_subtitle = ""
+        for i, h in enumerate(headings):
+            subtitle = h.text.strip()
+            sections[subtitle] = OrderedDict()
+
+            start = safe_extract_number(h.find_next(["p", "paragraph"]))
+            sections[subtitle]['start'] = start
+            # End is next headings previous
+            previous_end = safe_extract_number(
+                h.find_previous(["p", "paragraph"])
+                )
+
+            if i > 0:
+                sections[previous_subtitle]['end'] = previous_end
+            previous_subtitle = subtitle
+
+        paras = self.soup.find_all(["p", "paragraph"])
+        sections[previous_subtitle]['end'] = safe_extract_number(paras[-1])
+        return sections
 
     def claim_text(self):
         """ Return extracted claim text."""
