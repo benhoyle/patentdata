@@ -46,6 +46,8 @@ class PatentDoc:
         self.title = title
         self.number = number
 
+        # Add abstract here
+
     def init_by_lists(self, claim_list, paragraph_list):
         """ Initialise via lists of paragraphs and claims."""
         self.description = Description(

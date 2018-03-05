@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE us-patent-application SYSTEM "us-patent-application-v43-2012-12-04.dtd" [ ]>
+<us-patent-application lang="EN" dtd-version="v4.3 2012-12-04" file="US20130276202A1-20131024.XML" status="PRODUCTION" id="us-patent-application" country="US" date-produced="20131010" date-publ="20131024">
+<us-bibliographic-data-application lang="EN" country="US">
+<publication-reference>
+<document-id>
+<country>US</country>
+<doc-number>20130276202</doc-number>
+<kind>A1</kind>
+<date>20131024</date>
+</document-id>
+</publication-reference>
+<application-reference appl-type="utility">
+<document-id>
+<country>US</country>
+<doc-number>13834877</doc-number>
+<date>20130315</date>
+</document-id>
+</application-reference>
+<us-application-series-code>13</us-application-series-code>
+<classifications-ipcr>
+<classification-ipcr>
+<ipc-version-indicator><date>20060101</date></ipc-version-indicator>
+<classification-level>A</classification-level>
+<section>A</section>
+<class>41</class>
+<subclass>D</subclass>
+<main-group>13</main-group>
+<subgroup>12</subgroup>
+<symbol-position>F</symbol-position>
+<classification-value>I</classification-value>
+<action-date><date>20131024</date></action-date>
+<generating-office><country>US</country></generating-office>
+<classification-status>B</classification-status>
+<classification-data-source>H</classification-data-source>
+</classification-ipcr>
+</classifications-ipcr>
+<classifications-cpc>
+<main-cpc>
+<classification-cpc>
+<cpc-version-indicator><date>20130101</date></cpc-version-indicator>
+<section>A</section>
+<class>41</class>
+<subclass>D</subclass>
+<main-group>13</main-group>
+<subgroup>1236</subgroup>
+<symbol-position>F</symbol-position>
+<classification-value>I</classification-value>
+<action-date><date>20131024</date></action-date>
+<generating-office><country>US</country></generating-office>
+<classification-status>B</classification-status>
+<classification-data-source>H</classification-data-source>
+<scheme-origination-code>C</scheme-origination-code>
+</classification-cpc>
+</main-cpc>
+</classifications-cpc>
+<classification-national>
+<country>US</country>
+<main-classification>  2114</main-classification>
+</classification-national>
+<invention-title id="d0e43">ADJUSTABLE FRONT-OPENING HOSPITAL GOWN</invention-title>
+<us-related-documents>
+<us-provisional-application>
+<document-id>
+<country>US</country>
+<doc-number>61637528</doc-number>
+<date>20120424</date>
+</document-id>
+</us-provisional-application>
+</us-related-documents>
+<us-parties>
+<us-applicants>
+<us-applicant sequence="00" app-type="applicant" designation="us-only">
+<addressbook>
+<orgname>HENRY FORD INNOVATION INSTITUTE LLC</orgname>
+<address>
+<city>Detroit</city>
+<state>MI</state>
+<country>US</country>
+</address>
+</addressbook>
+<residence>
+<country>US</country>
+</residence>
+</us-applicant>
+</us-applicants>
+<inventors>
+<inventor sequence="00" designation="us-only">
+<addressbook>
+<last-name>Forbes</last-name>
+<first-name>Michael P.</first-name>
+<address>
+<city>Livonia</city>
+<state>MI</state>
+<country>US</country>
+</address>
+</addressbook>
+</inventor>
+<inventor sequence="01" designation="us-only">
+<addressbook>
+<last-name>Houin</last-name>
+<first-name>Patrick</first-name>
+<address>
+<city>Grosse Pointe Shores</city>
+<state>MI</state>
+<country>US</country>
+</address>
+</addressbook>
+</inventor>
+<inventor sequence="02" designation="us-only">
+<addressbook>
+<last-name>Mondesir</last-name>
+<first-name>Frantz</first-name>
+<address>
+<city>North Miami</city>
+<state>FL</state>
+<country>US</country>
+</address>
+</addressbook>
+</inventor>
+<inventor sequence="03" designation="us-only">
+<addressbook>
+<last-name>Clark</last-name>
+<first-name>Callie</first-name>
+<address>
+<city>Livonia</city>
+<state>MI</state>
+<country>US</country>
+</address>
+</addressbook>
+</inventor>
+</inventors>
+</us-parties>
+<assignees>
+<assignee>
+<addressbook>
+<orgname>HENRY FORD INNOVATION INSTITUTE LLC</orgname>
+<role>02</role>
+<address>
+<city>Detroit</city>
+<state>MI</state>
+<country>US</country>
+</address>
+</addressbook>
+</assignee>
+</assignees>
+</us-bibliographic-data-application>
+<abstract id="abstract">
+<p id="p-0001" num="0000">A front-opening hospital gown includes first and second front panels. The first front panel overlaps the second front panel when the gown is worn by a patient. The second front panel has fasteners in multiple columns and rows. The first front panel has mating fasteners, for instance a single column of multiple rows. The number of rows on the front panels may be equal. An additional rear panel(s) defines an elongated slot on the back of the gown for access to the patient's back. The gown may include an anti-microbial coating, colored fabric that indicates the size of the gown, an RFID tag, color-coded intravenous access flaps, and a telemetry pocket. The intravenous access flaps may have color-coded fasteners or backing twill material. The gown may include a collar indicating the front of the gown. The collar may have a contrasting color relative to a color of the panels.</p>
+</abstract>
+<drawings id="DRAWINGS">
+<figure id="Fig-EMI-D00000" num="00000">
+<img id="EMI-D00000" he="214.46mm" wi="146.73mm" file="US20130276202A1-20131024-D00000.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00001" num="00001">
+<img id="EMI-D00001" he="247.65mm" wi="174.75mm" file="US20130276202A1-20131024-D00001.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00002" num="00002">
+<img id="EMI-D00002" he="246.55mm" wi="141.48mm" file="US20130276202A1-20131024-D00002.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00003" num="00003">
+<img id="EMI-D00003" he="253.58mm" wi="182.12mm" file="US20130276202A1-20131024-D00003.TIF" alt="embedded image" img-content="drawing" img-format="tif"/>
+</figure>
+</drawings>
+<description id="description">
+<?cross-reference-to-related-applications description="Cross Reference To Related Applications" end="lead"?>
+<heading id="h-0001" level="1">CROSS REFERENCE TO RELATED APPLICATIONS</heading>
+<p id="p-0002" num="0001">This application claims the benefit of U.S. Provisional Patent Application No. 61/637,528 filed on Apr. 24, 2012, which is hereby incorporated by reference in its entirety.</p>
+<?cross-reference-to-related-applications description="Cross Reference To Related Applications" end="tail"?>
+<?summary-of-invention description="Summary of Invention" end="lead"?>
+<heading id="h-0002" level="1">TECHNICAL FIELD</heading>
+<p id="p-0003" num="0002">The present disclosure relates to an adjustable front-opening hospital gown.</p>
+<heading id="h-0003" level="1">BACKGROUND</heading>
+<p id="p-0004" num="0003">Rear-opening hospital gowns are typically worn by patients in hospitals and outpatient medical facilities. The thin, lightweight cotton design of a conventional rear-opening hospital gown, which is loosely secured in the back via one or more fabric ties, allows an attending physician or nurse to easily access a patient's chest, shoulder, and back areas from the rear of the gown. Such gowns are inexpensive and easily laundered. As a result, conventional hospital gown designs have not changed much over the years, and are generally considered to be both cost and functionally effective from the perspective of a medical practitioner. However, from the perspective of a patient wearing a conventional rear-opening hospital gown, the patient is often left with a compromised sense of privacy and comfort.</p>
+<heading id="h-0004" level="1">SUMMARY</heading>
+<p id="p-0005" num="0004">An adjustable front-opening hospital gown is disclosed herein which provides an improved level of comfort and enhanced patient privacy relative to the conventional rear-opening hospital gowns described above. In particular, the gown includes first and second front panels each having respective first and second sets of fasteners. The first front panel overlaps the second front panel when worn by a patient so as to allow each fastener of the first set of fasteners to engage a corresponding one of the second set of fasteners. The positioning of the fasteners on the gown may enable most or all of the fasteners to be hidden from view, thus providing an aesthetically pleasing appearance. A collar or other suitable orientation features clearly identifies the front of the gown to assist the patient in putting on the gown.</p>
+<p id="p-0006" num="0005">The hospital gown disclosed herein also includes at least one additional rear panel. The rear panel(s) is connected to the first and second front panel to form the back of the gown. An elongated rear slot is defined between seams of the additional rear panels, which allows a medical practitioner to easily access the patient's back area without removing the gown, for instance to facilitate use of a stethoscope. The gown may also include a telemetry pocket and/or intravenous access flaps, the latter of which may be configured with certain color-coded features as set forth below to further aid the patient in assembling and wearing the gown.</p>
+<p id="p-0007" num="0006">In a particular embodiment, the first set of fasteners may include a single column of fasteners such as snap studs, while the second set of fasteners may include multiple columns of mating fasteners such as snap sockets. The first and second sets of fasteners may be optionally arranged in an equal number of rows, e.g., three or more rows, with at least twice as many fasteners in the second set as in the first.</p>
+<p id="p-0008" num="0007">In an alternate configuration, the first set of fasteners may be a set of shaped tabs extending from an edge of the first front panel. The second set of fasteners may be mating set of shaped slots formed in the second front panel, e.g., either as elongated through-holes or shaped slots arranged on a face of the gown. Each slot in this configuration receives and secures a corresponding shaped tab.</p>
+<p id="p-0009" num="0008">The hospital gown of the present invention may be optionally treated with an anti-microbial coating, and/or formed in part using a colored fabric that indicates the size of the gown. Other color-coded features may be included. For example, some/all of the fasteners used with the present gown may be color-coded, and/or the backing of a strip of twill material securing the fasteners to the gown may be color-coded. In a possible embodiment, the fasteners and/or the twill material forming the IV access flaps on the two sides of the gown, i.e., on the patient's left and right shoulders, may be constructed with a corresponding color so that a disassembled gown may returned from the laundry, given to a patient or department , and easily reassembled by matching up the colors.</p>
+<p id="p-0010" num="0009">The above features and advantages and other features and advantages of the present invention are readily apparent from the following detailed description of the best modes for carrying out the invention when taken in connection with the accompanying drawings.</p>
+<?summary-of-invention description="Summary of Invention" end="tail"?>
+<?brief-description-of-drawings description="Brief Description of Drawings" end="lead"?>
+<description-of-drawings>
+<heading id="h-0005" level="1">BRIEF DESCRIPTION OF THE DRAWINGS</heading>
+<p id="p-0011" num="0010"><figref idref="DRAWINGS">FIG. 1</figref> is a schematic front view illustration of an adjustable front-opening hospital gown in accordance with the present invention.</p>
+<p id="p-0012" num="0011"><figref idref="DRAWINGS">FIG. 1A</figref> is a schematic perspective view illustration of a portion of a color-coded collar and intravenous access flap of the gown shown in <figref idref="DRAWINGS">FIG. 1</figref>.</p>
+<p id="p-0013" num="0012"><figref idref="DRAWINGS">FIG. 2</figref> is a schematic illustration of the gown of <figref idref="DRAWINGS">FIG. 1</figref> in an open state illustrating an example fastener embodiment.</p>
+<p id="p-0014" num="0013"><b>2</b>A is a schematic front view illustration of the gown of <figref idref="DRAWINGS">FIG. 1</figref> showing an alternative fastener embodiment.</p>
+<p id="p-0015" num="0014"><figref idref="DRAWINGS">FIG. 3</figref> is a schematic rear view illustration of the gowns shown in <figref idref="DRAWINGS">FIGS. 1</figref>, <b>2</b>, and <b>2</b>A.</p>
+</description-of-drawings>
+<?brief-description-of-drawings description="Brief Description of Drawings" end="tail"?>
+<?detailed-description description="Detailed Description" end="lead"?>
+<heading id="h-0006" level="1">DETAILED DESCRIPTION</heading>
+<p id="p-0016" num="0015">Referring to the drawings, wherein like reference numbers refer to like components throughout the several views, a front view of an example adjustable front-opening hospital gown <b>10</b> is shown schematically in <figref idref="DRAWINGS">FIG. 1</figref>. The front-opening design of the gown <b>10</b> with its various additional features is intended to provide improved levels of patient privacy and comfort relative to the types of conventional rear-opening hospital gowns noted above. Extra privacy is provided without compromising a physician's access to the patient's chest, back, and shoulder areas. The presently disclosed front-opening design also allows the patient to easily put on the gown <b>10</b> and adjust the fit of the gown <b>10</b> to conform to the wearer's own body and privacy preferences as set forth in detail below.</p>
+<p id="p-0017" num="0016">The hospital gown <b>10</b> of <figref idref="DRAWINGS">FIG. 1</figref> includes respective first and second front panels <b>12</b> and <b>14</b>. The first and second front panels <b>12</b> and <b>14</b> are constructed from a fabric or combination of different fabrics which are sufficiently suitable for the intended use, including resilience to repeated high-temperature laundering. Example fabric types include, but are not necessarily limited to, polyester/nylon, polyester/cotton, cotton/nylon, cotton, polyester/silk, and/or silk/nylon. Optionally, a moisture wicking material may be used in part or all of the gown <b>10</b> to further increase patient comfort. Silk, which is capable of rapidly reaching body temperature and maintaining this temperature at a constant level, may be used for this purpose in an example configuration. The use of moisture wicking material may, by way of example, help to reduce the excessive perspiration that is common in infants, children, and adults affected by a fever or eczema. Thus, the gown <b>10</b>, when made at least partially of silk, may help to protect the patient's skin from a loss of moisture which otherwise can aggravate skin dryness.</p>
+<p id="p-0018" num="0017">The respective first and second front panels <b>12</b> and <b>14</b> of the hospital gown <b>10</b> shown in <figref idref="DRAWINGS">FIG. 1</figref> are respectively joined to pair of rear panels <b>32</b> and <b>34</b> (see <figref idref="DRAWINGS">FIG. 3</figref>), or in the alternative to a single/combined rear panel. A portion of an outer surface <b>19</b> of the second front panel <b>14</b> may be overlapped by the first front panel <b>12</b> in the direction of arrow <b>27</b> when the gown <b>10</b> is properly worn by a patient.</p>
+<p id="p-0019" num="0018">The hospital gown <b>10</b> includes a collar <b>20</b> or other suitable feature on the front of the gown <b>10</b> as shown. The collar <b>20</b> orients a patient as to which side of the gown <b>10</b> is the front and which side is the rear. As is well known in the art, lightweight cotton rear-opening gowns are used almost universally in hospitals and other medical facilities. Thus, a patient attempting to wear the present front-opening gown <b>10</b> of <figref idref="DRAWINGS">FIG. 1</figref> may be confused at first by its unconventional front-opening design. The collar <b>20</b> is thus intended to allow the patient to determine at a glance how the gown <b>10</b> is to be worn.</p>
+<p id="p-0020" num="0019">The collar <b>20</b> may be a faux or decorative design such as a point collar (not shown), i.e., a collar that is similar in appearance to the types of collars used on a dress shirt, or the collar <b>20</b> may be a fully functional collar. Other possible orientation features exist that are not collars. For instance, an orientation feature such as a tab (not shown) may be sewn to one or both of the respective first and second front panels <b>12</b> and <b>14</b> and labeled with a suitable identifier such as the word &#x201c;front&#x201d;, a universally recognized symbol, a color, and/or any other suitable marker.</p>
+<p id="p-0021" num="0020">In the particular embodiment shown in <figref idref="DRAWINGS">FIG. 1</figref>, the collar <b>20</b> is formed from a strip of fabric providing sufficient contrast in color and/or fabric type to the rest of the hospital gown <b>10</b>. Much like the upper edge of a conventional bed sheet, the collar <b>20</b> may be formed of a different, softer type of material than that used to form the remainder of the gown <b>10</b>, and may be sewn to the edges of the first and second front panels <b>12</b> and <b>14</b>. In an example configuration, the respective first and second front panels <b>12</b> and <b>14</b>, as well as the rear panels <b>32</b> and <b>34</b> of <figref idref="DRAWINGS">FIG. 3</figref>, may be constructed from a lighter colored material such as white or pale blue, both of which are conventionally used in medical facilities, while the collar <b>20</b> is constructed from a darker blue material. In other embodiments, the color of the fabric used for the collar <b>20</b> may correspond to the size of the gown <b>10</b>, e.g., blue for medium, green for large, etc. In this manner, a patient may identify an appropriately sized gown <b>10</b> at a glance without having to try it on.</p>
+<p id="p-0022" num="0021">The hospital gown <b>10</b> shown in <figref idref="DRAWINGS">FIG. 1</figref> may include various other features, including for instance a telemetry pocket <b>28</b> formed in or on one of the first or second front panels <b>12</b> or <b>14</b>, or otherwise placed in a position that is readily accessible by a medical practitioner. As is well understood in the art, a telemetry pocket such as the example telemetry pocket <b>28</b> of <figref idref="DRAWINGS">FIG. 1</figref> is specially configured to hold a telemetry or other medical device. The telemetry pocket <b>28</b> includes at least one interior slit (not shown) which allows lead wires from any medical device contained in the telemetry pocket <b>28</b> to be routed to the patient's torso <b>21</b> or other desired position beneath the gown <b>10</b>.</p>
+<p id="p-0023" num="0022">As shown in <figref idref="DRAWINGS">FIG. 1</figref>, a primary edge <b>16</b> of the first front panel <b>12</b> aligns vertically with the length of the patient's torso <b>21</b> when worn by the patient. A similar primary edge <b>18</b> of the second front panel <b>14</b> as shown in phantom is overlapped by the first front panel <b>12</b> when the hospital gown <b>10</b> is worn as intended. While a right-handed orientation is shown for the gown <b>10</b> in <figref idref="DRAWINGS">FIG. 1</figref>, those of ordinary skill in the art will appreciate that left-handed gowns <b>10</b> may be easily constructed within the scope of the present invention. In such an embodiment, the function and structure of the respective first and second front panels <b>12</b> and <b>14</b> is simply reversed, i.e., with the second front panel <b>14</b> overlapping the first front panel <b>12</b>. For illustrative consistency, the right-handed example embodiment of <figref idref="DRAWINGS">FIG. 1</figref> will be described hereinafter.</p>
+<p id="p-0024" num="0023">Still referring to <figref idref="DRAWINGS">FIG. 1</figref>, the hospital gown <b>10</b> may include a lower hem seam <b>25</b> at the approximate knee level of the patient as shown. However, other hem seam levels may be provided without departing from the intended inventive scope, for instance to meet increased privacy or comfort standards of certain patients. The level of the lower hem seam <b>25</b> is typically static, and thus the actual hem level will depend on the size of the gown <b>10</b> and, during construction, the length of the various panels <b>12</b>, <b>14</b>, <b>32</b>, and <b>34</b> forming the gown <b>10</b>.</p>
+<p id="p-0025" num="0024">In a possible configuration, different sizes of the hospital gown <b>10</b> may be provided for different patients, with each size constructed at least in part of a fabric having a designated color. Each color in such a color-coded gown <b>10</b> may correspond to a different gown size. For instance, small, medium, large, and extra large gowns <b>10</b> may be constructed at least partially of yellow, red, green, and blue fabric, respectively. Such colors may be, for instance, woven into a base fabric color such as white, possibly in a unique pattern or using a repeated logo such as a name or logo of a particular facility, or the entire gown <b>10</b> of a given size may be formed from fabric of a designated color. The use of a name/logo may help a given facility to uniquely identify the particular department or facility having ownership of the gown <b>10</b>, and thus help reduce inventory shrinkage.</p>
+<p id="p-0026" num="0025">Optionally, an anti-microbial coating <b>26</b> may be applied to the hospital gown <b>10</b>. The anti-microbial coating <b>26</b> forms a barrier against certain types of pathogens that may encountered in a medical facility. Various commercially available coatings may be used. One possible anti-microbial coating <b>26</b> is FabricAide&#xae;, a product that is offered commercially by Coating Specialists LLC of Auburn Hills, Mich. The anti-microbial coating <b>26</b> is shown schematically on only a portion of the gown <b>10</b> for illustrative simplicity. Those of ordinary skill in the art will appreciate that the anti-microbial coating <b>26</b> would cover the entirety of the gown <b>10</b>, or at least substantial exposed portions thereof, depending on the intended design and use.</p>
+<p id="p-0027" num="0026">The hospital gown <b>10</b> shown in <figref idref="DRAWINGS">FIG. 1</figref> may also include sleeves <b>24</b>, which may be defined by the material of the rear panels <b>32</b> and <b>34</b> of <figref idref="DRAWINGS">FIG. 3</figref> in conjunction with the front panels <b>12</b> and <b>14</b> of <figref idref="DRAWINGS">FIG. 1</figref>. While a conventional short to medium length sleeve length design is shown in the various Figures, longer sleeves <b>124</b> may be provided in some embodiments. The optional longer sleeves <b>124</b>, which are shown in phantom in <figref idref="DRAWINGS">FIG. 1</figref>, would allow patients with particular privacy and/or religious standards to cover more of the surface area of their arms. The longer sleeves <b>124</b> would also provide improved skin coverage to patients who are elderly, ill, immune-compromised, or otherwise relatively sensitive to colder temperatures.</p>
+<p id="p-0028" num="0027">The shoulder areas of the sleeves <b>24</b> of <figref idref="DRAWINGS">FIG. 1</figref> may include intravenous access flaps <b>22</b>. The intravenous access flaps <b>22</b> may be closed via metal or plastic snaps or any other suitable fasteners, as is well understood in the art. One side of the hospital gown <b>10</b>, such as the first front panel <b>12</b>, may be designed such that the intravenous access flap <b>22</b> on that particular side does not fully unsnap, e.g., by using stitching extending from the neck of the gown <b>10</b> down to the intravenous access flap <b>22</b>. The presence of the intravenous closure flaps <b>22</b> that fully open on the other side of the gown <b>10</b>, e.g., the second front panel <b>14</b>, allows the gown <b>10</b> to be quickly removed if needed. That is, one side of the gown <b>10</b> opens fully to allow the gown <b>10</b> to be removed.</p>
+<p id="p-0029" num="0028">Referring briefly to <figref idref="DRAWINGS">FIG. 1A</figref>, the intravenous access flaps <b>22</b> on a given side of the hospital gown <b>10</b> of <figref idref="DRAWINGS">FIG. 1</figref> may be constructed with fasteners <b>13</b>, <b>15</b> and/or backing strips of twill material <b>11</b>, <b>111</b> of like or matching colors, for instance plastic or anodized steel or aluminum snaps of a given color. Alternatively, the fabric of the twill material <b>11</b>, <b>111</b> may be of the same color on a given one side of the gown <b>10</b> of <figref idref="DRAWINGS">FIG. 1</figref>, but different from the color on the other intravenous access flap <b>22</b>. For example, on the patient's left (L) shoulder as shown, with the torso <b>21</b> shown as exposed when the intravenous access flap <b>22</b> is opened, the twill material <b>11</b>, <b>111</b> may be blue, while on the patients right shoulder the twill material <b>11</b>, <b>111</b> may be white, thus minimizing the chance that a patient will connect the fasteners <b>13</b> or <b>15</b> of one intravenous access flap <b>22</b> to the mating fasteners <b>13</b> or <b>15</b> of the other intravenous access flap <b>22</b>. Such a design feature may allow the gown <b>10</b>, when returned from the laundry and given to a patient, to be folded in a logical manner to facilitate later assembly of the gown <b>10</b>.</p>
+<p id="p-0030" num="0029">Referring to <figref idref="DRAWINGS">FIG. 2</figref>, the first front panel <b>12</b> of the hospital gown <b>10</b> includes an inner surface <b>17</b> having a first set of the fasteners <b>13</b>. The outer surface <b>19</b> of the second front panel <b>14</b> is likewise equipped with a mating second set of fasteners <b>15</b>. For example, the fasteners <b>13</b> may be embodied as snap studs of the type known in the art, with the fasteners <b>15</b> embodied as mating snap sockets. Such snap fasteners are relatively easy to engage and disengage by patients having normal levels of finger dexterity, and also tend to withstand repeated laundering in hot water that hospital gowns are subjected to. However, other fastener types may be used without departing from the intended inventive scope.</p>
+<p id="p-0031" num="0030">As alternative examples, the fasteners <b>13</b> may be constructed as button holes or loops that are respectively cut or sewn in the first front panel <b>12</b>, while the fasteners <b>15</b> may be mating buttons or posts sewn to the second front panel <b>14</b>. Alternatively, the two sets of fasteners <b>13</b> and <b>15</b> may be configured as hook-and-loop fasteners or any other suitable design. The fasteners <b>13</b> and <b>15</b> may be reversed in other embodiments, i.e., with the fasteners <b>13</b> provided on the second front panel <b>14</b> and the fasteners <b>15</b> provided on the first front panel <b>12</b>. Such an embodiment may help to ensure that all of the fasteners <b>13</b> and <b>15</b> are sufficiently hidden from view when the gown <b>10</b> is worn by the patient.</p>
+<p id="p-0032" num="0031">In the example embodiment of <figref idref="DRAWINGS">FIG. 2</figref>, the first set of fasteners <b>13</b> is arranged in a single column of multiple rows, e.g., three or more rows each having a single fastener <b>13</b>. The second set of fasteners <b>15</b> may be arranged in two or more columns, and may include an equal number of rows of mating fasteners, e.g., three rows <b>31</b>, <b>33</b>, and <b>35</b> of three fasteners <b>15</b> each as shown, or at least one additional row <b>135</b> as shown in phantom. Thus, a patient wearing the hospital gown <b>10</b> may be provided with a variable and highly customizable fit. While up to four different rows are shown in the example embodiment of <figref idref="DRAWINGS">FIG. 2</figref>, more or fewer rows may be provided without departing from the intended inventive scope.</p>
+<p id="p-0033" num="0032">When the three rows <b>31</b>, <b>33</b>, and <b>35</b> shown in <figref idref="DRAWINGS">FIG. 2</figref> are used, with each row <b>31</b>, <b>33</b>, and <b>35</b> having three columns/possible fastener positions, a total of <b>27</b> different possible fit variations are enabled. The flexibility of fit of an adjustment of the hospital gown <b>10</b> therefore allows the gown <b>10</b> of a given size to be used across a wide range of body styles. The adjustable front-opening design of the gown <b>10</b> also provides enhanced privacy relative to that afforded by conventional gowns, which may be an essential consideration for some patients.</p>
+<p id="p-0034" num="0033">Referring to <figref idref="DRAWINGS">FIG. 2A</figref>, in an alternative adjustable front-opening hospital gown <b>110</b>, the fasteners <b>13</b> and <b>15</b> described above with reference to <figref idref="DRAWINGS">FIG. 2</figref> may be embodied as alternative fasteners <b>113</b>, <b>115</b>. In this embodiment, the fasteners <b>113</b> may be configured as a set of shaped tabs <b>44</b>. The fasteners <b>115</b> may be configured as a set of mating linear slots <b>46</b>. The shaped tabs <b>44</b> include a trailing edge <b>48</b>, which may define a narrowed portion or neck of the shaped tab <b>44</b>. The profile may be teardrop shaped as shown, arrow shaped, or any other shape that can engage the slots <b>46</b> and retain the first front panel <b>12</b> with respect to the second front panel <b>14</b>.</p>
+<p id="p-0035" num="0034">The shaped tabs <b>44</b> may extend outward from the edge <b>16</b> of the first front panel <b>12</b>, and may be attached to or formed integrally with the material of the first front panel <b>12</b>. The trailing edge <b>48</b> may engage the material of the second front panel <b>14</b> adjacent to the mating linear slot <b>46</b> to thereby prevent the tabs <b>44</b> from releasing from the mating linear slot <b>46</b>. The shaped tabs <b>44</b> may be stiffened with a suitable stiffening feature <b>50</b>, for instance starch and/or a stiffened panel insert. Use of the stiffening feature <b>50</b> provides rigidity needed for insertion of the tabs <b>44</b> into the linear slots <b>46</b>.</p>
+<p id="p-0036" num="0035">Also shown in <figref idref="DRAWINGS">FIG. 2A</figref> is an interlocking fastener design that may be used in yet another alternative. In this embodiment, the first front panel <b>12</b> may still include the shaped tabs <b>44</b>. The tabs <b>44</b> may be reinforced with silicone rubber and covered with fabric to provide sufficient rigidity and flexibility. The second front panel <b>14</b> may define, as an alternative second set of fasteners <b>215</b>, mating shaped slots <b>146</b> having a perimeter edge <b>52</b>. The perimeter edge <b>52</b> defines a shape that is the same as the teardrop or other shape of the shaped tabs <b>44</b>. Similar to the functional design of a jigsaw puzzle, the shaped tabs <b>44</b> in this configuration snap into the notches of the second set of fasteners <b>215</b> to thereby interlock the edge <b>16</b> of the first front panel <b>12</b> with the perimeter edge <b>52</b>.</p>
+<p id="p-0037" num="0036">Referring to <figref idref="DRAWINGS">FIG. 3</figref>, access to the patient is provided at the rear of the hospital gown <b>10</b> between the rear panels <b>32</b> and <b>34</b>, or via a single rear panel in another possible embodiment. For example, the rear panels <b>32</b> and <b>34</b> may be sewn together at the top and bottom of the gown <b>10</b> to form respective top and bottom seams <b>36</b> and <b>38</b>. Material between the top and bottom seams <b>36</b> and <b>38</b> is not sewn together or otherwise joined, thus defining an elongated slot, which is identified at <b>40</b>, through which an attending physician or nurse can easily access the patient's back area. The bottom seam <b>38</b> may be terminated short of the hem seam <b>25</b> (see <figref idref="DRAWINGS">FIG. 1</figref>) as shown to facilitate movement and comfort of a patient wearing the gown <b>10</b>. Likewise, the seams <b>36</b>, <b>38</b> and the elongated slot <b>40</b> may or may not be oriented serially or end-to-end as shown. For instance, for added comfort any or all of the seams <b>36</b>, <b>38</b> and the elongated slot <b>40</b> may be angled relative to each other, and thus with respect to the patient's spine, for improved sitting comfort.</p>
+<p id="p-0038" num="0037">The elongated slot <b>40</b> may be sized and shaped to enable such access without the patient having to remove the gown <b>10</b>. For instance, in a non-limiting example embodiment the length of the elongated slot <b>40</b> may be about 10 to 14 inches, a size which would comfortably receive a normal sized hand, stethoscope listening piece, etc. The presence of the intravenous access flaps <b>22</b> also enables additional access to the patient from the rear of the gown <b>10</b> if needed. The rear panel <b>34</b> may have an edge <b>37</b> that is overlapped by the other rear panel <b>32</b>, e.g., solely within the elongated slot <b>40</b>. Thus, when access to the patient's back area is not required, the elongated slot <b>40</b> remains closed to provide added privacy and comfort. An additional slot <b>42</b> may be defined by the rear panels <b>32</b>, <b>34</b> below the seams <b>36</b>, <b>38</b> and below the elongated slot <b>40</b> as shown. The additional slot <b>42</b> may help to improve mobility and comfort of the patient while wearing the gown <b>10</b>.</p>
+<p id="p-0039" num="0038">In an optional configuration, a remote frequency identification (RFID) tag <b>30</b> or another identifying security device may be sewn into the hospital gown <b>10</b> or <b>110</b> (see <figref idref="DRAWINGS">FIG. 2A</figref>), e.g., in proximity to the collar <b>20</b> of <figref idref="DRAWINGS">FIGS. 1 and 2</figref>. Use of the optional RFID tag <b>30</b> may enable the gowns <b>10</b> to be remotely monitored, tracked, and inventoried within a given facility. That is, different departments such as maternity or cardiology may require a gown <b>10</b> having a particular feature set that is unique relative to other departments. Customized gowns <b>10</b> may be used in such departments, with the use of such gowns <b>10</b> restricted to those departments. Such a use may be facilitated by the example RFID tag <b>30</b>. Likewise, inventory shrinkage may be reduced for the facility as a whole using such a security option.</p>
+<p id="p-0040" num="0039">While the best modes for carrying out the invention have been described in detail, those familiar with the art to which this invention relates will recognize various alternative designs and embodiments for practicing the invention within the scope of the appended claims.</p>
+<?detailed-description description="Detailed Description" end="tail"?>
+</description>
+<claims id="claims">
+<claim id="CLM-00001" num="00001">
+<claim-text><b>1</b>. An adjustable front-opening hospital gown comprising:
+<claim-text>a first front panel having a first set of fasteners;</claim-text>
+<claim-text>a second front panel having a second set of fasteners that exceeds the first set of fasteners in count or number to thereby facilitate adjustability of the hospital gown, wherein the first front panel is configured to overlap part of the second front panel and thereby define a front of the hospital gown when the hospital gown is worn by a patient, and wherein each of the first set of fasteners is configured to engage with a corresponding one of the second set of fasteners;</claim-text>
+<claim-text>a rear panel connected to the first and second front panels, wherein the rear panel defines an elongated slot, and further defines a pair of sleeves in conjunction with the first and second front panels;</claim-text>
+<claim-text>a pair of intravenous access flaps each positioned with respect to a corresponding one of the sleeves; and</claim-text>
+<claim-text>a collar positioned on the front of the hospital gown and configured to identify a front of the hospital gown.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00002" num="00002">
+<claim-text><b>2</b>. The hospital gown of <claim-ref idref="CLM-00001">claim 1</claim-ref>, further comprising additional fasteners, wherein each of the pair of intravenous access flaps is color-coded to identify a corresponding one of the sleeves, and is closable via the additional fasteners.</claim-text>
+</claim>
+<claim id="CLM-00003" num="00003">
+<claim-text><b>3</b>. The hospital gown of <claim-ref idref="CLM-00002">claim 2</claim-ref>, wherein the pair of intravenous access flaps each includes a corresponding strip of twill material of a respective first and second color forming a backing for the additional fasteners, and wherein the first color is sufficiently different from the second color such that the corresponding sleeve is identified.</claim-text>
+</claim>
+<claim id="CLM-00004" num="00004">
+<claim-text><b>4</b>. The hospital gown of <claim-ref idref="CLM-00001">claim 1</claim-ref>, wherein the first set of fasteners is arranged in a single column of multiple rows, and wherein the second set of fasteners is arranged in at least two columns each having a number of rows that is equal to the number of multiple rows of the first set of fasteners.</claim-text>
+</claim>
+<claim id="CLM-00005" num="00005">
+<claim-text><b>5</b>. The hospital gown of <claim-ref idref="CLM-00004">claim 4</claim-ref>, wherein the second set of fasteners is arranged in exactly two of the columns and in exactly three of the rows.</claim-text>
+</claim>
+<claim id="CLM-00006" num="00006">
+<claim-text><b>6</b>. The hospital gown of <claim-ref idref="CLM-00001">claim 1</claim-ref>, wherein:
+<claim-text>the first set of fasteners is a single column of multiple rows of shaped tabs extending from an edge of the first front panel; and</claim-text>
+<claim-text>the second set of fasteners includes a columns of slots having a number of rows equal to the number of rows of the first set of fasteners.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00007" num="00007">
+<claim-text><b>7</b>. The hospital gown of <claim-ref idref="CLM-00001">claim 1</claim-ref>, further comprising a telemetry pocket positioned with respect to either the first front panel or the second front panel.</claim-text>
+</claim>
+<claim id="CLM-00008" num="00008">
+<claim-text><b>8</b>. The hospital gown of <claim-ref idref="CLM-00001">claim 1</claim-ref>, wherein:
+<claim-text>the collar is constructed of a first fabric material having a first color;</claim-text>
+<claim-text>the first and second front panels are constructed of a second fabric material having a second color; and</claim-text>
+<claim-text>the first color sufficiently contrasts with the second color so as to identify the front of the hospital gown.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00009" num="00009">
+<claim-text><b>9</b>. The hospital gown of <claim-ref idref="CLM-00001">claim 1</claim-ref>, wherein:
+<claim-text>the rear panel includes a first and a second rear panel that are sewn together to form a pair of seams;</claim-text>
+<claim-text>the elongated slot is defined by material between the pair of seams that is not sewn together; and</claim-text>
+<claim-text>the first rear panel includes an edge that is overlapped by the second rear panel solely within the elongated slot.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00010" num="00010">
+<claim-text><b>10</b>. The hospital gown of <claim-ref idref="CLM-00009">claim 9</claim-ref>, wherein an additional slot is defined by the first and second rear panels below the pair of seams and below the elongated slot.</claim-text>
+</claim>
+<claim id="CLM-00011" num="00011">
+<claim-text><b>11</b>. The hospital gown of <claim-ref idref="CLM-00001">claim 1</claim-ref>, further comprising an anti-microbial coating.</claim-text>
+</claim>
+<claim id="CLM-00012" num="00012">
+<claim-text><b>12</b>. The hospital gown of <claim-ref idref="CLM-00001">claim 1</claim-ref>, wherein each of the pair of sleeves extends to a wrist of the patient when the hospital gown is worn by the patient.</claim-text>
+</claim>
+<claim id="CLM-00013" num="00013">
+<claim-text><b>13</b>. An adjustable front-opening hospital gown comprising:
+<claim-text>a first front panel having a telemetry pocket and a single column of at least three rows of fasteners in the form of snap studs;</claim-text>
+<claim-text>a second front panel that includes two columns of fasteners in the form of snap sockets to thereby facilitate adjustability of the hospital gown, wherein:
+<claim-text>each of the two columns has a number of rows that is equal in count or number to the count or number of rows of the snap studs;</claim-text>
+<claim-text>the snap studs are configured to engage a corresponding one of the snap sockets; and</claim-text>
+<claim-text>the second front panel is partially overlapped by the first front panel to thereby define a front of the hospital gown when the hospital gown is worn by a patient;</claim-text>
+</claim-text>
+<claim-text>a first and a second rear panel connected to the respective first and second front panels to form, in conjunction with the first and second front panels, a pair of sleeves, wherein the first and a second rear panels are sewn together to form a pair of seams which define an elongated slot therebetween;</claim-text>
+<claim-text>a pair of intravenous access flaps each positioned with respect to a corresponding one of the pair of sleeves and closable via additional fasteners, wherein the pair of intravenous access flaps each includes a corresponding strip of twill material of a respective first and second color forming a backing for the additional fasteners, and wherein the first color is sufficiently different from the second color to thereby identify the corresponding sleeve; and</claim-text>
+<claim-text>a collar positioned on the front of the hospital gown, wherein the collar is constructed from a fabric of a first color and the remainder of the hospital gown is constructed of a fabric of a second color to identify a front of the hospital gown.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00014" num="00014">
+<claim-text><b>14</b>. The hospital gown of <claim-ref idref="CLM-00013">claim 13</claim-ref>, wherein one of the first and second rear panels includes an edge that is overlapped by the other of the first and second rear panels solely within the elongated slot.</claim-text>
+</claim>
+<claim id="CLM-00015" num="00015">
+<claim-text><b>15</b>. The hospital gown of <claim-ref idref="CLM-00013">claim 13</claim-ref>, wherein each of the pair of sleeves extends to a wrist of the patient when the gown is worn by the patient.</claim-text>
+</claim>
+<claim id="CLM-00016" num="00016">
+<claim-text><b>16</b>. The hospital gown of <claim-ref idref="CLM-00013">claim 13</claim-ref>, wherein the hospital gown is coated with an anti-microbial coating.</claim-text>
+</claim>
+<claim id="CLM-00017" num="00017">
+<claim-text><b>17</b>. The hospital gown of <claim-ref idref="CLM-00013">claim 13</claim-ref>, further comprising a radio frequency identification (RFID) tag.</claim-text>
+</claim>
+<claim id="CLM-00018" num="00018">
+<claim-text><b>18</b>. The hospital gown of claim, wherein an additional slot is defined by the first and second rear panels below the pair of seams and below the elongated slot.</claim-text>
+</claim>
+</claims>
+</us-patent-application>

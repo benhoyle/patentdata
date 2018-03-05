@@ -18,7 +18,7 @@ from patentdata.models.lib.utils_entities import (
 
 from nltk.tokenize import word_tokenize
 
-from patentdata.models.chardict import CharDict
+from patentdata.models.tokendict import CharDict
 from patentdata.models.entity import Entity
 
 # Initialise character dictionary for mappings
@@ -54,7 +54,7 @@ class BaseTextBlock:
 
     def __repr__(self):
         if self.number:
-            return "{0} {1}".format(self.number, self.text)
+            return "{0} - {1}".format(self.number, self.text)
         else:
             return self.text
 

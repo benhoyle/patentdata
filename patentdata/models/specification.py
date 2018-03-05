@@ -73,9 +73,34 @@ class Description(BaseTextSet):
             para_list.append(para_object)
         super(Description, self).__init__(para_list)
 
+    @property
+    def paragraphs(self):
+        return self.units
+
     def get_paragraph(self, number):
         """ Return paragraph having the passed number. """
         return super(Description, self).get_unit(number)
+
+    def set_sections(self, section_dict):
+        """ Set a series of sections based on paragraph indices.
+        :param section_dict: a dictionary of {'Section Name':
+        {'start': i, 'end': j} where i and j are indices for self.units
+        :type section_dict: dictionary """
+        self.sections = section_dict
+
+    def get_section(self, section_title):
+        """ Return text for a section."""
+        # Todo - raise value error if key not in sections
+        section = self.sections[section_title]
+        return [
+            p
+            for p in self.paragraphs[section['start']+1:section['end']]
+        ]
+
+    @property
+    def section_titles(self):
+        """ Return section titles."""
+        return self.sections.keys()
 
     @property
     def paragraph_count(self):
@@ -97,10 +122,6 @@ class Description(BaseTextSet):
                 for s in p.sentences
             ]
         )
-
-    @property
-    def paragraphs(self):
-        return self.units
 
     @property
     def sentences(self):
@@ -146,4 +167,8 @@ class Description(BaseTextSet):
 
 class Figures:
     """ Object to model a set of patent figures. """
+    pass
+
+class Abstract(BaseTextBlock):
+    """ Object to model an abstract of a patent description. """
     pass

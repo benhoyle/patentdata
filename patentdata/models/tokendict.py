@@ -75,6 +75,10 @@ class BaseDict:
             self.build_dicts()
             return self.token2int(token)
 
+    def text2int(self, text):
+        """ Convert a block of text into a list of integers. """
+        pass
+
     @property
     def startwordint(self):
         """ Return integer for start of word character. """
@@ -119,7 +123,7 @@ class CharDict(BaseDict):
             return character
 
     def text2int(self, text):
-        """ Convert a block of text into an integer. """
+        """ Convert a block of text into a list of integers. """
 
         integer_list = list()
         for character in text:
@@ -161,12 +165,43 @@ class CharDict(BaseDict):
 class WordDict(BaseDict):
     """ Class to model mapping between words and integers. """
 
+    def tokens2int(self, tokens, process_capitals=True):
+        """ Convert a list of tokens into a list of integers. """
+        integer_list = list()
+        # Sentence segment?
+        # Word segment?
+        # Do I fold this into the other models e.g word or BaseTextBlock?
+        for token in tokens:
+            if process_capitals:
+                if token.istitle():
+                    integer_list.append(self.forward_dict["_CAPITAL_"])
+                    token = token.lower()
+                # Let's leave all other uppercase as uppercase e.g. acronyms
+
+            # If character is in mapping dictionary add int to list
+            if token in self.forward_dict.keys():
+                integer_list.append(self.forward_dict[token])
+            else:
+                integer_list.append(self.forward_dict["_OOD_"])
+        return integer_list
+
     def load_vocab(self, filepath="vocab.json", vocab_size=None):
-        """ Load vocab from a json file."""
+        """ Load vocab from a json file.
+
+        json format is a dictionary of {word: integer, ...} entries.
+        """
         with open(filepath, 'r') as f:
             data = json.loads(f.read())
+        existing_tokens = len(self.vocab)
         if vocab_size:
-            upper_index = vocab_size - len(self.vocab)
+            upper_index = vocab_size - existing_tokens
+            self.vocab = {k: v for k, v in data.items() if v < upper_index}
             # We would need to here shift the weights matrix
             # E.g. add x random rows to accomodate the control characters
+
+            # i can't change the order of the loaded vocab as I would
+            # Need to change the word2vec matrix
+
+            # Or we can load a bigger vocab but just convert any word
+            # that isn't in dict or has a value > upper_index to UNK
 

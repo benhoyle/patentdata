@@ -4,24 +4,25 @@ from collections import Counter
 from patentdata.models.patentdoc import PatentDoc
 from patentdata.xmlparser import XMLDoc
 
+from patentdata.corpus import (
+    EPOOPS, USPublications, USGrants
+)
+
 from datetime import datetime
 
 import logging
 from zipfile import ZipFile
 import pickle
-import importlib
 
 logger = logging.getLogger(__name__)
 
-from patentdata.corpus import (
-    EPOOPS, USPublications, USGrants
-)
 
 DATASOURCE_OPTIONS = {
     'EPOOPS': EPOOPS,
     'USPublications': USPublications,
     'USGrants': USGrants
 }
+
 
 def string_to_class(datasource_str):
     """ Return a class indicated by a datasource_str."""
@@ -38,148 +39,76 @@ def string_to_class(datasource_str):
 """
 We probably want to extract the datasource specific functions from
 these classes - we want to leave the statistical functions.
+
+Yes - because we want to build up a vocab over the corpus and save this
+with the corpus (or separately).
+
+We need to base things around an iterator > that maps to documents for
+backwards compatibilty.
+
+Do we get each datasource to return an iterator function that can be passed
+into the Corpus object?
+
+Don't we already have this as patentdoc_generator.
+
+Porblem is There is no easy way to re-run the generator.
+We would need to do this with a patentcorpus.
+One option is to add each document to a list as you iterate through.
+The problem then is storing this list in memory if you are iterating
+through the whole corpus.
+
+Or we store the document numbers as we iterate through then use the
+datasource to retrieve those on each subsequent iteration? Or we generate
+a cyclable pdoc_generator as per here - https://docs.python.org/3/library/itertools.html#itertools.cycle
+
+A cyclable pdoc_generator could retrieve and save the numbers the first
+time around then iterate through the numbers on subsequent runs.
+
 """
 
-class PatentCorpus:
-    """ Object to model a collection of patent documents. """
-    def __init__(self, documents=[]):
-        """ Initialise corpus.
 
-        :param documents: list of patent documents
-        :type documents: PatentDoc
-        :return: PatentCorpus object
+class BaseCorpus:
+    """ Base object for inheritance."""
 
+    def __init__(self, pdoc_generator):
+        """ Corpus is initialised with a patentdoc_generator function."""
+        self.pdoc_generator = pdoc_generator
+
+    def __iter__(self):
+        """ Iterate through patent documents. """
+        for doc in self.pdoc_generator:
+            yield doc
+
+    @property
+    def documents(self):
+        """ Map iterator to 'documents' property for compatibility."""
+        for doc in self:
+            yield doc
+
+    def get_description_text(self):
+        """ Return text of all descriptions as one long string. """
+        return "\n\n".join([doc.description.text for doc in self])
+
+    def get_claim_text(self):
+        """ Return text of all claims as one long string. """
+        return "\n\n".join([doc.claimset.text for doc in self])
+
+    def sentences(self, add_claims=True):
+        """ Return an iterator to provide lists of words per sentence.
+
+            Use for Gensim functions including word2vec
         """
-        for doc in documents:
-            if not isinstance(doc, PatentDoc):
-                raise ValueError("Input must be a list of PatentDoc objects")
-        self.documents = documents
-
-    @classmethod
-    def init_by_classification(
-        cls, datasource, classification, sample_size=None
-    ):
-        """ Initialise with a classification of kind ["G", "06"] with
-        one to five entries.
-
-        Sample_size randomly samples to a particular
-        number if supplied.
-
-        If classification is None or an empty list, select a random
-        sample across all classifications."""
-        # Need to run a query to get list of filename, name entries
-
-        # Then we can call init_by_filenames
-        filegenerator = datasource.patentdoc_generator(
-            classification, sample_size=sample_size
-            )
-        pcorp = cls([])
-        for doc in filegenerator:
-            pcorp.add_document(doc)
-        # Also add documents to cache here
-        pcorp.classification = classification
-        return pcorp
-
-    def add_document(self, document):
-        """ Add a document to the corpus.
-
-        :param document: patent documents
-        :type document: PatentDoc
-        :return: PatentCorpus object
-
-        """
-        if not isinstance(document, PatentDoc):
-            raise ValueError("Input must be a list of PatentDoc objects")
-        logging.info("Adding Document: {0}".format(document.title))
-        self.documents.append(document)
-
-    def add_flat_document(self, flat_doc):
-        """ Add a document from a flattened string form. """
-        self.documents.append(PatentDoc.load_from_string(flat_doc))
+        return CorpusSentenceIterator(self.pdoc_generator, add_claims)
 
     def char_stats(self):
         """ Provide statistics on characters in corpus."""
         sum_counter = Counter()
-        for doc in self.documents:
+        for doc in self:
             sum_counter += Counter(doc)
         print(
             "Documents contain {0} unique characters.".format(len(sum_counter))
             )
         return sum_counter
-
-    def save(self, filename=None):
-        """ Save patentdoc objects to disk to speed up loading of data. """
-        # Create a zip archive
-        # Have zip archive open as long as object is open
-        # Serialise patentdoc using a method on that class
-        # Also add load methods
-        logging.info("Saving Patent Corpus")
-        if not filename:
-            filename = "{date}-{length}.patcorp.zip".format(
-                date=datetime.now().strftime(format="%Y-%m-%d_%H-%M"),
-                length=len(self.documents)
-            )
-        with ZipFile(filename, 'w') as myzip:
-            for doc in self.documents:
-                myzip.writestr(doc.number, doc.saveable)
-
-    @classmethod
-    def load(cls, filename):
-        """ Load patentdoc objects from disk. """
-        logging.info("Loading Patent Corpus")
-        # [] is to prevent loading with a previous list of docs - bug?
-        pcorp = cls([])
-        with ZipFile(filename) as myzip:
-            for flat_doc in myzip.namelist():
-                with myzip.open(flat_doc) as myfile:
-                    pcorp.add_flat_document(myfile.read().decode('utf-8'))
-        logging.info(
-            "Loaded Patent Corpus with {0} documents"
-            .format(len(pcorp.documents))
-        )
-        return pcorp
-
-
-# May not need this - functionality handled by USPublications object
-class LazyPatentCorpus:
-    """ Object to model a collection of patent documents that loads
-    each document from file lazily. """
-
-    def __init__(
-        self, datasource, classification=[], sample_size=None
-    ):
-        """ Initialise with a classification of kind ["G", "06"] with
-        one to five entries.
-
-        Sample_size randomly samples to a particular
-        number if supplied.
-
-        If classification is None or an empty list, select a random
-        sample across all classifications."""
-        # Need to run a query to get list of filename, name entries
-
-        # Then we can call init_by_filenames
-        self.datasource = datasource
-        self.filelist = self.datasource.get_records(
-            classification, sample_size=sample_size
-            )
-
-    def init_by_filenames(self, datasource, filelist):
-        """ Initialise with a list of file references of the format
-        (id, filename, name)."""
-        self.datasource = datasource
-        self.filelist = filelist
-        return self
-
-    @property
-    def documents(self):
-        for doc in self:
-            yield doc
-
-    def __iter__(self):
-        """ Iterator to return patent documents. """
-        for _, filedata in self.datasource.iter_read(self.filelist):
-            yield XMLDoc(filedata).to_patentdoc()
 
     def build_token_dict(self):
         """ Iterate through documents to build a dictionary of tokens. """
@@ -192,44 +121,6 @@ class LazyPatentCorpus:
             }
         return self.token_dict, total_token_counter
         # Do we want to filter here and UNK rare tokens
-
-    def docs_to_index(self):
-        """ Go through documents replacing tokens with the index in
-        the token dictionary."""
-        pass
-
-    def save_claims(self, filter_cancelled=True, clean_chars=True):
-        """ Save all claim text as a Pickle file."""
-        # But be careful because we want indicies to sync
-        # May want to delete cancelled claims entirely
-        pass
-
-    # This is currently a generator but needs to be an iterator
-    def sentences(self, add_claims=False):
-        """ Iterate through sentences in the corpus - useable as input
-         to gensim's word2vec model.
-
-        if add_claims is set to true, the claims are added as sentences.
-        """
-        for doc in self.documents:
-            try:
-                for paragraph in doc.description.paragraphs:
-                    for sentence in paragraph.sentences:
-                        # yield sentence.filtered_tokens
-                        yield sentence.words
-                if add_claims:
-                    for claim in doc.claimset.claims:
-                        yield claim.words
-            except:
-                logger.error("Error processing doc - {0}".format(doc.title))
-
-    def get_description_text(self):
-        """ Return text of all descriptions as one long string. """
-        return "\n\n".join([doc.description.text for doc in self.documents])
-
-    def get_claim_text(self):
-        """ Return text of all claims as one long string. """
-        return "\n\n".join([doc.claimset.text for doc in self.documents])
 
     def get_statistics(self):
         """ Iterate through documents,compute and statistics."""
@@ -288,6 +179,171 @@ class LazyPatentCorpus:
             sentence_dist
         )
 
+
+class PatentCorpus(BaseCorpus):
+    """ Object to model a collection of patent documents.
+
+
+    """
+    def __init__(self, documents=[]):
+        """ Initialise corpus.
+
+        :param documents: list of patent documents
+        :type documents: PatentDoc
+        :return: PatentCorpus object
+
+        """
+        for doc in documents:
+            if not isinstance(doc, PatentDoc):
+                raise ValueError("Input must be a list of PatentDoc objects")
+        self.documents = documents
+
+    def __iter__(self):
+        """ Iterate through patent documents. """
+        for doc in self.documents:
+            yield doc
+
+    @classmethod
+    def init_by_classification(
+        cls, datasource, classification, sample_size=None
+    ):
+        """ Initialise with a classification of kind ["G", "06"] with
+        one to five entries.
+
+        Sample_size randomly samples to a particular
+        number if supplied.
+
+        If classification is None or an empty list, select a random
+        sample across all classifications."""
+        # Need to run a query to get list of filename, name entries
+
+        # Then we can call init_by_filenames
+        filegenerator = datasource.patentdoc_generator(
+            classification, sample_size=sample_size
+            )
+        pcorp = cls([])
+        for doc in filegenerator:
+            pcorp.add_document(doc)
+        # Also add documents to cache here
+        pcorp.classification = classification
+        return pcorp
+
+    def add_document(self, document):
+        """ Add a document to the corpus.
+
+        :param document: patent documents
+        :type document: PatentDoc
+        :return: PatentCorpus object
+
+        """
+        if not isinstance(document, PatentDoc):
+            raise ValueError("Input must be a list of PatentDoc objects")
+        logging.info("Adding Document: {0}".format(document.title))
+        self.documents.append(document)
+
+    def add_flat_document(self, flat_doc):
+        """ Add a document from a flattened string form. """
+        self.documents.append(PatentDoc.load_from_string(flat_doc))
+
+    def save(self, filename=None):
+        """ Save patentdoc objects to disk to speed up loading of data. """
+        # Create a zip archive
+        # Have zip archive open as long as object is open
+        # Serialise patentdoc using a method on that class
+        # Also add load methods
+        logging.info("Saving Patent Corpus")
+        if not filename:
+            filename = "{date}-{length}.patcorp.zip".format(
+                date=datetime.now().strftime(format="%Y-%m-%d_%H-%M"),
+                length=len(self.documents)
+            )
+        with ZipFile(filename, 'w') as myzip:
+            for doc in self.documents:
+                myzip.writestr(doc.number, doc.saveable)
+
+    @classmethod
+    def load(cls, filename):
+        """ Load patentdoc objects from disk. """
+        logging.info("Loading Patent Corpus")
+        # [] is to prevent loading with a previous list of docs - bug?
+        pcorp = cls([])
+        with ZipFile(filename) as myzip:
+            for flat_doc in myzip.namelist():
+                with myzip.open(flat_doc) as myfile:
+                    pcorp.add_flat_document(myfile.read().decode('utf-8'))
+        logging.info(
+            "Loaded Patent Corpus with {0} documents"
+            .format(len(pcorp.documents))
+        )
+        return pcorp
+
+
+# May not need this - functionality handled by USPublications object
+class LazyPatentCorpus(BaseCorpus):
+    """ Object to model a collection of patent documents that loads
+    each document from file lazily. """
+
+    def __init__(
+        self, datasource, classification=[], sample_size=None
+    ):
+        """ Initialise with a classification of kind ["G", "06"] with
+        one to five entries.
+
+        Sample_size randomly samples to a particular
+        number if supplied.
+
+        If classification is None or an empty list, select a random
+        sample across all classifications."""
+        # Need to run a query to get list of filename, name entries
+
+        # Then we can call init_by_filenames
+        self.datasource = datasource
+        self.filelist = self.datasource.get_records(
+            classification, sample_size=sample_size
+            )
+
+    def init_by_filenames(self, datasource, filelist):
+        """ Initialise with a list of file references of the format
+        (id, filename, name)."""
+        self.datasource = datasource
+        self.filelist = filelist
+        return self
+
+    def __iter__(self):
+        """ Iterator to return patent documents. """
+        for _, filedata in self.datasource.iter_read(self.filelist):
+            yield XMLDoc(filedata).to_patentdoc()
+
+    def docs_to_index(self):
+        """ Go through documents replacing tokens with the index in
+        the token dictionary."""
+        pass
+
+    def save_claims(self, filter_cancelled=True, clean_chars=True):
+        """ Save all claim text as a Pickle file."""
+        # But be careful because we want indicies to sync
+        # May want to delete cancelled claims entirely
+        pass
+
+    # This is currently a generator but needs to be an iterator
+    def sentences(self, add_claims=False):
+        """ Iterate through sentences in the corpus - useable as input
+         to gensim's word2vec model.
+
+        if add_claims is set to true, the claims are added as sentences.
+        """
+        for doc in self.documents:
+            try:
+                for paragraph in doc.description.paragraphs:
+                    for sentence in paragraph.sentences:
+                        # yield sentence.filtered_tokens
+                        yield sentence.words
+                if add_claims:
+                    for claim in doc.claimset.claims:
+                        yield claim.words
+            except:
+                logger.error("Error processing doc - {0}".format(doc.title))
+
     # Many introductory tutorials work with a list of words as strings
     def word_list(self, add_claims=True):
         """ Provide a list of all the words in the corpus
@@ -324,7 +380,10 @@ class LazyPatentCorpus:
             )
         # Save the class name and path of the datasource to allow
         # it to be re-generated?
-        ds_params = (ds.__class__.__name__, ds.path)
+        ds_params = (
+            self.datasource.__class__.__name__,
+            self.datasource.path
+            )
         params_to_save = (ds_params, self.filelist)
         with open(filename, 'wb') as f:
             pickle.dump(params_to_save, f)
@@ -340,21 +399,20 @@ class LazyPatentCorpus:
         lzy = cls()
         return lzy.init_by_filenames(datasource, filelist)
 
+
 class CorpusSentenceIterator:
     """ Iterator to return sentences from files in filelist f
     rom datasource. """
 
-    def __init__(self, datasource, filelist, add_claims=False):
+    def __init__(self, pdoc_generator, add_claims=False):
         """ Initialise with a datasource and filelist. """
-        self.datasource = datasource
-        self.filelist = filelist
+        self.pdoc_generator = pdoc_generator
         self.add_claims = add_claims
 
     def __iter__(self):
         """ Iterate through files"""
-        for _, filedata in self.datasource.iter_read(self.filelist):
+        for doc in self.patentdoc_generator:
             try:
-                doc = XMLDoc(filedata).to_patentdoc()
                 for paragraph in doc.description.paragraphs:
                     for sentence in paragraph.sentences:
                         # yield sentence.filtered_tokens
@@ -371,4 +429,4 @@ class CorpusSentenceIterator:
                             stem_words=False
                         )
             except:
-                logger.error("Error processing doc - {0}".format(filedata))
+                logger.error("Error processing doc - {0}".format(doc.title))

@@ -56,6 +56,9 @@ class XMLDoc():
             except:
                 return True
 
+        # In at least US grant data there are headings we can extract
+        # <heading id="h-0005" level="1">DETAILED DESCRIPTION OF THE PREFERRED EMBODIMENT</heading>
+
         paras = self.soup.find_all(["p", "paragraph"])
         return [{
             "text": p.text,

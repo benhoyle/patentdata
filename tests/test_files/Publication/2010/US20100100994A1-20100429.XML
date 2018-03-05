@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE us-patent-application SYSTEM "us-patent-application-v42-2006-08-23.dtd" [ ]>
+<us-patent-application lang="EN" dtd-version="v4.2 2006-08-23" file="US20100100994A1-20100429.XML" status="PRODUCTION" id="us-patent-application" country="US" date-produced="20100414" date-publ="20100429">
+<us-bibliographic-data-application lang="EN" country="US">
+<publication-reference>
+<document-id>
+<country>US</country>
+<doc-number>20100100994</doc-number>
+<kind>A1</kind>
+<date>20100429</date>
+</document-id>
+</publication-reference>
+<application-reference appl-type="utility">
+<document-id>
+<country>US</country>
+<doc-number>12530508</doc-number>
+<date>20080314</date>
+</document-id>
+</application-reference>
+<us-application-series-code>12</us-application-series-code>
+<priority-claims>
+<priority-claim sequence="01" kind="national">
+<country>SE</country>
+<doc-number>0700719-8</doc-number>
+<date>20070323</date>
+</priority-claim>
+</priority-claims>
+<classifications-ipcr>
+<classification-ipcr>
+<ipc-version-indicator><date>20060101</date></ipc-version-indicator>
+<classification-level>A</classification-level>
+<section>B</section>
+<class>63</class>
+<subclass>C</subclass>
+<main-group>11</main-group>
+<subgroup>04</subgroup>
+<symbol-position>F</symbol-position>
+<classification-value>I</classification-value>
+<action-date><date>20100429</date></action-date>
+<generating-office><country>US</country></generating-office>
+<classification-status>B</classification-status>
+<classification-data-source>H</classification-data-source>
+</classification-ipcr>
+</classifications-ipcr>
+<classification-national>
+<country>US</country>
+<main-classification>  2  216</main-classification>
+<further-classification>  2  217</further-classification>
+</classification-national>
+<invention-title id="d0e61">Material for a Drysuit</invention-title>
+<parties>
+<applicants>
+<applicant sequence="00" app-type="applicant-inventor" designation="us-only">
+<addressbook>
+<last-name>Ehlm&#xe9;</last-name>
+<first-name>G&#xf6;ran</first-name>
+<address>
+<city>Henan</city>
+<country>SE</country>
+</address>
+</addressbook>
+<nationality>
+<country>omitted</country>
+</nationality>
+<residence>
+<country>SE</country>
+</residence>
+</applicant>
+</applicants>
+<correspondence-address>
+<addressbook>
+<name>POTOMAC PATENT GROUP PLLC</name>
+<address>
+<address-1>P. O. BOX 270</address-1>
+<city>FREDERICKSBURG</city>
+<state>VA</state>
+<postcode>22404</postcode>
+<country>US</country>
+</address>
+</addressbook>
+</correspondence-address>
+</parties>
+<pct-or-regional-filing-data>
+<document-id>
+<country>WO</country>
+<doc-number>PCT/SE2008/050287</doc-number>
+<kind>00</kind>
+<date>20080314</date>
+</document-id>
+<us-371c124-date><date>20090909</date></us-371c124-date>
+</pct-or-regional-filing-data>
+</us-bibliographic-data-application>
+<abstract id="abstract">
+<p id="p-0001" num="0000">The invention relates to a device (<b>1</b>) in dry-suit (<b>2</b>) for diving and other wet activities and comprises an outer waterproof layer (<b>3</b>) and an inner insulating layer (<b>4</b>). According to the invention, on the inside (<b>5</b>) of the outer waterproof layer (<b>3</b>), which consists of butyl rubber or polyurethane, there is received a detachably attached three-dimensional textile consisting of polyester and that is flexible and has air throughput capacity in two directions (<b>6, 7</b>).</p>
+</abstract>
+<drawings id="DRAWINGS">
+<figure id="Fig-EMI-D00000" num="00000">
+<img id="EMI-D00000" he="110.66mm" wi="103.80mm" file="US20100100994A1-20100429-D00000.TIF"  img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00001" num="00001">
+<img id="EMI-D00001" he="225.04mm" wi="174.67mm" orientation="landscape" file="US20100100994A1-20100429-D00001.TIF"  img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00002" num="00002">
+<img id="EMI-D00002" he="206.59mm" wi="143.17mm" orientation="landscape" file="US20100100994A1-20100429-D00002.TIF"  img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00003" num="00003">
+<img id="EMI-D00003" he="258.83mm" wi="179.49mm" orientation="landscape" file="US20100100994A1-20100429-D00003.TIF"  img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00004" num="00004">
+<img id="EMI-D00004" he="221.66mm" wi="115.15mm" file="US20100100994A1-20100429-D00004.TIF"  img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00005" num="00005">
+<img id="EMI-D00005" he="227.84mm" wi="145.63mm" orientation="landscape" file="US20100100994A1-20100429-D00005.TIF"  img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00006" num="00006">
+<img id="EMI-D00006" he="233.17mm" wi="182.46mm" orientation="landscape" file="US20100100994A1-20100429-D00006.TIF"  img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00007" num="00007">
+<img id="EMI-D00007" he="254.00mm" wi="171.79mm" file="US20100100994A1-20100429-D00007.TIF"  img-content="drawing" img-format="tif"/>
+</figure>
+<figure id="Fig-EMI-D00008" num="00008">
+<img id="EMI-D00008" he="228.77mm" wi="170.26mm" file="US20100100994A1-20100429-D00008.TIF"  img-content="drawing" img-format="tif"/>
+</figure>
+</drawings>
+<description id="description">
+<?summary-of-invention description="Summary of Invention" end="lead"?>
+<p id="p-0002" num="0001">The present invention relates to a device in a drysuit for diving and other wet activities and comprising an outer waterproof layer and an inner insulating layer.</p>
+<p id="p-0003" num="0002">Drysuits for divers usually are available in two types, variable volume (neoprene foam and compressed neoprene foam and that herein is denominated neoprene drysuit) and with constant volume (bi/tri laminate, butyl rubber, cordura, etc.) usually denominated fabric suit, shell suit or laminate suit but that herein is denominated shell drysuit. The principal differences between the same are that suits having variable volume have better insulating properties, but the buoyancy varies with the depth, because of the compression of the gas bubbles in the neoprene material. On the other hand, the constant-volume suit requires separate underwear, but the buoyancy is much easier to control and is only affected by the type and amount of underwear.</p>
+<p id="p-0004" num="0003">Which type of suit a diver chooses is a matter of personal preference. Drysuits of neoprene are often used by divers who dive in very cold water, while shell drysuits often are used by divers using a closed air supply, so-called rebreather divers.</p>
+<p id="p-0005" num="0004">By, for instance, WO 2004/065114 A2, a wetsuit for divers is previously known and that comprises an internal central layer formed of three-dimensional fibres, having an inner and an outer layer, respectively, that are substantially impermeable to water vapour and water. Said three-dimensional textile comprises a bonding composition intended to make the wetsuit waterproof in order to prevent the material in the suit from rottening.</p>
+<p id="p-0006" num="0005">However, such a suit is not suitable as a dry-suit, since moisture from the user stays on the user, which makes that he or she would become very wet in such a drysuit.</p>
+<p id="p-0007" num="0006">U.S. Pat. No. 2,957,512 A also discloses a material that, among other things, is suitable for bathing suits and such are, of course, usually wet in the water. Neither this material solves the above-mentioned problem of sweat and moisture in drysuits.</p>
+<p id="p-0008" num="0007">U.S. Pat. No. 3,562,079 A discloses a non-woven cover material that primarily is intended to resist impacts and that comprises a three-dimensional core in the inside thereof. This material is not very suitable for diving suits.</p>
+<p id="p-0009" num="0008">Therefore, the main object of the present invention is primarily to solve, among other things, the above-mentioned problems to provide a diving suit of dry type and that has good properties for carrying away moisture and sweat from the diver and allowing to obtain a suit that works well at all depths, and that above all feels pleasant and comfortable for the diver to use.</p>
+<p id="p-0010" num="0009">Said object is attained by means of a device according to the present invention that essentially is characterized in that, on the inside of the outer waterproof layer, which consists of butyl rubber or polyurethane, there is received a detachably attached three-dimensional textile consisting of polyester and that is flexible and has air throughput capacity in two directions.</p>
+<?summary-of-invention description="Summary of Invention" end="tail"?>
+<?brief-description-of-drawings description="Brief Description of Drawings" end="lead"?>
+<description-of-drawings>
+<p id="p-0011" num="0010">The invention is described below in the form of a preferred embodiment example, reference being made to the accompanying drawings, in which,</p>
+<p id="p-0012" num="0011"><figref idref="DRAWINGS">FIG. 1</figref> shows examples of a diving suit according to the invention as seen from the front and from behind, respectively,</p>
+<p id="p-0013" num="0012"><figref idref="DRAWINGS">FIG. 2</figref> schematically shows a cross-section of the suit material and the process in the same in the active ventilation state,</p>
+<p id="p-0014" num="0013"><figref idref="DRAWINGS">FIG. 2A</figref> shows in perspective said ventilation layer,</p>
+<p id="p-0015" num="0014"><figref idref="DRAWINGS">FIGS. 3-4</figref> show two examples of inwardly turned material layers of the suit,</p>
+<p id="p-0016" num="0015"><figref idref="DRAWINGS">FIG. 5</figref> shows an example of the shape and structure of the suit,</p>
+<p id="p-0017" num="0016"><figref idref="DRAWINGS">FIG. 6</figref> shows the connection of the layers of the suit at the leg,</p>
+<p id="p-0018" num="0017"><figref idref="DRAWINGS">FIG. 7</figref> shows examples of the reinforced back part of the suit,</p>
+<p id="p-0019" num="0018"><figref idref="DRAWINGS">FIG. 8</figref> shows the connection of the layers of the suit at the neck collar, and</p>
+<p id="p-0020" num="0019"><figref idref="DRAWINGS">FIG. 9</figref> shows the connection of the layers of the suit at the lower part of the sleeve.</p>
+</description-of-drawings>
+<?brief-description-of-drawings description="Brief Description of Drawings" end="tail"?>
+<?detailed-description description="Detailed Description" end="lead"?>
+<p id="p-0021" num="0020">The main idea of the invention is to combine advantages existing in known solutions of materials for diving suits of varying type, i.e., the advantages of the neoprene drysuit and of the shell drysuit, respectively. This is enabled by combining an inner insulating gas-filled layer, similar to that of a neoprene drysuit, with an outer layer of a shell dry-suit, and allowing to detachably interconnect the same, whereby desired unexpected technical effects are obtained and attained.</p>
+<p id="p-0022" num="0021">This is possible thanks to the internal three-dimensional layer, which consists of polyester, being received by the external waterproof layer of butyl rubber, and the same being detachably attached to each other, and which allows moisture from within the suit to be carried into the inner layer and received therein, while the outer layer prevents water penetration from the outside into the suit.</p>
+<p id="p-0023" num="0022">The idea of this new type of hybrid suit is to combine the advantages of the two. This is provided by an inner lining of a three-dimensional (3D) mesh interlining fabric. It is formed of a structure of two layers, with an accumulation of threads between the same, see <figref idref="DRAWINGS">FIG. 2A</figref>, and having different strength and thickness. The hardness and the elasticity characteristics can be adapted to suit different needs.</p>
+<p id="p-0024" num="0023">The three-dimensional (3D) fabric is manufactured from polyester and is pliable. It has excellent forming and recovery properties and has extremely high air throughput in two directions (<b>7</b>, <b>6</b>) and constant circulation of air combined with low weight. It has a soft damping and pleasant effect, which makes it very comfortable.</p>
+<p id="p-0025" num="0024">The three-dimensional (3D) lining can be entirely integrated with the outer layer of butyl rubber or polyurethane, attached by zippers or by Velcro fastening members, see <figref idref="DRAWINGS">FIGS. 6</figref>, <b>8</b> and <b>9</b>. Although the two fabrics are separated from each other, which makes the suit very flexible, the diver will experience the suit as one. It can also be changed to be used in different climates.</p>
+<p id="p-0026" num="0025">In <figref idref="DRAWINGS">FIGS. 3 and 4</figref>, three-dimensional (3D) lining is shown, having different thickness and shape on the outside and on the inside, respectively. The upper shown layer is much thicker than the lower shown layer, however, they are not interconnected but just shown in the same picture.</p>
+<p id="p-0027" num="0026">The effect of these combined materials, formed by &#x201c;layer on layer&#x201d;, see <figref idref="DRAWINGS">FIG. 5</figref>, will give a dry suit having very good insulation properties, without any variation of the buoyancy.</p>
+<p id="p-0028" num="0027">There are also other advantages. Since a drysuit is not ventilated to get rid of body moisture, the climate and comfort will be deteriorated after a short time when the suit is used, particularly ashore before descending under water. In a neoprene suit, the inner fabric will absorb the body moisture, and this results in a suit that will be totally wet on the inside. It will also take long time to dry the suit after the diving is finished. In a laminated suit, there is usually no fabric on the inside, which results in body moisture condensing on the surface and being absorbed back into the underwear.</p>
+<p id="p-0029" num="0028">By means of this new type of suit, the moisture can be absorbed or condensed on the inner surface of the outer part of the suit, but the three-dimensional (3D) lining forms a distance that prevents moisture from being absorbed by clothes or contacting the skin directly, which gives a much better climate for the diver. See <figref idref="DRAWINGS">FIG. 2</figref>.</p>
+<p id="p-0030" num="0029">When the pressure increases with the depth, the air in the suit will be compressed and create a vacuum. The three-dimensional (3D) lining resists this vacuum to a certain extent and reduces the squeezing effect on the body. To improve the comfort even more, the three-dimensional (3D) inner lining may be constructed of panels having different strength and thickness, actually in order to reduce the pressure from the weight belt at the back of the shoulders. See <figref idref="DRAWINGS">FIG. 7</figref>.</p>
+<p id="p-0031" num="0030">There is also a safety aspect. There have been several incidents, where too tightly tight-fitting underwear has blocked the outlet valve of the suit, and prevented the air from leaving the suit. This results in too a fast ascending to the surface, thereby causing aeroembolism (caisson disease). Since this three-dimensional (3D) thread-shaped fabric ensures free air throughput all the way through the walls of the suit, said blocking of the outlet valve cannot occur.</p>
+<p id="p-0032" num="0031">At least the three-dimensional (3D) thread accumulation could be usable as an internal lining on other suits, such as rescue, fire and commercial diving suits. The physical property of great air permeability could give advantages, such as providing cooling for firemen or providing warming of commercial divers. This can be provided by laminating a PU film (polyurethane film) on each side of the three-dimensional (3D) thread accumulation. It could be a circulation of air in the proper fabric, either cold or heat, depending on in which area the suit is used. In other words, an active cooling/warming lining could be applicable in any suit.</p>
+<p id="p-0033" num="0032">The neoprene boots are glued to the inside of the manufactured suit. At the top of the boots, there is a wound zipper attached/sewed on in a reverse way. See <figref idref="DRAWINGS">FIG. 6</figref>. The interlining is adhered at the top of the wound zipper. Since the zipper is sewed on in a reverse manner, the slider and the zipper coil can be placed between the suit and the lining, which provides a very smooth inside of the joint. This is essential since it has to be very easy to get dressed without the foot gets jammed as soon as the diver pulls the suit over his/her foot. The zipper coil is of the type YKK coil No. 3.</p>
+<p id="p-0034" num="0033">One side of the zipper coil is attached on the inside of the outer suit as near the latex seam as possible or on the other side of the zipper coil where the interlining is attached. Since the zipper is attached in a reverse way, the slider and the zipper coil will be sewed on between the suit and the lining, which provides a very smooth inside of the joint. This is substantial since it has to be very easy to get dressed without the foot gets jammed as soon as the diver pulls the suit over his/her foot. The zipper coil is of the type YKK coil No. 3. See <figref idref="DRAWINGS">FIG. 9</figref>.</p>
+<p id="p-0035" num="0034">The inner lining is attached to the neck seal by means of a pre-formed Velcro fastening member around the rubber seal. On the lining, the Velcro fastening member is knitted, and on the suit, a Velcro fastening member is used with a hot-melt adhesive. The Velcro fastening member is implemented in many smaller pieces, which together form the circle around the neck seal. See <figref idref="DRAWINGS">FIG. 8</figref>.</p>
+<p id="p-0036" num="0035">The interlining textile may be manufactured from many different panels that have different thicknesses and different elasticity characteristics, for instance at the back side of the waist where the diver carries his/her weight belt and that often has a weight of 12-16 kg. Underneath the weight belt, the interlining textile may be thick, up to 10 mm, and have twice as great resistance to pressure/weight as the rest of the suit. Also the shoulders could have a thickness of 6-8 mm to resist the weight from the hard tank. Usually, the interlining textile has a thickness of 3-4 mm. See <figref idref="DRAWINGS">FIG. 7</figref>.</p>
+<p id="p-0037" num="0036">The condensed moisture between the body and the interlining textile will be carried through the interlining textile and the condensate deposits on the cold surface on the inside of the outer part of the suit. This will lead to a drier climate inside the proper suit, and the body will remain dry since the wet surface will be kept at a distance from the skin by means of the interlining textile. The interlining textile has another great advantage, which is that the suit dries extremely fast after the dive thanks to the adapted air-permeable textile, which the interlining textile makes. See <figref idref="DRAWINGS">FIGS. 1-2</figref>.</p>
+<p id="p-0038" num="0037">The invention consists of a device <b>1</b> in a dry-suit <b>2</b> intended for diving and other wet activities, such as, e.g., water-skiing, surfing, sailing, etc., and which comprises an outer waterproof layer <b>3</b>, and an inner insulating layer <b>4</b>. According to the invention, a detachably attached three-dimensional textile <b>4</b> is received on the inside <b>5</b> of the outer waterproof layer <b>3</b>, which consists of butyl rubber or of polyurethane. Said three-dimensional textile, <b>4</b>, consists of polyester and is flexible and has air throughput capacity in two directions, viz. in the direction <b>6</b> perpendicularly to the outer layer <b>3</b> and in the direction <b>7</b> parallel to the outer layer <b>3</b>, respectively.</p>
+<p id="p-0039" num="0038">Said three-dimensional textile <b>4</b> is formed of a structure having a mass of threads <b>8</b> surrounded from a respective substantially parallel side A and B, respectively, by a respective layer of inner and outer, respectively, side <b>9</b> and <b>10</b>, respectively. In that connection, at least one <b>9</b> of said layers <b>9</b>, <b>10</b> has a pattern with a plurality of larger openings <b>11</b>, <b>11</b> that extend from the outside into said internally situated mass of threads <b>8</b>. This layer <b>9</b> is the inner layer and is intended to abut directly against the diver's body, which either is bare or provided with underwear of a suitable type. Said mass of threads <b>8</b> has a plurality of inclined, substantially parallel threads <b>8</b>A, <b>8</b>B, and most of said inclined threads <b>8</b>A, <b>8</b>B are leaning in common direction, or intersect each other.</p>
+<p id="p-0040" num="0039">If it is desired that said three-dimensional textile material <b>4</b> should get a stiffer and thus an improved supporting capacity, and in a better way be able to resist outer forces without being compressed and hence decrease the intermediate space <b>30</b> where the threads <b>8</b> are situated, it is possible to allow the threads to consist of stiffer materials and/or increase the dimension of the same. Even better stiffness is obtained by, e.g., allowing half of the threads <b>8</b>A to lean in a common first direction <b>31</b>, while the remaining amount of threads <b>8</b>B are leaning in another common second direction <b>32</b> that intersects said first direction <b>31</b>, i.e., all threads do not lean in a common direction.</p>
+<p id="p-0041" num="0040">One 10 of said layers <b>9</b>, <b>10</b> has a denser textile surface than the inner surface <b>9</b> and that is facing the inside <b>5</b> of the outer layer <b>3</b> of the suit. The internally formed lining <b>4</b> is attached to the external outer surrounding waterproof layer <b>3</b> by means of a number of zippers <b>12</b>, <b>13</b> and/or Velcro fastening members <b>14</b>. A zipper <b>12</b> is attached by, for instance, needlework, on a connecting edge <b>15</b> of the insulating three-dimensional layer <b>4</b> and an outward edge <b>16</b> of connecting boots <b>17</b>, included in the suit <b>2</b>, on the boot leg <b>18</b> thereof in the space <b>19</b> between the same.</p>
+<p id="p-0042" num="0041">Furthermore, an additional zipper <b>13</b> is attached by, for instance, needlework, on a portion of the three-dimensional insulated layer <b>4</b> of the respective sleeve <b>20</b>, <b>21</b> and on the inside <b>22</b> of the waterproof layer of the outer portion <b>23</b> of the respective sleeve.</p>
+<p id="p-0043" num="0042">Thereby, the different parts are efficiently united, and in addition in a waterproof way.</p>
+<p id="p-0044" num="0043">In the area of the 2 neck portion <b>24</b> of the suit, the Velcro fastening members <b>14</b> are sewed on. Said Velcro fastening members <b>14</b> are arranged to be detachably and, in a waterproof way, detachably interconnectable with paste-on Velcro fastening members <b>25</b> of a neck collar <b>26</b> interconnectable with said suit <b>2</b>.</p>
+<p id="p-0045" num="0044">In order for the diver <b>100</b> to avoid unnecessary pain by weighty air tubes, weight belts and other equipment, the three-dimensional insulating layer <b>4</b> may be formed of a plurality of composed stiffer parts <b>27</b>, <b>28</b> in the area over the diver's shoulders, i.e., at the shoulder portions of the suit, and in the area over the diver's lower back portion, i.e., at the rear waist portion of the suit, respectively, and which are intended to carry the pressure from said worn apparatuses, etc.</p>
+<p id="p-0046" num="0045">By, in that connection, choosing a said three-dimensional textile having a stiffer intermediate portion of thread mass <b>8</b>, it is possible to, in a better way, carry the pressure from supported outer apparatuses and pressing parts. This makes it achievable, in spite of a large load, to get an air gap in the textile, and that entails that air still can be received therein for ventilation and insulation purposes.</p>
+<p id="p-0047" num="0046">Naturally, the invention is not limited to the embodiments described above and shown in the accompanying drawings. Modifications are feasible, particularly as for the nature of the different parts, or by using an equivalent technique, without departing from the protection area of the invention, such as it is defined in the claims.</p>
+<?detailed-description description="Detailed Description" end="tail"?>
+</description>
+<claims id="claims">
+<claim id="CLM-001-9" num="001-9">
+<claim-text><b>1</b>-<b>9</b>. (canceled)</claim-text>
+</claim>
+<claim id="CLM-00010" num="00010">
+<claim-text><b>10</b>. A device for a drysuit for wet activities, comprising:
+<claim-text>an outer waterproof layer of butyl rubber or polyurethane, and</claim-text>
+<claim-text>an inner, three-dimensional, insulating, polyester layer detachably attached on an inside of the outer layer,</claim-text>
+<claim-text>wherein the inner layer is flexible, has air throughput capacity in two directions, has a structure having a mass of threads surrounded by inner and outer side layers, and at least one of the inner and outer side layers has a pattern with openings extending into the mass of threads.</claim-text>
+</claim-text>
+</claim>
+<claim id="CLM-00011" num="00011">
+<claim-text><b>11</b>. The device of <claim-ref idref="CLM-00010">claim 10</claim-ref>, wherein the mass of threads includes a plurality of inclined threads.</claim-text>
+</claim>
+<claim id="CLM-00012" num="00012">
+<claim-text><b>12</b>. The device of <claim-ref idref="CLM-00011">claim 11</claim-ref>, wherein one of the inner and outer side layers has a denser textile surface than the other one of the inner and outer side layers.</claim-text>
+</claim>
+<claim id="CLM-00013" num="00013">
+<claim-text><b>13</b>. The device of <claim-ref idref="CLM-00011">claim 11</claim-ref>, wherein most of the inclined threads are counter-directed with respect to one another such that they intersect one another.</claim-text>
+</claim>
+<claim id="CLM-00014" num="00014">
+<claim-text><b>14</b>. The device of <claim-ref idref="CLM-00011">claim 11</claim-ref>, wherein the inner layer is detachably attached to the outer layer by a number of zippers or hook-and-loop fastener members.</claim-text>
+</claim>
+<claim id="CLM-00015" num="00015">
+<claim-text><b>15</b>. The device of <claim-ref idref="CLM-00010">claim 10</claim-ref>, wherein one of the inner and outer side layers has a denser textile surface than the other one of the inner and outer side layers.</claim-text>
+</claim>
+<claim id="CLM-00016" num="00016">
+<claim-text><b>16</b>. The device of <claim-ref idref="CLM-00015">claim 15</claim-ref>, wherein the inner layer is detachably attached to the outer layer by a number of zippers or hook-and-loop fastener members.</claim-text>
+</claim>
+<claim id="CLM-00017" num="00017">
+<claim-text><b>17</b>. The device of <claim-ref idref="CLM-00010">claim 10</claim-ref>, wherein the inner layer is detachably attached to the outer layer by a number of zippers or hook-and-loop fastener members.</claim-text>
+</claim>
+<claim id="CLM-00018" num="00018">
+<claim-text><b>18</b>. The device of <claim-ref idref="CLM-00017">claim 17</claim-ref>, wherein a zipper is attached to an outward edge of the inner layer and to a boot-leg portion of a connecting boot in a space between the same.</claim-text>
+</claim>
+<claim id="CLM-00019" num="00019">
+<claim-text><b>19</b>. The device of <claim-ref idref="CLM-00018">claim 18</claim-ref>, wherein a zipper is attached to the inner layer of a sleeve and on an inside of the outer layer of the sleeve.</claim-text>
+</claim>
+<claim id="CLM-00020" num="00020">
+<claim-text><b>20</b>. The device of <claim-ref idref="CLM-00018">claim 18</claim-ref>, wherein hook-and-loop fastener members are sewed on the inner layer in an area of a neck portion of the drysuit, and the hook-and-loop fastener members are adapted to be interconnected with pasted-on hook-and-loop fastener members of an interconnectable neck collar.</claim-text>
+</claim>
+<claim id="CLM-00021" num="00021">
+<claim-text><b>21</b>. The device of <claim-ref idref="CLM-00017">claim 17</claim-ref>, wherein a zipper is attached to the inner layer of a sleeve and on an inside of the outer layer of the sleeve.</claim-text>
+</claim>
+<claim id="CLM-00022" num="00022">
+<claim-text><b>22</b>. The device of <claim-ref idref="CLM-00021">claim 21</claim-ref>, wherein hook-and-loop fastener members are sewed on the inner layer in an area of a neck portion of the drysuit, and the hook-and-loop fastener members are adapted to be interconnected with pasted-on hook-and-loop fastener members of an interconnectable neck collar.</claim-text>
+</claim>
+<claim id="CLM-00023" num="00023">
+<claim-text><b>23</b>. The device of <claim-ref idref="CLM-00017">claim 17</claim-ref>, wherein hook-and-loop fastener members are sewed on the inner layer in an area of a neck portion of the drysuit, and the hook-and-loop fastener members are adapted to be interconnected with pasted-on hook-and-loop fastener members of an interconnectable neck collar.</claim-text>
+</claim>
+<claim id="CLM-00024" num="00024">
+<claim-text><b>24</b>. The device of <claim-ref idref="CLM-00017">claim 17</claim-ref>, wherein one of the inner and outer side layers has a denser textile surface than the other one of the inner and outer side layers.</claim-text>
+</claim>
+<claim id="CLM-00025" num="00025">
+<claim-text><b>25</b>. The device of <claim-ref idref="CLM-00017">claim 17</claim-ref>, wherein the inner layer is detachably attached to the outer layer by a number of zippers or hook-and-loop fastener members.</claim-text>
+</claim>
+<claim id="CLM-00026" num="00026">
+<claim-text><b>26</b>. The device of <claim-ref idref="CLM-00010">claim 10</claim-ref>, wherein the inner layer comprises a plurality of portions that have different respective thicknesses and stiffnesses.</claim-text>
+</claim>
+<claim id="CLM-00027" num="00027">
+<claim-text><b>27</b>. The device of <claim-ref idref="CLM-00026">claim 26</claim-ref>, wherein thicker portions are arranged at least one of a rear waist portion of the drysuit and on shoulder portions of the drysuit.</claim-text>
+</claim>
+</claims>
+</us-patent-application>

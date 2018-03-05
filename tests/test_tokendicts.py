@@ -1,4 +1,4 @@
-from patentdata.models.chardict import BaseDict, CharDict, WordDict
+from patentdata.models.tokendict import BaseDict, CharDict, WordDict
 
 
 class TestGeneral(object):
