@@ -2,13 +2,17 @@
 from collections import OrderedDict
 from graphviz import Digraph
 import numpy as np
+import hashlib
 
 class Node(object):
     """ Node in a graph. """
 
     def __init__(self, label, root_token=None):
         """ Initialise a node."""
-        self.label = label
+        # Make sure \n don't get into name
+        self.label = label.replace('\n', 'newline')
+        # Add an ID that is equal to the label hash? - can use https://docs.python.org/3/library/hashlib.html
+        self.id = hashlib.md5(label.encode()).hexdigest()
         self.root_token = root_token
         self.tokens = [root_token]
 

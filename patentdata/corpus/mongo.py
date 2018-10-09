@@ -13,7 +13,7 @@ from patentdata.xmlparser import XMLDoc
 from patentdata.models.patentdoc import PatentDoc
 
 # Will need to move database parameters into a separate config file
-client = MongoClient('mongodb', 27017)
+client = MongoClient(os.environ.get('MONGOIP'), 27017)
 db = client.patent_db
 
 

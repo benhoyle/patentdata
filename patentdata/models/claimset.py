@@ -55,10 +55,28 @@ class Claimset(BaseTextSet):
         """ Return independent claims. """
         return [c for c in self.claims if c.dependency == 0]
 
-    def get_dependent_claims(self, claim):
-        """ Return all claims that ultimately depend on 'claim'."""
-        # claim_number = claim.number
-        pass
+    def __dependent_claims_nos(self, input_claim):
+        """Return numbers of claims that ultimately depend on 'input_claim'."""
+        dependent_claims_nos = [input_claim.number]
+        for claim in self.claims:
+            if claim.dependency in dependent_claims_nos:
+                dependent_claims_nos.append(claim.number)
+        dependent_claims_nos.remove(input_claim.number)
+        return dependent_claims_nos
+
+    def get_dependent_claims(self, input_claim):
+        """Return claims that ultimately depend on 'input_claim'"""
+        nos = self.__dependent_claims_nos(input_claim)
+        return [self.get_claim(n) for n in nos]
+
+    def get_claim_groups(self):
+        """ Return groupings of claims based on dependencies."""
+        claim_groups = list()
+        independent_claims = self.independent_claims()
+        for i_claim in independent_claims:
+            dependent_claims = self.get_dependent_claims(i_claim)
+            claim_groups.append([i_claim] + dependent_claims)
+        return claim_groups
 
     def get_root_claim_parent(self, claim_number):
         """ If claim is dependent, get independent claim it depends on. """
